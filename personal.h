@@ -32,7 +32,7 @@ public:
     void setEmail(QString);
     void setBirthDay(QDate);
 
-public:
+private:
 
     QDate birthDay;
     QString name;
