@@ -15,12 +15,12 @@ Personal::Personal(QDate bd,
 
 {}
 
-void Personal::addHobby(QString newHobby){
+void Personal::addHobby(const QString &newHobby){
 
     hobby.push_back(newHobby);
 }
 
-void Personal::addInterests(QString newInterest){
+void Personal::addInterest(const QString &newInterest){
 
     interests.push_back(newInterest);
 }
@@ -44,27 +44,27 @@ QDate Personal::getBirthday()const{
     return birthDay;
 }
 
-void Personal::setName(QString newName){
+void Personal::setName(const QString &newName){
 
     name = newName;
 }
 
-void Personal::setSurname(QString newSurname){
+void Personal::setSurname(const QString &newSurname){
 
     surname = newSurname;
 }
 
-void Personal::setPhone(QString newNumber){
+void Personal::setPhone(const QString &newNumber){
 
     phone = newNumber;
 }
 
-void Personal::setEmail(QString newMail){
+void Personal::setEmail(const QString &newMail){
 
     eMail = newMail;
 }
 
-void Personal::setBirthDay(QDate newBD){
+void Personal::setBirthDay(const QDate &newBD){
 
     birthDay = newBD;
 }

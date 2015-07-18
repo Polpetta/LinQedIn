@@ -12,11 +12,11 @@ public:
     int timeEvent() const;
     QString getEvent() const;
 
-    void setDesc(QString);
-    void setWhere(QString);
+    void setDesc(const QString &);
+    void setWhere(const QString &);
 
-    void setBegin(QDate);
-    void setFinish(QDate);
+    void setBegin(const QDate &);
+    void setFinish(const QDate &);
 
 private:
     QDate begin;

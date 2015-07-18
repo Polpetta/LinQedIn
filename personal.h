@@ -18,19 +18,19 @@ public:
              QString,
              bool);
 
-    void addHobby(QString);
-    void addInterests(QString);
+    void addHobby(const QString &);
+    void addInterest(const QString &);
 
     bool isSearching() const;
 
     int getAge() const;
     QDate getBirthday() const;
 
-    void setName(QString);
-    void setSurname(QString);
-    void setPhone(QString);
-    void setEmail(QString);
-    void setBirthDay(QDate);
+    void setName(const QString &);
+    void setSurname(const QString &);
+    void setPhone(const QString &);
+    void setEmail(const QString &);
+    void setBirthDay(const QDate &);
 
 private:
 

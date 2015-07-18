@@ -22,22 +22,22 @@ QString Event::getEvent() const {
     return result;
 }
 
-void Event::setDesc(QString newDesc) {
+void Event::setDesc(const QString & newDesc) {
 
     desc = newDesc;
 }
 
-void Event::setWhere(QString newWhere) {
+void Event::setWhere(const QString & newWhere) {
 
     where = newWhere;
 }
 
-void Event::setBegin(QDate newBg) {
+void Event::setBegin(const QDate &newBg) {
 
     begin = newBg;
 }
 
-void Event::setFinish(QDate newFn) {
+void Event::setFinish(const QDate &newFn) {
 
     finish = newFn;
 }
