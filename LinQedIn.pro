@@ -15,8 +15,12 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     event.cpp \
-    personal.cpp
+    personal.cpp \
+    hobby.cpp \
+    interests.cpp
 
 HEADERS  += mainwindow.h \
     event.h \
-    personal.h
+    personal.h \
+    hobby.h \
+    interests.h
