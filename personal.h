@@ -4,7 +4,10 @@
 #include <QDate>
 #include <QString>
 
-#include <list>
+#include "hobby.h"
+#include "interests.h"
+
+
 
 using std::list;
 
@@ -19,7 +22,11 @@ public:
              bool);
 
     void addHobby(const QString &);
+    void rmHobby(const QString &);
+
+
     void addInterest(const QString &);
+    void rmInterest(const QString &);
 
     bool isSearching() const;
 
@@ -42,8 +49,8 @@ private:
     bool searchingJob;
 
 
-    list<QString> hobby;
-    list<QString> interests;
+    Hobby hbb;
+    Interests ntr;
 };
 
 #endif // PERSONAL_H

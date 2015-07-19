@@ -17,12 +17,24 @@ Personal::Personal(QDate bd,
 
 void Personal::addHobby(const QString &newHobby){
 
-    hobby.push_back(newHobby);
+    hbb.add(newHobby);
 }
+
+void Personal::rmHobby(const QString & target){
+
+    hbb.rm(target);
+}
+
+
 
 void Personal::addInterest(const QString &newInterest){
 
-    interests.push_back(newInterest);
+    ntr.add(newInterest);
+}
+
+void Personal::rmInterest(const QString & target){
+
+    ntr.rm(target);
 }
 
 bool Personal::isSearching()const{
