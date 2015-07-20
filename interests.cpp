@@ -38,12 +38,12 @@ Interests::const_iterator::const_iterator() {}
 Interests::const_iterator::const_iterator(const list::const_iterator & itr)
     :list<QString>::const_iterator(itr) {}
 
-Interests::const_iterator Interests::begin() const{
+Interests::const_iterator Interests::cbegin() const{
 
     return list<QString>::begin();
 }
 
-Interests::const_iterator Interests::end() const{
+Interests::const_iterator Interests::cend() const{
 
     return list<QString>::end();
 }

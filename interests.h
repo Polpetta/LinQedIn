@@ -33,14 +33,11 @@ public:
         const_iterator (const list <QString>::const_iterator &);
     };
 
-    Interests::const_iterator begin() const;
-    Interests::const_iterator end() const;
+    Interests::const_iterator cbegin() const;
+    Interests::const_iterator cend() const;
 
     const QString & operator[] (const Interests::const_iterator &) const;
 
-    /* Nota: da rivedere negli iteratori begin e end. Sembra che solo
-     * quelli costanti vengano visti e overridino quelli non costanti
-     */
 };
 
 #endif // INTERESTS_H
