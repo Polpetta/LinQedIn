@@ -6,6 +6,7 @@
 
 #include "hobby.h"
 #include "interests.h"
+#include "experiences.h" //le esperienze fanno parte di personal?
 
 
 
@@ -27,6 +28,9 @@ public:
 
     void addInterest(const QString &);
     void rmInterest(const QString &);
+
+    void addExperiences(const Event &);
+    void rmExperiences(const Event &);
 
     bool isSearching() const;
 
@@ -51,6 +55,7 @@ private:
 
     Hobby hbb;
     Interests ntr;
+    Experiences exp;
 };
 
 #endif // PERSONAL_H

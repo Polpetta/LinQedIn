@@ -37,6 +37,18 @@ void Personal::rmInterest(const QString & target){
     ntr.rm(target);
 }
 
+
+
+void Personal::addExperiences(const Event & newEvent){
+
+    exp.add(newEvent);
+}
+
+void Personal::rmExperiences(const Event & target){
+
+    exp.rm(target);
+}
+
 bool Personal::isSearching()const{
 
     return searchingJob;
