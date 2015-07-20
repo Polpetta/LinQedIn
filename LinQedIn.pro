@@ -17,10 +17,12 @@ SOURCES += main.cpp\
     event.cpp \
     personal.cpp \
     hobby.cpp \
-    interests.cpp
+    interests.cpp \
+    experiences.cpp
 
 HEADERS  += mainwindow.h \
     event.h \
     personal.h \
     hobby.h \
-    interests.h
+    interests.h \
+    experiences.h
