@@ -18,6 +18,9 @@ public:
     void setBegin(const QDate &);
     void setFinish(const QDate &);
 
+    bool operator == (const Event &) const;
+    bool operator != (const Event &) const;
+
 private:
     QDate begin;
     QDate finish;

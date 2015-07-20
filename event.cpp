@@ -41,3 +41,21 @@ void Event::setFinish(const QDate &newFn) {
 
     finish = newFn;
 }
+
+//OPERATORI
+
+bool Event::operator ==(const Event & ev)const{
+
+    return begin == ev.begin &&
+            finish == ev.finish &&
+            desc == ev.desc &&
+            where == ev.where;
+}
+
+bool Event::operator !=(const Event & ev)const{
+
+    return begin != ev.begin ||
+            finish != ev.finish ||
+            desc != ev.desc ||
+            where != ev.where;
+}
