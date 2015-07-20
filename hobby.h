@@ -39,9 +39,6 @@ public:
 
     const QString & operator[](const Hobby::const_iterator &) const;
 
-    /* Nota: da rivedere negli iteratori begin e end. Sembra che solo
-     * quelli costanti vengano visti e overridino quelli non costanti
-     */
 };
 
 #endif // HOBBY_H
