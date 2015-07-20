@@ -22,8 +22,8 @@ public:
         iterator (const list<QString>::iterator &);
     };
 
-    Hobby::iterator begin();
-    Hobby::iterator end();
+    Hobby::iterator begin() ;
+    Hobby::iterator end() ;
 
     QString & operator[] (const Hobby::iterator &) const;
 
@@ -34,8 +34,8 @@ public:
         const_iterator (const list <QString>::const_iterator &);
     };
 
-    Hobby::const_iterator begin() const;
-    Hobby::const_iterator end() const;
+    Hobby::const_iterator cbegin() const;
+    Hobby::const_iterator cend() const;
 
     const QString & operator[](const Hobby::const_iterator &) const;
 

@@ -39,12 +39,12 @@ Hobby::const_iterator::const_iterator() {}
 Hobby::const_iterator::const_iterator(const list<QString>::const_iterator & itr)
     : list<QString>::const_iterator(itr) {}
 
-Hobby::const_iterator Hobby::begin() const{
+Hobby::const_iterator Hobby::cbegin() const{
 
     return list<QString>::begin();
 }
 
-Hobby::const_iterator Hobby::end() const{
+Hobby::const_iterator Hobby::cend() const{
 
     return list<QString>::end();
 }
