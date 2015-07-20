@@ -29,7 +29,7 @@ Hobby::iterator Hobby::end(){
 }
 
 QString & Hobby::operator [] (const Hobby::iterator & it) const{
-    //DA RIGURARDARE
+
     return *it;
 }
 
