@@ -6,8 +6,6 @@
 
 #include "hobby.h"
 #include "interests.h"
-#include "experiences.h" //le esperienze fanno parte di personal?
-
 
 
 using std::list;
@@ -15,12 +13,12 @@ using std::list;
 class Personal
 {
 public:
-    Personal(QDate,
-             QString,
-             QString,
-             QString,
-             QString,
-             bool);
+    Personal(const QDate &,
+             const QString &,
+             const QString &,
+             const QString &,
+             const QString &,
+             const bool &);
 
     void addHobby(const QString &);
     void rmHobby(const QString &);
@@ -28,9 +26,6 @@ public:
 
     void addInterest(const QString &);
     void rmInterest(const QString &);
-
-    void addExperiences(const Event &);
-    void rmExperiences(const Event &);
 
     bool isSearching() const;
 
@@ -55,7 +50,6 @@ private:
 
     Hobby hbb;
     Interests ntr;
-    Experiences exp;
 };
 
 #endif // PERSONAL_H

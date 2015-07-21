@@ -1,11 +1,11 @@
 #include "personal.h"
 
-Personal::Personal(QDate bd,
-                   QString nm,
-                   QString srn,
-                   QString phn,
-                   QString eMl,
-                   bool src)
+Personal::Personal(const QDate & bd,
+                   const QString & nm,
+                   const QString & srn,
+                   const QString & phn,
+                   const QString & eMl,
+                   const bool & src)
     : birthDay(bd),
       name(nm),
       surname(srn),
@@ -38,16 +38,6 @@ void Personal::rmInterest(const QString & target){
 }
 
 
-
-void Personal::addExperiences(const Event & newEvent){
-
-    exp.add(newEvent);
-}
-
-void Personal::rmExperiences(const Event & target){
-
-    exp.rm(target);
-}
 
 bool Personal::isSearching()const{
 
