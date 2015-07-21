@@ -18,11 +18,15 @@ SOURCES += main.cpp\
     personal.cpp \
     hobby.cpp \
     interests.cpp \
-    experiences.cpp
+    experiences.cpp \
+    user.cpp \
+    member.cpp
 
 HEADERS  += mainwindow.h \
     event.h \
     personal.h \
     hobby.h \
     interests.h \
-    experiences.h
+    experiences.h \
+    user.h \
+    member.h
