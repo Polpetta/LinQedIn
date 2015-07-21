@@ -4,7 +4,7 @@
 #include "user.h"
 #include "personal.h"
 #include "experiences.h"
-//MANCA LA CLASSE AMICIZIE - da fare
+#include "friendships.h"
 
 class Member : public User
 {
@@ -23,11 +23,14 @@ public:
     void addInterests (const QString &);
     void rmInterests (const QString &);
 
+    void addFriend (const int &);
+    void rmFriend (const int &);
+
 private:
 
     Personal info;
     Experiences career;
-    //manca la classe amicizie
+    Friendships friends;
 };
 
 #endif // MEMBER_H

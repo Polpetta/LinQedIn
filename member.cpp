@@ -42,3 +42,14 @@ void Member::rmInterests(const QString & target){
 
     info.Personal::rmInterest(target);
 }
+
+
+void Member::addFriend(const int & newFriendId){
+
+    friends.add(newFriendId);
+}
+
+void Member::rmFriend(const int & target){
+
+    friends.rm(target);
+}
