@@ -23,7 +23,8 @@ SOURCES += main.cpp\
     member.cpp \
     friendships.cpp \
     bio.cpp \
-    profile.cpp
+    profile.cpp \
+    credentials.cpp
 
 HEADERS  += mainwindow.h \
     event.h \
@@ -35,4 +36,5 @@ HEADERS  += mainwindow.h \
     member.h \
     friendships.h \
     bio.h \
-    profile.h
+    profile.h \
+    credentials.h
