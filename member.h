@@ -7,6 +7,7 @@
 
 //#include "credentials.h"
 //qui ci va anche l'include di QString? compila anche senza
+//qui ci va anche l'include di Event?
 
 class Member : public User
 {
