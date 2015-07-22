@@ -2,34 +2,40 @@
 #define MEMBER_H
 
 #include "user.h"
-#include "personal.h"
-#include "experiences.h"
+#include "profile.h"
 #include "friendships.h"
+
+//#include "credentials.h"
+//qui ci va anche l'include di QString? compila anche senza
 
 class Member : public User
 {
 public:
-    Member(const QString &,
-           const QString &,
-           const Personal &);
+    Member(const Credentials & =Credentials(),
+           const Profile & = Profile(),
+           const Friendships & = Friendships());
+
     virtual ~Member();
+
+    void addHobby(const QString &);
+    void rmHobby (const QString &);
+
+    void addInterest(const QString &);
+    void rmInterest(const QString &);
 
     void addExperiences(const Event &);
     void rmExperiences(const Event &);
 
-    void addHobby (const QString &);
-    void rmHobby (const QString &);
-
-    void addInterests (const QString &);
-    void rmInterests (const QString &);
-
     void addFriend (const int &);
     void rmFriend (const int &);
 
+    void setHobby(const Hobby &);
+    void setInterest(const Interests &);
+    void setFrinds(const Friendships &);
+
 private:
 
-    Personal info;
-    Experiences career;
+    Profile info;
     Friendships friends;
 };
 
