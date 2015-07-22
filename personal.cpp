@@ -1,17 +1,11 @@
 #include "personal.h"
 
-Personal::Personal(const QDate & bd,
-                   const QString & nm,
-                   const QString & srn,
-                   const QString & phn,
-                   const QString & eMl,
-                   const bool & src)
-    : birthDay(bd),
-      name(nm),
-      surname(srn),
-      phone(phn),
-      eMail(eMl),
-      searchingJob(src)
+Personal::Personal(const Bio & bio,
+                   const Hobby & hobby,
+                   const Interests & interests)
+    : info(bio),
+      hbb(hobby),
+      ntr(interests)
 
 {}
 
@@ -39,46 +33,18 @@ void Personal::rmInterest(const QString & target){
 
 
 
-bool Personal::isSearching()const{
+void Personal::setBio(const Bio &replace){
 
-    return searchingJob;
+    info = replace;
 }
 
-int Personal::getAge()const{
 
-    int yb = birthDay.year();
+void Personal::setHobby (const Hobby &replace){
 
-    int currenty = QDate::currentDate().year();
-
-    return currenty - yb;
+    hbb = replace;
 }
 
-QDate Personal::getBirthday()const{
+void Personal::setInterests(const Interests &replace){
 
-    return birthDay;
-}
-
-void Personal::setName(const QString &newName){
-
-    name = newName;
-}
-
-void Personal::setSurname(const QString &newSurname){
-
-    surname = newSurname;
-}
-
-void Personal::setPhone(const QString &newNumber){
-
-    phone = newNumber;
-}
-
-void Personal::setEmail(const QString &newMail){
-
-    eMail = newMail;
-}
-
-void Personal::setBirthDay(const QDate &newBD){
-
-    birthDay = newBD;
+    ntr = replace;
 }

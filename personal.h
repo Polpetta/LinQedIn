@@ -1,53 +1,32 @@
 #ifndef PERSONAL_H
 #define PERSONAL_H
 
-#include <QDate>
-#include <QString>
-
+#include "bio.h"
 #include "hobby.h"
 #include "interests.h"
 
 
-using std::list;
-
 class Personal
 {
 public:
-    Personal(const QDate &,
-             const QString &,
-             const QString &,
-             const QString &,
-             const QString &,
-             const bool &);
+    Personal(const Bio & = Bio(),
+             const Hobby & = Hobby(),
+             const Interests & = Interests()
+            );
 
     void addHobby(const QString &);
     void rmHobby(const QString &);
 
-
     void addInterest(const QString &);
     void rmInterest(const QString &);
 
-    bool isSearching() const;
-
-    int getAge() const;
-    QDate getBirthday() const;
-
-    void setName(const QString &);
-    void setSurname(const QString &);
-    void setPhone(const QString &);
-    void setEmail(const QString &);
-    void setBirthDay(const QDate &);
+    void setBio(const Bio &);
+    void setHobby(const Hobby &);
+    void setInterests(const Interests &);
 
 private:
 
-    QDate birthDay;
-    QString name;
-    QString surname;
-    QString phone;
-    QString eMail;
-    bool searchingJob;
-
-
+    Bio info;
     Hobby hbb;
     Interests ntr;
 };
