@@ -7,7 +7,11 @@
 class Event
 {
 public:
-    Event(QDate, QDate, QString, QString);
+    Event(const QDate & = QDate(),
+          const QDate & = QDate(),
+          const QString & = QString(),
+          const QString & = QString()
+            );
 
     int timeEvent() const;
     QString getEvent() const;

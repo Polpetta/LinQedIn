@@ -1,7 +1,13 @@
 #include "event.h"
 
-Event::Event(QDate nbg, QDate nfn, QString ndsc, QString nwhr)
-    : begin(nbg), finish(nfn), desc(ndsc), where(nwhr)
+Event::Event(const QDate &nbg,
+             const QDate &nfn,
+             const QString &ndsc,
+             const QString &nwhr)
+    : begin(nbg),
+      finish(nfn),
+      desc(ndsc),
+      where(nwhr)
 {}
 
 int Event::timeEvent() const {
