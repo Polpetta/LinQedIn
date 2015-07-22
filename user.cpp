@@ -1,9 +1,18 @@
 #include "user.h"
 
-User::User(const QString & usr,
-           const QString & pswd)
-    : nick(usr),
-      password(pswd)
+User::User(const Credentials & secrets)
+    : logCrd(secrets)
 {}
 
 User::~User() {}
+
+
+const Credentials & User::getCredential()const{
+
+    return logCrd;
+}
+
+void User::setCredential (const Credentials & replace){
+
+    logCrd = replace;
+}

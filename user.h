@@ -1,20 +1,24 @@
 #ifndef USER_H
 #define USER_H
 
-#include <QString>
+#include "credentials.h"
 
 class User
 {
 public:
-    User(const QString &, const QString &);
+    User(const Credentials & = Credentials());
 
     virtual ~User();
 
     virtual User& search(const QString &) const =0;
 
+    const Credentials & getCredential()const;
+
+    void setCredential(const Credentials &);
+
 private:
-    QString nick;
-    QString password;
+
+    Credentials logCrd;
 
     //ci andrà anche l'oggetto search qui che è ancora da creare
 };
