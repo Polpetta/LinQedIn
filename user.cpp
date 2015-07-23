@@ -1,12 +1,22 @@
 #include "user.h"
 
-User::User(const Credentials & secrets)
-    : logCrd(secrets)
+User::User(const Credentials & secrets,
+           const QString & typ)
+    : logCrd(secrets), UserType(typ)
 {}
 
 User::~User() {}
 
 
+QString& User::getType(){
+
+    return UserType;
+}
+
+const QString & User::cgetType() const{
+
+    return UserType;
+}
 
 Credentials & User::getCredential(){
 
@@ -21,4 +31,15 @@ const Credentials & User::cgetCredential()const{
 void User::setCredential (const Credentials & replace){
 
     logCrd = replace;
+}
+
+void User::setAccountValid(const bool & newValid){
+
+    valid = newValid;
+}
+
+
+bool User::isValid()const{
+
+    return valid;
 }
