@@ -24,7 +24,8 @@ SOURCES += main.cpp\
     friendships.cpp \
     bio.cpp \
     profile.cpp \
-    credentials.cpp
+    credentials.cpp \
+    memberbasic.cpp
 
 HEADERS  += mainwindow.h \
     event.h \
@@ -37,4 +38,8 @@ HEADERS  += mainwindow.h \
     friendships.h \
     bio.h \
     profile.h \
-    credentials.h
+    credentials.h \
+    smartutente.h \
+    memberbasic.h
+
+QMAKE_CXXFLAGS += -std=c++11 -Wall #ricordarsi eliminare -Wall
