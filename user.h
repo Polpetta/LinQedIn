@@ -12,7 +12,8 @@ public:
 
     virtual User& search(const QString &) const =0;
 
-    const Credentials & getCredential()const;
+    Credentials & getCredential();
+    const Credentials & cgetCredential()const;
 
     void setCredential(const Credentials &);
 

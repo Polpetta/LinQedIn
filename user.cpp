@@ -7,7 +7,13 @@ User::User(const Credentials & secrets)
 User::~User() {}
 
 
-const Credentials & User::getCredential()const{
+
+Credentials & User::getCredential(){
+
+    return logCrd;
+}
+
+const Credentials & User::cgetCredential()const{
 
     return logCrd;
 }
