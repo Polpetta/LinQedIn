@@ -1,10 +1,11 @@
 #include "member.h"
 
 Member::Member(const Credentials & crd,
+               const QString & typ,
                const Profile & prf,
                const Friendships & frnd)
 
-    : User(crd), info(prf), friends(frnd)
+    : User(crd,typ), info(prf), friends(frnd)
 {}
 
 Member::~Member()

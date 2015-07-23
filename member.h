@@ -13,6 +13,7 @@ class Member : public User
 {
 public:
     Member(const Credentials & =Credentials(),
+           const QString & = QString(),
            const Profile & = Profile(),
            const Friendships & = Friendships());
 
