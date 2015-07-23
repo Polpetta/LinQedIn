@@ -9,29 +9,6 @@ Personal::Personal(const Bio & bio,
 
 {}
 
-void Personal::addHobby(const QString &newHobby){
-
-    hbb.add(newHobby);
-}
-
-void Personal::rmHobby(const QString & target){
-
-    hbb.rm(target);
-}
-
-
-
-void Personal::addInterest(const QString &newInterest){
-
-    ntr.add(newInterest);
-}
-
-void Personal::rmInterest(const QString & target){
-
-    ntr.rm(target);
-}
-
-
 
 void Personal::setBio(const Bio &replace){
 
@@ -47,4 +24,40 @@ void Personal::setHobby (const Hobby &replace){
 void Personal::setInterests(const Interests &replace){
 
     ntr = replace;
+}
+
+
+
+Hobby & Personal::getHobby(){
+
+    return hbb;
+}
+
+const Hobby & Personal::cgetHobby()const{
+
+    return hbb;
+}
+
+
+
+Bio & Personal::getBio(){
+
+    return info;
+}
+
+const Bio & Personal::cgetBio()const{
+
+    return info;
+}
+
+
+
+Interests & Personal::getInterests(){
+
+    return ntr;
+}
+
+const Interests & Personal::cgetInterests()const{
+
+    return ntr;
 }

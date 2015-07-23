@@ -14,15 +14,18 @@ public:
              const Interests & = Interests()
             );
 
-    void addHobby(const QString &);
-    void rmHobby(const QString &);
-
-    void addInterest(const QString &);
-    void rmInterest(const QString &);
-
     void setBio(const Bio &);
     void setHobby(const Hobby &);
     void setInterests(const Interests &);
+
+    Hobby & getHobby();
+    const Hobby & cgetHobby()const;
+
+    Bio & getBio();
+    const Bio & cgetBio()const;
+
+    Interests & getInterests();
+    const Interests & cgetInterests()const;
 
 private:
 
