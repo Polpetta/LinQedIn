@@ -24,7 +24,8 @@ QString Event::getEvent() const {
     QString bg = begin.toString("dd.MM.yyyy");
     QString fn = finish.toString("dd.MM.yyyy");
 
-    result = bg + " - " + fn + "in " + where + ": " + desc;
+    result = bg + " - " + fn + " :: " + where + ": " + desc;
+
     return result;
 }
 
