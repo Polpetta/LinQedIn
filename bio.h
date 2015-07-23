@@ -14,10 +14,19 @@ public:
         const QString & = QString()
             );
 
+    QString getName()const;
+    QString getSurname()const;
+    QString getPhone()const;
+    QString getMail()const;
+
     int getAge() const;
     QDate getBirthday() const;
 
-    void setBio (const Bio &);
+    void setBirthday(const QDate &);
+    void setName (const QString &);
+    void setSurname (const QString &);
+    void setPhone (const QString &);
+    void setMail (const QString &);
 
 private:
     QDate birthDay;
