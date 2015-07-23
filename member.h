@@ -18,20 +18,14 @@ public:
 
     virtual ~Member();
 
-    void addHobby(const QString &);
-    void rmHobby (const QString &);
 
-    void addInterest(const QString &);
-    void rmInterest(const QString &);
+    Profile & getProfile();
+    const Profile & cgetProfile()const;
 
-    void addExperiences(const Event &);
-    void rmExperiences(const Event &);
+    Friendships & getFriendships();
+    const Friendships & cgetFriendships()const;
 
-    void addFriend (const int &);
-    void rmFriend (const int &);
-
-    void setHobby(const Hobby &);
-    void setInterest(const Interests &);
+    void setProfile(const Profile &);
     void setFrinds(const Friendships &);
 
 private:

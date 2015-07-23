@@ -10,62 +10,30 @@ Member::Member(const Credentials & crd,
 Member::~Member()
 {}
 
-void Member::addHobby(const QString &newHobby){
+Profile & Member::getProfile(){
 
-    info.addHobby(newHobby);
+    return info;
 }
 
-void Member::rmHobby(const QString &target){
+const Profile & Member::cgetProfile()const{
 
-    info.rmHobby(target);
+    return info;
 }
 
+Friendships & Member::getFriendships(){
 
-
-void Member::addInterest(const QString &newInterest){
-
-    info.addInterest(newInterest);
+    return friends;
 }
 
-void Member::rmInterest(const QString &target){
+const Friendships & Member::cgetFriendships()const{
 
-    info.rmInterest(target);
-}
-
-
-
-void Member::addExperiences(const Event & newEvent){
-
-    info.addExperiences(newEvent);
-}
-
-void Member::rmExperiences(const Event & target){
-
-    info.rmExperiences(target);
+    return friends;
 }
 
 
+void Member::setProfile(const Profile & replace){
 
-void Member::addFriend(const int & newFriendId){
-
-    friends.add(newFriendId);
-}
-
-void Member::rmFriend(const int & target){
-
-    friends.rm(target);
-}
-
-
-
-void Member::setHobby(const Hobby & replace){
-
-    info.setHobby(replace);
-}
-
-void Member::setInterest(const Interests &replace){
-
-    info.setInterest(replace);
+    info = replace;
 }
 
 void Member::setFrinds(const Friendships & replace){
