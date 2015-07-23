@@ -1,15 +1,17 @@
 #include "mainwindow.h"
 //#include <QApplication>
-#include "personal.h"
 #include <QDate>
 
 
-//#include <iostream>
+/*#include <iostream>
+#include "profile.h"
+#include "personal.h"
+#include "experiences.h"*/
 
 int main(int argc, char *argv[])
 {
-    /*
-    //QApplication a(argc, argv);
+
+    /*//QApplication a(argc, argv);
     //MainWindow w;
     //w.show();
 
@@ -17,20 +19,50 @@ int main(int argc, char *argv[])
 
     QDate nascita(1994,8,27);
 
-    Personal prova(nascita,
-                   "Davide",
-                   "Polonio",
-                   "3204961582",
-                   "poloniodavide@gmail.com",
-                   false);
+    Bio b1(nascita,
+           "Davide",
+           "Polonio",
+           "3204961582",
+           "poloniodavide@gmail.com");
 
-    prova.addHobby("Computer");
-    prova.addHobby("Giardinaggio");
+    Personal prova(b1);
 
-    prova.addInterest("SysAdmin");
+    prova.getHobby().add("Computer");
+    prova.getHobby().add("Giardinaggio");
 
-    std::cout<<"Fatto"<<std::endl;
+    prova.getInterests().add("SysAdmin");
 
-    prova.print();
+    std::cout<<"Fatto personal"<<std::endl;
+
+    Experiences exp;
+
+    Event e1 (QDate(2009,8,24),
+              QDate(2010,9,12),
+              "Prima scorreggia",
+              "A casa mia");
+
+    Event e2 (QDate(2011,6,5),
+              QDate(2012,8,1),
+              "Giro in bici",
+              "Parco regionale dei Colli Euganei");
+
+    exp.add(e1);
+    exp.add(e2);
+
+    Profile profilo (prova,
+                     exp);
+
+    std::cout<<"Fatto profile"<<std::endl;
+
+    Experiences::const_iterator it;
+
+    for (it = profilo.cgetExperiences().cbegin(); it != profilo.cgetExperiences().cend(); ++it){
+
+        //std::cout<<"Sto iterando"<<std::endl;
+
+        std::cout << profilo.cgetExperiences()[it].getEvent().toStdString() <<std::endl;
+    }
+
+    std::cout<<"Fine"<<std::endl;
     */
 }
