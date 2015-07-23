@@ -12,19 +12,15 @@ public:
             const Experiences & = Experiences()
             );
 
-    void addHobby(const QString &);
-    void rmHobby (const QString &);
-
-    void addInterest(const QString &);
-    void rmInterest(const QString &);
-
-    void addExperiences (const Event &);
-    void rmExperiences (const Event &);
 
     void setPersonal(const Personal &);
     void setExperiences(const Experiences &);
-    void setHobby(const Hobby &);
-    void setInterest(const Interests &);
+
+    Personal & getPersonal();
+    const Personal & cgetPersonal()const;
+
+    Experiences & getExperiences();
+    const Experiences & cgetExperiences()const;
 
 
 private:
