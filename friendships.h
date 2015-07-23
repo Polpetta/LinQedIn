@@ -11,9 +11,6 @@ class Friendships : private vector<int>
 public:
     Friendships();
 
-    void add (const int &);
-    void rm (const int &);
-
     class iterator : public vector<int>::iterator{
 
     public:
@@ -38,6 +35,11 @@ public:
 
     const int & operator[] (const Friendships::const_iterator &) const;
 
+
+    void add (const int &);
+    void rm (const int &);
+
+    bool isValid(const Friendships::const_iterator & )const;
 };
 
 #endif // FRIENDSHIPS_H

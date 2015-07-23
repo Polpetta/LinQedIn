@@ -3,29 +3,6 @@
 Friendships::Friendships()
 {}
 
-void Friendships::add(const int & newId){
-
-    vector<int>::push_back(newId);
-}
-
-void Friendships::rm(const int & target){
-
-    vector<int>::iterator it;
-
-    for (it = vector<int>::begin(); it != vector<int>::end(); ++it){
-
-        if (*it == target){
-
-            int last = vector<int>::back();
-            vector<int>::pop_back();
-
-            *it = last;
-
-        }
-
-    }
-}
-
 Friendships::iterator::iterator() {}
 
 Friendships::iterator::iterator (const vector<int>::iterator & itr)
@@ -66,4 +43,37 @@ Friendships::const_iterator Friendships::cend() const{
 const int & Friendships::operator [] (const Friendships::const_iterator & it)const{
 
     return *it;
+}
+
+
+
+void Friendships::add(const int & newId){
+
+    vector<int>::push_back(newId);
+}
+
+void Friendships::rm(const int & target){
+
+    vector<int>::iterator it;
+
+    for (it = vector<int>::begin(); it != vector<int>::end(); ++it){
+
+        if (*it == target){
+
+            int last = vector<int>::back();
+            vector<int>::pop_back();
+
+            *it = last;
+
+        }
+
+    }
+}
+
+bool Friendships::isValid(const Friendships::const_iterator & it)const{
+
+    if (*it > 0)
+        return true;
+
+    return false;
 }
