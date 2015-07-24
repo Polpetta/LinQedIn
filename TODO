@@ -1,6 +1,6 @@
 COSE DA FARE:
-
+-Pensare alla struttura dal file xml, come lo implemento?
 COSE DA RIVEDERE:
--La search nelle classi derivate, non deve ritornare un solo MemberBasic, ma
++La search nelle classi derivate, non deve ritornare un solo MemberBasic, ma
 dovrebbe ritornare una lista (verctor o list?) di utenti trovati in base
 all'input dato!
