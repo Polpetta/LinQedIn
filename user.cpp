@@ -43,3 +43,14 @@ bool User::isValid()const{
 
     return valid;
 }
+
+
+int & User::getRef(){
+
+    return ref;
+}
+
+const int & User::cgetRef()const{
+
+    return ref;
+}
