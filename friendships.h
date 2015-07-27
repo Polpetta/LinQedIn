@@ -5,6 +5,11 @@
 
 using std::vector;
 
+/*
+ * Meglio aggiungere un campo di numerazione su user o meglio
+ * cambiare questa classe usando SmartUser?
+ *
+ */
 
 class Friendships : private vector<int>
 {
