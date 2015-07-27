@@ -5,19 +5,19 @@ UserData::UserData()
 
 UserData::iterator::iterator() {}
 
-UserData::iterator::iterator (const vector<SmartUtente>::iterator & it) : vector<SmartUtente>::iterator(it) {}
+UserData::iterator::iterator (const vector<SmartUser>::iterator & it) : vector<SmartUser>::iterator(it) {}
 
 UserData::iterator UserData::begin(){
 
-    return vector<SmartUtente>::begin();
+    return vector<SmartUser>::begin();
 }
 
 UserData::iterator UserData::end(){
 
-    return vector<SmartUtente>::end();
+    return vector<SmartUser>::end();
 }
 
-SmartUtente & UserData::operator [] (const UserData::iterator & it) const{
+SmartUser & UserData::operator [] (const UserData::iterator & it) const{
 
     return *it;
 }
@@ -25,39 +25,39 @@ SmartUtente & UserData::operator [] (const UserData::iterator & it) const{
 
 UserData::const_iterator::const_iterator(){}
 
-UserData::const_iterator::const_iterator(const vector<SmartUtente>::const_iterator & it) : vector<SmartUtente>::const_iterator (it) {}
+UserData::const_iterator::const_iterator(const vector<SmartUser>::const_iterator & it) : vector<SmartUser>::const_iterator (it) {}
 
 UserData::const_iterator UserData::cbegin() const{
 
-    return vector<SmartUtente>::begin();
+    return vector<SmartUser>::begin();
 }
 
 UserData::const_iterator UserData::cend() const{
 
-    return vector<SmartUtente>::end();
+    return vector<SmartUser>::end();
 }
 
-const SmartUtente & UserData::operator [] (const UserData::const_iterator & it)const{
+const SmartUser & UserData::operator [] (const UserData::const_iterator & it)const{
 
     return *it;
 }
 
-void UserData::add(const SmartUtente & newSU){
+void UserData::add(const SmartUser & newSU){
 
-    vector<SmartUtente>::push_back(newSU);
+    vector<SmartUser>::push_back(newSU);
 }
 
 
-void UserData::rm(const SmartUtente & target){
+void UserData::rm(const SmartUser & target){
 
-    vector<SmartUtente>::iterator it;
+    vector<SmartUser>::iterator it;
 
-    for (it= vector<SmartUtente>::begin(); it != vector<SmartUtente>::end(); ++it){
+    for (it= vector<SmartUser>::begin(); it != vector<SmartUser>::end(); ++it){
 
         if (*it == target){
 
-            SmartUtente last = vector<SmartUtente>::back();
-            vector<SmartUtente>::pop_back();
+            SmartUser last = vector<SmartUser>::back();
+            vector<SmartUser>::pop_back();
 
             *it == last;
         }

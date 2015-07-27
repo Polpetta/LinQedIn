@@ -2,41 +2,45 @@
 #define USERDATA_H
 
 #include<vector>
-#include "smartutente.h"
+#include "user.h"
+#include "smartuser.h"
 
 using std::vector;
 
-class UserData : private vector<SmartUtente>
+//altrimenti il compilatore va in loop.
+class SmartUser;
+
+class UserData : private vector<SmartUser>
 {
 public:
     UserData();
 
-    class iterator : public vector<SmartUtente>::iterator{
+    class iterator : public vector<SmartUser>::iterator{
 
     public:
         iterator();
-        iterator (const vector<SmartUtente>::iterator &);
+        iterator (const vector<SmartUser>::iterator &);
     };
 
     UserData::iterator begin();
     UserData::iterator end();
 
-    SmartUtente & operator[] (const UserData::iterator &) const;
+    SmartUser & operator[] (const UserData::iterator &) const;
 
-    class const_iterator : public vector<SmartUtente>::const_iterator{
+    class const_iterator : public vector<SmartUser>::const_iterator{
 
     public:
         const_iterator();
-        const_iterator(const vector<SmartUtente>::const_iterator &);
+        const_iterator(const vector<SmartUser>::const_iterator &);
     };
 
     UserData::const_iterator cbegin() const;
     UserData::const_iterator cend() const;
 
-    const SmartUtente & operator[] (const UserData::const_iterator &) const;
+    const SmartUser & operator[] (const UserData::const_iterator &) const;
 
-    void add (const SmartUtente &);
-    void rm (const SmartUtente &);
+    void add (const SmartUser &);
+    void rm (const SmartUser &);
 
 };
 
