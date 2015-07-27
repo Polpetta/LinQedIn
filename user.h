@@ -2,7 +2,7 @@
 #define USER_H
 
 #include "credentials.h"
-#include "smartutente.h"
+#include "userdata.h"
 #include <QString>
 #include <QXmlStreamWriter>
 
@@ -18,7 +18,7 @@ public:
 
     virtual ~User();
 
-    virtual vector<SmartUtente>& search(const QString &) const =0;
+    virtual UserData& search(const QString &) const =0;
     virtual void save (QXmlStreamWriter & ) const =0;
     virtual QString& getType();
     virtual const QString& cgetType()const;
