@@ -26,7 +26,8 @@ SOURCES += main.cpp\
     profile.cpp \
     credentials.cpp \
     memberbasic.cpp \
-    database.cpp
+    database.cpp \
+    userdata.cpp
 
 HEADERS  += mainwindow.h \
     event.h \
@@ -42,6 +43,7 @@ HEADERS  += mainwindow.h \
     credentials.h \
     smartutente.h \
     memberbasic.h \
-    database.h
+    database.h \
+    userdata.h
 
-QMAKE_CXXFLAGS += -std=c++11 -Wall #ricordarsi eliminare -Wall
+#QMAKE_CXXFLAGS += -std=c++11 -Wall #ricordarsi eliminare -Wall
