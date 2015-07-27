@@ -18,7 +18,7 @@ public:
 
     virtual ~MemberBasic();
 
-    virtual vector<SmartUtente>& search(const QString &) const;
+    virtual UserData& search(const QString &) const;
 };
 
 #endif // MEMBERBASIC_H
