@@ -2,7 +2,6 @@
 #define DATABASE_H
 
 #include <vector>
-#include "smartutente.h"
 #include "userdata.h"
 
 using std::vector;
@@ -20,8 +19,9 @@ public:
     Database();
     virtual ~Database();
 
-    virtual void save() =0; //il vector viene scritto su file
-    virtual void load() =0; //carica tutto il db
+    //forse meglio spostarle nella gerarchia in basso
+    //virtual void save() =0; //il vector viene scritto su file
+    //virtual void load() =0; //carica tutto il db
 
     UserData& getDb();
     const UserData& cgetDb() const; //per sola lettura
@@ -31,9 +31,6 @@ public:
      * del db) e quindi c'è un unica implementazione per la gestione
      * di tutti i dati o sottoinsiemi di dati del db.
      */
-
-    //virtual void add (const SmartUtente &); //aggiunge un singolo utente
-    //virtual void remove (const SmartUtente &); //rimuove un utente singolo
 
     virtual UserData & search (const User &) =0;
     /*Qui forse non è cosa buona e giusta passare un intero User
