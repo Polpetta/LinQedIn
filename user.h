@@ -34,7 +34,7 @@ public:
 private:
 
     Credentials logCrd;
-    bool valid = true;
+    bool valid;// = true;
     QString UserType;
     //ci andrà anche l'oggetto search qui che è ancora da creare
 };

@@ -2,7 +2,7 @@
 
 User::User(const Credentials & secrets,
            const QString & typ)
-    : logCrd(secrets), UserType(typ)
+    : logCrd(secrets), valid(true), UserType(typ)
 {}
 
 User::~User() {}
