@@ -9,7 +9,7 @@ MemberBasic::MemberBasic(const Credentials & crd,
 
 MemberBasic::~MemberBasic(){}
 
-vector<SmartUtente>& MemberBasic::search(const QString & target) const{
+UserData& MemberBasic::search(const QString & target) const{
 
     //DEFINITA SOLO PER PROVA, MANCA ANCORA DA SCRIVERE LA CLASSE
     //SEARCH!!!
