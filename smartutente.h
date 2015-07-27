@@ -2,8 +2,7 @@
 #define SMARTUTENTE
 
 #include <QSharedPointer>
-
-class User;
+#include "user.h"
 
 typedef QSharedPointer<User> SmartUtente;
 
