@@ -19,9 +19,9 @@ public:
     Database();
     virtual ~Database();
 
-    //forse meglio spostarle nella gerarchia in basso
-    //virtual void save() =0; //il vector viene scritto su file
-    //virtual void load() =0; //carica tutto il db
+    //non vanno implementati
+    //virtual void save(); //il vector viene scritto su file
+    //virtual void load(); //carica tutto il db
 
     UserData& getDb();
     const UserData& cgetDb() const; //per sola lettura

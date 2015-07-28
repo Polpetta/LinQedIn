@@ -5,33 +5,6 @@ Database::Database() : state(ok)
 
 Database::~Database() {}
 
-/*void Database::add(const SmartUtente & newUser) {
-
-    db.push_back(newUser);
-}
-
-void Database::remove(const SmartUtente & target) {
-    //DA RIVEDERE
-    *
-     * Da rivedere in quanto bisogna controllare come si comporta la
-     * RAM in queste situazioni.
-     *
-
-
-    vector<SmartUtente>::iterator it;
-
-    for (it = db.begin(); it != db.end(); ++it){
-
-        if (*it == target){
-
-            SmartUtente last = db.back();
-            db.pop_back();
-
-            *it = last;
-        }
-    }
-}*/
-
 
 UserData& Database::getDb(){
 
