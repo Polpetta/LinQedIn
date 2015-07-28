@@ -66,3 +66,25 @@ bool Event::operator !=(const Event & ev)const{
             desc != ev.desc ||
             where != ev.where;
 }
+
+//------------
+
+const QDate & Event::cgetBegin()const{
+
+    return begin;
+}
+
+const QDate & Event::cgetFinish()const{
+
+    return finish;
+}
+
+const QString & Event::cgetDesc()const{
+
+    return desc;
+}
+
+const QString & Event::cgetWhere() const{
+
+    return where;
+}

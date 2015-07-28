@@ -25,6 +25,11 @@ public:
     bool operator == (const Event &) const;
     bool operator != (const Event &) const;
 
+    const QDate & cgetBegin()const;
+    const QDate & cgetFinish()const;
+    const QString & cgetDesc()const;
+    const QString & cgetWhere()const;
+
 private:
     QDate begin;
     QDate finish;
