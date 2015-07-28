@@ -6,6 +6,13 @@
 
 using std::vector;
 
+/*
+ * Idea: seguo la gerarchia di classi di QT, ovvero:
+ * -QIODevice
+ * -QFile
+ * -XmlStream -> dove staranno effettivamente i dati
+ */
+
 class Database
 {    
 public:
@@ -19,7 +26,7 @@ public:
     Database();
     virtual ~Database();
 
-    //non vanno implementati
+    //non vanno implementati qui, nella gerarchia più in basso
     //virtual void save(); //il vector viene scritto su file
     //virtual void load(); //carica tutto il db
 
