@@ -2,6 +2,7 @@
 #define FRIENDSHIPS_H
 
 #include <vector>
+#include "smartuser.h"
 
 using std::vector;
 
@@ -11,38 +12,38 @@ using std::vector;
  *
  */
 
-class Friendships : private vector<int>
+class Friendships : private vector<SmartUser>
 {
 public:
     Friendships();
 
-    class iterator : public vector<int>::iterator{
+    class iterator : public vector<SmartUser>::iterator{
 
     public:
         iterator();
-        iterator (const vector<int>::iterator &);
+        iterator (const vector<SmartUser>::iterator &);
     };
 
     Friendships::iterator begin();
     Friendships::iterator end();
 
-    int & operator[] (const Friendships::iterator &) const;
+    SmartUser & operator[] (const Friendships::iterator &) const;
 
-    class const_iterator : public vector <int>::const_iterator{
+    class const_iterator : public vector <SmartUser>::const_iterator{
 
     public:
         const_iterator();
-        const_iterator (const vector<int>::const_iterator &);
+        const_iterator (const vector<SmartUser>::const_iterator &);
     };
 
     Friendships::const_iterator cbegin() const;
     Friendships::const_iterator cend() const;
 
-    const int & operator[] (const Friendships::const_iterator &) const;
+    const SmartUser & operator[] (const Friendships::const_iterator &) const;
 
 
-    void add (const int &);
-    void rm (const int &);
+    void add (const SmartUser &);
+    void rm (const SmartUser &);
 
     bool isValid(const Friendships::const_iterator & )const;
 };

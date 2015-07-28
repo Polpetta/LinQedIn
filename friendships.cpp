@@ -5,20 +5,20 @@ Friendships::Friendships()
 
 Friendships::iterator::iterator() {}
 
-Friendships::iterator::iterator (const vector<int>::iterator & itr)
-    : vector<int>::iterator(itr) {}
+Friendships::iterator::iterator (const vector<SmartUser>::iterator & itr)
+    : vector<SmartUser>::iterator(itr) {}
 
 Friendships::iterator Friendships::begin(){
 
-    return vector<int>::begin();
+    return vector<SmartUser>::begin();
 }
 
 Friendships::iterator Friendships::end(){
 
-    return vector<int>::end();
+    return vector<SmartUser>::end();
 }
 
-int & Friendships::operator [] (const Friendships::iterator & it) const{
+SmartUser & Friendships::operator [] (const Friendships::iterator & it) const{
 
     return *it;
 }
@@ -27,41 +27,41 @@ int & Friendships::operator [] (const Friendships::iterator & it) const{
 
 Friendships::const_iterator::const_iterator(){}
 
-Friendships::const_iterator::const_iterator(const vector<int>::const_iterator & itr)
-    : vector<int>::const_iterator(itr) {}
+Friendships::const_iterator::const_iterator(const vector<SmartUser>::const_iterator & itr)
+    : vector<SmartUser>::const_iterator(itr) {}
 
 Friendships::const_iterator Friendships::cbegin() const{
 
-    return vector<int>::begin();
+    return vector<SmartUser>::begin();
 }
 
 Friendships::const_iterator Friendships::cend() const{
 
-    return vector<int>::end();
+    return vector<SmartUser>::end();
 }
 
-const int & Friendships::operator [] (const Friendships::const_iterator & it)const{
+const SmartUser & Friendships::operator [] (const Friendships::const_iterator & it)const{
 
     return *it;
 }
 
 
 
-void Friendships::add(const int & newId){
+void Friendships::add(const SmartUser & newId){
 
-    vector<int>::push_back(newId);
+    vector<SmartUser>::push_back(newId);
 }
 
-void Friendships::rm(const int & target){
+void Friendships::rm(const SmartUser & target){
 
-    vector<int>::iterator it;
+    vector<SmartUser>::iterator it;
 
-    for (it = vector<int>::begin(); it != vector<int>::end(); ++it){
+    for (it = vector<SmartUser>::begin(); it != vector<SmartUser>::end(); ++it){
 
         if (*it == target){
 
-            int last = vector<int>::back();
-            vector<int>::pop_back();
+            SmartUser last = vector<SmartUser>::back();
+            vector<SmartUser>::pop_back();
 
             *it = last;
 
@@ -72,8 +72,13 @@ void Friendships::rm(const int & target){
 
 bool Friendships::isValid(const Friendships::const_iterator & it)const{
 
-    if (*it > 0)
-        return true;
+    //const User* tmp = (*it).cgetPunt();
+    //bool res = tmp->isValid(); così va
 
-    return false;
+    //bool res = (*it)->isValid; //così non va (?!) errore di tipo
+
+
+    bool res = (*(*it)).isValid();
+
+    return res;
 }
