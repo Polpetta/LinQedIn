@@ -5,6 +5,7 @@
 #include "userdata.h"
 #include <QString>
 #include <QXmlStreamWriter>
+#include <QXmlStreamReader>
 
 #include <vector>
 
@@ -23,7 +24,11 @@ public:
     virtual ~User();
 
     virtual UserData& search(const QString &) const =0;
+
     virtual void save (QXmlStreamWriter & ) const =0;
+    virtual void load (QXmlStreamReader & ) =0;
+
+
     virtual QString& getType();
     virtual const QString& cgetType()const;
 
