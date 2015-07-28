@@ -34,7 +34,7 @@ void DBonXml::save(){
 
     /*
      * va scritta la funzione save di user (dei suoi sottooggetti)
-     * poi qui viene invocata
+     * poi qui viene invocata solo se ovviamente l'user è valido!
      */
 }
 
