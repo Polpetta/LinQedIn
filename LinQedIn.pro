@@ -28,7 +28,10 @@ SOURCES += main.cpp\
     memberbasic.cpp \
     database.cpp \
     userdata.cpp \
-    smartuser.cpp
+    smartuser.cpp \
+    dbonio.cpp \
+    dbonfile.cpp \
+    dbonxml.cpp
 
 HEADERS  += mainwindow.h \
     event.h \
@@ -45,6 +48,9 @@ HEADERS  += mainwindow.h \
     memberbasic.h \
     database.h \
     userdata.h \
-    smartuser.h
+    smartuser.h \
+    dbonio.h \
+    dbonfile.h \
+    dbonxml.h
 
 #QMAKE_CXXFLAGS += -std=c++11 -Wall #ricordarsi eliminare -Wall
