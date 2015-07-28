@@ -29,6 +29,9 @@ public:
     void setProfile(const Profile &);
     void setFrinds(const Friendships &);
 
+    virtual void save (QXmlStreamWriter &) const;
+    virtual void load (QXmlStreamReader &);
+
 private:
 
     Profile info;
