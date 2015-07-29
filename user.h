@@ -26,7 +26,9 @@ public:
     virtual UserData& search(const QString &) const =0;
 
     virtual void save (QXmlStreamWriter & ) const =0;
+    virtual void saveBack (QXmlStreamWriter &) const =0;
     virtual void load (QXmlStreamReader & ) =0;
+    virtual void loadBack (QXmlStreamReader & ) =0;
 
 
     virtual QString& getType();
