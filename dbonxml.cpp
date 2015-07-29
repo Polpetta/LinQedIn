@@ -20,7 +20,7 @@ DBonXml::~DBonXml()
 
 void DBonXml::save(){
 
-    if (QIODevice::open(QIODevice::WriteOnly) != true){
+    if (QFile::open(QFile::WriteOnly) != true){
         dbState dst = read_only;
         setState(dst);
         return; //non posso scriverci, esco
@@ -30,12 +30,50 @@ void DBonXml::save(){
 
     write.writeStartDocument();
 
+    //USERS
     write.writeStartElement("Users");
 
     /*
      * va scritta la funzione save di user (dei suoi sottooggetti)
      * poi qui viene invocata solo se ovviamente l'user è valido!
      */
+
+    UserData::const_iterator it;
+
+    for (it = cgetDb().cbegin(); it != cgetDb().cend(); ++it){
+
+        if ( (*it)->isValid() == true )
+            (*it)->save( write );
+    }
+
+    write.writeEndElement();
+    //END USERS
+
+    /*
+     * Adesso verrà la chiamata a loadBack in caso qualche user
+     * voglia salvare qualche operazione speciale.
+     */
+
+    //BACK
+    write.writeStartElement("Back");
+
+    for (it = cgetDb().cbegin(); it != cgetDb().cend(); ++it){
+
+        if ( (*it)->isValid() == true ){
+            //OPT
+            write.writeStartElement("Opt");
+
+            (*it)->saveBack( write );
+
+            write.writeEndElement();
+            //END OPT
+        }
+    }
+
+    write.writeEndElement();
+    //END OPTIONAL
+
+    QFile::close(); //chiudo il file
 }
 
 

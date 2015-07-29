@@ -5,6 +5,10 @@
 #include <QXmlStreamWriter>
 #include <dbonfile.h>
 
+#include "user.h"
+#include "friendships.h"
+#include "member.h"
+
 class DBonXml : public DBonFile
 {
 public:
