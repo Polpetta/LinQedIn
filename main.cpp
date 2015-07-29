@@ -3,13 +3,21 @@
 #include <QDate>
 
 
-/*#include <iostream>
+#include <iostream>
 #include "profile.h"
 #include "personal.h"
-#include "experiences.h"*/
+#include "experiences.h"
+
+/*#include "user.h"
+#include "memberbasic.h"
+#include "dbonxml.h"
+#include "database.h"
+#include "smartuser.h"
+#include "credentials.h"*/
 
 int main(int argc, char *argv[])
 {
+
 
     /*//QApplication a(argc, argv);
     //MainWindow w;
@@ -64,5 +72,31 @@ int main(int argc, char *argv[])
     }
 
     std::cout<<"Fine"<<std::endl;
-    */
+
+
+    Credentials nick ("davide");
+
+    Database* pdb = new DBonXml("prova");
+
+    SmartUser u1 = new MemberBasic(nick,
+                                   "Basic",
+                                   profilo);
+
+    Credentials nick2 ("gino");
+
+    Friendships n2;
+
+    n2.add(u1);
+
+    SmartUser u2 = new MemberBasic(nick2,
+                                   "Basic",
+                                   profilo,
+                                   n2);
+
+    pdb->getDb().add(u1);
+    pdb->getDb().add(u2);
+    pdb->save();
+
+    std::cout<<"Scritto"<<std::endl; */
+
 }
