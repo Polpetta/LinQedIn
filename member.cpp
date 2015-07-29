@@ -146,7 +146,31 @@ void Member::save(QXmlStreamWriter & write) const{
      */
 }
 
+void Member::saveBack(QXmlStreamWriter & write) const{
+
+    //FRIENDSHIPS
+    const Friendships & tfrn = cgetFriendships();
+
+    write.writeStartElement("Friendships");
+
+    Friendships::const_iterator itf;
+
+    for (itf = tfrn.cbegin(); itf != tfrn.cend(); ++itf){
+
+        write.writeTextElement("FriendOf", (*(*itf)).cgetCredential().getCredential());
+    }
+
+    write.writeEndElement();
+    //END FRIENDSHIPS
+}
+
 
 void Member::load(QXmlStreamReader & read){
     //da fare
+
+}
+
+void Member::loadBack(QXmlStreamReader & read){
+    //da fare
+
 }

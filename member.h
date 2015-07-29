@@ -30,7 +30,9 @@ public:
     void setFrinds(const Friendships &);
 
     virtual void save (QXmlStreamWriter &) const;
+    virtual void saveBack (QXmlStreamWriter &) const;
     virtual void load (QXmlStreamReader &);
+    virtual void loadBack (QXmlStreamReader & );
 
 private:
 
