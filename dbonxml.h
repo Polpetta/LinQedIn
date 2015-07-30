@@ -3,6 +3,7 @@
 
 #include <QXmlStreamReader>
 #include <QXmlStreamWriter>
+#include <QXmlStreamAttributes>
 #include <dbonfile.h>
 
 #include "user.h"

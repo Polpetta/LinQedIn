@@ -42,8 +42,17 @@ void DBonXml::save(){
 
     for (it = cgetDb().cbegin(); it != cgetDb().cend(); ++it){
 
-        if ( (*it)->isValid() == true )
+        if ( (*it)->isValid() == true ){
+            //USER
+            write.writeStartElement("User");
+            //TYPE
+            write.writeTextElement("Type",(*it)->cgetType());
+            //END TYPE
             (*it)->save( write );
+
+            write.writeEndElement();
+            //END USER
+        }
     }
 
     write.writeEndElement();
@@ -82,5 +91,40 @@ void DBonXml::load(){
     /*
      * per il momento vuota aspettando l'implementazione della
      * save()
+     *
+     * -Leggo che cosa sto "tirando su", in base a quello dichiaro
+     * il tipo adatto (tipo "Basic"-> new MemberBasic) e gli sbatto
+     * dentro i dati
      */
+
+    /*if (QFile::open(QFile::ReadOnly) != true){
+        dbState dst = bad_db;
+        setState(dst);
+        return; //non posso leggere, esco
+    }
+
+    read.readNext();
+
+    if ( read.isStartElement() ){ //se è l'inizio del documento
+
+        while ( read.atEnd() == false ){ //finchè ce n'è
+
+            read.readNext();
+
+            if (read.name() == "Users"){
+
+                SmartUser uUser;
+
+                read.readNext();
+
+                if (read.name() == "User"){
+
+                    if (read.attributes().value("Type") == "Basic"){
+
+                        uUser = new MemberBasic();
+                    }
+                }
+            }
+        }
+    }*/
 }
