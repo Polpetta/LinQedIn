@@ -31,7 +31,10 @@ SOURCES += main.cpp\
     smartuser.cpp \
     dbonio.cpp \
     dbonfile.cpp \
-    dbonxml.cpp
+    dbonxml.cpp \
+    memberbusiness.cpp \
+    memberexecutive.cpp \
+    admin.cpp
 
 HEADERS  += mainwindow.h \
     event.h \
@@ -51,6 +54,9 @@ HEADERS  += mainwindow.h \
     smartuser.h \
     dbonio.h \
     dbonfile.h \
-    dbonxml.h
+    dbonxml.h \
+    memberbusiness.h \
+    memberexecutive.h \
+    admin.h
 
 #QMAKE_CXXFLAGS += -std=c++11 -Wall #ricordarsi eliminare -Wall
