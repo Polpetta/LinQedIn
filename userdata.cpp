@@ -44,7 +44,22 @@ const SmartUser & UserData::operator [] (const UserData::const_iterator & it)con
 
 void UserData::add(const SmartUser & newSU){
 
-    vector<SmartUser>::push_back(newSU);
+    const QString & newNick = newSU->cgetCredential().getCredential();
+
+    vector<SmartUser>::const_iterator it;
+    bool match = false;
+
+    for (it = vector<SmartUser>::begin(); it != vector<SmartUser>::end() && match != false; ++it){
+
+        if (newNick == (*it)->cgetCredential().getCredential()){
+            match = true;
+        }
+    }
+
+    if (match == false){
+
+        vector<SmartUser>::push_back(newSU);
+    }
 }
 
 
