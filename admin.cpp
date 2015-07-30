@@ -51,3 +51,53 @@ void Admin::addUser(Database* db,const SmartUser & newUser) const{
 
     db->getDb().add(newUser);
 }
+
+void Admin::rmUser (Database *db, const SmartUser & target) const{
+
+    db->getDb().rm(target);
+}
+
+void Admin::changeMemberType(SmartUser & oldMember, const QString &newType)const{
+
+    if (oldMember->cgetType() != newType){
+
+        Member* oldMbr = dynamic_cast<Member*>(oldMember.getPunt());
+        if (oldMbr == 0){
+
+            return; //dynamic_cast non è andato a buon fine
+        }
+
+        SmartUser newMember;
+
+        if (newType == "Basic"){
+
+            newMember = new MemberBasic(oldMbr->cgetCredential(),
+                                        newType,
+                                        oldMbr->cgetProfile(),
+                                        oldMbr->cgetFriendships());
+        }
+        else if (newType == "Business"){
+
+            newMember = new MemberBusiness(oldMbr->cgetCredential(),
+                                           newType,
+                                           oldMbr->cgetProfile(),
+                                           oldMbr->cgetFriendships());
+        }
+        else if (newType == "Executive"){
+
+            newMember = new MemberExecutive(oldMbr->cgetCredential(),
+                                            newType,
+                                            oldMbr->cgetProfile(),
+                                            oldMbr->cgetFriendships());
+        }
+
+        oldMember = newMember;
+        /* Non mi devo preoccupare di che fine fa l'oggetto puntato da
+         * oldMember perchè esso viene eliminato dalla classe SmartUser.
+         * Inoltre oldMbr potrebbe costituire dangling pointer in caso
+         * l'oggetto a cui puntava oldMember venisse eliminato, ma alla
+         * fine della funzione esso verrà deallocato (il puntatore) e
+         * comunuque non viene più dereferenziato.
+         */
+    }
+}

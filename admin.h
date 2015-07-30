@@ -5,6 +5,8 @@
 #include "database.h"
 #include "smartuser.h"
 
+#include "memberexecutive.h"
+
 /*
  * Richieste per il progetto:
  * -Inserimento nel DB di un nuovo utente
@@ -32,10 +34,9 @@ public:
 
     //funzioni proprie dell'admin
     void addUser (Database*, const SmartUser &) const;
-    void rmUser (Database*, const QString &)const; //rimozione by nick
+    void rmUser (Database*, const SmartUser &)const;
 
-    void changeUserType (Database*, const QString &, const QString &);
-    void changeUserType (Database*, const SmartUser &, const QString &);
+    void changeMemberType (SmartUser &, const QString &)const;
 };
 
 #endif // ADMIN_H
