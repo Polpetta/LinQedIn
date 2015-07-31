@@ -97,8 +97,8 @@ void DBonXml::load(){
      * dentro i dati
      */
 
-    /*if (QFile::open(QFile::ReadOnly) != true){
-        dbState dst = bad_db;
+    if (QFile::open(QFile::ReadOnly) != true){
+        dbState dst = generic_error;
         setState(dst);
         return; //non posso leggere, esco
     }
@@ -107,7 +107,7 @@ void DBonXml::load(){
 
     if ( read.isStartElement() ){ //se è l'inizio del documento
 
-        while ( read.atEnd() == false ){ //finchè ce n'è
+        while ( read.atEnd() == false && isOk() == true){ //finchè ce n'è
 
             read.readNext();
 
@@ -119,12 +119,36 @@ void DBonXml::load(){
 
                 if (read.name() == "User"){
 
-                    if (read.attributes().value("Type") == "Basic"){
+                    QString type = read.attributes().value("Type").toString();
+
+                    if (type == "Basic"){
 
                         uUser = new MemberBasic();
                     }
+                    else if (type == "Business"){
+
+                        uUser = new MemberBusiness();
+                    }
+                    else if (type == "Executive"){
+
+                        uUser = new MemberExecutive();
+                    }
+                    else if (type == "Admin"){
+
+                        uUser = new Admin();
+                    }
+                    else{
+                        //nel caso trovo una tipologia che non so cosa sia
+
+                        dbState error= bad_db;
+                        setState(error);
+                    }
+
+                    uUser->setAccountType( type ); //setto il suo tipo di user
+                    uUser->load( read ); //carica i suoi dati
+                    getDb().add( uUser ); //aggiungo il nuovo user
                 }
             }
         }
-    }*/
+    }
 }

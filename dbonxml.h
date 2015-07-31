@@ -4,11 +4,11 @@
 #include <QXmlStreamReader>
 #include <QXmlStreamWriter>
 #include <QXmlStreamAttributes>
-#include <dbonfile.h>
 
+#include "dbonfile.h"
 #include "user.h"
-#include "friendships.h"
-#include "member.h"
+#include "memberexecutive.h"
+#include "admin.h"
 
 class DBonXml : public DBonFile
 {
