@@ -166,7 +166,40 @@ void Member::saveBack(QXmlStreamWriter & write) const{
 
 
 void Member::load(QXmlStreamReader & read){
-    //da fare
+    //CREDENTIALS
+    read.readNext();
+
+    if (read.name() == "Credentials"){
+        QString nick = read.attributes().value("nick").toString();
+        setCredential(Credentials( nick ));
+    }
+    //END CREDENTIALS
+
+    //PROFILE
+    read.readNext();
+
+    if (read.name() == "Profile"){
+
+        //Profile -> PERSONAL
+        read.readNext();
+        if (read.name() == "Personal"){
+
+            //Personal -> BIO
+            read.readNext();
+            if (read.name() == "Bio"){
+
+                QString sbirth= read.attributes().value("Birthday").toString();
+                QDate birth = QDate::fromString(sbirth, "dd-MM-yyyy");
+
+                QString Name = read.attributes().value("Name").toString();
+                QString Surname = read.attributes().value("Surname").toString();
+                QString Phone = read.attributes().value("Phone").toString();
+                QString Mail = read.attributes().value("Mail").toString();
+
+            } //come faccio a capire che è finito bio?
+
+        }
+    }
 
 }
 
