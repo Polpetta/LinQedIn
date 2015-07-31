@@ -38,6 +38,11 @@ void User::setAccountValid(const bool & newValid){
     valid = newValid;
 }
 
+void User::setAccountType(const QString & newType){
+
+    UserType = newType;
+}
+
 
 bool User::isValid()const{
 

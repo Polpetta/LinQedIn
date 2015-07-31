@@ -39,6 +39,7 @@ public:
 
     void setCredential(const Credentials &);
     void setAccountValid(const bool &);
+    void setAccountType(const QString &);
 
     bool isValid()const;
 
