@@ -5,8 +5,6 @@
 #include <QString>
 #include <QList>
 
-//using std::list;
-
 
 class Hobby : private QList <QString>
 {
