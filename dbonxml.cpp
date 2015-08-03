@@ -38,7 +38,7 @@ void DBonXml::save(){
      * poi qui viene invocata solo se ovviamente l'user è valido!
      */
 
-    UserData::const_iterator it;
+    DataMember::const_iterator it;
 
     for (it = cgetDb().cbegin(); it != cgetDb().cend(); ++it){
 
@@ -97,7 +97,7 @@ void DBonXml::load(){
      * dentro i dati
      */
 
-    if (QFile::open(QFile::ReadOnly) != true){
+    /*if (QFile::open(QFile::ReadOnly) != true){
         dbState dst = generic_error;
         setState(dst);
         return; //non posso leggere, esco
@@ -150,5 +150,5 @@ void DBonXml::load(){
                 }
             }
         }
-    }
+    }*/
 }
