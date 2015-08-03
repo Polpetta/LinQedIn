@@ -2,7 +2,13 @@
 #define DATABASE_H
 
 #include <vector>
-#include "userdata.h"
+#include <QRegularExpression>
+#include <QRegularExpressionMatch>
+
+#include "datamember.h"
+#include "smartmember.h"
+#include "profile.h"
+#include "member.h"
 
 using std::vector;
 
@@ -30,24 +36,25 @@ public:
     virtual void save() =0; //il vector viene scritto su file
     virtual void load() =0; //carica tutto il db
 
-    UserData& getDb();
-    const UserData& cgetDb() const; //per sola lettura
+    DataMember& getDb();
+    const DataMember& cgetDb() const; //per sola lettura
     /*
-     * Nota: UserData è definito esterno perchè così la funzione
-     * search può ritornare un UserData (che sarà un sottoinsieme
+     * Nota: DataMember è definito esterno perchè così la funzione
+     * search può ritornare un DataMember (che sarà un sottoinsieme
      * del db) e quindi c'è un unica implementazione per la gestione
      * di tutti i dati o sottoinsiemi di dati del db.
      */
 
-    virtual UserData & search (const User &) =0;
-    /*Qui forse non è cosa buona e giusta passare un intero User
-     * perchè ci sarebbe un sacco di utilizzo di memoria. Forse
-     * sarebbe meglio creare una gerarchia di classe "criteria" che
-     * in base al tipo di utente che effettua la ricerca
-     * contiene solamente i dati necessari.
+    virtual DataMember* select (const Profile &)const;
+    /*
      * È necessario sia virtual? Si potrebbe implementare a questo
      * livello?
      */
+    virtual const SmartMember& cselect (const QString &)const;
+    virtual SmartMember& select (const QString &);
+
+    virtual const SmartMember& cselect (const SmartMember &)const;
+    virtual SmartMember& select (const SmartMember &);
 
     //stati del db
     bool isOk() const;
@@ -58,8 +65,9 @@ public:
 
 private:
 
-    UserData db;
+    DataMember db;
     dbState state;
+
 
 
 };
