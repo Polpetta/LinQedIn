@@ -10,7 +10,7 @@ SmartMember::SmartMember(Member* p)
 }
 
 SmartMember::SmartMember(const SmartMember & cp)
-    : punt(const_cast<Member*>(cp.cgetPunt()))
+    : SmartPtr(), punt(const_cast<Member*>(cp.cgetPunt()))
 {
     if (punt != 0)
         punt->getRef()++;
