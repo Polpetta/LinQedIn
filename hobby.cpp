@@ -52,3 +52,14 @@ Hobby::const_iterator Hobby::cend() const{
 const QString& Hobby::operator [](const Hobby::const_iterator & it) const{
     return *it;
 }
+
+
+bool Hobby::operator ==(const Hobby & as)const{
+
+    return QList<QString>::operator ==(as);
+}
+
+bool Hobby::operator !=(const Hobby & as)const{
+
+    return QList<QString>::operator !=(as);
+}

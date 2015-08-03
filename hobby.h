@@ -37,6 +37,10 @@ public:
 
     const QString & operator[](const Hobby::const_iterator &) const;
 
+
+    bool operator==(const Hobby &) const;
+    bool operator!=(const Hobby &) const;
+
 };
 
 #endif // HOBBY_H
