@@ -1,16 +1,20 @@
 #ifndef USER_H
 #define USER_H
 
-#include "credentials.h"
-#include "userdata.h"
+
+//#include "userdata.h"
 #include <QString>
 #include <QXmlStreamWriter>
 #include <QXmlStreamReader>
 
 #include <vector>
 
+#include "credentials.h"
+#include "datamember.h"
+
+
 //altrimenti il compilatore va in loop.
-class UserData;
+class DataMember;
 
 
 using std::vector;
@@ -23,7 +27,7 @@ public:
 
     virtual ~User();
 
-    virtual UserData& search(const QString &) const =0;
+    virtual DataMember& search(const QString &) const =0;
 
     virtual void save (QXmlStreamWriter & ) const =0;
     virtual void saveBack (QXmlStreamWriter &) const =0;
