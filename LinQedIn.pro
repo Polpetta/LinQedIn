@@ -38,7 +38,8 @@ SOURCES += main.cpp\
     smartmember.cpp \
     data.cpp \
     datamember.cpp \
-    smartptr.cpp
+    smartptr.cpp \
+    smartadmin.cpp
 
 HEADERS  += mainwindow.h \
     event.h \
@@ -65,6 +66,7 @@ HEADERS  += mainwindow.h \
     smartmember.h \
     data.h \
     datamember.h \
-    smartptr.h
+    smartptr.h \
+    smartadmin.h
 
 QMAKE_CXXFLAGS += -std=c++0x
