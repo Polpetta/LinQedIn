@@ -9,7 +9,7 @@ class User;
 class SmartUser
 {
 public:
-    SmartUser(User* = NULL); //costruttore
+    SmartUser(User* = nullptr); //costruttore
     SmartUser(const SmartUser &); //costruttore di copia
     ~SmartUser(); //distruttore
 
