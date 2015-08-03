@@ -3,7 +3,8 @@
 
 #include "user.h"
 #include "database.h"
-#include "smartuser.h"
+//#include "smartuser.h"
+#include "smartmember.h"
 
 #include "memberexecutive.h"
 
@@ -24,7 +25,7 @@ public:
 
     virtual ~Admin();
 
-    virtual UserData & search(const QString &) const;
+    virtual DataMember & search(const QString &) const;
 
     virtual void save (QXmlStreamWriter &) const;
     virtual void saveBack (QXmlStreamWriter &) const;
@@ -33,10 +34,10 @@ public:
     virtual void loadBack (QXmlStreamReader &);
 
     //funzioni proprie dell'admin
-    void addUser (Database*, const SmartUser &) const;
-    void rmUser (Database*, const SmartUser &)const;
+    void addMember (Database*, const SmartMember &) const;
+    void rmMember (Database*, const SmartMember &)const;
 
-    void changeMemberType (SmartUser &, const QString &)const;
+    void changeMemberType (SmartMember &, const QString &)const;
 };
 
 #endif // ADMIN_H

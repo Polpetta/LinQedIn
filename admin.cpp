@@ -7,7 +7,7 @@ Admin::Admin(const Credentials & crd,
 
 Admin::~Admin() {}
 
-UserData & Admin::search (const QString & target)const{
+DataMember & Admin::search (const QString & target)const{
 
     //da implementare
 }
@@ -47,48 +47,48 @@ void Admin::loadBack(QXmlStreamReader & read){
     //nulla da leggere successivamente
 }
 
-void Admin::addUser(Database* db,const SmartUser & newUser) const{
+void Admin::addMember(Database* db,const SmartMember & newUser) const{
 
     db->getDb().add(newUser);
 }
 
-void Admin::rmUser (Database *db, const SmartUser & target) const{
+void Admin::rmMember (Database *db, const SmartMember & target) const{
 
     db->getDb().rm(target);
 }
 
-void Admin::changeMemberType(SmartUser & oldMember, const QString &newType)const{
+void Admin::changeMemberType(SmartMember & oldMember, const QString &newType)const{
 
     if (oldMember->cgetType() != newType){
 
-        Member* oldMbr = dynamic_cast<Member*>(oldMember.getPunt());
+        /*Member* oldMbr = dynamic_cast<Member*>(oldMember.getPunt());
         if (oldMbr == 0){
 
             return; //dynamic_cast non è andato a buon fine
-        }
+        }*/
 
-        SmartUser newMember;
+        SmartMember newMember;
 
         if (newType == "Basic"){
 
-            newMember = new MemberBasic(oldMbr->cgetCredential(),
+            newMember = new MemberBasic(oldMember->cgetCredential(),
                                         newType,
-                                        oldMbr->cgetProfile(),
-                                        oldMbr->cgetFriendships());
+                                        oldMember->cgetProfile(),
+                                        oldMember->cgetFriendships());
         }
         else if (newType == "Business"){
 
-            newMember = new MemberBusiness(oldMbr->cgetCredential(),
+            newMember = new MemberBusiness(oldMember->cgetCredential(),
                                            newType,
-                                           oldMbr->cgetProfile(),
-                                           oldMbr->cgetFriendships());
+                                           oldMember->cgetProfile(),
+                                           oldMember->cgetFriendships());
         }
         else if (newType == "Executive"){
 
-            newMember = new MemberExecutive(oldMbr->cgetCredential(),
+            newMember = new MemberExecutive(oldMember->cgetCredential(),
                                             newType,
-                                            oldMbr->cgetProfile(),
-                                            oldMbr->cgetFriendships());
+                                            oldMember->cgetProfile(),
+                                            oldMember->cgetFriendships());
         }
 
         //disattivo l'account "vecchio"
