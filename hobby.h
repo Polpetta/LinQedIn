@@ -1,7 +1,6 @@
 #ifndef HOBBY_H
 #define HOBBY_H
 
-#include <list>
 #include <QString>
 #include <QList>
 
