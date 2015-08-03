@@ -34,7 +34,11 @@ SOURCES += main.cpp\
     dbonxml.cpp \
     memberbusiness.cpp \
     memberexecutive.cpp \
-    admin.cpp
+    admin.cpp \
+    smartmember.cpp \
+    data.cpp \
+    datamember.cpp \
+    smartptr.cpp
 
 HEADERS  += mainwindow.h \
     event.h \
@@ -57,6 +61,10 @@ HEADERS  += mainwindow.h \
     dbonxml.h \
     memberbusiness.h \
     memberexecutive.h \
-    admin.h
+    admin.h \
+    smartmember.h \
+    data.h \
+    datamember.h \
+    smartptr.h
 
-#QMAKE_CXXFLAGS += -std=c++11 -Wall #ricordarsi eliminare -Wall
+QMAKE_CXXFLAGS += -std=c++0x
