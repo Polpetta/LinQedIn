@@ -5,20 +5,20 @@ Friendships::Friendships()
 
 Friendships::iterator::iterator() {}
 
-Friendships::iterator::iterator (const vector<SmartUser>::iterator & itr)
-    : vector<SmartUser>::iterator(itr) {}
+Friendships::iterator::iterator (const vector<QString>::iterator & itr)
+    : vector<QString>::iterator(itr) {}
 
 Friendships::iterator Friendships::begin(){
 
-    return vector<SmartUser>::begin();
+    return vector<QString>::begin();
 }
 
 Friendships::iterator Friendships::end(){
 
-    return vector<SmartUser>::end();
+    return vector<QString>::end();
 }
 
-SmartUser & Friendships::operator [] (const Friendships::iterator & it) const{
+QString & Friendships::operator [] (const Friendships::iterator & it) const{
 
     return *it;
 }
@@ -27,41 +27,41 @@ SmartUser & Friendships::operator [] (const Friendships::iterator & it) const{
 
 Friendships::const_iterator::const_iterator(){}
 
-Friendships::const_iterator::const_iterator(const vector<SmartUser>::const_iterator & itr)
-    : vector<SmartUser>::const_iterator(itr) {}
+Friendships::const_iterator::const_iterator(const vector<QString>::const_iterator & itr)
+    : vector<QString>::const_iterator(itr) {}
 
 Friendships::const_iterator Friendships::cbegin() const{
 
-    return vector<SmartUser>::begin();
+    return vector<QString>::begin();
 }
 
 Friendships::const_iterator Friendships::cend() const{
 
-    return vector<SmartUser>::end();
+    return vector<QString>::end();
 }
 
-const SmartUser & Friendships::operator [] (const Friendships::const_iterator & it)const{
+const QString & Friendships::operator [] (const Friendships::const_iterator & it)const{
 
     return *it;
 }
 
 
 
-void Friendships::add(const SmartUser & newId){
+void Friendships::add(const QString & newId){
 
-    vector<SmartUser>::push_back(newId);
+    vector<QString>::push_back(newId);
 }
 
-void Friendships::rm(const SmartUser & target){
+void Friendships::rm(const QString & target){
 
-    vector<SmartUser>::iterator it;
+    vector<QString>::iterator it;
 
-    for (it = vector<SmartUser>::begin(); it != vector<SmartUser>::end(); ++it){
+    for (it = vector<QString>::begin(); it != vector<QString>::end(); ++it){
 
         if (*it == target){
 
-            SmartUser last = vector<SmartUser>::back();
-            vector<SmartUser>::pop_back();
+            QString last = vector<QString>::back();
+            vector<QString>::pop_back();
 
             *it = last;
 
@@ -78,7 +78,7 @@ bool Friendships::isValid(const Friendships::const_iterator & it)const{
     //bool res = (*it)->isValid; //così non va (?!) errore di tipo
 
 
-    bool res = (*(*it)).isValid();
+    /*bool res = (*(*it)).isValid(); da rivedere
 
-    return res;
+    return res; */
 }

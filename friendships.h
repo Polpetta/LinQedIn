@@ -2,7 +2,9 @@
 #define FRIENDSHIPS_H
 
 #include <vector>
-#include "smartuser.h"
+#include <QString>
+//#include "smartuser.h"
+//#include "QString.h"
 
 using std::vector;
 
@@ -12,38 +14,38 @@ using std::vector;
  *
  */
 
-class Friendships : private vector<SmartUser>
+class Friendships : private vector<QString>
 {
 public:
     Friendships();
 
-    class iterator : public vector<SmartUser>::iterator{
+    class iterator : public vector<QString>::iterator{
 
     public:
         iterator();
-        iterator (const vector<SmartUser>::iterator &);
+        iterator (const vector<QString>::iterator &);
     };
 
     Friendships::iterator begin();
     Friendships::iterator end();
 
-    SmartUser & operator[] (const Friendships::iterator &) const;
+    QString & operator[] (const Friendships::iterator &) const;
 
-    class const_iterator : public vector <SmartUser>::const_iterator{
+    class const_iterator : public vector <QString>::const_iterator{
 
     public:
         const_iterator();
-        const_iterator (const vector<SmartUser>::const_iterator &);
+        const_iterator (const vector<QString>::const_iterator &);
     };
 
     Friendships::const_iterator cbegin() const;
     Friendships::const_iterator cend() const;
 
-    const SmartUser & operator[] (const Friendships::const_iterator &) const;
+    const QString & operator[] (const Friendships::const_iterator &) const;
 
 
-    void add (const SmartUser &);
-    void rm (const SmartUser &);
+    void add (const QString &);
+    void rm (const QString &);
 
     bool isValid(const Friendships::const_iterator & )const;
 };
