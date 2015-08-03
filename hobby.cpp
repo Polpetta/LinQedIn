@@ -5,27 +5,27 @@ Hobby::Hobby()
 
 void Hobby::add(const QString & newHobby){
 
-    list<QString>::push_back(newHobby);
+    QList<QString>::push_back(newHobby);
 }
 
 void Hobby::rm(const QString & target){
 
-    list<QString>::remove(target);
+    QList<QString>::removeAll(target);
 }
 
 Hobby::iterator::iterator() {}
 
-Hobby::iterator::iterator(const list<QString>::iterator & itr)
-    : list<QString>::iterator(itr) {}
+Hobby::iterator::iterator(const QList<QString>::iterator & itr)
+    : QList<QString>::iterator(itr) {}
 
 Hobby::iterator Hobby::begin(){
 
-    return list<QString>::begin();
+    return QList<QString>::begin();
 }
 
 Hobby::iterator Hobby::end(){
 
-    return list<QString>::end();
+    return QList<QString>::end();
 }
 
 QString & Hobby::operator [] (const Hobby::iterator & it) const{
@@ -36,17 +36,17 @@ QString & Hobby::operator [] (const Hobby::iterator & it) const{
 
 Hobby::const_iterator::const_iterator() {}
 
-Hobby::const_iterator::const_iterator(const list<QString>::const_iterator & itr)
-    : list<QString>::const_iterator(itr) {}
+Hobby::const_iterator::const_iterator(const QList<QString>::const_iterator & itr)
+    : QList<QString>::const_iterator(itr) {}
 
 Hobby::const_iterator Hobby::cbegin() const{
 
-    return list<QString>::begin();
+    return QList<QString>::begin();
 }
 
 Hobby::const_iterator Hobby::cend() const{
 
-    return list<QString>::end();
+    return QList<QString>::end();
 }
 
 const QString& Hobby::operator [](const Hobby::const_iterator & it) const{

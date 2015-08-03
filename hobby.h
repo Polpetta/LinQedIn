@@ -3,11 +3,12 @@
 
 #include <list>
 #include <QString>
+#include <QList>
 
-using std::list;
+//using std::list;
 
 
-class Hobby : private list <QString>
+class Hobby : private QList <QString>
 {
 public:
     Hobby();
@@ -15,11 +16,11 @@ public:
     void add(const QString &);
     void rm(const QString &);
 
-    class iterator : public list <QString>::iterator{
+    class iterator : public QList <QString>::iterator{
 
     public:
         iterator ();
-        iterator (const list<QString>::iterator &);
+        iterator (const QList<QString>::iterator &);
     };
 
     Hobby::iterator begin() ;
@@ -27,11 +28,11 @@ public:
 
     QString & operator[] (const Hobby::iterator &) const;
 
-    class const_iterator : public list <QString>::const_iterator{
+    class const_iterator : public QList <QString>::const_iterator{
 
     public:
         const_iterator ();
-        const_iterator (const list <QString>::const_iterator &);
+        const_iterator (const QList <QString>::const_iterator &);
     };
 
     Hobby::const_iterator cbegin() const;
