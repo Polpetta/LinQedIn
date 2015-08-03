@@ -157,7 +157,7 @@ void Member::saveBack(QXmlStreamWriter & write) const{
 
     for (itf = tfrn.cbegin(); itf != tfrn.cend(); ++itf){
 
-        write.writeTextElement("FriendOf", (*(*itf)).cgetCredential().getCredential());
+        //write.writeTextElement("FriendOf", (*(*itf)).cgetCredential().getCredential()); da rivedere
     }
 
     write.writeEndElement();

@@ -5,9 +5,7 @@
 #include "profile.h"
 #include "friendships.h"
 
-//#include "credentials.h"
-//qui ci va anche l'include di QString? compila anche senza
-//qui ci va anche l'include di Event?
+class Friendships;
 
 class Member : public User
 {
