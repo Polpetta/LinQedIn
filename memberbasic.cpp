@@ -9,11 +9,10 @@ MemberBasic::MemberBasic(const Credentials & crd,
 
 MemberBasic::~MemberBasic(){}
 
-UserData& MemberBasic::search(const QString & target) const{
+DataMember& MemberBasic::search(const QString & target) const{
 
     //DEFINITA SOLO PER PROVA, MANCA ANCORA DA SCRIVERE LA CLASSE
     //SEARCH!!!
-    //return *this; //faccio finta non abbia trovato nulla
 
 }
 

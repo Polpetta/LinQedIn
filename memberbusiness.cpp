@@ -9,7 +9,7 @@ MemberBusiness::MemberBusiness(const Credentials & crd,
 
 MemberBusiness::~MemberBusiness() {}
 
-UserData& MemberBusiness::search(const QString &) const{
+DataMember& MemberBusiness::search(const QString &) const{
 
     //da scrivere
 }

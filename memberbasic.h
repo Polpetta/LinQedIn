@@ -18,7 +18,7 @@ public:
 
     virtual ~MemberBasic();
 
-    virtual UserData& search(const QString &) const;
+    virtual DataMember& search(const QString &) const;
 };
 
 #endif // MEMBERBASIC_H

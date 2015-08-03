@@ -13,7 +13,7 @@ public:
 
     virtual ~MemberExecutive();
 
-    virtual UserData& search(const QString &) const;
+    virtual DataMember& search(const QString &) const;
 };
 
 #endif // MEMBEREXECUTIVE_H

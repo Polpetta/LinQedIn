@@ -13,7 +13,7 @@ public:
 
     virtual ~MemberBusiness();
 
-    virtual UserData& search(const QString &) const;
+    virtual DataMember& search(const QString &) const;
 };
 
 #endif // MEMBERBUSINESS_H

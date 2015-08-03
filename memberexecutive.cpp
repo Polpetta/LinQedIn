@@ -10,7 +10,7 @@ MemberExecutive::MemberExecutive(const Credentials & crd,
 
 MemberExecutive::~MemberExecutive(){}
 
-UserData& MemberExecutive::search(const QString &) const{
+DataMember& MemberExecutive::search(const QString &) const{
 
     //da implementare
 }
