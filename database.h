@@ -45,7 +45,7 @@ public:
      * di tutti i dati o sottoinsiemi di dati del db.
      */
 
-    virtual DataMember* select (const Profile &)const;
+    virtual DataMember& select (const Profile &)const;
     /*
      * È necessario sia virtual? Si potrebbe implementare a questo
      * livello?

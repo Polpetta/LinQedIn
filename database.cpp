@@ -18,7 +18,14 @@ const DataMember& Database::cgetDb() const{
 
 //FUNZIONI DI RICERCA
 
-DataMember* Database::select(const Profile & find)const{
+DataMember& Database::select(const Profile & find)const{
+
+    /*
+     * Nota: viene passato un Profile quando le experiences non vengono
+     * controllate. Si potrebbe passare direttamente un Personal, ma tengo
+     * Profile perchè se un domani implemento la ricerca anche per
+     * le Experiences non devo modificare i parametri passati alla funzione.
+     */
 
     bool checkname = false;
     bool checksurn = false;
@@ -30,7 +37,9 @@ DataMember* Database::select(const Profile & find)const{
 
     DataMember* pres = new DataMember();
 
-    QString name = find.cgetPersonal().cgetBio().getName();
+    const Bio & fbio = find.cgetPersonal().cgetBio();
+
+    QString name = fbio.getName();
     if (name.size() > 0){
 
         checkname = true;
@@ -41,7 +50,7 @@ DataMember* Database::select(const Profile & find)const{
     }
 
 
-    QString surname = find.cgetPersonal().cgetBio().getSurname();
+    QString surname = fbio.getSurname();
     if (surname.size() > 0){
 
         checksurn = true;
@@ -51,7 +60,7 @@ DataMember* Database::select(const Profile & find)const{
         surnameRe.setPatternOptions(QRegularExpression::CaseInsensitiveOption);
     }
 
-    QString birthDay = find.cgetPersonal().cgetBio().getBirthday().toString("dd-MM-yyyy");
+    QString birthDay = fbio.getBirthday().toString("dd-MM-yyyy");
     if (birthDay.size() > 0){
 
         checkbirt = true;
@@ -67,6 +76,7 @@ DataMember* Database::select(const Profile & find)const{
     for (it = db.cbegin(); it != db.cend(); ++it){
 
         const SmartMember & current = db[it];
+
         const Profile & pcurrent = current->cgetProfile();
 
         const Hobby & chbb = pcurrent.cgetPersonal().cgetHobby();
@@ -76,15 +86,36 @@ DataMember* Database::select(const Profile & find)const{
         const Interests & fint = find.cgetPersonal().cgetInterests();
 
         bool sameHI = true;
-        if (fhbb.size() > 0 && fint.size() > 0)
-            if (chbb != fhbb || cint != fint)
-                sameHI = false;
+        if (fhbb.size() > 0 && fint.size() > 0){
+
+            Hobby::const_iterator ith;
+            for (ith = fhbb.cbegin(); ith != fhbb.cend() &&
+                 sameHI == true; ++ith){
+
+                const QString & target = fhbb[ith];
+                if (chbb.contains(target) == false)
+                    sameHI = false;
+            }
+
+
+            Interests::const_iterator iti;
+            for (iti = fint.cbegin(); iti != fint.cend() &&
+                 sameHI == true; ++iti){
+
+                const QString & target = fint[iti];
+                if (cint.contains(target) == false)
+                    sameHI = false;
+            }
+
+        }
 
         if (sameHI == true){
 
-            const QString& cname = pcurrent.cgetPersonal().cgetBio().getName();
-            const QString& csurn = pcurrent.cgetPersonal().cgetBio().getSurname();
-            const QString& birth = pcurrent.cgetPersonal().cgetBio().getBirthday().toString("dd-MM-yyyy");
+            const Bio & cbio = pcurrent.cgetPersonal().cgetBio();
+
+            const QString& cname = cbio.getName();
+            const QString& csurn = cbio.getSurname();
+            const QString& birth = cbio.getBirthday().toString("dd-MM-yyyy");
 
             bool ismname = true;
             if (checkname == true){
@@ -113,18 +144,14 @@ DataMember* Database::select(const Profile & find)const{
             }
 
 
-
-            //bisogna controllare le esperienze prima di fare questa cosa!
-            if (ismname == true &&
-                    ismsurn == true &&
-                    ismbirth == true)
+            if (ismname == true && ismsurn == true && ismbirth == true)
                 pres->add(current);
 
         }
 
     }
 
-    return pres;
+    return *pres;
 }
 
 const SmartMember& Database::cselect (const QString & find)const{
