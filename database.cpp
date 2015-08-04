@@ -113,6 +113,8 @@ DataMember* Database::select(const Profile & find)const{
             }
 
 
+
+            //bisogna controllare le esperienze prima di fare questa cosa!
             if (ismname == true &&
                     ismsurn == true &&
                     ismbirth == true)
