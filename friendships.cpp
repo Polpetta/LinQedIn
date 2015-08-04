@@ -1,4 +1,5 @@
 #include "friendships.h"
+#include "database.h" //evito loop compilazione
 
 Friendships::Friendships()
 {}
@@ -70,15 +71,11 @@ void Friendships::rm(const QString & target){
     }
 }
 
-bool Friendships::isValid(const Friendships::const_iterator & it)const{
+bool Friendships::isValid(Database* db, const Friendships::const_iterator & it)const{
 
-    //const User* tmp = (*it).cgetPunt();
-    //bool res = tmp->isValid(); così va
+    if (db != nullptr)
+        return db->cselect(Friendships::operator [](it))->isValid();
 
-    //bool res = (*it)->isValid; //così non va (?!) errore di tipo
+    return false;
 
-
-    /*bool res = (*(*it)).isValid(); da rivedere
-
-    return res; */
 }

@@ -3,16 +3,10 @@
 
 #include <vector>
 #include <QString>
-//#include "smartuser.h"
-//#include "QString.h"
 
 using std::vector;
 
-/*
- * Meglio aggiungere un campo di numerazione su user o meglio
- * cambiare questa classe usando SmartUser?
- *
- */
+class Database;
 
 class Friendships : private vector<QString>
 {
@@ -47,7 +41,8 @@ public:
     void add (const QString &);
     void rm (const QString &);
 
-    bool isValid(const Friendships::const_iterator & )const;
+    bool isValid(Database*, const Friendships::const_iterator & )const;
+
 };
 
 #endif // FRIENDSHIPS_H
