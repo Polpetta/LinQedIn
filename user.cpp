@@ -1,7 +1,9 @@
 #include "user.h"
+//#include "database.h" per evitare loop compilativi
 
-User::User(const QString & typ)
-    : valid(true), UserType(typ)
+User::User(const QString & typ,
+           Database* ptrDb)
+    : valid(true), UserType(typ), db(ptrDb)
 {}
 
 User::~User() {}
@@ -42,4 +44,14 @@ int & User::getRef(){
 const int & User::cgetRef()const{
 
     return ref;
+}
+
+Database * User::getDb()const{
+
+    return db;
+}
+
+void User::setDb(Database * newDb){
+
+    db = newDb;
 }
