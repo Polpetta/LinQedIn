@@ -22,26 +22,15 @@ using std::vector;
 class User
 {
 public:
-    User(const Credentials & = Credentials(),
-         const QString & = QString());
+    User(const QString & = QString());
 
     virtual ~User();
 
     virtual DataMember& search(const QString &) const =0;
 
-    virtual void save (QXmlStreamWriter & ) const =0;
-    virtual void saveBack (QXmlStreamWriter &) const =0;
-    virtual void load (QXmlStreamReader & ) =0;
-    virtual void loadBack (QXmlStreamReader & ) =0;
-
-
     virtual QString& getType();
     virtual const QString& cgetType()const;
 
-    Credentials & getCredential();
-    const Credentials & cgetCredential()const;
-
-    void setCredential(const Credentials &);
     void setAccountValid(const bool &);
     void setAccountType(const QString &);
 
@@ -52,7 +41,7 @@ public:
 
 private:
 
-    Credentials logCrd;
+
     bool valid;// = true;
     QString UserType;
     int ref;
