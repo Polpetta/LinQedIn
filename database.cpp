@@ -44,7 +44,7 @@ DataMember& Database::select(const Profile & find)const{
 
         checkname = true;
 
-        name = "/"+name+"/";
+        name = "([\\d+\\w+])*("+name+")([\\d+\\w+])*";
         nameRe.setPattern(name);
         nameRe.setPatternOptions(QRegularExpression::CaseInsensitiveOption);
     }
@@ -55,7 +55,7 @@ DataMember& Database::select(const Profile & find)const{
 
         checksurn = true;
 
-        surname = "/"+surname+"/";
+        surname = "([\\d+\\w+])*("+surname+")([\\d+\\w+])*";
         surnameRe.setPattern(surname);
         surnameRe.setPatternOptions(QRegularExpression::CaseInsensitiveOption);
     }
@@ -65,7 +65,7 @@ DataMember& Database::select(const Profile & find)const{
 
         checkbirt = true;
 
-        birthDay = "/"+birthDay+"/";
+        birthDay = "([\\d+\\w+])*("+birthDay+")([\\d+\\w+])*";
         birthRe.setPattern(birthDay);
         birthRe.setPatternOptions(QRegularExpression::CaseInsensitiveOption);
     }
