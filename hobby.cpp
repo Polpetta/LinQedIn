@@ -64,6 +64,13 @@ bool Hobby::operator !=(const Hobby & as)const{
     return QList<QString>::operator !=(as);
 }
 
+
+bool Hobby::contains(const QString & target) const{
+
+    return QList<QString>::contains(target);
+}
+
+
 int Hobby::size()const{
 
     return QList<QString>::size();

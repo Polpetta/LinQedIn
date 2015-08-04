@@ -41,6 +41,8 @@ public:
     bool operator==(const Hobby &) const;
     bool operator!=(const Hobby &) const;
 
+    bool contains(const QString &) const;
+
     int size()const;
 
 };
