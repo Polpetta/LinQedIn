@@ -1,12 +1,11 @@
 #ifndef EXPERIENCES_H
 #define EXPERIENCES_H
 
-#include <list>
+#include <QList>
 #include "event.h"
 
-using std::list;
 
-class Experiences : private list <Event>
+class Experiences : private QList <Event>
 {
 public:
     Experiences();
@@ -14,11 +13,11 @@ public:
     void add (const Event &);
     void rm (const Event &);
 
-    class iterator : public list <Event>::iterator{
+    class iterator : public QList <Event>::iterator{
 
     public:
         iterator();
-        iterator (const list<Event>::iterator &);
+        iterator (const QList<Event>::iterator &);
     };
 
     Experiences::iterator begin();
@@ -27,11 +26,11 @@ public:
     Event & operator[] (const Experiences::iterator &) const;
 
 
-    class const_iterator : public list <Event>::const_iterator{
+    class const_iterator : public QList <Event>::const_iterator{
 
     public:
         const_iterator();
-        const_iterator (const list <Event>::const_iterator &);
+        const_iterator (const QList <Event>::const_iterator &);
     };
 
     Experiences::const_iterator cbegin() const;
@@ -39,6 +38,10 @@ public:
 
     const Event & operator[] (const Experiences::const_iterator &) const;
 
+    bool operator==(const Experiences &)const;
+    bool operator!=(const Experiences &)const;
+
+    int size()const;
 };
 
 #endif // EXPERIENCES_H
