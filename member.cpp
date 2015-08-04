@@ -3,9 +3,10 @@
 Member::Member(const Credentials & crd,
                const QString & typ,
                const Profile & prf,
-               const Friendships & frnd)
+               const Friendships & frnd,
+               Database* ptr)
 
-    : User(typ), logCrd(crd), info(prf), friends(frnd)
+    : User(typ,ptr), logCrd(crd), info(prf), friends(frnd)
 {}
 
 Member::~Member()

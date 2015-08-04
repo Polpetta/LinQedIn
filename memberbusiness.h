@@ -9,11 +9,12 @@ public:
     MemberBusiness(const Credentials & = Credentials(),
                    const QString & = QString(),
                    const Profile & = Profile(),
-                   const Friendships & = Friendships());
+                   const Friendships & = Friendships(),
+                   Database* = nullptr);
 
     virtual ~MemberBusiness();
 
-    virtual DataMember& search(const QString &) const;
+    virtual const DataMember& search(const Profile &) const;
 };
 
 #endif // MEMBERBUSINESS_H

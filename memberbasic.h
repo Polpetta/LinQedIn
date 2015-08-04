@@ -1,12 +1,13 @@
 #ifndef MEMBERBASIC_H
 #define MEMBERBASIC_H
 
+#include <QString>
+
 #include "member.h"
 #include "credentials.h"
 #include "profile.h"
 #include "friendships.h"
-#include <QString>
-//MANCA L'INCLUSIONE DELLA CLASSE SEARCH
+
 
 class MemberBasic : public Member
 {
@@ -14,11 +15,12 @@ public:
     MemberBasic(const Credentials & = Credentials(),
                 const QString & = QString(),
                 const Profile & = Profile(),
-                const Friendships & = Friendships());
+                const Friendships & = Friendships(),
+                Database* = nullptr);
 
     virtual ~MemberBasic();
 
-    virtual DataMember& search(const QString &) const;
+    virtual const DataMember& search(const Profile &) const;
 };
 
 #endif // MEMBERBASIC_H

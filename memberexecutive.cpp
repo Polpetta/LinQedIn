@@ -3,14 +3,16 @@
 MemberExecutive::MemberExecutive(const Credentials & crd,
                                  const QString & typ,
                                  const Profile & prf,
-                                 const Friendships & frnd)
-    : MemberBusiness(crd,typ,prf,frnd)
+                                 const Friendships & frnd,
+                                 Database * ptr)
+    : MemberBusiness(crd,typ,prf,frnd,ptr)
 
 {}
 
 MemberExecutive::~MemberExecutive(){}
 
-DataMember& MemberExecutive::search(const QString &) const{
+const DataMember& MemberExecutive::search(const Profile &target) const{
 
-    //da implementare
+    //Essendo un business, butto tutto nella ricerca!
+    return getDb()->select(target);
 }

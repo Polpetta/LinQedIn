@@ -3,16 +3,21 @@
 MemberBasic::MemberBasic(const Credentials & crd,
                          const QString & typ,
                          const Profile & prf,
-                         const Friendships & frnd)
-    : Member(crd,typ,prf,frnd)
+                         const Friendships & frnd,
+                         Database * ptr)
+    : Member(crd,typ,prf,frnd, ptr)
 {}
 
 MemberBasic::~MemberBasic(){}
 
-DataMember& MemberBasic::search(const QString & target) const{
+const DataMember& MemberBasic::search(const Profile & target) const{
 
-    //DEFINITA SOLO PER PROVA, MANCA ANCORA DA SCRIVERE LA CLASSE
-    //SEARCH!!!
+    const QString & name = target.cgetPersonal().cgetBio().getName();
+    const QString & surn = target.cgetPersonal().cgetBio().getSurname();
+
+    Bio searchBase (name, surn);
+
+    return getDb()->select(Profile(Personal(searchBase)));
 
 }
 

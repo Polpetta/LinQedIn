@@ -9,11 +9,12 @@ public:
     MemberExecutive(const Credentials & = Credentials(),
                     const QString & = QString(),
                     const Profile & = Profile(),
-                    const Friendships & = Friendships());
+                    const Friendships & = Friendships(),
+                    Database * = nullptr);
 
     virtual ~MemberExecutive();
 
-    virtual DataMember& search(const QString &) const;
+    virtual const DataMember& search(const Profile &) const;
 };
 
 #endif // MEMBEREXECUTIVE_H
