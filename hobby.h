@@ -41,6 +41,8 @@ public:
     bool operator==(const Hobby &) const;
     bool operator!=(const Hobby &) const;
 
+    int size()const;
+
 };
 
 #endif // HOBBY_H

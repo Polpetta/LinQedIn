@@ -63,3 +63,8 @@ bool Hobby::operator !=(const Hobby & as)const{
 
     return QList<QString>::operator !=(as);
 }
+
+int Hobby::size()const{
+
+    return QList<QString>::size();
+}

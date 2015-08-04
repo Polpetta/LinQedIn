@@ -63,3 +63,8 @@ bool Interests::operator!=(const Interests & as)const{
 
     return QList<QString>::operator !=(as);
 }
+
+int Interests::size()const{
+
+    return QList<QString>::size();
+}

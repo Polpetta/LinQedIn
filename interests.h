@@ -40,6 +40,7 @@ public:
     bool operator==(const Interests &)const;
     bool operator!=(const Interests &)const;
 
+    int size()const;
 };
 
 #endif // INTERESTS_H
