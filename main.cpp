@@ -4,16 +4,17 @@
 
 
 #include <iostream>
-#include "profile.h"
+/*#include "profile.h"
 #include "personal.h"
 #include "experiences.h"
 
-/*#include "user.h"
+#include "user.h"
 #include "memberbasic.h"
 #include "dbonxml.h"
 #include "database.h"
-#include "smartuser.h"
-#include "credentials.h"*/
+#include "smartmember.h"
+#include "credentials.h"
+#include "datamember.h"*/
 
 int main(int argc, char *argv[])
 {
@@ -25,20 +26,33 @@ int main(int argc, char *argv[])
 
     //return a.exec();
 
-    QDate nascita(1994,8,27);
+    QDate nascita1(1994,8,27);
+    QDate nascita2(2001,5,15);
 
-    Bio b1(nascita,
-           "Davide",
-           "Polonio",
-           "3204961582",
+    Bio b1("Super",
+           "Man",
+           nascita1,
+           "3204029401",
            "poloniodavide@gmail.com");
 
-    Personal prova(b1);
+    Bio b2("Gino",
+           "Pino",
+           nascita2,
+           "3205437306",
+           "giangiala@gmail.com");
 
-    prova.getHobby().add("Computer");
-    prova.getHobby().add("Giardinaggio");
 
-    prova.getInterests().add("SysAdmin");
+    Personal prova1(b1);
+    Personal prova2(b2);
+
+    prova1.getHobby().add("Computer");
+    prova1.getHobby().add("Giardinaggio");
+
+    prova2.getHobby().add("Giocare");
+
+    prova1.getInterests().add("SysAdmin");
+
+    prova2.getInterests().add("Dormire");
 
     std::cout<<"Fatto personal"<<std::endl;
 
@@ -57,8 +71,10 @@ int main(int argc, char *argv[])
     exp.add(e1);
     exp.add(e2);
 
-    Profile profilo (prova,
+    Profile profilo1 (prova1,
                      exp);
+
+    Profile profilo2 (prova2);
 
     std::cout<<"Fatto profile"<<std::endl;
 
@@ -78,25 +94,44 @@ int main(int argc, char *argv[])
 
     Database* pdb = new DBonXml("prova");
 
-    SmartUser u1 = new MemberBasic(nick,
+    SmartMember u1 = new MemberBasic(nick,
                                    "Basic",
-                                   profilo);
+                                   profilo1,
+                                     Friendships(),
+                                     pdb);
 
     Credentials nick2 ("gino");
 
     Friendships n2;
 
-    n2.add(u1);
+    n2.add(u1->cgetCredential().getCredential());
 
-    SmartUser u2 = new MemberBasic(nick2,
+    SmartMember u2 = new MemberBasic(nick2,
                                    "Basic",
-                                   profilo,
-                                   n2);
+                                   profilo2,
+                                   n2,
+                                     pdb);
 
     pdb->getDb().add(u1);
     pdb->getDb().add(u2);
     pdb->save();
 
-    std::cout<<"Scritto"<<std::endl; */
+    std::cout<<"Scritto"<<std::endl;
+
+
+    Profile sProva (u1->cgetProfile());
+    const DataMember & provas1 = u2->search(sProva);
+
+    DataMember::const_iterator resultS;
+
+    std::cout<<"RISULTATI RICERCA"<<std::endl;
+    for (resultS = provas1.cbegin(); resultS != provas1.cend(); ++resultS){
+
+        const Profile & res = (*resultS)->cgetProfile();
+        const Bio & res1 = res.cgetPersonal().cgetBio();
+
+        std::cout<<res1.getName().toStdString()<<std::endl;
+        std::cout<<res1.getSurname().toStdString()<<std::endl;
+    } */
 
 }
