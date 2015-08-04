@@ -1,12 +1,13 @@
 #ifndef INTERESTS_H
 #define INTERESTS_H
 
-#include <list>
+//#include <list>
 #include <QString>
+#include <QList>
 
-using std::list;
+//using std::list;
 
-class Interests : private list <QString>
+class Interests : private QList <QString>
 {
 public:
     Interests();
@@ -14,11 +15,11 @@ public:
     void add(const QString &);
     void rm(const QString &);
 
-    class iterator : public list <QString>::iterator{
+    class iterator : public QList <QString>::iterator{
 
     public:
         iterator ();
-        iterator (const list<QString>::iterator &);
+        iterator (const QList<QString>::iterator &);
     };
 
     Interests::iterator begin();
@@ -26,11 +27,11 @@ public:
 
     QString & operator[] (const Interests::iterator &)const;
 
-    class const_iterator : public list <QString>::const_iterator{
+    class const_iterator : public QList <QString>::const_iterator{
 
     public:
         const_iterator ();
-        const_iterator (const list <QString>::const_iterator &);
+        const_iterator (const QList <QString>::const_iterator &);
     };
 
     Interests::const_iterator cbegin() const;

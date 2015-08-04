@@ -5,27 +5,27 @@ Interests::Interests()
 
 void Interests::add(const QString & newInterests){
 
-    list<QString>::push_back(newInterests);
+    QList<QString>::push_back(newInterests);
 }
 
 void Interests::rm(const QString & target){
 
-    list <QString>::remove(target);
+    QList <QString>::removeAll(target);
 }
 
 Interests::iterator::iterator() {}
 
-Interests::iterator::iterator(const list<QString>::iterator & itr)
-    : list<QString>::iterator(itr) {}
+Interests::iterator::iterator(const QList<QString>::iterator & itr)
+    : QList<QString>::iterator(itr) {}
 
 Interests::iterator Interests::begin(){
 
-    return list<QString>::begin();
+    return QList<QString>::begin();
 }
 
 Interests::iterator Interests::end(){
 
-    return list<QString>::end();
+    return QList<QString>::end();
 }
 
 QString & Interests::operator [] (const Interests::iterator & it) const{
@@ -35,17 +35,17 @@ QString & Interests::operator [] (const Interests::iterator & it) const{
 
 Interests::const_iterator::const_iterator() {}
 
-Interests::const_iterator::const_iterator(const list::const_iterator & itr)
-    :list<QString>::const_iterator(itr) {}
+Interests::const_iterator::const_iterator(const QList::const_iterator & itr)
+    :QList<QString>::const_iterator(itr) {}
 
 Interests::const_iterator Interests::cbegin() const{
 
-    return list<QString>::begin();
+    return QList<QString>::begin();
 }
 
 Interests::const_iterator Interests::cend() const{
 
-    return list<QString>::end();
+    return QList<QString>::end();
 }
 
 const QString & Interests::operator [] (const Interests::const_iterator & it) const{
