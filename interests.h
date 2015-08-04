@@ -1,11 +1,9 @@
 #ifndef INTERESTS_H
 #define INTERESTS_H
 
-//#include <list>
 #include <QString>
 #include <QList>
 
-//using std::list;
 
 class Interests : private QList <QString>
 {

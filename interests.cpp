@@ -29,7 +29,7 @@ Interests::iterator Interests::end(){
 }
 
 QString & Interests::operator [] (const Interests::iterator & it) const{
-    //DA RIGUARDARE
+
     return *it;
 }
 
