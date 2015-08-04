@@ -18,55 +18,48 @@ const DataMember& Database::cgetDb() const{
 
 //FUNZIONI DI RICERCA
 
-/*bool Database::matchHobby(const Profile & pcurrent, const Profile & find)const{
-
-    //controllo gli hobby
-    Hobby::const_iterator ith;
-
-    bool matchHobby = true;
-    for (ith = pcurrent.cgetPersonal().cgetHobby().cbegin();
-         ith != pcurrent.cgetPersonal().cgetHobby().cend();
-         ++ith){
-
-        QString & hobby = pcurrent.cgetPersonal().cgetHobby()[ith];
-        hobby = "/"+hobby+"/";
-        QRegularExpression hobbyRe(hobby,
-                                   QRegularExpression::CaseInsensitiveOption);
-
-
-        Hobby::const_iterator ithf;
-
-        for (ithf = find.cgetPersonal().cgetHobby().cbegin();
-             ithf != find.cgetPersonal().cgetHobby().cend() &&
-             matchHobby == true;
-             ++ithf){
-
-            QString & fHobby = find.cgetPersonal().cgetHobby()[ithf];
-
-            QRegularExpressionMatch match = hobbyRe.match(fHobby);
-            if (match.hasMatch() == false)
-                matchHobby = false;
-        }
-    }
-
-    return matchHobby;
-}*/
-
 DataMember* Database::select(const Profile & find)const{
+
+    bool checkname = false;
+    bool checksurn = false;
+    bool checkbirt = false;
+
+    QRegularExpression nameRe;
+    QRegularExpression surnameRe;
+    QRegularExpression birthRe;
 
     DataMember* pres = new DataMember();
 
     QString name = find.cgetPersonal().cgetBio().getName();
-    name = "/"+name+"/";
-    QRegularExpression nameRe (name, QRegularExpression::CaseInsensitiveOption);
+    if (name.size() > 0){
+
+        checkname = true;
+
+        name = "/"+name+"/";
+        nameRe.setPattern(name);
+        nameRe.setPatternOptions(QRegularExpression::CaseInsensitiveOption);
+    }
+
 
     QString surname = find.cgetPersonal().cgetBio().getSurname();
-    surname = "/"+surname+"/";
-    QRegularExpression surnameRe (surname, QRegularExpression::CaseInsensitiveOption);
+    if (surname.size() > 0){
+
+        checksurn = true;
+
+        surname = "/"+surname+"/";
+        surnameRe.setPattern(surname);
+        surnameRe.setPatternOptions(QRegularExpression::CaseInsensitiveOption);
+    }
 
     QString birthDay = find.cgetPersonal().cgetBio().getBirthday().toString("dd-MM-yyyy");
-    birthDay = "/"+birthDay+"/";
-    QRegularExpression birthRe (birthDay, QRegularExpression::CaseInsensitiveOption);
+    if (birthDay.size() > 0){
+
+        checkbirt = true;
+
+        birthDay = "/"+birthDay+"/";
+        birthRe.setPattern(birthDay);
+        birthRe.setPatternOptions(QRegularExpression::CaseInsensitiveOption);
+    }
 
 
     DataMember::const_iterator it;
@@ -76,37 +69,56 @@ DataMember* Database::select(const Profile & find)const{
         const SmartMember & current = db[it];
         const Profile & pcurrent = current->cgetProfile();
 
-        bool matchHobby = false;
-        if (pcurrent.cgetPersonal().cgetHobby() == find.cgetPersonal().cgetHobby())
-            matchHobby = true;
+        const Hobby & chbb = pcurrent.cgetPersonal().cgetHobby();
+        const Hobby & fhbb = find.cgetPersonal().cgetHobby();
 
-        /*//controllo gli interessi
-        Interests::const_iterator iti;
+        const Interests & cint = pcurrent.cgetPersonal().cgetInterests();
+        const Interests & fint = find.cgetPersonal().cgetInterests();
 
-        bool matchInterests = true;
-        for (iti = find.cgetPersonal().getInterests().cbegin();
-             iti != find.cgetPersonal().getInterests().cend();
-             ++iti){
+        bool sameHI = true;
+        if (fhbb.size() > 0 && fint.size() > 0)
+            if (chbb != fhbb || cint != fint)
+                sameHI = false;
 
-            QString & interests = pcurrent.cgetPersonal().cgetInterests()[iti];
-            interests = "/"+interests+"/";
-            QRegularExpression interestsRe(interests,
-                                           QRegularExpression::CaseInsensitiveOption);
+        if (sameHI == true){
 
+            const QString& cname = pcurrent.cgetPersonal().cgetBio().getName();
+            const QString& csurn = pcurrent.cgetPersonal().cgetBio().getSurname();
+            const QString& birth = pcurrent.cgetPersonal().cgetBio().getBirthday().toString("dd-MM-yyyy");
 
-            Interests::const_iterator itif;
+            bool ismname = true;
+            if (checkname == true){
+                QRegularExpressionMatch mname = nameRe.match(cname);
 
-            for (itif = find.cgetPersonal().cgetInterests().cbegin();
-                 itif != find.cgetPersonal().cgetInterests().cend();
-                 ++itif){
-
-                QString & fInterests = find.cgetPersonal().cgetHobby()[itif];
-
-                QRegularExpressionMatch match = interestsRe.match(fInterests);
-                if (match.hasMatch() == false)
-                    matchInterests = false;
+                if (mname.hasMatch() == false)
+                    ismname = false;
             }
-        }*/
+
+
+            bool ismsurn = true;
+            if (checksurn == true){
+                QRegularExpressionMatch msurn = surnameRe.match(csurn);
+
+                if (msurn.hasMatch() == false)
+                    ismsurn = false;
+            }
+
+
+            bool ismbirth = true;
+            if (checkbirt == true){
+                QRegularExpressionMatch mbirth = birthRe.match(birth);
+
+                if (mbirth.hasMatch() == false)
+                    ismbirth = false;
+            }
+
+
+            if (ismname == true &&
+                    ismsurn == true &&
+                    ismbirth == true)
+                pres->add(current);
+
+        }
 
     }
 
