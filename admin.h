@@ -3,7 +3,6 @@
 
 #include "user.h"
 #include "database.h"
-//#include "smartuser.h"
 #include "smartmember.h"
 
 #include "memberexecutive.h"
@@ -20,18 +19,11 @@
 class Admin : public User
 {
 public:
-    Admin(const Credentials & = Credentials(),
-          const QString & = QString());
+    Admin(const QString & = QString());
 
     virtual ~Admin();
 
     virtual DataMember & search(const QString &) const;
-
-    virtual void save (QXmlStreamWriter &) const;
-    virtual void saveBack (QXmlStreamWriter &) const;
-
-    virtual void load (QXmlStreamReader &);
-    virtual void loadBack (QXmlStreamReader &);
 
     //funzioni proprie dell'admin
     void addMember (Database*, const SmartMember &) const;
