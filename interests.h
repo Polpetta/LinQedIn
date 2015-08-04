@@ -40,6 +40,8 @@ public:
     bool operator==(const Interests &)const;
     bool operator!=(const Interests &)const;
 
+    bool contains(const QString &) const;
+
     int size()const;
 };
 
