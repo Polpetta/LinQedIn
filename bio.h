@@ -7,9 +7,9 @@
 class Bio
 {
 public:
-    Bio(const QDate & = QDate(),
+    Bio(const QString & = QString(),
         const QString & = QString(),
-        const QString & = QString(),
+        const QDate & = QDate(),
         const QString & = QString(),
         const QString & = QString()
             );

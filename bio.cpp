@@ -1,8 +1,8 @@
 #include "bio.h"
 
-Bio::Bio(const QDate & bd,
-         const QString & nm,
+Bio::Bio(const QString & nm,
          const QString & srn,
+         const QDate & bd,
          const QString & phn,
          const QString & eMl)
     : birthDay(bd),
