@@ -37,6 +37,9 @@ public:
 
     const QString & operator[] (const Interests::const_iterator &) const;
 
+    bool operator==(const Interests &)const;
+    bool operator!=(const Interests &)const;
+
 };
 
 #endif // INTERESTS_H

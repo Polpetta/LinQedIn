@@ -52,3 +52,14 @@ const QString & Interests::operator [] (const Interests::const_iterator & it) co
 
     return *it;
 }
+
+
+bool Interests::operator==(const Interests & as)const{
+
+    return QList<QString>::operator ==(as);
+}
+
+bool Interests::operator!=(const Interests & as)const{
+
+    return QList<QString>::operator !=(as);
+}
