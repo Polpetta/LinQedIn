@@ -27,8 +27,6 @@ SOURCES += main.cpp\
     credentials.cpp \
     memberbasic.cpp \
     database.cpp \
-    userdata.cpp \
-    smartuser.cpp \
     dbonio.cpp \
     dbonfile.cpp \
     dbonxml.cpp \
@@ -55,8 +53,6 @@ HEADERS  += mainwindow.h \
     credentials.h \
     memberbasic.h \
     database.h \
-    userdata.h \
-    smartuser.h \
     dbonio.h \
     dbonfile.h \
     dbonxml.h \
