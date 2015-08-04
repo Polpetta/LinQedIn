@@ -4,6 +4,7 @@
 #include "user.h"
 #include "profile.h"
 #include "friendships.h"
+#include "credentials.h"
 
 class Friendships;
 
@@ -24,6 +25,10 @@ public:
     Friendships & getFriendships();
     const Friendships & cgetFriendships()const;
 
+    Credentials & getCredential();
+    const Credentials & cgetCredential()const;
+
+    void setCredential(const Credentials &);
     void setProfile(const Profile &);
     void setFrinds(const Friendships &);
 
@@ -34,6 +39,7 @@ public:
 
 private:
 
+    Credentials logCrd;
     Profile info;
     Friendships friends;
 };

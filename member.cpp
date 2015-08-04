@@ -5,7 +5,7 @@ Member::Member(const Credentials & crd,
                const Profile & prf,
                const Friendships & frnd)
 
-    : User(crd,typ), info(prf), friends(frnd)
+    : User(typ), logCrd(crd), info(prf), friends(frnd)
 {}
 
 Member::~Member()
@@ -31,6 +31,20 @@ const Friendships & Member::cgetFriendships()const{
     return friends;
 }
 
+Credentials & Member::getCredential(){
+
+    return logCrd;
+}
+
+const Credentials & Member::cgetCredential()const{
+
+    return logCrd;
+}
+
+void Member::setCredential (const Credentials & replace){
+
+    logCrd = replace;
+}
 
 void Member::setProfile(const Profile & replace){
 
