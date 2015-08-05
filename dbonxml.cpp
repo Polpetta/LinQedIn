@@ -89,21 +89,121 @@ void DBonXml::save(){
 void DBonXml::load(){
 
     /*
-     * per il momento vuota aspettando l'implementazione della
-     * save()
-     *
      * -Leggo che cosa sto "tirando su", in base a quello dichiaro
      * il tipo adatto (tipo "Basic"-> new MemberBasic) e gli sbatto
      * dentro i dati
      */
 
-    /*if (QFile::open(QFile::ReadOnly) != true){
-        dbState dst = generic_error;
-        setState(dst);
+    if (QFile::open(QFile::ReadOnly) != true){
+        setState(dbState::generic_error);
         return; //non posso leggere, esco
     }
 
-    read.readNext();
+
+    QXmlStreamReader::TokenType token;
+
+    token = read.readNext();
+
+    qDebug()<< "È elemento iniziale?";
+    qDebug()<< (token == QXmlStreamReader::StartDocument);
+
+    if (token != QXmlStreamReader::StartDocument){
+        setState(dbState::bad_db);
+        return; //file danneggiato?
+    }
+
+    read.readNextStartElement();
+
+    qDebug()<< read.name();
+    //USERS
+    if (read.name() == "Users"){
+        qDebug()<<"Entro nell'if dell Users";
+
+        while( !read.atEnd() && !read.hasError() ){
+
+            read.readNextStartElement();
+            qDebug()<<"Nuova istruzione letta: "<<read.name();
+
+            //USER
+            if (read.name() == "User"){
+                 qDebug()<<"Entro in User";
+
+                 SmartMember nMember;
+
+                 read.readNextStartElement();
+
+                 QString type = read.readElementText();
+                 qDebug()<<"Type"<<type;
+
+
+                 //CREDENTIALS
+                 read.readNextStartElement();
+
+                 qDebug()<<read.name();
+
+                 QString nick;
+                 if (read.name() == "Credentials"){
+                    qDebug()<<"Leggo le credenziali dell'utente";
+
+                    read.readNextStartElement();
+                    nick = read.readElementText();
+
+                 }
+
+                 read.skipCurrentElement();
+                 //END CREDENTIALS
+
+                 Credentials newCrd(nick);
+
+                 if (type == "Basic"){
+
+                   nMember = new MemberBasic(newCrd);
+                 }
+                 else if (type == "Business"){
+
+                   nMember = new MemberBusiness(newCrd);
+                 }
+                 else if (type == "Executive"){
+
+                   nMember = new MemberExecutive(newCrd);
+                 }
+                 else{
+                 //nel caso trovo una tipologia che non so cosa sia
+
+                   setState(dbState::bad_db);
+                   return;
+                 }
+
+                 nMember->setAccountType( type );
+                 //setto il suo tipo di user
+
+                 qDebug()<<"Tipo account: "<<nMember->getType();
+
+                 qDebug()<<"-------------------------------------";
+                 qDebug()<<"Lascio che l'utente legga i suoi dati";
+                 nMember->load( read ); //carica i suoi dati
+                 qDebug()<<"L'utente ha letto i suoi dati";
+                 qDebug()<<"-------------------------------------";
+
+
+                 getDb().add( nMember ); //aggiungo il nuovo user
+
+                 read.skipCurrentElement();
+                 //END USER
+            }
+
+
+
+            //devo verificare anche la seconda parte del file!
+        }
+        read.skipCurrentElement();
+        //END USERS
+    }
+
+    /*read.readNext();
+
+    qDebug()<<"All'inizio ho letto "<<read.name();
+    qDebug()<<"read.isStarEelement() resistuirà: "<<read.isStartElement();
 
     if ( read.isStartElement() ){ //se è l'inizio del documento
 
@@ -113,7 +213,7 @@ void DBonXml::load(){
 
             if (read.name() == "Users"){
 
-                SmartUser uUser;
+                SmartMember uUser;
 
                 read.readNext();
 
@@ -133,10 +233,6 @@ void DBonXml::load(){
 
                         uUser = new MemberExecutive();
                     }
-                    else if (type == "Admin"){
-
-                        uUser = new Admin();
-                    }
                     else{
                         //nel caso trovo una tipologia che non so cosa sia
 
@@ -151,4 +247,6 @@ void DBonXml::load(){
             }
         }
     }*/
+
+
 }
