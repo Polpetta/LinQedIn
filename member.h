@@ -4,6 +4,10 @@
 #include <QXmlStreamWriter>
 #include <QXmlStreamReader>
 
+//mi serve per debug
+#include <QDebug>
+//da rimuovere parte sopra
+
 #include "user.h"
 #include "profile.h"
 #include "friendships.h"

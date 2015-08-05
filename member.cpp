@@ -185,37 +185,129 @@ void Member::saveBack(QXmlStreamWriter & write) const{
 
 
 void Member::load(QXmlStreamReader & read){
-    //CREDENTIALS
-    read.readNext();
 
-    if (read.name() == "Credentials"){
-        QString nick = read.attributes().value("nick").toString();
-        setCredential(Credentials( nick ));
-    }
-    //END CREDENTIALS
+    read.readNextStartElement();
+    qDebug()<<read.name();
 
     //PROFILE
-    read.readNext();
-
     if (read.name() == "Profile"){
 
-        //Profile -> PERSONAL
-        read.readNext();
+        read.readNextStartElement();
+        qDebug()<<read.name();
+        //PERSONAL
         if (read.name() == "Personal"){
 
-            //Personal -> BIO
-            read.readNext();
+            read.readNextStartElement();
+            qDebug()<<read.name();
+            //BIO
             if (read.name() == "Bio"){
 
-                QString sbirth= read.attributes().value("Birthday").toString();
-                QDate birth = QDate::fromString(sbirth, "dd-MM-yyyy");
+                Bio newBio;
 
-                QString Name = read.attributes().value("Name").toString();
-                QString Surname = read.attributes().value("Surname").toString();
-                QString Phone = read.attributes().value("Phone").toString();
-                QString Mail = read.attributes().value("Mail").toString();
+                read.readNextStartElement();
+                QDate birth(
+                            QDate::fromString(
+                                read.readElementText(), "dd-MM-yyyy"));
+                qDebug()<<"Data: "<<birth;
 
-            } //come faccio a capire che è finito bio?
+                newBio.setBirthday(birth);
+
+                read.readNextStartElement();
+                newBio.setName(read.readElementText());
+                qDebug()<<"Nome: "<<newBio.getName();
+
+                read.readNextStartElement();
+                newBio.setSurname(read.readElementText());
+                qDebug()<<"Surname: "<<newBio.getSurname();
+
+                read.readNextStartElement();
+                newBio.setPhone(read.readElementText());
+                qDebug()<<"Phone: "<<newBio.getPhone();
+
+                read.readNextStartElement();
+                newBio.setMail(read.readElementText());
+                qDebug()<<"eMail: "<<newBio.getMail();
+
+                getProfile().getPersonal().setBio(newBio);
+            }
+
+            read.skipCurrentElement();
+            //END BIO
+
+            read.readNextStartElement();
+            qDebug()<<read.name();
+            //HOBBY
+            if(read.name() == "Hobby"){
+
+                read.readNextStartElement();
+                qDebug()<<read.name();
+                while (read.name() == "Info"){
+
+                    const QString & newHbb = read.readElementText();
+                    qDebug()<<"Tipo di Hobby: "<<newHbb;
+
+                    getProfile().getPersonal().getHobby().add(newHbb);
+
+                    read.readNextStartElement();
+
+                }
+            }
+
+            read.skipCurrentElement();
+            //END HOBBY
+
+            read.readNextStartElement();
+            qDebug()<<read.name();
+            //EXPERIENCES
+            if (read.name() == "Experiences"){
+
+                read.readNextStartElement();
+                qDebug()<<read.name();
+                while (read.name() == "Event"){
+
+                    read.readNextStartElement();
+
+                    QDate begin(QDate::fromString(
+                                    read.readElementText(),
+                                    "dd-MM-yyyy"));
+                    qDebug()<<read.name()<<": "<<begin;
+
+
+                    read.readNextStartElement();
+
+                    QDate finish(QDate::fromString(
+                                     read.readElementText(),
+                                     "dd-MM-yyyy"));
+                    qDebug()<<read.name()<<": "<<finish;
+
+
+                    read.readNextStartElement();
+
+                    QString desc = read.readElementText();
+                    qDebug()<<read.name()<<": "<<desc;
+
+
+                    read.readNextStartElement();
+
+                    QString where = read.readElementText();
+                    qDebug()<<read.name()<<": "<<where;
+
+                    Event newEv (begin,
+                                 finish,
+                                 desc,
+                                 where);
+
+                    getProfile().getExperiences().add(newEv);
+
+                    read.skipCurrentElement();
+                    read.readNextStartElement();
+
+                }
+
+            }
+
+            read.skipCurrentElement();
+            //END EXPERIENCES
 
         }
     }
