@@ -7,7 +7,11 @@ Member::Member(const Credentials & crd,
                Database* ptr)
 
     : User(typ,ptr), logCrd(crd), info(prf), friends(frnd)
-{}
+{
+
+    if (friends.getDb() == nullptr)
+        friends.setDb(ptr);
+}
 
 Member::~Member()
 {}
@@ -172,7 +176,9 @@ void Member::saveBack(QXmlStreamWriter & write) const{
 
     for (itf = tfrn.cbegin(); itf != tfrn.cend(); ++itf){
 
-        //write.writeTextElement("FriendOf", (*(*itf)).cgetCredential().getCredential()); da rivedere
+        const SmartMember & friendof = getDb()->cselect((*itf));
+
+        write.writeTextElement("FriendOf",friendof->cgetCredential().getCredential());
     }
 
     write.writeEndElement();
