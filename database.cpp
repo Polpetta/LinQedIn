@@ -169,9 +169,10 @@ const SmartMember& Database::cselect (const QString & find)const{
     }
 
     return *it;
+
 }
 
-SmartMember& Database::select(const QString & find){
+SmartMember& Database::select (const QString & find){
 
     DataMember::iterator it;
 

@@ -53,8 +53,8 @@ public:
     virtual const SmartMember& cselect (const QString &)const;
     virtual SmartMember& select (const QString &);
 
-    virtual const SmartMember& cselect (const SmartMember &)const;
-    virtual SmartMember& select (const SmartMember &);
+    virtual const SmartMember& cselect (const SmartMember &)const; //dr
+    virtual SmartMember& select (const SmartMember &); //da rivedere
 
     //stati del db
     bool isOk() const;
