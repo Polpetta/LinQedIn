@@ -19,11 +19,13 @@
 class Admin : public User
 {
 public:
-    Admin(const QString & = QString());
+    Admin(const QString & = QString(),
+          Database* = nullptr);
 
     virtual ~Admin();
 
-    virtual DataMember & search(const QString &) const;
+    virtual DataMember & search(const Profile &) const;
+    virtual SmartMember & search(const QString &)const;
 
     //funzioni proprie dell'admin
     void addMember (Database*, const SmartMember &) const;
