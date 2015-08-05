@@ -6,12 +6,10 @@
 
 using std::vector;
 
-class Database;
-
 class Friendships : private vector<QString>
 {
 public:
-    Friendships(Database* = nullptr);
+    Friendships();
 
     class iterator : public vector<QString>::iterator{
 
@@ -40,15 +38,6 @@ public:
 
     void add (const QString &);
     void rm (const QString &);
-
-    bool isValid(const Friendships::const_iterator & )const;
-
-    Database* getDb()const;
-    void setDb(Database *);
-
-private:
-
-    Database* db;
 
 };
 
