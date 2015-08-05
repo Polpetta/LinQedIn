@@ -168,7 +168,12 @@ const SmartMember& Database::cselect (const QString & find)const{
             match = true;
     }
 
-    return *it;
+    if (match == true)
+        return *it;
+    else{
+        SmartMember* ptr = new SmartMember();
+        return *ptr;
+    }
 
 }
 
@@ -186,7 +191,12 @@ SmartMember& Database::select (const QString & find){
             match = true;
     }
 
-    return *it;
+    if (match == true)
+        return *it;
+    else{
+        SmartMember* ptr = new SmartMember();
+        return *ptr;
+    }
 }
 
 
