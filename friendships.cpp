@@ -1,7 +1,8 @@
 #include "friendships.h"
 #include "database.h" //evito loop compilazione
 
-Friendships::Friendships()
+Friendships::Friendships(Database* ptr)
+    : db(ptr)
 {}
 
 Friendships::iterator::iterator() {}
@@ -71,11 +72,21 @@ void Friendships::rm(const QString & target){
     }
 }
 
-bool Friendships::isValid(Database* db, const Friendships::const_iterator & it)const{
+bool Friendships::isValid(const Friendships::const_iterator & it)const{
 
     if (db != nullptr)
         return db->cselect(Friendships::operator [](it))->isValid();
 
     return false;
 
+}
+
+Database* Friendships::getDb()const{
+
+    return db;
+}
+
+void Friendships::setDb(Database* newDb){
+
+    db = newDb;
 }

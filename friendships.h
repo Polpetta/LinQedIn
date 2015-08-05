@@ -11,7 +11,7 @@ class Database;
 class Friendships : private vector<QString>
 {
 public:
-    Friendships();
+    Friendships(Database* = nullptr);
 
     class iterator : public vector<QString>::iterator{
 
@@ -41,7 +41,14 @@ public:
     void add (const QString &);
     void rm (const QString &);
 
-    bool isValid(Database*, const Friendships::const_iterator & )const;
+    bool isValid(const Friendships::const_iterator & )const;
+
+    Database* getDb()const;
+    void setDb(Database *);
+
+private:
+
+    Database* db;
 
 };
 
