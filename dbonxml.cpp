@@ -55,8 +55,7 @@ void DBonXml::save(){
         }
     }
 
-    write.writeEndElement();
-    //END USERS
+
 
     /*
      * Adesso verrà la chiamata a loadBack in caso qualche user
@@ -68,8 +67,9 @@ void DBonXml::save(){
 
     for (it = cgetDb().cbegin(); it != cgetDb().cend(); ++it){
 
-        if ( (*it)->isValid() == true ){
+        if ((*it)->isValid() == true ){
             //OPT
+
             write.writeStartElement("Opt");
 
             (*it)->saveBack( write );
@@ -81,6 +81,11 @@ void DBonXml::save(){
 
     write.writeEndElement();
     //END OPTIONAL
+
+
+    write.writeEndElement();
+    //END USERS
+
 
     QFile::close(); //chiudo il file
 }
@@ -192,61 +197,47 @@ void DBonXml::load(){
                  //END USER
             }
 
+            if (read.name() == "Back"){
 
+                qDebug()<<"Sono in back";
 
-            //devo verificare anche la seconda parte del file!
+                DataMember::iterator itm;
+
+                for (itm = getDb().begin();
+                     itm != getDb().end();
+                     ++itm) {
+
+                    qDebug()<<"Sono nel for";
+
+                    qDebug()<<"Utente: "<<(*itm)->cgetCredential().getCredential();
+
+                    read.readNextStartElement();
+                    qDebug()<<read.name();
+
+                    //OPT
+                    if (read.name() == "Opt"){
+
+                        qDebug()<<"---------------------";
+                        qDebug()<<"L'utente legge le opt";
+                        (*itm)->loadBack( read );
+                        qDebug()<<"L'utente ha letto le sue opt";
+                        qDebug()<<"---------------------";
+                    }
+
+                    read.skipCurrentElement();
+                    //END OPT
+                }
+
+                read.skipCurrentElement();
+                //END BACK
+
+                read.readNextStartElement();
+                qDebug()<<read.name();
+            }
+
         }
         read.skipCurrentElement();
         //END USERS
     }
-
-    /*read.readNext();
-
-    qDebug()<<"All'inizio ho letto "<<read.name();
-    qDebug()<<"read.isStarEelement() resistuirà: "<<read.isStartElement();
-
-    if ( read.isStartElement() ){ //se è l'inizio del documento
-
-        while ( read.atEnd() == false && isOk() == true){ //finchè ce n'è
-
-            read.readNext();
-
-            if (read.name() == "Users"){
-
-                SmartMember uUser;
-
-                read.readNext();
-
-                if (read.name() == "User"){
-
-                    QString type = read.attributes().value("Type").toString();
-
-                    if (type == "Basic"){
-
-                        uUser = new MemberBasic();
-                    }
-                    else if (type == "Business"){
-
-                        uUser = new MemberBusiness();
-                    }
-                    else if (type == "Executive"){
-
-                        uUser = new MemberExecutive();
-                    }
-                    else{
-                        //nel caso trovo una tipologia che non so cosa sia
-
-                        dbState error= bad_db;
-                        setState(error);
-                    }
-
-                    uUser->setAccountType( type ); //setto il suo tipo di user
-                    uUser->load( read ); //carica i suoi dati
-                    getDb().add( uUser ); //aggiungo il nuovo user
-                }
-            }
-        }
-    }*/
-
 
 }
