@@ -4,7 +4,7 @@
 
 
 #include <iostream>
-/*#include "profile.h"
+#include "profile.h"
 #include "personal.h"
 #include "experiences.h"
 
@@ -14,13 +14,13 @@
 #include "database.h"
 #include "smartmember.h"
 #include "credentials.h"
-#include "datamember.h"*/
+#include "datamember.h"
 
 int main(int argc, char *argv[])
 {
 
 
-    /*//QApplication a(argc, argv);
+    //QApplication a(argc, argv);
     //MainWindow w;
     //w.show();
 
@@ -78,14 +78,14 @@ int main(int argc, char *argv[])
 
     std::cout<<"Fatto profile"<<std::endl;
 
-    Experiences::const_iterator it;
+    /*Experiences::const_iterator it;
 
     for (it = profilo.cgetExperiences().cbegin(); it != profilo.cgetExperiences().cend(); ++it){
 
         //std::cout<<"Sto iterando"<<std::endl;
 
         std::cout << profilo.cgetExperiences()[it].getEvent().toStdString() <<std::endl;
-    }
+    }*/
 
     std::cout<<"Fine"<<std::endl;
 
@@ -112,9 +112,32 @@ int main(int argc, char *argv[])
                                    n2,
                                      pdb);
 
+    Admin test("Admin");
+
+    test.changeMemberType(u2, "Executive");
+
+    std::cout<<"Dopo promozione: "<<u2->cgetType().toStdString()<<std::endl;
+
+
+    u1->getFriendships().add("gino");
+    std::cout<<"Aggiunta amicizia"<<std::endl;
+
+    test.changeMemberType(u2, "Business");
+
+    SmartMember u3 = new MemberExecutive(nick2,
+                                         "Executive",
+                                         profilo1,
+                                         n2,
+                                         pdb);
+
     pdb->getDb().add(u1);
+    std::cout<<"Aggiunto uno"<<std::endl;
     pdb->getDb().add(u2);
+    std::cout<<"Aggiunto due"<<std::endl;
+    pdb->getDb().add(u3);
+    std::cout<<"Aggiunto tre (non dovrebbe essere aggiunto)"<<std::endl;
     pdb->save();
+
 
     std::cout<<"Scritto"<<std::endl;
 
@@ -132,6 +155,13 @@ int main(int argc, char *argv[])
 
         std::cout<<res1.getName().toStdString()<<std::endl;
         std::cout<<res1.getSurname().toStdString()<<std::endl;
-    } */
+    }
+
+    std::cout<<"Size prima: "<<pdb->cgetDb().size()<<std::endl;
+    pdb->getDb().clear();
+    std::cout<<"Size dopo: "<<pdb->cgetDb().size()<<std::endl;
+
+    pdb->load();
+    std::cout<<"Size ora: "<<pdb->cgetDb().size()<<std::endl;
 
 }
