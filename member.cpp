@@ -172,7 +172,12 @@ void Member::saveBack(QXmlStreamWriter & write) const{
 
     for (itf = tfrn.cbegin(); itf != tfrn.cend(); ++itf){
 
+        qDebug()<<"Nome amicizia: "<<(*itf);
+
         const SmartMember & friendof = getDb()->cselect((*itf));
+
+        qDebug()<<friendof.cgetPunt();
+        qDebug()<<"È un ptr null?"<< (friendof.cgetPunt() == nullptr);
 
         if (friendof.cgetPunt() != nullptr && friendof->isValid() == true)
             write.writeTextElement("FriendOf",friendof->cgetCredential().getCredential());
@@ -315,6 +320,32 @@ void Member::load(QXmlStreamReader & read){
 }
 
 void Member::loadBack(QXmlStreamReader & read){
-    //da fare
+
+    read.readNextStartElement();
+    qDebug()<<read.name();
+
+    if (read.name() == "Friendships"){
+
+        read.readNextStartElement();
+        qDebug()<<read.name();
+
+        while (read.name() == "FriendOf"){
+
+            const QString & friendNick = read.readElementText();
+            qDebug()<<"Tipo di amico: "<<friendNick;
+
+            getFriendships().add(friendNick);
+
+            read.readNextStartElement();
+
+        }
+
+        //read.skipCurrentElement();
+        //END FRIENDSHIPS
+
+    }
+
+
+    //
 
 }
