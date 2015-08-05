@@ -7,11 +7,7 @@ Member::Member(const Credentials & crd,
                Database* ptr)
 
     : User(typ,ptr), logCrd(crd), info(prf), friends(frnd)
-{
-
-    if (friends.getDb() == nullptr)
-        friends.setDb(ptr);
-}
+{}
 
 Member::~Member()
 {}
@@ -178,7 +174,9 @@ void Member::saveBack(QXmlStreamWriter & write) const{
 
         const SmartMember & friendof = getDb()->cselect((*itf));
 
-        write.writeTextElement("FriendOf",friendof->cgetCredential().getCredential());
+        if (friendof.cgetPunt() != nullptr && friendof->isValid() == true)
+            write.writeTextElement("FriendOf",friendof->cgetCredential().getCredential());
+        //Questo mi serve a controllare se c'è l'amico nel db e se è valido
     }
 
     write.writeEndElement();
