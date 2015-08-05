@@ -5,6 +5,9 @@
 #include <QRegularExpression>
 #include <QRegularExpressionMatch>
 
+//da rimuovere poi
+#include <QDebug>
+
 #include "datamember.h"
 #include "smartmember.h"
 #include "profile.h"
@@ -51,7 +54,7 @@ public:
      * livello?
      */
     virtual const SmartMember& cselect (const QString &)const;
-    virtual SmartMember& select (const QString &);
+    virtual SmartMember& select (const QString &); //è giusto che non sia cost?
 
     virtual const SmartMember& cselect (const SmartMember &)const; //dr
     virtual SmartMember& select (const SmartMember &); //da rivedere

@@ -156,21 +156,30 @@ DataMember& Database::select(const Profile & find)const{
 
 const SmartMember& Database::cselect (const QString & find)const{
 
-    DataMember::const_iterator  it;
+    DataMember::const_iterator  it = db.cbegin();
 
     bool match = false;
 
-    for (it = db.cbegin(); it != db.cend() && !match; ++it){
+    while (it != db.cend() && match == false){
 
+        qDebug()<<&(*it);
         const QString & check = (*it)->cgetCredential().getCredential();
 
-        if (check == find)
+        if (check == find){
+            qDebug()<<"Ho avuto match";
+            qDebug()<<check<<"=="<<find;
             match = true;
+        }else
+            ++it;
     }
 
-    if (match == true)
+    qDebug()<<&(*it);
+
+    if (match == true){
+        qDebug()<<"Ritorno true";
         return *it;
-    else{
+    }else{
+        qDebug()<<"Ritorno false";
         SmartMember* ptr = new SmartMember();
         return *ptr;
     }
@@ -179,21 +188,30 @@ const SmartMember& Database::cselect (const QString & find)const{
 
 SmartMember& Database::select (const QString & find){
 
-    DataMember::iterator it;
+    DataMember::iterator it = db.begin();
 
     bool match = false;
 
-    for (it = db.begin(); it != db.end() && !match; ++it){
+    while (it != db.end() && match == false){
 
+        qDebug()<<&(*it);
         const QString & check = (*it)->cgetCredential().getCredential();
 
-        if (check == find)
+        if (check == find){
+            qDebug()<<"Ho avuto match";
+            qDebug()<<check<<"=="<<find;
             match = true;
+        }else
+            ++it;
     }
 
-    if (match == true)
+    qDebug()<<&(*it);
+
+    if (match == true){
+        qDebug()<<"Ritorno true";
         return *it;
-    else{
+    }else{
+        qDebug()<<"Ritorno false";
         SmartMember* ptr = new SmartMember();
         return *ptr;
     }
