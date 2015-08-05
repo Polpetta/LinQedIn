@@ -86,3 +86,13 @@ void DataMember::rm (const SmartMember & target){
         }
     }
 }
+
+void DataMember::clear(){
+
+    vector<SmartMember>::clear();
+}
+
+int DataMember::size()const{
+
+   return vector<SmartMember>::size();
+}

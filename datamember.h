@@ -44,6 +44,10 @@ public:
     void add (const SmartMember &);
     void rm (const SmartMember &);
 
+    void clear();
+
+    int size()const;
+
 
 
 };
