@@ -307,7 +307,7 @@ void Member::load(QXmlStreamReader & read){
             }
 
             read.skipCurrentElement();
-            //END EXPERIENCES
+            //END EXPERIENCES & PROFILE
 
         }
     }
