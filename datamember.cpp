@@ -57,7 +57,7 @@ void DataMember::add(const SmartMember & newSM){
 
     bool match = false;
 
-    for (it = vector<SmartMember>::begin(); it != vector<SmartMember>::end() && match != false; ++it){
+    for (it = vector<SmartMember>::begin(); it != vector<SmartMember>::end() && match == false; ++it){
 
         if (newNick == (*it)->cgetCredential().getCredential()){
 
@@ -66,6 +66,7 @@ void DataMember::add(const SmartMember & newSM){
     }
 
     if (match == false){
+        qDebug()<<"Ho aggiunto "<<newNick;
 
         vector<SmartMember>::push_back(newSM);
     }
