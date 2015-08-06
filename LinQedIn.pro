@@ -13,7 +13,6 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
     event.cpp \
     personal.cpp \
     hobby.cpp \
@@ -37,9 +36,12 @@ SOURCES += main.cpp\
     data.cpp \
     datamember.cpp \
     smartptr.cpp \
-    smartadmin.cpp
+    smartadmin.cpp \
+    mainwindowview.cpp \
+    mainwindowmodel.cpp \
+    mainwindowcontroller.cpp
 
-HEADERS  += mainwindow.h \
+HEADERS  += \
     event.h \
     personal.h \
     hobby.h \
@@ -63,6 +65,9 @@ HEADERS  += mainwindow.h \
     data.h \
     datamember.h \
     smartptr.h \
-    smartadmin.h
+    smartadmin.h \
+    mainwindowview.h \
+    mainwindowmodel.h \
+    mainwindowcontroller.h
 
 QMAKE_CXXFLAGS += -std=c++0x
