@@ -8,6 +8,10 @@ class AdminWindowModel
 public:
     AdminWindowModel(Database * = new DBonXml ( "database" ));
 
+    ~AdminWindowModel();
+
+    Database* getDb()const;
+
 private:
 
     Database* db;
