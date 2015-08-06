@@ -13,6 +13,10 @@ class MainWindowView : public QWidget
 {
     Q_OBJECT
 
+signals:
+
+    void adminViewCall();
+
 public:
     MainWindowView( QWidget* = nullptr );
 

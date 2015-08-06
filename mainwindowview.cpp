@@ -23,6 +23,11 @@ MainWindowView::MainWindowView(QWidget* parent)
     setLayout( layoutFinal );
     setFixedSize( sizeHint() );
 
+    connect (admin,
+             SIGNAL ( clicked () ),
+             this,
+             SIGNAL ( adminViewCall() ));
+
 }
 
 
