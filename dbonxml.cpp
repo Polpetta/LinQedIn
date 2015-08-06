@@ -240,4 +240,6 @@ void DBonXml::load(){
         //END USERS
     }
 
+    QFile::close();
+
 }
