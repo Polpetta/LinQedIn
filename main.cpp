@@ -1,6 +1,6 @@
 #include <QApplication>
 
-#include "mainwindowview.h"
+#include "mainwindowcontroller.h"
 
 
 /*#include <QDate>
@@ -22,8 +22,12 @@ int main(int argc, char *argv[])
 
 
     QApplication a(argc, argv);
-    MainWindowView w;
-    w.show();
+    //MainWindowView w;
+    //w.show();
+
+    MainWindowController* w = new MainWindowController;
+
+    w->showUI();
 
     return a.exec();
 
@@ -79,7 +83,7 @@ int main(int argc, char *argv[])
 
     std::cout<<"Fatto profile"<<std::endl;
 
-    /*Experiences::const_iterator it;
+    Experiences::const_iterator it;
 
     for (it = profilo.cgetExperiences().cbegin(); it != profilo.cgetExperiences().cend(); ++it){
 
