@@ -39,7 +39,10 @@ SOURCES += main.cpp\
     smartadmin.cpp \
     mainwindowview.cpp \
     mainwindowmodel.cpp \
-    mainwindowcontroller.cpp
+    mainwindowcontroller.cpp \
+    adminwindowview.cpp \
+    adminwindowmodel.cpp \
+    adminwindowcontroller.cpp
 
 HEADERS  += \
     event.h \
@@ -68,6 +71,9 @@ HEADERS  += \
     smartadmin.h \
     mainwindowview.h \
     mainwindowmodel.h \
-    mainwindowcontroller.h
+    mainwindowcontroller.h \
+    adminwindowview.h \
+    adminwindowmodel.h \
+    adminwindowcontroller.h
 
 QMAKE_CXXFLAGS += -std=c++0x
