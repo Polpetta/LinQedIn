@@ -1,8 +1,9 @@
-#include "mainwindow.h"
-//#include <QApplication>
-#include <QDate>
+#include <QApplication>
+
+#include "mainwindowview.h"
 
 
+/*#include <QDate>
 #include <iostream>
 #include "profile.h"
 #include "personal.h"
@@ -14,19 +15,19 @@
 #include "database.h"
 #include "smartmember.h"
 #include "credentials.h"
-#include "datamember.h"
+#include "datamember.h"*/
 
 int main(int argc, char *argv[])
 {
 
 
-    //QApplication a(argc, argv);
-    //MainWindow w;
-    //w.show();
+    QApplication a(argc, argv);
+    MainWindowView w;
+    w.show();
 
-    //return a.exec();
+    return a.exec();
 
-    QDate nascita1(1994,8,27);
+    /*QDate nascita1(1994,8,27);
     QDate nascita2(2001,5,15);
 
     Bio b1("Super",
@@ -85,7 +86,7 @@ int main(int argc, char *argv[])
         //std::cout<<"Sto iterando"<<std::endl;
 
         std::cout << profilo.cgetExperiences()[it].getEvent().toStdString() <<std::endl;
-    }*/
+    }
 
     std::cout<<"Fine"<<std::endl;
 
@@ -162,6 +163,6 @@ int main(int argc, char *argv[])
     std::cout<<"Size dopo: "<<pdb->cgetDb().size()<<std::endl;
 
     pdb->load();
-    std::cout<<"Size ora: "<<pdb->cgetDb().size()<<std::endl;
+    std::cout<<"Size ora: "<<pdb->cgetDb().size()<<std::endl;*/
 
 }
