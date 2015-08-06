@@ -6,7 +6,7 @@
 #include "mainwindowmodel.h"
 #include "mainwindowview.h"
 
-class MainWindowController : QObject
+class MainWindowController : public QObject
 {
     Q_OBJECT
 
@@ -15,9 +15,15 @@ private:
     MainWindowModel* model;
     MainWindowView* view;
 
+public slots:
+
+    void showAdmin();
+
 public:
     MainWindowController(MainWindowModel* = new MainWindowModel,
                          MainWindowView* = new MainWindowView);
+
+    void showUI();
 
     ~MainWindowController();
 
