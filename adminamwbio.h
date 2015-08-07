@@ -15,7 +15,7 @@ public:
 
     ~AdminAMWBio();
 
-    QString getField(const QString &)const;
+    const QString & cgetField(const QString &)const;
 };
 
 #endif // ADMINAMWBIO_H

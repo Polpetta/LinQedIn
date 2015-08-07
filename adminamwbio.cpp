@@ -47,7 +47,7 @@ AdminAMWBio::AdminAMWBio(QWidget* ptr)
     registerField("nick*", nickEdit);
     registerField("name*", nameEdit);
     registerField("surname*", surnameEdit);
-    registerField("birthDay", birthDayEdit);
+    registerField("birthDay*", birthDayEdit);
     registerField("phone", phoneEdit);
     registerField("eMail", eMailEdit);
 
@@ -60,7 +60,9 @@ AdminAMWBio::~AdminAMWBio(){
 
 }
 
-QString AdminAMWBio::getField(const QString & field)const{
+const QString & AdminAMWBio::cgetField(const QString & field)const{
 
-    return QWizardPage::field(field).toString();
+    QString * res = new QString (QWizardPage::field(field).toString());
+
+    return *res;
 }
