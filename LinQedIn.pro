@@ -42,7 +42,15 @@ SOURCES += main.cpp\
     mainwindowcontroller.cpp \
     adminwindowview.cpp \
     adminwindowmodel.cpp \
-    adminwindowcontroller.cpp
+    adminwindowcontroller.cpp \
+    adminaddmemberwv.cpp \
+    adminaddmemberwm.cpp \
+    adminaddmemberwc.cpp \
+    adminamwintro.cpp \
+    adminamwbio.cpp \
+    adminamwhobby.cpp \
+    adminamwinterests.cpp \
+    adminamwend.cpp
 
 HEADERS  += \
     event.h \
@@ -74,6 +82,14 @@ HEADERS  += \
     mainwindowcontroller.h \
     adminwindowview.h \
     adminwindowmodel.h \
-    adminwindowcontroller.h
+    adminwindowcontroller.h \
+    adminaddmemberwv.h \
+    adminaddmemberwm.h \
+    adminaddmemberwc.h \
+    adminamwintro.h \
+    adminamwbio.h \
+    adminamwhobby.h \
+    adminamwinterests.h \
+    adminamwend.h
 
 QMAKE_CXXFLAGS += -std=c++0x
