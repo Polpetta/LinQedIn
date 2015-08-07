@@ -28,3 +28,8 @@ AdminAMWHobby::~AdminAMWHobby(){
 
 
 }
+
+const QVector<QString> & AdminAMWHobby::cgetHobby()const{
+
+    return hobby;
+}
