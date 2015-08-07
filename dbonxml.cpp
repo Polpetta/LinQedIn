@@ -20,6 +20,8 @@ DBonXml::~DBonXml()
 
 void DBonXml::save(){
 
+    qDebug()<<"DBonXml: **** CHIAMATO SALAVATAGGIO DB";
+
     if (QFile::open(QFile::WriteOnly) != true){
         dbState dst = read_only;
         setState(dst);
@@ -88,6 +90,8 @@ void DBonXml::save(){
 
 
     QFile::close(); //chiudo il file
+
+    qDebug()<<"DBonXml: **** SALVATAGGIO DB CONCLUSO";
 }
 
 
