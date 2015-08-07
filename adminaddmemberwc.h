@@ -2,6 +2,10 @@
 #define ADMINADDMEMBERWC_H
 
 #include <QObject>
+#include <QRegularExpression>
+#include <QRegularExpressionMatch>
+
+#include <QDebug>
 
 #include "adminaddmemberwm.h"
 #include "adminaddmemberwv.h"
@@ -9,6 +13,20 @@
 class AdminAddMemberWC : public QObject
 {
     Q_OBJECT
+
+public slots:
+
+    void addMember(const QString & = QString(),
+                   const QString & = QString(),
+                   const QString & = QString(),
+                   const QString & = QString(),
+                   const QString & = QString(),
+                   const QString & = QString(),
+                   const QString & = QString());
+
+signals:
+
+    void resumeAdmin(const SmartMember & = nullptr);
 
 public:
     AdminAddMemberWC(AdminAddMemberWM* = new AdminAddMemberWM,
