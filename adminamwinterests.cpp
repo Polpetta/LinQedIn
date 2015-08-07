@@ -29,3 +29,8 @@ AdminAMWInterests::~AdminAMWInterests(){
 
 
 }
+
+const QVector<QString> & AdminAMWInterests::cgetInterests()const{
+
+    return interests;
+}
