@@ -9,6 +9,11 @@ class AdminAddMemberWM
 public:
     AdminAddMemberWM( const SmartMember & = SmartMember() );
 
+    SmartMember & getSmartMember();
+    const SmartMember & cgetSmartMember()const;
+
+    void setSmartMember (const SmartMember &);
+
 private:
 
     SmartMember newMember;
