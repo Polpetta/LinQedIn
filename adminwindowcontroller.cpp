@@ -4,7 +4,7 @@ void AdminWindowController::execAddMember(){
 
     AdminAddMemberWC* newMemberCtl = model->getAddMemberCtl();
 
-    //view->hide();
+    view->hide();
 
     /*
      * Posso riesumare la view quando nel wizard premo sul bottone
@@ -75,6 +75,11 @@ AdminWindowController::AdminWindowController(AdminWindowModel* nModel,
              this,
              SLOT ( execSaveDb()));
 
+    connect (model->getAddMemberCtl(),
+             SIGNAL ( resumeAdmin(const SmartMember&) ),
+             this,
+             SLOT (addMember(const SmartMember &)));
+
     //creare le connect adatte
 }
 
@@ -87,7 +92,15 @@ AdminWindowController::~AdminWindowController()
 }
 
 
-void AdminWindowController::showUI(){
+void AdminWindowController::showUI()const {
 
     view->show();
+}
+
+void AdminWindowController::addMember(const SmartMember & newMember)const{
+
+    if (newMember.cgetPunt() != nullptr)
+        model->getDb()->getDb().add(newMember);
+
+    showUI();
 }

@@ -7,6 +7,7 @@
 #include "admin.h"
 #include "smartadmin.h"
 #include "memberexecutive.h"
+#include "datamember.h"
 
 #include "adminwindowmodel.h"
 #include "adminwindowview.h"
@@ -23,6 +24,9 @@ public slots:
     void execRmMember();
     void execChangeMember();
     void execSaveDb();
+    void showUI() const;
+    void addMember(const SmartMember &)const;
+
 
 
 public:
@@ -31,16 +35,12 @@ public:
 
     virtual ~AdminWindowController();
 
-    void showUI();
-
 private:
 
 
     AdminWindowModel* model;
     AdminWindowView* view;
 
-
-    //SmartAdmin admin;
 };
 
 #endif // ADMINWINDOWCONTROLLER_H
