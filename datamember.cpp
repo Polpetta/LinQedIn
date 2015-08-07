@@ -51,6 +51,8 @@ const SmartMember & DataMember::operator[] (const DataMember::const_iterator & i
 
 void DataMember::add(const SmartMember & newSM){
 
+    qDebug()<<"DataMember: **** AGGIUNTA NUOVO UTENTE";
+
     const QString & newNick = newSM->cgetCredential().getCredential();
 
     vector<SmartMember>::const_iterator it;
@@ -60,6 +62,8 @@ void DataMember::add(const SmartMember & newSM){
     for (it = vector<SmartMember>::begin(); it != vector<SmartMember>::end() && match == false; ++it){
 
         if (newNick == (*it)->cgetCredential().getCredential()){
+
+            qDebug() <<"Match: "<<newNick<<" == "<<(*it)->cgetCredential().getCredential();
 
             match = true;
         }
