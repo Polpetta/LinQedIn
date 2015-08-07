@@ -2,7 +2,16 @@
 
 void AdminWindowController::execAddMember(){
 
+    AdminAddMemberWC* newMemberCtl = model->getAddMemberCtl();
 
+    //view->hide();
+
+    /*
+     * Posso riesumare la view quando nel wizard premo sul bottone
+     * "fine" o sul bottone "annulla"
+     */
+
+    newMemberCtl->showUI();
 }
 
 void AdminWindowController::execSearchMember(){
@@ -37,9 +46,8 @@ void AdminWindowController::execSaveDb(){
 }
 
 AdminWindowController::AdminWindowController(AdminWindowModel* nModel,
-                                             AdminWindowView* nView,
-                                             SmartAdmin newAdm)
-    :  model(nModel), view(nView), admin (newAdm)
+                                             AdminWindowView* nView)
+    :  model(nModel), view(nView)
 {
 
     connect (view,

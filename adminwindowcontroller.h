@@ -27,8 +27,7 @@ public slots:
 
 public:
     AdminWindowController(AdminWindowModel* = new AdminWindowModel,
-                          AdminWindowView* = new AdminWindowView,
-                          SmartAdmin = SmartAdmin());
+                          AdminWindowView* = new AdminWindowView);
 
     virtual ~AdminWindowController();
 
@@ -41,7 +40,7 @@ private:
     AdminWindowView* view;
 
 
-    SmartAdmin admin;
+    //SmartAdmin admin;
 };
 
 #endif // ADMINWINDOWCONTROLLER_H
