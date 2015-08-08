@@ -6,11 +6,13 @@ void AdminAddMemberWC::addMember(const QString & type,
                                  const QString & surname,
                                  const QString & birthDay,
                                  const QString & phone,
-                                 const QString & eMail){
+                                 const QString & eMail,
+                                 const QVector<QString> & nHobby){
 
     //bisogna fare il check dei dati in arrivo prima di ciò
     SmartMember newMember;
 
+    Hobby hobby = nHobby;
     QDate birth (QDate::fromString(birthDay, "dd-MM-yyyy"));
 
     QRegularExpression nameRe;
@@ -57,7 +59,8 @@ void AdminAddMemberWC::addMember(const QString & type,
                                   surname,
                                   birth,
                                   phone,
-                                  eMail)
+                                  eMail),
+                              hobby
                               //mancano gli hobby
                               //mancano gli interests
                               );
@@ -111,7 +114,8 @@ AdminAddMemberWC::AdminAddMemberWC(AdminAddMemberWM* nModel,
                             const QString &,
                             const QString &,
                             const QString &,
-                            const QString &)),
+                            const QString &,
+                            const QVector<QString> &)),
              this,
              SLOT (addMember(const QString &,
                              const QString &,
@@ -119,7 +123,8 @@ AdminAddMemberWC::AdminAddMemberWC(AdminAddMemberWM* nModel,
                              const QString &,
                              const QString &,
                              const QString &,
-                             const QString &)));
+                             const QString &,
+                             const QVector<QString> &)));
 
 
     //verranno create le varie connessioni

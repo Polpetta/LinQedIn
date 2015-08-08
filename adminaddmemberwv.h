@@ -9,6 +9,8 @@
 #include <QVBoxLayout>
 #include <QGridLayout>
 #include <QPushButton>
+//#include <QVector>
+
 #include <QDebug>
 
 #include "adminamwintro.h"
@@ -29,7 +31,8 @@ signals:
                 const QString & = QString(),
                 const QString & = QString(),
                 const QString & = QString(),
-                const QString & = QString());
+                const QString & = QString(),
+                const QVector<QString> & = QVector<QString>());
 
 private slots:
 

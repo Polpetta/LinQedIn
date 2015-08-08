@@ -22,7 +22,8 @@ public slots:
                    const QString & = QString(),
                    const QString & = QString(),
                    const QString & = QString(),
-                   const QString & = QString());
+                   const QString & = QString(),
+                   const QVector<QString> & = QVector<QString>());
 
 signals:
 

@@ -22,13 +22,17 @@ void AdminAddMemberWV::processItems(){
     qDebug()<<"phone: "<<phone;
     qDebug()<<"eMail: "<<eMail;
 
+    const QVector<QString> & hobbyList = hobby->cgetHobby();
+    qDebug()<<"Ho ottenuto anche gli Hobby";
+
     emit endAdd(type,
                 nick,
                 name,
                 surname,
                 birthDay,
                 phone,
-                eMail);
+                eMail,
+                hobbyList);
 }
 
 AdminAddMemberWV::AdminAddMemberWV(QWidget * parent)
