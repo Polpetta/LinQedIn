@@ -2,6 +2,7 @@
 #define HOBBY_H
 
 #include <QString>
+#include <QVector>
 #include <QList>
 
 
@@ -9,6 +10,7 @@ class Hobby : private QList <QString>
 {
 public:
     Hobby();
+    Hobby(const QVector<QString> &);
 
     void add(const QString &);
     void rm(const QString &);

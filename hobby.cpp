@@ -3,6 +3,11 @@
 Hobby::Hobby()
 {}
 
+Hobby::Hobby(const QVector<QString> & nHobby)
+    : QList<QString>(QList<QString>::fromVector(nHobby))
+{
+}
+
 void Hobby::add(const QString & newHobby){
 
     QList<QString>::push_back(newHobby);
