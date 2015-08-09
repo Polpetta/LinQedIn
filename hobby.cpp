@@ -5,8 +5,7 @@ Hobby::Hobby()
 
 Hobby::Hobby(const QVector<QString> & nHobby)
     : QList<QString>(QList<QString>::fromVector(nHobby))
-{
-}
+{}
 
 void Hobby::add(const QString & newHobby){
 
@@ -16,6 +15,30 @@ void Hobby::add(const QString & newHobby){
 void Hobby::rm(const QString & target){
 
     QList<QString>::removeAll(target);
+}
+
+void Hobby::purgeEquals(){
+
+    QList<QString>::const_iterator it1;
+    QList<QString>::iterator it2;
+
+    for (it1 = QList<QString>::cbegin();
+         it1 != QList<QString>::cend();
+         ++it1){
+
+        const QString & target = *it1;
+
+        for (it2 = QList<QString>::begin();
+             it2 != QList<QString>::end();
+             ++it2){
+
+            if (it1 != it2 &&
+                    QString::compare(target, *it2, Qt::CaseInsensitive) == 0){
+
+                QList<QString>::erase(it2);
+            }
+        }
+    }
 }
 
 Hobby::iterator::iterator() {}

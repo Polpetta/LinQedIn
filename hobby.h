@@ -14,6 +14,7 @@ public:
 
     void add(const QString &);
     void rm(const QString &);
+    void purgeEquals();
 
     class iterator : public QList <QString>::iterator{
 
