@@ -3,6 +3,10 @@
 Interests::Interests()
 {}
 
+Interests::Interests (const QVector<QString> & nInterests)
+    : QList<QString> (QList<QString>::fromVector(nInterests))
+{}
+
 void Interests::add(const QString & newInterests){
 
     QList<QString>::push_back(newInterests);
@@ -11,6 +15,30 @@ void Interests::add(const QString & newInterests){
 void Interests::rm(const QString & target){
 
     QList <QString>::removeAll(target);
+}
+
+void Interests::purgeEquals(){
+
+    QList<QString>::const_iterator it1;
+    QList<QString>::iterator it2;
+
+    for (it1 = QList<QString>::cbegin();
+         it1 != QList<QString>::cend();
+         ++it1){
+
+        const QString & target = *it1;
+
+        for (it2 = QList<QString>::begin();
+             it2 != QList<QString>::end();
+             ++it2){
+
+            if (it1 != it2 &&
+                    QString::compare(target, *it2, Qt::CaseInsensitive) == 0){
+
+                QList<QString>::erase(it2);
+            }
+        }
+    }
 }
 
 Interests::iterator::iterator() {}

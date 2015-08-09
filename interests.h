@@ -2,6 +2,7 @@
 #define INTERESTS_H
 
 #include <QString>
+#include <QVector>
 #include <QList>
 
 
@@ -9,9 +10,11 @@ class Interests : private QList <QString>
 {
 public:
     Interests();
+    Interests(const QVector<QString> &);
 
     void add(const QString &);
     void rm(const QString &);
+    void purgeEquals();
 
     class iterator : public QList <QString>::iterator{
 
