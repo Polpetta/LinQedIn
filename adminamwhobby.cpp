@@ -24,8 +24,6 @@ AdminAMWHobby::AdminAMWHobby(QWidget * ptr)
 
     setLayout(layout);
 
-    //const QString & Hobby = hobbyEdit->text();
-
     connect (insert,
              SIGNAL (clicked()),
              this,
@@ -44,12 +42,16 @@ AdminAMWHobby::~AdminAMWHobby(){
     delete hobbyEdit;
 }
 
-const QVector<QString> & AdminAMWHobby::cgetHobby(){
+const QVector<QString> & AdminAMWHobby::cgetHobby()const{
 
-    QVector<QString>* aux = new QVector<QString>( hobby );
-    hobby.clear();
+    const QVector<QString>* aux = new QVector<QString>(hobby);
 
     return *aux;
+}
+
+void AdminAMWHobby::clear(){
+
+    hobby.clear();
 }
 
 void AdminAMWHobby::emitInsert(){

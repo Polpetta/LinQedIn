@@ -9,7 +9,8 @@ AdminAMWInterests::AdminAMWInterests(QWidget* ptr)
     QLabel* note = new QLabel( tr( "Nota: questo passaggio è facoltativo") );
 
     QLabel* interests = new QLabel ( tr("Interesse") );
-    QLineEdit* interestsEdit = new QLineEdit;
+    interestsEdit = new QLineEdit;
+    interestsEdit->setClearButtonEnabled( true );
 
     QPushButton* insert = new QPushButton ( tr ("Aggiungi") );
 
@@ -23,14 +24,46 @@ AdminAMWInterests::AdminAMWInterests(QWidget* ptr)
 
 
     setLayout(layout);
+
+    connect (insert,
+             SIGNAL (clicked()),
+             this,
+             SLOT (emitInsert()));
+
+    connect (this,
+             SIGNAL (newInsert(const QString &)),
+             this,
+             SLOT (addInterests (const QString &)));
 }
 
 AdminAMWInterests::~AdminAMWInterests(){
 
-
+    delete interestsEdit;
 }
 
 const QVector<QString> & AdminAMWInterests::cgetInterests()const{
 
-    return interests;
+    const QVector<QString>* aux = new QVector<QString>(interests);
+
+    return *aux;
+}
+
+void AdminAMWInterests::clear(){
+
+    interests.clear();
+}
+
+void AdminAMWInterests::emitInsert(){
+
+    emit newInsert(interestsEdit->text());
+}
+
+void AdminAMWInterests::addInterests(const QString & newInterest){
+
+    qDebug()<<"Arrivo di un nuovo Interest, size prima: "<<interests.size();
+
+    interests.push_back(newInterest);
+    interestsEdit->clear();
+
+    qDebug()<<"Size ora: "<<interests.size();
 }

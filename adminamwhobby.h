@@ -7,7 +7,6 @@
 #include <QPushButton>
 #include <QGridLayout>
 #include <QVector>
-#include <QWidget>
 
 #include <QDebug>
 
@@ -30,7 +29,8 @@ public:
 
     ~AdminAMWHobby();
 
-    const QVector<QString> & cgetHobby();
+    const QVector<QString> & cgetHobby()const;
+    void clear();
 
 private:
 
