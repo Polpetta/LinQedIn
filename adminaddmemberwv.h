@@ -32,6 +32,7 @@ signals:
                 const QString & = QString(),
                 const QString & = QString(),
                 const QString & = QString(),
+                const QVector<QString> & = QVector<QString>(),
                 const QVector<QString> & = QVector<QString>());
 
 private slots:

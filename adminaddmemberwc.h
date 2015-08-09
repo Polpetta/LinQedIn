@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QRegularExpression>
 #include <QRegularExpressionMatch>
+#include <QMessageBox>
 
 #include <QDebug>
 
@@ -23,6 +24,7 @@ public slots:
                    const QString & = QString(),
                    const QString & = QString(),
                    const QString & = QString(),
+                   const QVector<QString> & = QVector<QString>(),
                    const QVector<QString> & = QVector<QString>());
 
 signals:

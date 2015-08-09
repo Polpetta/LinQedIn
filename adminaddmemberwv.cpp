@@ -23,7 +23,15 @@ void AdminAddMemberWV::processItems(){
     qDebug()<<"eMail: "<<eMail;
 
     const QVector<QString> & hobbyList = hobby->cgetHobby();
-    qDebug()<<"Ho ottenuto anche gli Hobby";
+    hobby->clear();
+
+    qDebug()<<"HobbyList: "<<hobbyList.size();
+
+    const QVector<QString> & interestsList = interests->cgetInterests();
+    interests->clear();
+
+    qDebug()<<"interestsList: "<<interestsList.size();
+
 
     emit endAdd(type,
                 nick,
@@ -32,7 +40,8 @@ void AdminAddMemberWV::processItems(){
                 birthDay,
                 phone,
                 eMail,
-                hobbyList);
+                hobbyList,
+                interestsList);
 }
 
 AdminAddMemberWV::AdminAddMemberWV(QWidget * parent)
