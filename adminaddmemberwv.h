@@ -20,6 +20,7 @@
 #include "adminamwend.h"
 #include "adminamwexperiences.h"
 
+
 class AdminAddMemberWV : public QWizard
 {
     Q_OBJECT
@@ -34,7 +35,8 @@ signals:
                 const QString & = QString(),
                 const QString & = QString(),
                 const QVector<QString> & = QVector<QString>(),
-                const QVector<QString> & = QVector<QString>());
+                const QVector<QString> & = QVector<QString>(),
+                const QVector<Event> & = QVector<Event>());
 
 private slots:
 

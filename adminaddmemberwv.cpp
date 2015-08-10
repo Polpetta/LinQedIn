@@ -46,7 +46,8 @@ void AdminAddMemberWV::processItems(){
                 phone,
                 eMail,
                 hobbyList,
-                interestsList);
+                interestsList,
+                experiencesList);
 }
 
 AdminAddMemberWV::AdminAddMemberWV(QWidget * parent)

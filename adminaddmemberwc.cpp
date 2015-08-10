@@ -8,13 +8,17 @@ void AdminAddMemberWC::addMember(const QString & type,
                                  const QString & phone,
                                  const QString & eMail,
                                  const QVector<QString> & nHobby,
-                                 const QVector<QString> & nInterests){
+                                 const QVector<QString> & nInterests,
+                                 const QVector<Event> & nExperiences){
 
     //bisogna fare il check dei dati in arrivo prima di ciò
     SmartMember newMember;
 
     Hobby hobby = nHobby;
     Interests interests = nInterests;
+    Experiences experiences = nExperiences;
+
+    qDebug()<<"Size Experience: "<<experiences.size();
 
     QDate birth (QDate::fromString(birthDay, "dd-MM-yyyy"));
 
@@ -70,22 +74,25 @@ void AdminAddMemberWC::addMember(const QString & type,
                               //mancano gli interests
                               );
 
+        Profile newProfile (newPersonal,
+                            experiences);
+
         if (type == "Basic")
             newMember = new MemberBasic (Credentials(nick),
                                         type,
-                                         newPersonal
+                                         newProfile
                                          //mancano le Esp
                                          );
         else if (type == "Business")
             newMember = new MemberBusiness (Credentials(nick),
                                             type,
-                                            newPersonal
+                                            newProfile
                                             //mancano le Esp
                                             );
         else if (type == "Executive"){
             newMember = new MemberExecutive (Credentials(nick),
-                                              type,
-                                              newPersonal
+                                             type,
+                                             newProfile
                                               //mancano le Esp
                                               );
         }
@@ -109,10 +116,6 @@ void AdminAddMemberWC::addMember(const QString & type,
 
         info.exec();
     }
-    /*
-     * Importante: generare QMessageBox in base all'errore per informare
-     * l'utente
-     */
 
    qDebug()<<"Signal di aggiunta utente arrivato";
    qDebug()<<"Ottenuto da signal:";
@@ -141,7 +144,8 @@ AdminAddMemberWC::AdminAddMemberWC(AdminAddMemberWM* nModel,
                             const QString &,
                             const QString &,
                             const QVector<QString> &,
-                            const QVector<QString> &)),
+                            const QVector<QString> &,
+                            const QVector<Event> &)),
              this,
              SLOT (addMember(const QString &,
                              const QString &,
@@ -151,7 +155,8 @@ AdminAddMemberWC::AdminAddMemberWC(AdminAddMemberWM* nModel,
                              const QString &,
                              const QString &,
                              const QVector<QString> &,
-                             const QVector<QString> &)));
+                             const QVector<QString> &,
+                             const QVector<Event> &)));
 
 
     //verranno create le varie connessioni
