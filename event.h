@@ -7,11 +7,18 @@
 class Event
 {
 public:
+
     Event(const QDate & = QDate(),
           const QDate & = QDate(),
           const QString & = QString(),
           const QString & = QString()
-            );
+          );
+
+    Event(const QString &,
+          const QString &,
+          const QString &,
+          const QString &,
+          const QString &);
 
     int timeEvent() const;
     QString getEvent() const;
@@ -29,6 +36,8 @@ public:
     const QDate & cgetFinish()const;
     const QString & cgetDesc()const;
     const QString & cgetWhere()const;
+
+    bool isValid()const;
 
 private:
     QDate begin;

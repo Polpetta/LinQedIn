@@ -1,5 +1,6 @@
 #include "event.h"
 
+
 Event::Event(const QDate &nbg,
              const QDate &nfn,
              const QString &ndsc,
@@ -8,6 +9,18 @@ Event::Event(const QDate &nbg,
       finish(nfn),
       desc(ndsc),
       where(nwhr)
+{}
+
+Event::Event(const QString & nb,
+             const QString & nf,
+             const QString & ndsc,
+             const QString & nwhr,
+             const QString & parser)
+    : begin (QDate::fromString(nb, parser)),
+      finish(QDate::fromString(nf, parser)),
+      desc (ndsc),
+      where(nwhr)
+
 {}
 
 int Event::timeEvent() const {
@@ -87,4 +100,13 @@ const QString & Event::cgetDesc()const{
 const QString & Event::cgetWhere() const{
 
     return where;
+}
+
+bool Event::isValid()const{
+
+    if (begin.daysTo(finish) >= 0 && desc.size() >0 && where.size() >0)
+        return begin.isValid() &&
+                finish.isValid();
+
+    return false;
 }
