@@ -2,6 +2,7 @@
 #define EXPERIENCES_H
 
 #include <QList>
+#include <QVector>
 #include "event.h"
 
 
@@ -9,6 +10,7 @@ class Experiences : private QList <Event>
 {
 public:
     Experiences();
+    Experiences(const QVector<Event> &);
 
     void add (const Event &);
     void rm (const Event &);

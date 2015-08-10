@@ -3,6 +3,10 @@
 Experiences::Experiences()
 {}
 
+Experiences::Experiences(const QVector<Event> & nExperiences)
+    : QList<Event>(QList<Event>::fromVector(nExperiences))
+{}
+
 void Experiences::add(const Event & newEvent){
 
     QList<Event>::push_back(newEvent);
