@@ -18,6 +18,7 @@
 #include "adminamwhobby.h"
 #include "adminamwinterests.h"
 #include "adminamwend.h"
+#include "adminamwexperiences.h"
 
 class AdminAddMemberWV : public QWizard
 {
@@ -50,6 +51,7 @@ private:
     AdminAMWBio* bio;
     AdminAMWHobby* hobby;
     AdminAMWInterests* interests;
+    AdminAMWExperiences* experiences;
     AdminAMWEnd* end;
 
 };

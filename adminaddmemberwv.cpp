@@ -32,6 +32,11 @@ void AdminAddMemberWV::processItems(){
 
     qDebug()<<"interestsList: "<<interestsList.size();
 
+    const QVector<Event> & experiencesList = experiences->cgetExperiences();
+    experiences->clear();
+
+    qDebug()<<"ExperienceList: "<<experiencesList.size();
+
 
     emit endAdd(type,
                 nick,
@@ -45,7 +50,13 @@ void AdminAddMemberWV::processItems(){
 }
 
 AdminAddMemberWV::AdminAddMemberWV(QWidget * parent)
-    : QWizard(parent), intro (new AdminAMWIntro), bio (new AdminAMWBio), hobby (new AdminAMWHobby), interests (new AdminAMWInterests), end (new AdminAMWEnd)
+    : QWizard(parent),
+      intro (new AdminAMWIntro),
+      bio (new AdminAMWBio),
+      hobby (new AdminAMWHobby),
+      interests (new AdminAMWInterests),
+      experiences(new AdminAMWExperiences),
+      end (new AdminAMWEnd)
 {
 
     /*AdminAMWIntro* intro = new AdminAMWIntro;
@@ -58,6 +69,7 @@ AdminAddMemberWV::AdminAddMemberWV(QWidget * parent)
     addPage(bio);
     addPage(hobby);
     addPage(interests);
+    addPage(experiences);
     addPage(end);
 
     setWindowTitle( tr("Wizard Aggiunta Iscritto") );
@@ -103,6 +115,7 @@ AdminAddMemberWV::~AdminAddMemberWV(){
     delete bio;
     delete hobby;
     delete interests;
+    delete experiences;
     delete end;
 
 }
