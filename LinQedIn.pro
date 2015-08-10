@@ -50,7 +50,8 @@ SOURCES += main.cpp\
     adminamwbio.cpp \
     adminamwhobby.cpp \
     adminamwinterests.cpp \
-    adminamwend.cpp
+    adminamwend.cpp \
+    adminamwexperiences.cpp
 
 HEADERS  += \
     event.h \
@@ -90,6 +91,7 @@ HEADERS  += \
     adminamwbio.h \
     adminamwhobby.h \
     adminamwinterests.h \
-    adminamwend.h
+    adminamwend.h \
+    adminamwexperiences.h
 
 QMAKE_CXXFLAGS += -std=c++0x
