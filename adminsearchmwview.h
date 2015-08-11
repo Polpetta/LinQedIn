@@ -2,6 +2,12 @@
 #define ADMINSEARCHMWVIEW_H
 
 #include <QWidget>
+#include <QLineEdit>
+#include <QLabel>
+#include <QGroupBox>
+#include <QGridLayout>
+#include <QPushButton>
+#include <QVBoxLayout>
 
 class AdminSearchMWView : public QWidget
 {
@@ -19,6 +25,17 @@ signals:
 protected:
 
     void closeEvent( QCloseEvent * );
+
+private:
+
+    QLineEdit* nameEdit;
+    QLineEdit* surnameEdit;
+    QLineEdit* birthDayEdit;
+
+    QLineEdit* hobbyEdit;
+    QLineEdit* interestsEdit;
+
+
 };
 
 #endif // ADMINSEARCHMWVIEW_H
