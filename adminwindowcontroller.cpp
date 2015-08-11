@@ -1,6 +1,6 @@
 #include "adminwindowcontroller.h"
 
-void AdminWindowController::execAddMember(){
+void AdminWindowController::execAddMember()const{
 
     AdminAddMemberWC* newMemberCtl = model->getAddMemberCtl();
 
@@ -16,6 +16,11 @@ void AdminWindowController::execAddMember(){
 
 void AdminWindowController::execSearchMember(){
 
+    AdminSearchMWController* newSearchCtl = model->getSearchMemberCtl();
+
+    view->hide(); //prima finire implementazione
+
+    newSearchCtl->showUI();
 
 }
 
@@ -79,6 +84,11 @@ AdminWindowController::AdminWindowController(AdminWindowModel* nModel,
              SIGNAL ( resumeAdmin(const SmartMember&) ),
              this,
              SLOT (addMember(const SmartMember &)));
+
+    connect (model->getSearchMemberCtl(),
+             SIGNAL (resumeAdmin() ),
+             this,
+             SLOT (showUI()));
 
     //creare le connect adatte
 }

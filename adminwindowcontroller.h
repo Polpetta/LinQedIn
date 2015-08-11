@@ -19,7 +19,7 @@ class AdminWindowController : public QObject
 
 public slots:
 
-    void execAddMember();
+    void execAddMember()const;
     void execSearchMember();
     void execRmMember();
     void execChangeMember();
