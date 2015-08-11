@@ -51,7 +51,10 @@ SOURCES += main.cpp\
     adminamwhobby.cpp \
     adminamwinterests.cpp \
     adminamwend.cpp \
-    adminamwexperiences.cpp
+    adminamwexperiences.cpp \
+    adminsearchmwview.cpp \
+    adminsearchmwmodel.cpp \
+    adminsearchmwcontroller.cpp
 
 HEADERS  += \
     event.h \
@@ -92,6 +95,9 @@ HEADERS  += \
     adminamwhobby.h \
     adminamwinterests.h \
     adminamwend.h \
-    adminamwexperiences.h
+    adminamwexperiences.h \
+    adminsearchmwview.h \
+    adminsearchmwmodel.h \
+    adminsearchmwcontroller.h
 
 QMAKE_CXXFLAGS += -std=c++0x
