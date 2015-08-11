@@ -18,7 +18,7 @@ void AdminWindowController::execSearchMember(){
 
     AdminSearchMWController* newSearchCtl = model->getSearchMemberCtl();
 
-    view->hide(); //prima finire implementazione
+    view->hide();
 
     newSearchCtl->showUI();
 
