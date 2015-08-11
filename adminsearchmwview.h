@@ -8,6 +8,9 @@
 #include <QGridLayout>
 #include <QPushButton>
 #include <QVBoxLayout>
+#include <QScrollArea>
+
+#include "tablesearch.h"
 
 class AdminSearchMWView : public QWidget
 {
@@ -35,6 +38,9 @@ private:
     QLineEdit* hobbyEdit;
     QLineEdit* interestsEdit;
 
+    //QTableWidget* result;
+    TableSearch* result;
+    QScrollArea* scrollResults;
 
 };
 

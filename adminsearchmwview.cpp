@@ -56,17 +56,29 @@ AdminSearchMWView::AdminSearchMWView(QWidget* parent)
     opt->setLayout(layoutOpt);
 
 
+    result = new TableSearch;
+
+
+    QScrollArea* scrollResults = new QScrollArea;
+    scrollResults->setWidget(result);
+
+    scrollResults->setWidgetResizable( true );
+    scrollResults->setFixedHeight(200);
+
+
     QVBoxLayout* layoutTot = new QVBoxLayout;
 
     layoutTot->addWidget(note);
     layoutTot->addWidget(generic);
     layoutTot->addWidget(opt);
     layoutTot->addWidget(search);
+    layoutTot->addWidget(scrollResults);
 
     setLayout(layoutTot);
 
-    setFixedSize( sizeHint() );
 
+
+    setFixedSize( sizeHint() );
 
 
 }
@@ -80,6 +92,10 @@ AdminSearchMWView::~AdminSearchMWView()
 
     delete hobbyEdit;
     delete interestsEdit;
+
+    delete result;
+
+    delete scrollResults;
 }
 
 
