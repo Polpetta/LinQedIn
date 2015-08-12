@@ -14,9 +14,10 @@
 
 class AdminSearchMWView : public QWidget
 {
-    Q_OBJECT
+    Q_OBJECT    
 
 public:
+
     AdminSearchMWView(QWidget* = nullptr);
 
     ~AdminSearchMWView();
@@ -24,6 +25,20 @@ public:
 signals:
 
     void requestClose( QCloseEvent * );
+
+    void newHobbyFilter (const QString &);
+    void newInterestsFilter (const QString &);
+
+    void searchConfirm (const QString &,
+                        const QString &,
+                        const QString &);
+
+public slots:
+
+    void newFilterH();
+    void newFilterI();
+
+    void commitSearch();
 
 protected:
 
@@ -38,7 +53,6 @@ private:
     QLineEdit* hobbyEdit;
     QLineEdit* interestsEdit;
 
-    //QTableWidget* result;
     TableSearch* result;
     QScrollArea* scrollResults;
 

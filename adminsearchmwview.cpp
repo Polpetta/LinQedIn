@@ -4,6 +4,8 @@ AdminSearchMWView::AdminSearchMWView(QWidget* parent)
     : QWidget (parent)
 {
 
+    QLabel* info = new QLabel ( tr("<i>Tip:</i> eseguendo una ricerca"
+                                   " vuota si otterrà tutto il Db") );
     QLabel* note = new QLabel ( tr("<i>Nota:</i> le date vanno espresse"
                                    " nel formato dd-mm-yyyy") );
 
@@ -68,6 +70,7 @@ AdminSearchMWView::AdminSearchMWView(QWidget* parent)
 
     QVBoxLayout* layoutTot = new QVBoxLayout;
 
+    layoutTot->addWidget(info);
     layoutTot->addWidget(note);
     layoutTot->addWidget(generic);
     layoutTot->addWidget(opt);
@@ -81,6 +84,21 @@ AdminSearchMWView::AdminSearchMWView(QWidget* parent)
     setFixedSize( sizeHint() );
 
 
+    //connessioni dei bottoni
+    connect (addHobby,
+             SIGNAL (clicked()),
+             this,
+             SLOT (newFilterH()));
+
+    connect (addInterests,
+             SIGNAL (clicked()),
+             this,
+             SLOT (newFilterI()));
+
+    connect (search,
+             SIGNAL (clicked()),
+             this,
+             SLOT (commitSearch()));
 }
 
 AdminSearchMWView::~AdminSearchMWView()
@@ -102,4 +120,27 @@ AdminSearchMWView::~AdminSearchMWView()
 void AdminSearchMWView::closeEvent(QCloseEvent * event){
 
     emit requestClose( event );
+}
+
+void AdminSearchMWView::newFilterH(){
+
+    emit newHobbyFilter(hobbyEdit->text());
+    hobbyEdit->clear();
+}
+
+void AdminSearchMWView::newFilterI(){
+
+    emit newInterestsFilter(interestsEdit->text());
+    interestsEdit->clear();
+}
+
+void AdminSearchMWView::commitSearch(){
+
+    emit searchConfirm (nameEdit->text(),
+                        surnameEdit->text(),
+                        birthDayEdit->text());
+
+    nameEdit->clear();
+    surnameEdit->clear();
+    birthDayEdit->clear();
 }
