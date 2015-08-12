@@ -14,6 +14,21 @@ void AdminWindowController::execAddMember()const{
     newMemberCtl->showUI();
 }
 
+void AdminWindowController::SearchMember(const Profile & toSr) const{
+
+    //DataMember* res = new DataMember;
+
+    //*res = model->getDb()->select(target);
+
+    /*
+     * L'idea ora è quella di prendere il risultato e richiamare una funzione
+     * del controller e passarglielo, poi il controller della sezione di
+     * ricerca si arrangia lui a fare tutto il lavoro che deve fare.
+     */
+
+    model->getSearchMemberCtl()->setSearchResults(model->getDb()->select(toSr));
+}
+
 void AdminWindowController::execSearchMember(){
 
     AdminSearchMWController* newSearchCtl = model->getSearchMemberCtl();
@@ -89,6 +104,11 @@ AdminWindowController::AdminWindowController(AdminWindowModel* nModel,
              SIGNAL (resumeAdmin() ),
              this,
              SLOT (showUI()));
+
+    connect (model->getSearchMemberCtl(),
+             SIGNAL (querySearch(const Profile &)),
+             this,
+             SLOT (SearchMember(const Profile &)));
 
     //creare le connect adatte
 }

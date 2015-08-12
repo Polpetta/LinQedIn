@@ -25,7 +25,10 @@ public slots:
     void execChangeMember();
     void execSaveDb();
     void showUI() const;
+
+
     void addMember(const SmartMember &)const;
+    void SearchMember(const Profile &)const;
 
 
 
