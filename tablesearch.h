@@ -23,6 +23,12 @@ public:
                 const QString &,
                 const QString &);
 
+    void addSeparator();
+
+
+    QPushButton* getButtonLastItem()const;
+
+    void clearUI();
 
 private:
 
@@ -35,23 +41,26 @@ private:
               const QString &,
               const QString &);
 
+        info(const int &);
+
         ~info();
 
         QLabel* getInfo();
         QLabel* getDate();
-        QLabel* getRow();
         QPushButton* getButton();
         int cgetRow()const;
 
     private:
 
-        QLabel* rowNumber;
+        int rowNumber;
         QLabel* information;
         QLabel* date;
         QPushButton* details;
 
     };
 
+
+    int separatorNumber;
     QGridLayout* results;
     QList<TableSearch::info*> items;
 };

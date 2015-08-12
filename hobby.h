@@ -48,6 +48,8 @@ public:
 
     int size()const;
 
+    QVector<QString> toVector() const;
+
 };
 
 #endif // HOBBY_H

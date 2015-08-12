@@ -103,3 +103,11 @@ int Hobby::size()const{
 
     return QList<QString>::size();
 }
+
+QVector<QString> Hobby::toVector()const{
+
+    /*
+     * Ricalco fedelmente la funzione, anche se ne eseguo una copia
+     */
+    return QList<QString>::toVector();
+}

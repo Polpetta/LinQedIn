@@ -103,3 +103,8 @@ int Interests::size()const{
 
     return QList<QString>::size();
 }
+
+QVector<QString> Interests::toVector()const{
+
+    return QList<QString>::toVector();
+}

@@ -46,6 +46,8 @@ public:
     bool contains(const QString &) const;
 
     int size()const;
+
+    QVector<QString> toVector()const;
 };
 
 #endif // INTERESTS_H

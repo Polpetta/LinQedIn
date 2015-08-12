@@ -1,7 +1,7 @@
 #include "tablesearch.h"
 
 TableSearch::TableSearch(QWidget* parent)
-    : QWidget(parent)
+    : QWidget(parent), separatorNumber (0)
 {
 
     results = new QGridLayout;
@@ -24,30 +24,45 @@ void TableSearch::addRow(const QString & nName,
 
     items.push_back(newInfo);
 
-    int row = newInfo->cgetRow();
+    int lRow = newInfo->cgetRow();
 
-    qDebug()<<"Riga: "<<row;
+    QLabel* row = new QLabel (QString::number(lRow-separatorNumber));
 
-    results->addWidget(newInfo->getRow(), row, 0,Qt::AlignLeft);
-    results->addWidget(newInfo->getInfo(), row, 1,Qt::AlignLeft);
-    results->addWidget(newInfo->getDate(), row, 2, Qt::AlignLeft);
-    results->addWidget(newInfo->getButton(), row, 3,Qt::AlignRight);
+    results->addWidget(row, lRow, 0,Qt::AlignLeft);
+    results->addWidget(newInfo->getInfo(), lRow, 1,Qt::AlignLeft);
+    results->addWidget(newInfo->getDate(), lRow, 2, Qt::AlignLeft);
+    results->addWidget(newInfo->getButton(), lRow, 3,Qt::AlignRight);
+}
+
+void TableSearch::addSeparator(){
+
+    TableSearch::info* fake = new TableSearch::info (items.count()+1);
+    QLabel* separator = new QLabel ("");
+
+
+    ++separatorNumber;
+    items.push_back(fake);
+
+    int row = fake->cgetRow();
+
+    results->addWidget(separator, row, 0, Qt::AlignCenter);
+
 }
 
 
 
 //info
 
+TableSearch::info::info(const int & row)
+    : rowNumber(row)
+{}
+
 TableSearch::info::info(const int & row,
                         const QString & nName,
                         const QString & nSurname,
                         const QString & nDate)
-    //: QWidget(0)
+    :rowNumber (row)
 {
-
-
-    QString SRow(QString::number(row));
-    rowNumber = new QLabel (SRow);
 
     information = new QLabel (nName+" "+
                               nSurname+" ");
@@ -59,8 +74,9 @@ TableSearch::info::info(const int & row,
 
 TableSearch::info::~info(){
 
-    delete rowNumber;
     delete information;
+    delete date;
+    delete details;
 }
 
 QLabel* TableSearch::info::getInfo(){
@@ -73,19 +89,27 @@ QLabel* TableSearch::info::getDate(){
     return date;
 }
 
-QLabel* TableSearch::info::getRow(){
-
-    return rowNumber;
-}
-
 int TableSearch::info::cgetRow()const{
 
-    qDebug()<<"Text della rowNumber: "<<rowNumber->text();
-
-    return rowNumber->text().toInt();
+    return rowNumber;
 }
 
 QPushButton* TableSearch::info::getButton(){
 
     return details;
+}
+
+QPushButton* TableSearch::getButtonLastItem()const{
+
+    return items.last()->getButton();
+}
+
+
+void TableSearch::clearUI(){
+
+    delete results;
+    results = new QGridLayout;
+    setLayout(results);
+
+    items.clear();
 }
