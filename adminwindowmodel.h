@@ -4,6 +4,7 @@
 #include "dbonxml.h"
 #include "smartadmin.h"
 #include "admin.h"
+#include "datamember.h"
 
 //controller di altre finestre
 #include "adminaddmemberwc.h"
