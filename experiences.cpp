@@ -75,3 +75,8 @@ int Experiences::size()const{
 
     return QList<Event>::size();
 }
+
+QVector<Event> Experiences::toVector()const{
+
+    return QList<Event>::toVector();
+}

@@ -44,6 +44,8 @@ public:
     bool operator!=(const Experiences &)const;
 
     int size()const;
+
+    QVector<Event> toVector()const;
 };
 
 #endif // EXPERIENCES_H
