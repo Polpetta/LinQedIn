@@ -17,14 +17,14 @@ SmartMember & Admin::search(const QString & target) const{
     return getDb()->select(target);
 }
 
-void Admin::addMember(Database* db,const SmartMember & newUser) const{
+void Admin::addMember(const SmartMember & newUser) const{
 
-    db->getDb().add(newUser);
+    getDb()->getDb().add(newUser);
 }
 
-void Admin::rmMember (Database *db, const SmartMember & target) const{
+void Admin::rmMember (const SmartMember & target) const{
 
-    db->getDb().rm(target);
+    getDb()->getDb().rm(target);
 }
 
 void Admin::changeMemberType(SmartMember & oldMember, const QString &newType)const{

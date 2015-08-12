@@ -28,8 +28,8 @@ public:
     virtual SmartMember & search(const QString &)const;
 
     //funzioni proprie dell'admin
-    void addMember (Database*, const SmartMember &) const;
-    void rmMember (Database*, const SmartMember &)const;
+    void addMember (const SmartMember &) const;
+    void rmMember (const SmartMember &)const;
 
     void changeMemberType (SmartMember &, const QString &)const;
 };
