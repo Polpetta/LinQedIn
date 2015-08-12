@@ -156,11 +156,11 @@ DataMember& Database::select(const Profile & find)const{
 
 const SmartMember& Database::cselect (const QString & find)const{
 
-    DataMember::const_iterator  it = db.cbegin();
+    DataMember::const_iterator it = db.cbegin();
 
     bool match = false;
 
-    while (it != db.cend() && match == false){
+    while (it != db.cend() && match == false){ //match == false andrebbe prima
 
         qDebug()<<&(*it);
         const QString & check = (*it)->cgetCredential().getCredential();
@@ -192,7 +192,7 @@ SmartMember& Database::select (const QString & find){
 
     bool match = false;
 
-    while (it != db.end() && match == false){
+    while (it != db.end() && match == false){ //vedi nota sopra
 
         qDebug()<<&(*it);
         const QString & check = (*it)->cgetCredential().getCredential();
