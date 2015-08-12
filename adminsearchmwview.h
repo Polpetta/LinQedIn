@@ -9,8 +9,10 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QScrollArea>
+#include <QMessageBox>
 
 #include "tablesearch.h"
+#include "event.h"
 
 class AdminSearchMWView : public QWidget
 {
@@ -21,6 +23,18 @@ public:
     AdminSearchMWView(QWidget* = nullptr);
 
     ~AdminSearchMWView();
+
+    TableSearch* getTable()const;
+
+    void showDetails(const QString &,
+                     const QString &,
+                     const QString &,
+                     const QString &,
+                     const QString &,
+                     const QString &,
+                     const QVector<QString> &,
+                     const QVector<QString> &,
+                     const QVector<Event> &)const;
 
 signals:
 

@@ -9,12 +9,16 @@
 #include <QRegularExpression>
 #include <QRegularExpressionMatch>
 #include <QMessageBox>
+#include <QSignalMapper>
 
 #include "adminsearchmwmodel.h"
 #include "adminsearchmwview.h"
 #include "datamember.h"
+#include "memberexecutive.h"
 
 #include "profile.h"
+
+#include <QDialog>
 
 class AdminSearchMWController : public QObject
 {
@@ -46,6 +50,8 @@ public slots:
                     const QString &,
                     const QString &)const;
 
+    void showMemberProfile (const QString &)const;
+
 private:
 
     enum ParserError{
@@ -58,6 +64,8 @@ private:
 
     AdminSearchMWModel* model;
     AdminSearchMWView* view;
+
+    QSignalMapper* memberDetails;
 };
 
 #endif // ADMINSEARCHMWCONTROLLER_H

@@ -9,7 +9,7 @@ void AdminSearchMWController::closeView(QCloseEvent * event) const{
 
 AdminSearchMWController::AdminSearchMWController(AdminSearchMWModel* nModel,
                                                  AdminSearchMWView* nView)
-    : model (nModel), view (nView)
+    : model (nModel), view (nView), memberDetails(new QSignalMapper)
 {
 
 
@@ -37,6 +37,11 @@ AdminSearchMWController::AdminSearchMWController(AdminSearchMWModel* nModel,
                                const QString &,
                                const QString &)));
 
+    connect (memberDetails,
+             SIGNAL (mapped(QString)),
+             this,
+             SLOT (showMemberProfile(const QString &)));
+
     //ci andranno le varie connect
 }
 
@@ -45,6 +50,8 @@ AdminSearchMWController::~AdminSearchMWController()
 
     delete model;
     delete view;
+
+    delete memberDetails;
 }
 
 void AdminSearchMWController::showUI()const{
@@ -91,6 +98,9 @@ void AdminSearchMWController::messageError(const ParserError & err) const{
 void AdminSearchMWController::execSearch(const QString & sName,
                                          const QString & sSurname,
                                          const QString & sDate) const{
+
+    //pulisco la ricerca precedente
+    model->wipeSearchResults();
 
     QDate data (QDate::fromString(sDate, "dd-MM-yyyy"));
 
@@ -145,8 +155,8 @@ void AdminSearchMWController::execSearch(const QString & sName,
 
 void AdminSearchMWController::setSearchResults(const DataMember & result) const{
 
-    //da implementare
-    //Nota: bisogna far visualizzare un avviso se non ci sono stati risultati
+    model->setSearchResults(result);
+
     if (result.size() == 0){
 
         QMessageBox info (QMessageBox::Information,
@@ -155,5 +165,74 @@ void AdminSearchMWController::setSearchResults(const DataMember & result) const{
                           QMessageBox::Ok);
 
         info.exec();
+        return;
     }
+
+
+    TableSearch* tRes = view->getTable();
+
+    DataMember::const_iterator it;
+
+    for (it = result.cbegin(); it != result.cend(); ++it){
+
+        const QString & nick = (*it)->cgetCredential().getCredential();
+        const QString & name = (*it)->cgetProfile().cgetPersonal().cgetBio().getName();
+        const QString & surn = (*it)->cgetProfile().cgetPersonal().cgetBio().getSurname();
+        const QString & data = (*it)->cgetProfile().cgetPersonal().cgetBio().getBirthday().toString("dd-MM-yyyy");
+
+        tRes->addRow(name,
+                     surn,
+                     data);
+
+        QPushButton* lastDetail = tRes->getButtonLastItem();
+
+        //bisogna usare QSignalMapper: http://doc.qt.io/qt-5/signalsandslots.html
+
+        memberDetails->setMapping(lastDetail, nick);
+
+        connect (lastDetail,
+                 SIGNAL (clicked()),
+                 memberDetails,
+                 SLOT (map()));
+
+    }
+
+    tRes->addSeparator(); //separatore tra una ricerca e l'altra
+
+}
+
+void AdminSearchMWController::showMemberProfile(const QString & nick)const{
+
+    const SmartMember & member = model->getMemberByNick(nick);
+
+    if (member.cgetPunt() == nullptr){
+
+        QMessageBox info (QMessageBox::Critical,
+                          tr ("Impossibile trovare dettagli utente"),
+                          tr ("Sembra non sia possibile trovare i"
+                              " dettagli per questo utente"));
+        info.exec();
+
+    }else{
+
+        //bisogna mandare alla view che costruisca una finestra con le info
+
+        const Bio & bio = member->cgetProfile().cgetPersonal().cgetBio();
+        const QVector<QString> & hobby = member->cgetProfile().cgetPersonal().cgetHobby().toVector();
+        const QVector<QString> & interests = member->cgetProfile().cgetPersonal().cgetInterests().toVector();
+
+        const QVector<Event> & experiences = member->cgetProfile().cgetExperiences().toVector();
+
+        view->showDetails(nick,
+                          bio.getName(),
+                          bio.getSurname(),
+                          bio.getBirthday().toString("dd-MM-yyyy"),
+                          bio.getPhone(),
+                          bio.getMail(),
+                          hobby,
+                          interests,
+                          experiences);
+    }
+
+
 }
