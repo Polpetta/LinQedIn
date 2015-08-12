@@ -11,6 +11,7 @@ AdminWindowModel::AdminWindowModel(Database* dbptr,
 {
 
     db->load(); //carico il db
+    admin = new Admin("Admin", db);
 }
 
 AdminWindowModel::~AdminWindowModel(){

@@ -26,7 +26,7 @@ void AdminWindowController::SearchMember(const Profile & toSr) const{
      * ricerca si arrangia lui a fare tutto il lavoro che deve fare.
      */
 
-    model->getSearchMemberCtl()->setSearchResults(model->getDb()->select(toSr));
+    model->getSearchMemberCtl()->setSearchResults(model->getSmartAdmin()->search(toSr));
 }
 
 void AdminWindowController::execSearchMember(){
@@ -130,7 +130,7 @@ void AdminWindowController::showUI()const {
 void AdminWindowController::addMember(const SmartMember & newMember)const{
 
     if (newMember.cgetPunt() != nullptr)
-        model->getDb()->getDb().add(newMember);
+        model->getSmartAdmin()->addMember(newMember);
 
     showUI();
 }
