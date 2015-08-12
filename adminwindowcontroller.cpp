@@ -15,13 +15,8 @@ void AdminWindowController::execAddMember()const{
 }
 
 void AdminWindowController::SearchMember(const Profile & toSr) const{
-
-    //DataMember* res = new DataMember;
-
-    //*res = model->getDb()->select(target);
-
     /*
-     * L'idea ora è quella di prendere il risultato e richiamare una funzione
+     * L'idea è quella di prendere il risultato e richiamare una funzione
      * del controller e passarglielo, poi il controller della sezione di
      * ricerca si arrangia lui a fare tutto il lavoro che deve fare.
      */
