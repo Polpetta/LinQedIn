@@ -3,11 +3,13 @@
 AdminWindowModel::AdminWindowModel(Database* dbptr,
                                    const SmartAdmin & nAdmin,
                                    AdminAddMemberWC* nAddMemberCtl,
-                                   AdminSearchMWController* nSearchMemberCtl)
+                                   AdminSearchMWController* nSearchMemberCtl,
+                                   AdminRmMemberWController* nRmMemberCtl)
     : db (dbptr),
       admin(nAdmin),
       addMember (nAddMemberCtl),
-      searchMember (nSearchMemberCtl)
+      searchMember (nSearchMemberCtl),
+      rmMember (nRmMemberCtl)
 {
 
     db->load(); //carico il db
@@ -20,6 +22,7 @@ AdminWindowModel::~AdminWindowModel(){
 
     delete addMember;
     delete searchMember;
+    delete rmMember;
 }
 
 Database* AdminWindowModel::getDb()const{
@@ -40,4 +43,9 @@ AdminAddMemberWC* AdminWindowModel::getAddMemberCtl()const{
 AdminSearchMWController* AdminWindowModel::getSearchMemberCtl()const{
 
     return searchMember;
+}
+
+AdminRmMemberWController* AdminWindowModel::getRmMemberCtl()const{
+
+    return rmMember;
 }

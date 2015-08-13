@@ -9,6 +9,7 @@
 //controller di altre finestre
 #include "adminaddmemberwc.h"
 #include "adminsearchmwcontroller.h"
+#include "adminrmmemberwcontroller.h"
 
 class AdminWindowModel
 {
@@ -16,7 +17,8 @@ public:
     AdminWindowModel(Database * = new DBonXml ( "database" ),
                      const SmartAdmin & = SmartAdmin(),
                      AdminAddMemberWC* = new AdminAddMemberWC,
-                     AdminSearchMWController* = new AdminSearchMWController);
+                     AdminSearchMWController* = new AdminSearchMWController,
+                     AdminRmMemberWController* = new AdminRmMemberWController);
 
     ~AdminWindowModel();
 
@@ -24,6 +26,7 @@ public:
     SmartAdmin & getSmartAdmin();
     AdminAddMemberWC* getAddMemberCtl()const;
     AdminSearchMWController* getSearchMemberCtl()const;
+    AdminRmMemberWController* getRmMemberCtl()const;
 
 private:
 
@@ -32,6 +35,7 @@ private:
 
     AdminAddMemberWC* addMember;
     AdminSearchMWController* searchMember;
+    AdminRmMemberWController* rmMember;
 };
 
 #endif // ADMINWINDOWMODEL_H

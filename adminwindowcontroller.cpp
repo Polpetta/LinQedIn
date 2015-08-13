@@ -36,6 +36,12 @@ void AdminWindowController::execSearchMember(){
 
 void AdminWindowController::execRmMember(){
 
+    AdminRmMemberWController* newRmMemberCtl = model->getRmMemberCtl();
+
+    view->hide();
+
+    newRmMemberCtl->showUI();
+
 
 }
 
@@ -64,6 +70,8 @@ AdminWindowController::AdminWindowController(AdminWindowModel* nModel,
                                              AdminWindowView* nView)
     :  model(nModel), view(nView)
 {
+
+    //perchè gli slot non sono metodi costanti?
 
     connect (view,
              SIGNAL ( addMember() ),
@@ -104,6 +112,11 @@ AdminWindowController::AdminWindowController(AdminWindowModel* nModel,
              SIGNAL (querySearch(const Profile &)),
              this,
              SLOT (SearchMember(const Profile &)));
+
+    connect (model->getRmMemberCtl(),
+             SIGNAL (resumeAdmin() ),
+             this,
+             SLOT (showUI()));
 
     //creare le connect adatte
 }
