@@ -8,10 +8,12 @@
 #include "smartmember.h"
 #include "memberexecutive.h"
 
+#include "adminmwviewercontroller.h"
+
 class AdminSearchMWModel
 {
 public:
-    AdminSearchMWModel();
+    AdminSearchMWModel(AdminMWViewerController* = new AdminMWViewerController);
 
     ~AdminSearchMWModel();
 
@@ -30,6 +32,8 @@ public:
 
     const SmartMember & getMemberByNick(const QString &)const;
 
+    AdminMWViewerController* getProfileViewer()const;
+
 
 private:
 
@@ -37,6 +41,8 @@ private:
     QVector<QString> interestsBuffer;
 
     const DataMember* searchResults;
+
+    AdminMWViewerController* profileViewer;
 };
 
 #endif // ADMINSEARCHMWMODEL_H

@@ -223,7 +223,9 @@ void AdminSearchMWController::showMemberProfile(const QString & nick)const{
 
         const QVector<Event> & experiences = member->cgetProfile().cgetExperiences().toVector();
 
-        view->showDetails(nick,
+        const QVector<QString> & friendships = member->cgetFriendships().toVector();
+
+        /*view->showDetails(nick,
                           bio.getName(),
                           bio.getSurname(),
                           bio.getBirthday().toString("dd-MM-yyyy"),
@@ -231,7 +233,22 @@ void AdminSearchMWController::showMemberProfile(const QString & nick)const{
                           bio.getMail(),
                           hobby,
                           interests,
-                          experiences);
+                          experiences);*/
+
+        AdminMWViewerController* pViewer = model->getProfileViewer();
+
+        pViewer->setProfile(nick,
+                            bio.getName(),
+                            bio.getSurname(),
+                            bio.getBirthday().toString("dd-MM-yyyy"),
+                            bio.getPhone(),
+                            bio.getMail(),
+                            hobby,
+                            interests,
+                            experiences,
+                            friendships);
+
+
     }
 
 

@@ -27,6 +27,13 @@ AdminSearchMWView::AdminSearchMWView(QWidget* parent)
     hobbyEdit = new QLineEdit;
     interestsEdit = new QLineEdit;
 
+    nameEdit->setClearButtonEnabled( true );
+    surnameEdit->setClearButtonEnabled( true );
+    birthDayEdit->setClearButtonEnabled( true );
+
+    hobbyEdit->setClearButtonEnabled( true );
+    interestsEdit->setClearButtonEnabled( true );
+
     QGridLayout* layoutBio = new QGridLayout;
 
     layoutBio->addWidget(name, 0, 0);
@@ -112,7 +119,6 @@ AdminSearchMWView::~AdminSearchMWView()
     delete interestsEdit;
 
     delete result;
-
     delete scrollResults;
 }
 
@@ -144,9 +150,11 @@ void AdminSearchMWView::commitSearch(){
                         birthDayEdit->text());
 
 
-    nameEdit->clear();
+    //senza pulire i risultati è possibile fare un nuova ricerca aggiungendo
+    //filtri
+    /*nameEdit->clear();
     surnameEdit->clear();
-    birthDayEdit->clear();
+    birthDayEdit->clear();*/
 }
 
 TableSearch* AdminSearchMWView::getTable()const{

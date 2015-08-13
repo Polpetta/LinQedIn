@@ -1,7 +1,8 @@
 #include "adminsearchmwmodel.h"
 
-AdminSearchMWModel::AdminSearchMWModel()
-    : searchResults (nullptr)
+AdminSearchMWModel::AdminSearchMWModel(AdminMWViewerController * nVCtl)
+    : searchResults (nullptr),
+      profileViewer (nVCtl)
 {
 
 }
@@ -9,6 +10,7 @@ AdminSearchMWModel::AdminSearchMWModel()
 AdminSearchMWModel::~AdminSearchMWModel(){
 
     delete searchResults;
+    delete profileViewer;
 }
 
 const QVector<QString> & AdminSearchMWModel::cgetHobby()const{
@@ -77,4 +79,9 @@ const SmartMember & AdminSearchMWModel::getMemberByNick(const QString & nick) co
     }
 
     return *it;
+}
+
+AdminMWViewerController* AdminSearchMWModel::getProfileViewer()const{
+
+    return profileViewer;
 }
