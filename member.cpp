@@ -279,8 +279,12 @@ void Member::load(QXmlStreamReader & read){
             }
             //END INTERESTS
 
+            qDebug()<<"Alla fine di interests: "<<read.name();
             read.readNextStartElement();
             qDebug()<<read.name();
+            read.readNextStartElement();
+            qDebug()<<"Altra lettura :"<<read.name();
+
             //EXPERIENCES
             if (read.name() == "Experiences"){
 
