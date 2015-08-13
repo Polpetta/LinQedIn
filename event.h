@@ -21,7 +21,7 @@ public:
           const QString &);
 
     int timeEvent() const;
-    QString getEvent() const;
+    QString toString() const;
 
     void setDesc(const QString &);
     void setWhere(const QString &);

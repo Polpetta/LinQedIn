@@ -30,12 +30,12 @@ int Event::timeEvent() const {
     return begin.daysTo(finish);
 }
 
-QString Event::getEvent() const {
+QString Event::toString() const {
 
     QString result;
 
-    QString bg = begin.toString("dd.MM.yyyy");
-    QString fn = finish.toString("dd.MM.yyyy");
+    QString bg = begin.toString("dd-MM-yyyy");
+    QString fn = finish.toString("dd-MM-yyyy");
 
     result = bg + " - " + fn + " :: " + where + ": " + desc;
 
