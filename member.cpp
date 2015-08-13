@@ -257,9 +257,27 @@ void Member::load(QXmlStreamReader & read){
 
                 }
             }
-
-            read.skipCurrentElement();
             //END HOBBY
+
+            read.readNextStartElement();
+            qDebug()<<read.name();
+            //INTERESTS
+            if(read.name() == "Interests"){
+
+                read.readNextStartElement();
+                qDebug()<<read.name();
+                while (read.name() == "Info"){
+
+                    const QString & newHbb = read.readElementText();
+                    qDebug()<<"Tipo di Interests: "<<newHbb;
+
+                    getProfile().getPersonal().getInterests().add(newHbb);
+
+                    read.readNextStartElement();
+
+                }
+            }
+            //END INTERESTS
 
             read.readNextStartElement();
             qDebug()<<read.name();
