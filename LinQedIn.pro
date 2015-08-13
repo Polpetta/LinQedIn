@@ -58,7 +58,10 @@ SOURCES += main.cpp\
     tablesearch.cpp \
     adminmwviewerview.cpp \
     adminmwviewermodel.cpp \
-    adminmwviewercontroller.cpp
+    adminmwviewercontroller.cpp \
+    adminrmmemberwview.cpp \
+    adminrmmemberwmodel.cpp \
+    adminrmmemberwcontroller.cpp
 
 HEADERS  += \
     event.h \
@@ -106,6 +109,9 @@ HEADERS  += \
     tablesearch.h \
     adminmwviewerview.h \
     adminmwviewermodel.h \
-    adminmwviewercontroller.h
+    adminmwviewercontroller.h \
+    adminrmmemberwview.h \
+    adminrmmemberwmodel.h \
+    adminrmmemberwcontroller.h
 
 QMAKE_CXXFLAGS += -std=c++0x
