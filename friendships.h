@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <QString>
+#include <QVector>
 
 using std::vector;
 
@@ -38,6 +39,8 @@ public:
 
     void add (const QString &);
     void rm (const QString &);
+
+    QVector<QString> toVector()const;
 
 };
 

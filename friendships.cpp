@@ -69,3 +69,8 @@ void Friendships::rm(const QString & target){
 
     }
 }
+
+QVector<QString> Friendships::toVector()const{
+
+    return QVector<QString>::fromStdVector(*this);
+}
