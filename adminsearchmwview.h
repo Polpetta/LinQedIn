@@ -26,16 +26,6 @@ public:
 
     TableSearch* getTable()const;
 
-    void showDetails(const QString &,
-                     const QString &,
-                     const QString &,
-                     const QString &,
-                     const QString &,
-                     const QString &,
-                     const QVector<QString> &,
-                     const QVector<QString> &,
-                     const QVector<Event> &)const;
-
 signals:
 
     void requestClose( QCloseEvent * );

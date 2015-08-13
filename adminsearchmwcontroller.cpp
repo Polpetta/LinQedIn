@@ -223,19 +223,18 @@ void AdminSearchMWController::showMemberProfile(const QString & nick)const{
 
         const QVector<Event> & experiences = member->cgetProfile().cgetExperiences().toVector();
 
+        QVector<QString>* stringExperiences = new QVector<QString>;
+        QVector<Event>::const_iterator it;
+
+        for (it = experiences.cbegin(); it != experiences.cend(); ++it){
+
+            stringExperiences->push_back((*it).toString());
+        }
+
         const QVector<QString> & friendships = member->cgetFriendships().toVector();
 
-        /*view->showDetails(nick,
-                          bio.getName(),
-                          bio.getSurname(),
-                          bio.getBirthday().toString("dd-MM-yyyy"),
-                          bio.getPhone(),
-                          bio.getMail(),
-                          hobby,
-                          interests,
-                          experiences);*/
-
         AdminMWViewerController* pViewer = model->getProfileViewer();
+        pViewer->resetView(); //pulisco la vista se ce ne sono state di precedenti
 
         pViewer->setProfile(nick,
                             bio.getName(),
@@ -245,7 +244,7 @@ void AdminSearchMWController::showMemberProfile(const QString & nick)const{
                             bio.getMail(),
                             hobby,
                             interests,
-                            experiences,
+                            *stringExperiences,
                             friendships);
 
 

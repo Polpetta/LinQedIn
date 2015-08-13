@@ -161,21 +161,3 @@ TableSearch* AdminSearchMWView::getTable()const{
 
     return result;
 }
-
-void AdminSearchMWView::showDetails(const QString & nick,
-                                    const QString & name,
-                                    const QString & surname,
-                                    const QString & birth,
-                                    const QString & phone,
-                                    const QString & eMail,
-                                    const QVector<QString> & hobby,
-                                    const QVector<QString> & interests,
-                                    const QVector<Event> & experience)const{
-
-    //da implementare
-    QMessageBox info(QMessageBox::NoIcon,
-                     tr ("Informazioni su ") + nick,
-                     tr ( "Prova"));
-
-    info.exec();
-}
