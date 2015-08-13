@@ -11,6 +11,8 @@
 #include <QGroupBox>
 #include <QVBoxLayout>
 
+#include <QDebug>
+
 #include <QVector>
 #include "event.h"
 
@@ -32,32 +34,24 @@ public slots:
                     const QString &,
                     const QVector<QString> &,
                     const QVector<QString> &,
-                    const QVector<Event> &,
+                    const QVector<QString> &,
                     const QVector <QString> &);
 private:
 
-    class labelEvent{
+    class listViewer : public QWidget{
 
     public:
-        labelEvent(const Event &); //in verità se ne può occupare il controller
-        labelEvent(const QString &,
-                   const QString &,
-                   const QString &,
-                   const QString &);
+        listViewer(QWidget * = nullptr);
+        ~listViewer();
 
-        ~labelEvent();
-
-        const QLabel* cgetBegin()const;
-        const QLabel* cgetEnd()const;
-        const QLabel* cgetDescription()const;
-        const QLabel* cgetWhere()const;
+        void addLabel(QLabel*);
+        void clear();
 
     private:
 
-        QLabel* begin;
-        QLabel* end;
-        QLabel* desc;
-        QLabel* where;
+        QVector<QLabel*> obj; //da implmenetare distruttore
+        QVBoxLayout* layout;
+
     };
 
     QLabel* nick;
@@ -67,12 +61,18 @@ private:
     QLabel* phone;
     QLabel* eMail;
 
-    QVector<QLabel*> hobby;
-    QVector<QLabel*> interests;
+    QScrollArea* scrollHobby;
+    QScrollArea* scrollInterests;
+    QScrollArea* scrollExperience;
+    QScrollArea* scrollFriendships;
 
-    QVector<labelEvent*> experiences;
+    listViewer* hobby;
+    listViewer* interests;
 
-    QVector<QLabel*> friendships;
+    listViewer* experiences;
+
+    listViewer* friendships;
+
 };
 
 #endif // ADMINMWVIEWERVIEW_H

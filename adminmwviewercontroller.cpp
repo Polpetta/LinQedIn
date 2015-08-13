@@ -1,8 +1,7 @@
 #include "adminmwviewercontroller.h"
 
-AdminMWViewerController::AdminMWViewerController(AdminMWViewerModel* nModel,
-                                                 AdminMWViewerView* nView)
-    : model (nModel), view (nView)
+AdminMWViewerController::AdminMWViewerController(AdminMWViewerModel* nModel)
+    : model (nModel), view (nullptr)
 {
 
     //ci andranno le varie connect
@@ -10,7 +9,8 @@ AdminMWViewerController::AdminMWViewerController(AdminMWViewerModel* nModel,
 
 AdminMWViewerController::~AdminMWViewerController(){
 
-    delete view;
+    if (view != nullptr)
+        delete view;
     delete model;
 }
 
@@ -22,8 +22,11 @@ void AdminMWViewerController::setProfile(const QString & pNick,
                                          const QString & pEMail,
                                          const QVector<QString> & pHobby,
                                          const QVector<QString> & pInterests,
-                                         const QVector<Event> & pExperience,
+                                         const QVector<QString> &pExperience,
                                          const QVector<QString> & pFriendships)const{
+
+    if (view == nullptr)
+        return; //evito segfault
 
     //semplicemente setto la view
     view->setProfile(pNick,
@@ -38,4 +41,12 @@ void AdminMWViewerController::setProfile(const QString & pNick,
                      pFriendships);
 
     view->show();
+}
+
+void AdminMWViewerController::resetView(){
+
+    if (view != nullptr)
+        delete view;
+
+    view = new AdminMWViewerView;
 }

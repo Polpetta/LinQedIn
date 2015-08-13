@@ -11,8 +11,7 @@ class AdminMWViewerController : public QObject
     Q_OBJECT
 
 public:
-    AdminMWViewerController(AdminMWViewerModel* = new AdminMWViewerModel,
-                            AdminMWViewerView* = new AdminMWViewerView);
+    AdminMWViewerController(AdminMWViewerModel* = new AdminMWViewerModel);
 
     ~AdminMWViewerController();
 
@@ -24,8 +23,10 @@ public:
                     const QString &,
                     const QVector<QString> &,
                     const QVector<QString> &,
-                    const QVector<Event> &,
+                    const QVector<QString> &,
                     const QVector<QString> &)const;
+
+    void resetView();
 
 private:
 

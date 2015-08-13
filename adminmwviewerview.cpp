@@ -7,7 +7,15 @@ AdminMWViewerView::AdminMWViewerView(QWidget* ptr)
       surname (new QLabel),
       birth (new QLabel),
       phone (new QLabel),
-      eMail (new QLabel)
+      eMail (new QLabel),
+      scrollHobby(new QScrollArea),
+      scrollInterests(new QScrollArea),
+      scrollExperience(new QScrollArea),
+      scrollFriendships(new QScrollArea),
+      hobby(new listViewer),
+      interests(new listViewer),
+      experiences(new listViewer),
+      friendships(new listViewer)
 {
 
     QLabel* lNick = new QLabel (tr ("Nickname: ") );
@@ -27,9 +35,6 @@ AdminMWViewerView::AdminMWViewerView(QWidget* ptr)
 
     QGroupBox* bioBox = new QGroupBox ( tr ("Informazioni personali ") );
     QGridLayout* bioLayout = new QGridLayout;
-
-    /*bioLayout->addWidget(lNick, 0, 0);
-    bioLayout->addWidget(nick, 0, 1);*/
 
     bioLayout->addWidget(lName, 0, 0);
     bioLayout->addWidget(name, 0, 1);
@@ -52,28 +57,43 @@ AdminMWViewerView::AdminMWViewerView(QWidget* ptr)
     QGroupBox* hobbyBox = new QGroupBox ( tr("Hobby") );
     QGridLayout* hobbyLayout = new QGridLayout;
 
-    //...
+    scrollHobby->setWidget(hobby);
+    scrollHobby->setWidgetResizable( true );
+
+    hobbyLayout->addWidget(scrollHobby);
 
     hobbyBox->setLayout(hobbyLayout);
+
 
     QGroupBox* interestsBox = new QGroupBox ( tr ("Interessi" ) );
     QGridLayout* interestsLayout = new QGridLayout;
 
-    //...
+    scrollInterests->setWidget(interests);
+    scrollInterests->setWidgetResizable( true );
+
+    interestsLayout->addWidget(scrollInterests);
 
     interestsBox->setLayout(interestsLayout);
+
 
     QGroupBox* experiencesBox = new QGroupBox ( tr ("Esperienze") );
     QGridLayout* experiencesLayout = new QGridLayout;
 
-    //...
+    scrollExperience->setWidget(experiences);
+    scrollExperience->setWidgetResizable( true );
+
+    experiencesLayout->addWidget(scrollExperience);
 
     experiencesBox->setLayout(experiencesLayout);
+
 
     QGroupBox* friendshipsBox = new QGroupBox ( tr ("Amicizie") );
     QGridLayout* friendshipsLayout = new QGridLayout;
 
-    //...
+    scrollFriendships->setWidget(friendships);
+    scrollFriendships->setWidgetResizable( true );
+
+    friendshipsLayout->addWidget(scrollFriendships);
 
     friendshipsBox->setLayout(friendshipsLayout);
 
@@ -82,7 +102,6 @@ AdminMWViewerView::AdminMWViewerView(QWidget* ptr)
     layoutTot->addWidget(credentialBox);
     layoutTot->addWidget(bioBox);
     layoutTot->addWidget(hobbyBox);
-    layoutTot->addWidget(interestsBox);
     layoutTot->addWidget(interestsBox);
     layoutTot->addWidget(experiencesBox);
     layoutTot->addWidget(friendshipsBox);
@@ -110,18 +129,11 @@ AdminMWViewerView::~AdminMWViewerView(){
     delete phone;
     delete eMail;
 
-    QVector<QLabel*>::iterator it;
+    delete hobby;
+    delete interests;
+    delete friendships;
 
-    for (it = hobby.begin(); it != hobby.end(); ++it)
-        delete *it;
-
-    for (it = interests.begin(); it != interests.end(); ++it)
-        delete *it;
-
-    QVector<labelEvent*>::iterator ite;
-
-    for (ite = experiences.begin(); ite != experiences.end(); ++ite)
-        delete *ite;
+    delete experiences;
 }
 
 void AdminMWViewerView::setProfile(const QString & pNick,
@@ -132,8 +144,13 @@ void AdminMWViewerView::setProfile(const QString & pNick,
                                    const QString & pEMail,
                                    const QVector<QString> & pHobby,
                                    const QVector<QString> & pInterests,
-                                   const QVector<Event> & pExperience,
+                                   const QVector<QString> & pExperience,
                                    const QVector<QString> & pFriendships){
+
+    qDebug()<<"Arrivata richiesta di visualizzaizone nuovo profilo";
+
+    hobby->clear();
+    interests->clear();
 
     nick->setText(pNick);
     name->setText(pName);
@@ -142,80 +159,87 @@ void AdminMWViewerView::setProfile(const QString & pNick,
     phone->setText(pPhone);
     eMail->setText(pEMail);
 
+    qDebug()<<"pExperience size: "<<pExperience.size();
+
     QVector<QString>::const_iterator its;
     for (its = pHobby.cbegin(); its != pHobby.cend(); ++its){
 
         QLabel* newHobby = new QLabel (*its);
 
-        hobby.push_back(newHobby);
+        hobby->addLabel(newHobby);
     }
     for (its = pInterests.cbegin(); its != pInterests.cend(); ++its){
 
         QLabel* newInterests = new QLabel (*its);
 
-        interests.push_back(newInterests);
+        interests->addLabel(newInterests);
     }
 
-    QVector<Event>::const_iterator ite;
-    for (ite = pExperience.cbegin(); ite != pExperience.cend(); ++ite){
+    for (its = pExperience.cbegin(); its != pExperience.cend(); ++its){
 
-        labelEvent* newEvent = new labelEvent(*ite);
+        QLabel* newEvent = new QLabel(*its);
 
-        experiences.push_back(newEvent);
+        experiences->addLabel(newEvent);
     }
 
     for (its = pFriendships.cbegin(); its != pFriendships.cend(); ++its){
 
         QLabel* newFriend = new QLabel (*its);
 
-        friendships.push_back(newFriend);
+        friendships->addLabel(newFriend);
     }
+
+    if (pHobby.size() == 0)
+        hobby->addLabel(new QLabel( tr("Non ci sono hobby")));
+
+    if (pInterests.size() == 0)
+        interests->addLabel(new QLabel( tr("Non ci sono interessi")));
+
+    if (pExperience.size() == 0)
+        experiences->addLabel(new QLabel( tr("Non ci sono esperienze passate") ));
+
+
+    if (pFriendships.size() == 0)
+        friendships->addLabel(new QLabel(tr ("Non ci sono amici")));
 }
 
+//listViewer
 
-//labelEvent
+AdminMWViewerView::listViewer::listViewer(QWidget * ptr)
+    : QWidget(ptr), layout (new QVBoxLayout)
+{
 
-AdminMWViewerView::labelEvent::labelEvent(const Event & newEvent)
-    : begin(new QLabel(newEvent.cgetBegin().toString("dd-MM-yyyy"))),
-      end(new QLabel(newEvent.cgetFinish().toString("dd-MM-yyyy"))),
-      desc(new QLabel(newEvent.cgetDesc())),
-      where(new QLabel(newEvent.cgetWhere()))
-{}
-
-AdminMWViewerView::labelEvent::labelEvent(const QString & nBegin,
-                                          const QString & nEnd,
-                                          const QString & nDesc,
-                                          const QString & nWhere)
-    : begin(new QLabel(nBegin)),
-      end(new QLabel(nEnd)),
-      desc(new QLabel(nDesc)),
-      where(new QLabel(nWhere))
-{}
-
-AdminMWViewerView::labelEvent::~labelEvent(){
-
-    delete begin;
-    delete end;
-    delete desc;
-    delete where;
+    setLayout(layout);
 }
 
-const QLabel* AdminMWViewerView::labelEvent::cgetBegin()const{
+AdminMWViewerView::listViewer::~listViewer(){
+    //fare obj.clear è uguale?
+    QVector<QLabel*>::iterator it;
+    for (it = obj.begin(); it != obj.end(); ++it){
 
-    return begin;
+        delete *it;
+    }
+
+    delete layout;
 }
 
-const QLabel* AdminMWViewerView::labelEvent::cgetEnd()const{
+void AdminMWViewerView::listViewer::addLabel(QLabel* newLabel){
 
-    return end;
+    qDebug()<<"Arrivo di una nuova label: "<<newLabel->text();
+
+    obj.push_back(newLabel);
+
+    layout->addWidget(obj.last());
 }
 
-const QLabel* AdminMWViewerView::labelEvent::cgetDescription()const{
+void AdminMWViewerView::listViewer::clear(){
 
-    return desc;
-}
+    QVector<QLabel*>::const_iterator it;
 
-const QLabel* AdminMWViewerView::labelEvent::cgetWhere()const{
+    for (it = obj.cbegin(); it != obj.cend(); ++it){
 
-    return where;
+        layout->removeWidget(*it);
+    }
+
+    obj.clear();
 }
