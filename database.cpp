@@ -77,6 +77,8 @@ DataMember& Database::select(const Profile & find)const{
 
         const SmartMember & current = db[it];
 
+        if (current->isValid() == true){ //solo se è valido
+
         const Profile & pcurrent = current->cgetProfile();
 
         const Hobby & chbb = pcurrent.cgetPersonal().cgetHobby();
@@ -146,6 +148,7 @@ DataMember& Database::select(const Profile & find)const{
 
             if (ismname == true && ismsurn == true && ismbirth == true)
                 pres->add(current);
+        }
 
         }
 
