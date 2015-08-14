@@ -1,5 +1,14 @@
 #include "adminrmmemberwview.h"
 
+
+void AdminRmMemberWView::confirmRemove()const{
+
+    const QString nick = target->text();
+    target->clear();
+
+    emit remove (nick);
+}
+
 AdminRmMemberWView::AdminRmMemberWView(QWidget* ptr)
     : QWidget (ptr)
 {
@@ -28,6 +37,11 @@ AdminRmMemberWView::AdminRmMemberWView(QWidget* ptr)
     setFixedSize( sizeHint() );
 
     //da farci le varie connect
+
+    connect (confirmButton,
+             SIGNAL (clicked()),
+             this,
+             SLOT (confirmRemove()));
 }
 
 AdminRmMemberWView::~AdminRmMemberWView(){
@@ -39,3 +53,4 @@ void AdminRmMemberWView::closeEvent(QCloseEvent * event){
 
     emit requestClose(event);
 }
+

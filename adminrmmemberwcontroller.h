@@ -4,6 +4,9 @@
 
 #include <QObject>
 #include <QCloseEvent>
+#include <QMessageBox>
+
+#include <QDebug>
 
 #include "adminrmmemberwmodel.h"
 #include "adminrmmemberwview.h"
@@ -23,10 +26,13 @@ public:
 signals:
 
     void resumeAdmin()const;
+    void rmMemberConfirm(const QString &)const;
 
 public slots:
 
     void closeView (QCloseEvent *)const;
+
+    void rmMember(const QString &)const;
 
 private:
 

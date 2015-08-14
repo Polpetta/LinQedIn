@@ -20,6 +20,11 @@ public:
 signals:
 
     void requestClose ( QCloseEvent * );
+    void remove (const QString &)const;
+
+private slots:
+
+    void confirmRemove()const;
 
 protected:
 
