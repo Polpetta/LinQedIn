@@ -78,16 +78,22 @@ void DataMember::add(const SmartMember & newSM){
 
 void DataMember::rm (const SmartMember & target){
 
+    qDebug()<<"Chiamata Rimozione utente";
+
     vector<SmartMember>::iterator it;
 
     for (it = vector<SmartMember>::begin(); it != vector<SmartMember>::end(); ++it){
 
         if (*it == target){
 
-            SmartMember last = vector<SmartMember>::back();
+            qDebug()<<"Ho avuto match, eseguo la rimozione";
+
+            /*SmartMember last = vector<SmartMember>::back();
             vector<SmartMember>::pop_back();
 
-            *it == last;
+            *it == last;*/
+
+            (*it)->setAccountValid( false ); //disattivo l'account
         }
     }
 }
