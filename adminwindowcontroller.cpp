@@ -57,8 +57,20 @@ void AdminWindowController::rmMember(const QString &target) const{
 
     SmartMember& MemberToRm = model->getDb()->select(target);
 
-    //passo attraverso l'admin per eseguire la rimozione <-prima trovare member
-    model->getSmartAdmin()->rmMember(MemberToRm);
+    if (MemberToRm.cgetPunt() == nullptr || MemberToRm->isValid() == false){
+
+        QMessageBox error (QMessageBox::Warning,
+                           tr ("Erroe Cancellazione Membro"),
+                           tr ("Attenzione, il nick selezionato sembra<br>"
+                               "non esistere nel Database, per faovre<br>"
+                               "ricontrollare") );
+
+        error.exec();
+    }else{
+
+        //passo attraverso l'admin per eseguire la rimozione
+        model->getSmartAdmin()->rmMember(MemberToRm);
+    }
 }
 
 void AdminWindowController::execChangeMember(){
