@@ -3,7 +3,7 @@
 
 void AdminRmMemberWView::confirmRemove()const{
 
-    const QString nick = target->text();
+    const QString & nick = target->text();
     target->clear();
 
     emit remove (nick);
