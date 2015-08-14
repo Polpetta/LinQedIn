@@ -45,6 +45,22 @@ void AdminWindowController::execRmMember(){
 
 }
 
+void AdminWindowController::rmMember(const QString &target) const{
+
+
+    qDebug()<<"Chiamata rimozione per utente: "<<target;
+    /*
+     * ora che ho il database controllo prima l'esistenza, in caso il membro
+     * che si vuole rimuovere non esista lancio un messaggio avvisando
+     * l'utilizzatore
+     */
+
+    SmartMember& MemberToRm = model->getDb()->select(target);
+
+    //passo attraverso l'admin per eseguire la rimozione <-prima trovare member
+    model->getSmartAdmin()->rmMember(MemberToRm);
+}
+
 void AdminWindowController::execChangeMember(){
 
 
@@ -117,6 +133,11 @@ AdminWindowController::AdminWindowController(AdminWindowModel* nModel,
              SIGNAL (resumeAdmin() ),
              this,
              SLOT (showUI()));
+
+    connect (model->getRmMemberCtl(),
+             SIGNAL (rmMemberConfirm(const QString &)),
+             this,
+             SLOT (rmMember(const QString &)));
 
     //creare le connect adatte
 }
