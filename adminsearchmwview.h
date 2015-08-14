@@ -37,7 +37,7 @@ signals:
                         const QString &,
                         const QString &);
 
-public slots:
+private slots:
 
     void newFilterH();
     void newFilterI();
