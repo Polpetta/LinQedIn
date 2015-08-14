@@ -29,6 +29,7 @@ private slots:
     void addMember(const SmartMember &)const;
     void SearchMember(const Profile &)const;
     void rmMember(const QString &)const;
+    void changeMember(const QString &, const QString &)const;
 
 public slots:
     void showUI() const;
@@ -40,7 +41,6 @@ public:
     virtual ~AdminWindowController();
 
 private:
-
 
     AdminWindowModel* model;
     AdminWindowView* view;

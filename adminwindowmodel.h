@@ -10,6 +10,7 @@
 #include "adminaddmemberwc.h"
 #include "adminsearchmwcontroller.h"
 #include "adminrmmemberwcontroller.h"
+#include "adminchangetypewcontroller.h"
 
 class AdminWindowModel
 {
@@ -18,7 +19,8 @@ public:
                      const SmartAdmin & = SmartAdmin(),
                      AdminAddMemberWC* = new AdminAddMemberWC,
                      AdminSearchMWController* = new AdminSearchMWController,
-                     AdminRmMemberWController* = new AdminRmMemberWController);
+                     AdminRmMemberWController* = new AdminRmMemberWController,
+                     AdminChangeTypeWController* = new AdminChangeTypeWController);
 
     ~AdminWindowModel();
 
@@ -27,6 +29,7 @@ public:
     AdminAddMemberWC* getAddMemberCtl()const;
     AdminSearchMWController* getSearchMemberCtl()const;
     AdminRmMemberWController* getRmMemberCtl()const;
+    AdminChangeTypeWController* getChangeMemberCtl()const;
 
 private:
 
@@ -36,6 +39,7 @@ private:
     AdminAddMemberWC* addMember;
     AdminSearchMWController* searchMember;
     AdminRmMemberWController* rmMember;
+    AdminChangeTypeWController* changeMember;
 };
 
 #endif // ADMINWINDOWMODEL_H

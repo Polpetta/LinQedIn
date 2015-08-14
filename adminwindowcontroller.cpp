@@ -60,7 +60,7 @@ void AdminWindowController::rmMember(const QString &target) const{
     if (MemberToRm.cgetPunt() == nullptr || MemberToRm->isValid() == false){
 
         QMessageBox error (QMessageBox::Warning,
-                           tr ("Erroe Cancellazione Membro"),
+                           tr ("Errore Cancellazione Membro"),
                            tr ("Attenzione, il nick selezionato sembra<br>"
                                "non esistere nel Database, per faovre<br>"
                                "ricontrollare") );
@@ -75,7 +75,49 @@ void AdminWindowController::rmMember(const QString &target) const{
 
 void AdminWindowController::execChangeMember(){
 
+    AdminChangeTypeWController* newChgTyM = model->getChangeMemberCtl();
 
+    view->hide();
+
+    newChgTyM->showUI();
+
+
+}
+
+void AdminWindowController::changeMember(const QString & nick,
+                                         const QString & newType)const{
+
+    SmartMember & memberToChange = model->getDb()->select(nick);
+
+    if (memberToChange.cgetPunt() == nullptr || memberToChange->isValid() == false){
+
+        QMessageBox error (QMessageBox::Warning,
+                           tr ("Errroe Modifica di Tipo a") + nick,
+                           tr ("Attenzione, il nick selezionato sembra<br>"
+                               "non esistere nel Database, per faovre<br>"
+                               "ricontrollare") );
+
+        error.exec();
+    }else{
+
+        if (memberToChange->cgetType() == newType){
+
+            QMessageBox info (QMessageBox::Information,
+                              tr ("Cambiamento tipo Membro"),
+                              tr ("Questo Iscritto ha già tipo ") + newType);
+
+            info.exec();
+            return;
+        }
+
+        model->getSmartAdmin()->changeMemberType(memberToChange, newType);
+
+        QMessageBox info (QMessageBox::Information,
+                          tr ("Operazione Completata" ),
+                          tr ("Ora ")+nick+tr(" ha un account ")+newType);
+
+        info.exec();
+    }
 }
 
 void AdminWindowController::execSaveDb(){
@@ -151,6 +193,16 @@ AdminWindowController::AdminWindowController(AdminWindowModel* nModel,
              this,
              SLOT (rmMember(const QString &)));
 
+    connect (model->getChangeMemberCtl(),
+             SIGNAL (resumeAdmin() ),
+             this,
+             SLOT (showUI()));
+
+    connect (model->getChangeMemberCtl(),
+             SIGNAL (confirmChange(const QString &,const QString &)),
+             this,
+             SLOT (changeMember(const QString &, const QString &)));
+
     //creare le connect adatte
 }
 
@@ -159,7 +211,6 @@ AdminWindowController::~AdminWindowController()
 
     delete model;
     delete view;
-    //ci sarà la delete dell'admin, implicita
 }
 
 
