@@ -64,7 +64,10 @@ SOURCES += main.cpp\
     adminrmmemberwcontroller.cpp \
     adminchangetypewview.cpp \
     adminchangetypewmodel.cpp \
-    adminchangetypewcontroller.cpp
+    adminchangetypewcontroller.cpp \
+    memberloginwview.cpp \
+    memberloginwmodel.cpp \
+    memberloginwcontroller.cpp
 
 HEADERS  += \
     event.h \
@@ -118,6 +121,9 @@ HEADERS  += \
     adminrmmemberwcontroller.h \
     adminchangetypewview.h \
     adminchangetypewmodel.h \
-    adminchangetypewcontroller.h
+    adminchangetypewcontroller.h \
+    memberloginwview.h \
+    memberloginwmodel.h \
+    memberloginwcontroller.h
 
 QMAKE_CXXFLAGS += -std=c++0x
