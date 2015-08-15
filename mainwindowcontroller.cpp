@@ -12,11 +12,21 @@ void MainWindowController::showUI(){
     view->show();
 }
 
-void MainWindowController::showAdmin(){
+void MainWindowController::showAdmin()const{
 
     view->close();
+
+    //ora carico il database lato amministrativo
+    model->getAdminController()->loadDb();
+
     model->getAdminController()->showUI();
 
+}
+
+void MainWindowController::showLoginMember()const{
+
+    view->close();
+    model->getMemberLoginController()->showUI();
 }
 
 MainWindowController::MainWindowController(MainWindowModel* nModel,
@@ -29,6 +39,11 @@ MainWindowController::MainWindowController(MainWindowModel* nModel,
             SIGNAL ( adminViewCall() ),
             this,
             SLOT ( showAdmin() ));
+
+    connect(view,
+            SIGNAL ( memberLoginCall() ),
+            this,
+            SLOT ( showLoginMember() ));
 
 
     /*

@@ -17,7 +17,8 @@ private:
 
 public slots:
 
-    void showAdmin();
+    void showAdmin()const;
+    void showLoginMember()const;
 
 public:
     MainWindowController(MainWindowModel* = new MainWindowModel,

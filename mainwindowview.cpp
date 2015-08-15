@@ -28,6 +28,11 @@ MainWindowView::MainWindowView(QWidget* parent)
              this,
              SIGNAL ( adminViewCall() ));
 
+    connect (user,
+             SIGNAL (clicked () ),
+             this,
+             SIGNAL ( memberLoginCall() ));
+
 }
 
 

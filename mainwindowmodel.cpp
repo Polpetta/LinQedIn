@@ -1,16 +1,22 @@
 #include "mainwindowmodel.h"
 
 MainWindowModel::MainWindowModel()
-    : admin (new AdminWindowController())
+    : admin (new AdminWindowController()),
+      memberLogin (new MemberLoginWController())
 {}
 
 MainWindowModel::~MainWindowModel(){
 
     delete admin;
+    delete memberLogin;
 }
 
-AdminWindowController* MainWindowModel::getAdminController(){
+AdminWindowController* MainWindowModel::getAdminController()const{
 
     return admin;
 }
 
+MemberLoginWController* MainWindowModel::getMemberLoginController()const{
+
+    return memberLogin;
+}

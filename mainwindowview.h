@@ -15,7 +15,8 @@ class MainWindowView : public QWidget
 
 signals:
 
-    void adminViewCall();
+    void adminViewCall()const;
+    void memberLoginCall()const;
 
 public:
     MainWindowView( QWidget* = nullptr );
