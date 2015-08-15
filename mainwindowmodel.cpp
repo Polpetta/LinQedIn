@@ -11,6 +11,8 @@ MainWindowModel::MainWindowModel()
      * Scritto com'è ora viene caricata tutta la zona amministrativa e
      * anche quella degli iscritti, ma alla fine se ne può scegliere solo
      * una, quindi l'altra rimarrà in memoria per niente!
+     *
+     * Non è ancora meglio spostare tutto il database sul MainWindowModel?
      */
 }
 
