@@ -213,6 +213,11 @@ AdminWindowController::~AdminWindowController()
     delete view;
 }
 
+void AdminWindowController::loadDb()const {
+
+    model->getDb()->load();
+}
+
 
 void AdminWindowController::showUI()const {
 

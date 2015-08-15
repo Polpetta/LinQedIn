@@ -33,6 +33,7 @@ private slots:
 
 public slots:
     void showUI() const;
+    void loadDb() const;
 
 public:
     AdminWindowController(AdminWindowModel* = new AdminWindowModel,
