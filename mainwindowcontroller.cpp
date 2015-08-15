@@ -26,6 +26,10 @@ void MainWindowController::showAdmin()const{
 void MainWindowController::showLoginMember()const{
 
     view->close();
+
+    //ora carico il database lato membro
+    model->getMemberLoginController()->loadDb();
+
     model->getMemberLoginController()->showUI();
 }
 
