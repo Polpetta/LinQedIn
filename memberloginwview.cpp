@@ -21,9 +21,21 @@ MemberLoginWView::MemberLoginWView(QWidget* ptr)
 
     setFixedSize( sizeHint() );
 
+    connect (logButton,
+             SIGNAL (clicked()),
+             this,
+             SLOT (newLogin()));
+
 }
 
 MemberLoginWView::~MemberLoginWView(){
 
     delete nickLogin;
+}
+
+void MemberLoginWView::newLogin()const{
+
+    emit doLogin(nickLogin->text());
+
+    nickLogin->clear();
 }

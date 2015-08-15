@@ -8,6 +8,12 @@
 
 class MemberLoginWController : public QObject
 {
+    Q_OBJECT
+
+public slots:
+
+    void loadDb()const;
+
 public:
     MemberLoginWController(MemberLoginWModel* = new MemberLoginWModel,
                            MemberLoginWView* = new MemberLoginWView);

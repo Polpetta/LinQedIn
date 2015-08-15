@@ -19,3 +19,8 @@ void MemberLoginWController::showUI()const{
 
     view->show();
 }
+
+void MemberLoginWController::loadDb()const{
+
+    model->getDb()->load();
+}

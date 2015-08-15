@@ -7,10 +7,19 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QVBoxLayout>
+#include <QMessageBox>
 
 class MemberLoginWView : public QWidget
 {
     Q_OBJECT
+
+signals:
+
+    void doLogin(const QString &)const;
+
+private slots:
+
+    void newLogin()const;
 
 public:
     MemberLoginWView(QWidget* = nullptr);
