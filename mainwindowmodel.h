@@ -14,8 +14,8 @@ public:
 
     ~MainWindowModel();
 
-    AdminWindowController* getAdminController()const;
-    MemberLoginWController* getMemberLoginController()const;
+    AdminWindowController* getAdminController();
+    MemberLoginWController* getMemberLoginController();
 
 private:
 

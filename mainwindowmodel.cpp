@@ -1,8 +1,8 @@
 #include "mainwindowmodel.h"
 
 MainWindowModel::MainWindowModel()
-    : admin (new AdminWindowController()),
-      memberLogin (new MemberLoginWController())
+    : admin (nullptr),
+      memberLogin (nullptr)
 {
 
     /*
@@ -11,8 +11,6 @@ MainWindowModel::MainWindowModel()
      * Scritto com'è ora viene caricata tutta la zona amministrativa e
      * anche quella degli iscritti, ma alla fine se ne può scegliere solo
      * una, quindi l'altra rimarrà in memoria per niente!
-     *
-     * Non è ancora meglio spostare tutto il database sul MainWindowModel?
      */
 }
 
@@ -22,12 +20,18 @@ MainWindowModel::~MainWindowModel(){
     delete memberLogin;
 }
 
-AdminWindowController* MainWindowModel::getAdminController()const{
+AdminWindowController* MainWindowModel::getAdminController(){
+
+    if (admin == nullptr)
+        admin = new AdminWindowController;
 
     return admin;
 }
 
-MemberLoginWController* MainWindowModel::getMemberLoginController()const{
+MemberLoginWController* MainWindowModel::getMemberLoginController(){
+
+    if (memberLogin == nullptr)
+        memberLogin = new MemberLoginWController;
 
     return memberLogin;
 }
