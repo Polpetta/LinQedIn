@@ -3,7 +3,7 @@
 
 User::User(const QString & typ,
            Database* ptrDb)
-    : valid(true), UserType(typ), db(ptrDb)
+    : valid(true), UserType(typ), ref(0), db(ptrDb)
 {}
 
 User::~User() {}
