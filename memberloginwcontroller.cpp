@@ -5,6 +5,10 @@ MemberLoginWController::MemberLoginWController(MemberLoginWModel* nModel,
     : model (nModel), view(nView)
 {
 
+    connect (view,
+             SIGNAL (doLogin(const QString &)),
+             this,
+             SLOT (execLogin(const QString &)));
     //qui ci andranno le connessioni
 }
 
@@ -23,4 +27,31 @@ void MemberLoginWController::showUI()const{
 void MemberLoginWController::loadDb()const{
 
     model->getDb()->load();
+}
+
+void MemberLoginWController::execLogin(const QString & nickName) const{
+
+    //controllo nel db se c'è quell'user.
+
+    SmartMember userToLogin = model->getDb()->select(nickName);
+
+    if (userToLogin == nullptr ){
+
+        QMessageBox info (QMessageBox::Warning,
+                          tr ("Login non valido"),
+                          tr ("Inserire delle credenziali corrette"));
+
+        info.exec();
+
+    }else{
+
+        //qui devo costruire l'interfaccia per l'Iscritto
+        const QString & tmp = QString::number(userToLogin->cgetRef());
+
+        QMessageBox info (QMessageBox::Information,
+                          tr ("Test"),
+                          tr ("Numero ref: ")+tmp);
+
+        info.exec();
+    }
 }

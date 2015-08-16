@@ -14,6 +14,10 @@ public slots:
 
     void loadDb()const;
 
+private slots:
+
+    void execLogin(const QString &)const;
+
 public:
     MemberLoginWController(MemberLoginWModel* = new MemberLoginWModel,
                            MemberLoginWView* = new MemberLoginWView);
