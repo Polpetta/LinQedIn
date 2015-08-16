@@ -28,7 +28,7 @@ public:
 
     QPushButton* getButtonLastItem()const;
 
-    void clearUI();
+    void disableOldResult();
 
 private:
 

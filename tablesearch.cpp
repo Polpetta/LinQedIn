@@ -49,12 +49,29 @@ void TableSearch::addSeparator(){
 
 }
 
+void TableSearch::disableOldResult(){
+
+    QList<TableSearch::info*>::const_iterator it;
+
+    for (it = items.cbegin(); it != items.cend(); ++it){
+
+        QPushButton* toDisable = (*it)->getButton();
+        if (toDisable != nullptr)
+            toDisable->setEnabled( false );
+    }
+
+    //non pulisco items perchè voglio tenere lo storico dei risultati
+}
+
 
 
 //info
 
 TableSearch::info::info(const int & row)
-    : rowNumber(row)
+    : rowNumber(row),
+      information (nullptr),
+      date (nullptr),
+      details(nullptr)
 {}
 
 TableSearch::info::info(const int & row,
@@ -102,14 +119,4 @@ QPushButton* TableSearch::info::getButton(){
 QPushButton* TableSearch::getButtonLastItem()const{
 
     return items.last()->getButton();
-}
-
-
-void TableSearch::clearUI(){
-
-    delete results;
-    results = new QGridLayout;
-    setLayout(results);
-
-    items.clear();
 }
