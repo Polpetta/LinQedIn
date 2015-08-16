@@ -152,6 +152,11 @@ void AdminMWViewerView::setProfile(const QString & pNick,
     hobby->clear();
     interests->clear();
 
+    experiences->clear();
+
+    friendships->clear();
+
+
     nick->setText(pNick);
     name->setText(pName);
     surname->setText(pSurname);
