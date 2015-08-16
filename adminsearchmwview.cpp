@@ -68,7 +68,7 @@ AdminSearchMWView::AdminSearchMWView(QWidget* parent)
     result = new TableSearch;
 
 
-    QScrollArea* scrollResults = new QScrollArea;
+    scrollResults = new QScrollArea;
     scrollResults->setWidget(result);
 
     scrollResults->setWidgetResizable( true );

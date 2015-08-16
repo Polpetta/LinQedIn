@@ -26,6 +26,7 @@ public:
 
     TableSearch* getTable()const;
 
+
 signals:
 
     void requestClose( QCloseEvent * );
