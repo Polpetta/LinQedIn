@@ -171,6 +171,8 @@ void AdminSearchMWController::setSearchResults(const DataMember & result) const{
 
     TableSearch* tRes = view->getTable();
 
+    tRes->disableOldResult();
+
     DataMember::const_iterator it;
 
     for (it = result.cbegin(); it != result.cend(); ++it){
