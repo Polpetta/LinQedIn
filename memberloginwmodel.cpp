@@ -1,8 +1,7 @@
 #include "memberloginwmodel.h"
 
-MemberLoginWModel::MemberLoginWModel(Database* dbptr,
-                                     MemberPanelWController* mbrPtr)
-    : db (dbptr), member(nullptr), memberPanel (mbrPtr)
+MemberLoginWModel::MemberLoginWModel(Database* dbptr)
+    : db (dbptr), member(nullptr), memberPanel (nullptr)
 {
 
 }
@@ -30,6 +29,11 @@ const SmartMember & MemberLoginWModel::cgetMember()const{
 void MemberLoginWModel::setMember(const SmartMember & newMember){
 
     member = newMember;
+
+    if (memberPanel == nullptr)
+        memberPanel = new MemberPanelWController(member);
+    else
+        memberPanel->setMember(member);
 }
 
 MemberPanelWController* MemberLoginWModel::getMemberPanelCtl()const{

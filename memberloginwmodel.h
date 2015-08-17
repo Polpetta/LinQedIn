@@ -11,8 +11,7 @@
 class MemberLoginWModel
 {
 public:
-    MemberLoginWModel(Database* = new DBonXml("database"),
-                      MemberPanelWController* = new MemberPanelWController);
+    MemberLoginWModel(Database* = new DBonXml("database"));
 
     ~MemberLoginWModel();
 
