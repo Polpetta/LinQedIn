@@ -70,7 +70,10 @@ SOURCES += main.cpp\
     memberloginwcontroller.cpp \
     memberpanelwview.cpp \
     memberpanelwmodel.cpp \
-    memberpanelwcontroller.cpp
+    memberpanelwcontroller.cpp \
+    memberupdatewview.cpp \
+    memberupdatewmodel.cpp \
+    memberupdatewcontroller.cpp
 
 HEADERS  += \
     event.h \
@@ -130,6 +133,9 @@ HEADERS  += \
     memberloginwcontroller.h \
     memberpanelwview.h \
     memberpanelwmodel.h \
-    memberpanelwcontroller.h
+    memberpanelwcontroller.h \
+    memberupdatewview.h \
+    memberupdatewmodel.h \
+    memberupdatewcontroller.h
 
 QMAKE_CXXFLAGS += -std=c++0x
