@@ -46,6 +46,8 @@ void MemberLoginWController::execLogin(const QString & nickName) const{
     }else{
 
         //qui devo costruire l'interfaccia per l'Iscritto
+        model->setMember(userToLogin); //mi salvo l'utente loggato
+
         const QString & tmp = QString::number(userToLogin->cgetRef());
 
         QMessageBox info (QMessageBox::Information,
