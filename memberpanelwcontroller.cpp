@@ -1,8 +1,8 @@
 #include "memberpanelwcontroller.h"
 
-MemberPanelWController::MemberPanelWController(MemberPanelWModel* nModel,
-                                               MemberPanelWView* nView)
-    : model(nModel), view(nView)
+MemberPanelWController::MemberPanelWController(const SmartMember & member)
+    : model(new MemberPanelWModel(member)),
+      view(new MemberPanelWView)
 {
 
     connect(view,
@@ -24,7 +24,6 @@ MemberPanelWController::MemberPanelWController(MemberPanelWModel* nModel,
 
 MemberPanelWController::~MemberPanelWController(){
 
-
 }
 
 void MemberPanelWController::showUI()const{
@@ -35,6 +34,11 @@ void MemberPanelWController::showUI()const{
 void MemberPanelWController::UpdateProfile()const{
 
     qDebug()<<"Sono in UpdateProfile";
+
+    //view->hide();
+
+    model->getMemberUpdateCtl()->showUI();
+
 }
 
 void MemberPanelWController::ManageFriends()const{
@@ -45,4 +49,9 @@ void MemberPanelWController::ManageFriends()const{
 void MemberPanelWController::Search()const{
 
     qDebug()<<"Sono in Search";
+}
+
+void MemberPanelWController::setMember(const SmartMember & newMember)const{
+
+    model->setMember(newMember);
 }

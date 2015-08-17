@@ -8,6 +8,8 @@
 #include "memberpanelwmodel.h"
 #include "memberpanelwview.h"
 
+#include "smartmember.h"
+
 class MemberPanelWController : public QObject
 {
     Q_OBJECT
@@ -23,10 +25,11 @@ public slots:
     void showUI()const;
 
 public:
-    MemberPanelWController(MemberPanelWModel* = new MemberPanelWModel,
-                           MemberPanelWView* = new MemberPanelWView);
+    MemberPanelWController(const SmartMember &);
 
     ~MemberPanelWController();
+
+    void setMember(const SmartMember &)const;
 
 private:
 
