@@ -35,6 +35,21 @@ MemberPanelWView::MemberPanelWView(QWidget * ptr)
     setLayout(layoutTot);
 
     setFixedSize( sizeHint () );
+
+    connect (updateProfile,
+             SIGNAL (clicked()),
+             this,
+             SIGNAL (execUpdateProfile()));
+
+    connect (manageFriends,
+             SIGNAL (clicked()),
+             this,
+             SIGNAL (execManageFriends()));
+
+    connect (search,
+             SIGNAL (clicked()),
+             this,
+             SIGNAL (execSearch()));
 }
 
 MemberPanelWView::~MemberPanelWView(){
