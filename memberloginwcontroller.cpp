@@ -35,7 +35,7 @@ void MemberLoginWController::execLogin(const QString & nickName) const{
 
     SmartMember userToLogin = model->getDb()->select(nickName);
 
-    if (userToLogin == nullptr ){
+    if (userToLogin == nullptr){
 
         QMessageBox info (QMessageBox::Warning,
                           tr ("Login non valido"),
@@ -47,6 +47,8 @@ void MemberLoginWController::execLogin(const QString & nickName) const{
 
         //qui devo costruire l'interfaccia per l'Iscritto
         model->setMember(userToLogin); //mi salvo l'utente loggato
+
+        view->close(); //chiudo il form di login - non serve più -
 
         model->getMemberPanelCtl()->showUI();
     }
