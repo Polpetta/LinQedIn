@@ -1,7 +1,7 @@
 #include "memberloginwmodel.h"
 
 MemberLoginWModel::MemberLoginWModel(Database* dbptr)
-    : db (dbptr)
+    : db (dbptr), member(nullptr)
 {
 
 }
@@ -14,4 +14,19 @@ MemberLoginWModel::~MemberLoginWModel(){
 Database* MemberLoginWModel::getDb()const{
 
     return db;
+}
+
+SmartMember & MemberLoginWModel::getMember(){
+
+    return member;
+}
+
+const SmartMember & MemberLoginWModel::cgetMember()const{
+
+    return member;
+}
+
+void MemberLoginWModel::setMember(const SmartMember & newMember){
+
+    member = newMember;
 }
