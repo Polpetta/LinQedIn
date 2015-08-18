@@ -15,7 +15,10 @@ public:
     ~listViewer();
 
     void addLabel(QLabel*);
+    void addLabel(const QString &);
     void clear();
+
+    void changeLabel(const QString &, const QString &);
 
 private:
 

@@ -27,6 +27,13 @@ void listViewer::addLabel(QLabel* newLabel){
     layout->addWidget(obj.last());
 }
 
+void listViewer::addLabel(const QString & newLabel){
+
+    QLabel* newInsert = new QLabel (newLabel);
+
+    addLabel(newInsert);
+}
+
 void listViewer::clear(){
 
     QVector<QLabel*>::const_iterator it;
@@ -37,4 +44,18 @@ void listViewer::clear(){
     }
 
     obj.clear();
+}
+
+void listViewer::changeLabel(const QString & old, const QString & replace){
+
+    QVector<QLabel*>::iterator it;
+
+    bool match = false;
+    for (it = obj.begin(); it != obj.end() && match == false; ++it){
+
+        if (old == (*it)->text()){
+
+            (*it)->setText(replace);
+        }
+    }
 }
