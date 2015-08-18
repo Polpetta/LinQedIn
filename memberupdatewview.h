@@ -40,6 +40,15 @@ signals:
     void execAddInterests (const QString &)const;
     void execRmInterests (const QString &)const;
 
+    void execAddExperiences(const QString &,
+                            const QString &,
+                            const QString &,
+                            const QString &)const;
+    void execRmExperiences(const QString &,
+                           const QString &,
+                           const QString &,
+                           const QString &)const;
+
 private slots:
 
     void groupBio()const;
@@ -49,6 +58,9 @@ private slots:
 
     void emitAddInterests()const;
     void emitRmInterests()const;
+
+    void emitAddExperiences()const;
+    void emitRmExperiences()const;
 
 public:
     MemberUpdateWView(QWidget * = nullptr);
@@ -63,6 +75,7 @@ public:
 
     listViewer* getHobbyList()const;
     listViewer* getInterestsList()const;
+    listViewer* getExperiencesList()const;
 
 protected:
 

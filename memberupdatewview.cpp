@@ -202,6 +202,16 @@ MemberUpdateWView::MemberUpdateWView(QWidget* ptr)
              this,
              SLOT ( emitRmInterests() ));
 
+    connect (addExperiences,
+             SIGNAL (clicked()),
+             this,
+             SLOT (emitAddExperiences()));
+
+    connect (rmExperiences,
+             SIGNAL (clicked()),
+             this,
+             SLOT (emitRmExperiences()));
+
     /*connect (addHobby,
              SIGNAL (clicked()),
              this,
@@ -373,6 +383,48 @@ void MemberUpdateWView::emitRmInterests()const{
     }
 }
 
+void MemberUpdateWView::emitAddExperiences()const{
+
+    if (modifyExpBegin->isModified() &&
+            modifyExpFinish->isModified() &&
+            modifyExpDesc->isModified() &&
+            modifyExpWhere->isModified()){
+
+        emit execAddExperiences(modifyExpBegin->text(),
+                                modifyExpFinish->text(),
+                                modifyExpDesc->text(),
+                                modifyExpWhere->text());
+        modifyExpBegin->clear();
+        modifyExpFinish->clear();
+        modifyExpDesc->clear();
+        modifyExpWhere->clear();
+    }else{
+
+        info("esperienza",typeAction::insert);
+    }
+}
+
+void MemberUpdateWView::emitRmExperiences()const{
+
+    if (modifyExpBegin->isModified() &&
+            modifyExpFinish->isModified() &&
+            modifyExpDesc->isModified() &&
+            modifyExpWhere->isModified()){
+
+        emit execRmExperiences(modifyExpBegin->text(),
+                               modifyExpFinish->text(),
+                               modifyExpDesc->text(),
+                               modifyExpWhere->text());
+        modifyExpBegin->clear();
+        modifyExpFinish->clear();
+        modifyExpDesc->clear();
+        modifyExpWhere->clear();
+    }else{
+
+        info ("esperienza",typeAction::remove);
+    }
+}
+
 listViewer* MemberUpdateWView::getHobbyList()const{
 
     return hobby;
@@ -381,4 +433,9 @@ listViewer* MemberUpdateWView::getHobbyList()const{
 listViewer* MemberUpdateWView::getInterestsList()const{
 
     return interests;
+}
+
+listViewer* MemberUpdateWView::getExperiencesList()const{
+
+    return experiences;
 }

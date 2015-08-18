@@ -15,6 +15,7 @@
 
 #include "smartmember.h"
 #include "bio.h"
+#include "event.h"
 #include "memberexecutive.h"
 
 class MemberUpdateWController : public QObject
@@ -33,6 +34,9 @@ signals:
     void insertInterests(const QString &)const;
     void removeInterests(const QString &)const;
 
+    void insertExperience(const Event &)const;
+    void removeExperience(const Event &)const;
+
 private slots:
 
     void processBio(const QString &,
@@ -46,6 +50,15 @@ private slots:
 
     void processAddInterests(const QString &)const;
     void processRmInterests(const QString &)const;
+
+    void processAddExperience(const QString &,
+                              const QString &,
+                              const QString &,
+                              const QString &)const;
+    void processRmExperience (const QString &,
+                              const QString &,
+                              const QString &,
+                              const QString &)const;
 
 public slots:
 

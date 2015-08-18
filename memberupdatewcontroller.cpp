@@ -24,6 +24,7 @@ MemberUpdateWController::MemberUpdateWController(const SmartMember & member)
         hobby->addLabel(*ith);
     }
 
+
     listViewer* interests = view->getInterestsList();
 
     Interests::const_iterator iti;
@@ -33,6 +34,18 @@ MemberUpdateWController::MemberUpdateWController(const SmartMember & member)
     for ( iti = itiMember.cbegin(); iti != itiMember.cend(); ++iti){
 
         interests->addLabel(*iti);
+    }
+
+
+    listViewer* experiences = view->getExperiencesList();
+
+    Experiences::const_iterator ite;
+
+    const Experiences & iteMember = member->cgetProfile().cgetExperiences();
+
+    for (ite = iteMember.cbegin(); ite != iteMember.cend(); ++ite){
+
+        experiences->addLabel((*ite).toString());
     }
 
     //varie connect
@@ -73,6 +86,28 @@ MemberUpdateWController::MemberUpdateWController(const SmartMember & member)
              SIGNAL (execRmInterests(const QString &)),
              this,
              SLOT (processRmInterests(const QString &)));
+
+    connect(view,
+            SIGNAL (execAddExperiences(const QString &,
+                                       const QString &,
+                                       const QString &,
+                                       const QString &)),
+            this,
+            SLOT (processAddExperience(const QString &,
+                                       const QString &,
+                                       const QString &,
+                                       const QString &)));
+
+    connect(view,
+            SIGNAL (execRmExperiences(const QString &,
+                                      const QString &,
+                                      const QString &,
+                                      const QString &)),
+            this,
+            SLOT (processRmExperience(const QString &,
+                                      const QString &,
+                                      const QString &,
+                                      const QString &)));
 
 }
 
@@ -215,6 +250,57 @@ void MemberUpdateWController::processRmInterests(const QString &target) const{
         QMessageBox info(QMessageBox::Warning,
                          tr ("Rimozione non possibile"),
                          tr ("L'iteresse inserito non è valido"));
+
+        info.exec();
+    }
+}
+
+void MemberUpdateWController::processAddExperience(const QString &start,
+                                                   const QString &finish,
+                                                   const QString &desc,
+                                                   const QString &where)const{
+
+    Event* newEvent = new Event(start,
+                                finish,
+                                desc,
+                                where,
+                                "dd-MM-yyyy");
+
+    if (newEvent->isValid()){
+        view->getExperiencesList()->addLabel(newEvent->toString());
+        emit insertExperience(*newEvent);
+        //da controllare e emettere per aggiunta
+    }else{
+
+        QMessageBox info(QMessageBox::Warning,
+                         tr ("Esperienza non valida"),
+                         tr ("L'esperienza inserita non è valida"));
+
+        info.exec();
+
+    }
+}
+
+void MemberUpdateWController::processRmExperience(const QString &start,
+                                                  const QString &finish,
+                                                  const QString &desc,
+                                                  const QString &where)const{
+
+    Event* newEvent = new Event(start,
+                                finish,
+                                desc,
+                                where,
+                                "dd-MM-yyyy");
+
+    if (newEvent->isValid()){
+        view->getExperiencesList()->changeLabel(newEvent->toString(), "<s>"+newEvent->toString()+"</s>");
+        emit removeExperience(*newEvent);
+        //da controllare e emettere per rimozione
+    }else{
+
+        QMessageBox info(QMessageBox::Warning,
+                         tr ("Rimozione non possibile"),
+                         tr ("L'esperienza inserita non è valida"));
 
         info.exec();
     }
