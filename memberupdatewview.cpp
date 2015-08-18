@@ -192,6 +192,16 @@ MemberUpdateWView::MemberUpdateWView(QWidget* ptr)
              this,
              SLOT ( emitRmHobby() ));
 
+    connect (addInterests,
+             SIGNAL (clicked()),
+             this,
+             SLOT (emitAddInterests() ));
+
+    connect (rmInterests,
+             SIGNAL (clicked()),
+             this,
+             SLOT ( emitRmInterests() ));
+
     /*connect (addHobby,
              SIGNAL (clicked()),
              this,
@@ -293,6 +303,28 @@ void MemberUpdateWView::closeEvent(QCloseEvent * event){
     emit requestClose(event);
 }
 
+void MemberUpdateWView::info(const QString &type, const typeAction &act) const{
+
+    QString action = tr ("unknown"); //in caso capiti qualcosa di strano
+    if (act == typeAction::insert){
+
+        action = tr ("inserire");
+    }else if (act == typeAction::remove){
+
+        action = tr ("rimuovere");
+    }
+
+
+    QString title = tr("Aggiunta ")+type;
+    QString message = tr("È necessario completare il form per<br> ")+action+tr(" un ")+type;
+
+    QMessageBox info(QMessageBox::Information,
+                     title,
+                     message);
+
+    info.exec();
+}
+
 void MemberUpdateWView::emitAddHobby() const{
 
     if (modifyHobby->isModified()){
@@ -301,12 +333,7 @@ void MemberUpdateWView::emitAddHobby() const{
         modifyHobby->clear();
     }else{
 
-        QMessageBox info(QMessageBox::Information,
-                         tr ("Aggiunta Hobby"),
-                         tr ("È necessario completare il form per<br>"
-                             "inserire un nuovo hobby"));
-
-        info.exec();
+        info("hobby",typeAction::insert);
     }
 }
 
@@ -318,11 +345,40 @@ void MemberUpdateWView::emitRmHobby()const{
         modifyHobby->clear();
     }else{
 
-        QMessageBox info(QMessageBox::Information,
-                         tr ("Rimozione Hobby"),
-                         tr ("È necessario completare il form per<br>"
-                             "rimuovere un hobby"));
-
-        info.exec();
+        info("hobby",typeAction::remove);
     }
+}
+
+void MemberUpdateWView::emitAddInterests()const{
+
+    if (modifyInterests->isModified()){
+
+        emit execAddInterests(modifyInterests->text());
+        modifyInterests->clear();
+    }else{
+
+        info("interesse",typeAction::insert);
+    }
+}
+
+void MemberUpdateWView::emitRmInterests()const{
+
+    if (modifyInterests->isModified()){
+
+        emit execRmInterests(modifyInterests->text());
+        modifyInterests->clear();
+    }else{
+
+        info("interesse",typeAction::remove);
+    }
+}
+
+listViewer* MemberUpdateWView::getHobbyList()const{
+
+    return hobby;
+}
+
+listViewer* MemberUpdateWView::getInterestsList()const{
+
+    return interests;
 }

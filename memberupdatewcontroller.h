@@ -30,6 +30,9 @@ signals:
     void insertHobby(const QString &)const;
     void removeHobby(const QString &)const;
 
+    void insertInterests(const QString &)const;
+    void removeInterests(const QString &)const;
+
 private slots:
 
     void processBio(const QString &,
@@ -40,6 +43,9 @@ private slots:
 
     void processAddHobby(const QString &)const;
     void processRmHobby(const QString &)const;
+
+    void processAddInterests(const QString &)const;
+    void processRmInterests(const QString &)const;
 
 public slots:
 

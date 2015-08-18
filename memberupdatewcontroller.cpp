@@ -13,6 +13,28 @@ MemberUpdateWController::MemberUpdateWController(const SmartMember & member)
                  bio.getPhone(),
                  bio.getMail());
 
+    listViewer* hobby = view->getHobbyList();
+
+    Hobby::const_iterator ith;
+
+    const Hobby & hbbMember = member->cgetProfile().cgetPersonal().cgetHobby();
+
+    for ( ith = hbbMember.cbegin(); ith != hbbMember.cend(); ++ith){
+
+        hobby->addLabel(*ith);
+    }
+
+    listViewer* interests = view->getInterestsList();
+
+    Interests::const_iterator iti;
+
+    const Interests & itiMember = member->cgetProfile().cgetPersonal().cgetInterests();
+
+    for ( iti = itiMember.cbegin(); iti != itiMember.cend(); ++iti){
+
+        interests->addLabel(*iti);
+    }
+
     //varie connect
     connect (view,
              SIGNAL (saveBio(const QString &,
@@ -41,6 +63,16 @@ MemberUpdateWController::MemberUpdateWController(const SmartMember & member)
              SIGNAL (execRmHobby(const QString &)),
              this,
              SLOT (processRmHobby(const QString &)));
+
+    connect (view,
+             SIGNAL (execAddInterests(const QString &)),
+             this,
+             SLOT (processAddInterests(const QString &)));
+
+    connect (view,
+             SIGNAL (execRmInterests(const QString &)),
+             this,
+             SLOT (processRmInterests(const QString &)));
 
 }
 
@@ -128,6 +160,7 @@ void MemberUpdateWController::processAddHobby(const QString & newHobby)const{
 
     if (newHobby.size() > 0){
 
+        view->getHobbyList()->addLabel(newHobby);
         emit insertHobby(newHobby);
     }else{
 
@@ -143,12 +176,45 @@ void MemberUpdateWController::processRmHobby(const QString & target) const{
 
     if (target.size() > 0){
 
+        view->getHobbyList()->changeLabel(target, "<s>"+target+"</s>");
         emit removeHobby(target);
     }else{
 
         QMessageBox info(QMessageBox::Warning,
                          tr ("Rimozione non possibile"),
                          tr ("L'hobby inserito non è valido"));
+
+        info.exec();
+    }
+}
+
+void MemberUpdateWController::processAddInterests(const QString & newInt) const{
+
+    if (newInt.size() > 0){
+
+        view->getInterestsList()->addLabel(newInt);
+        emit insertInterests(newInt);
+    }else{
+
+        QMessageBox info(QMessageBox::Warning,
+                         tr ("Interesse non valido"),
+                         tr ("L'interesse inserito non è valido"));
+
+        info.exec();
+    }
+}
+
+void MemberUpdateWController::processRmInterests(const QString &target) const{
+
+    if (target.size() > 0){
+
+        view->getInterestsList()->changeLabel(target, "<s>"+target+"</s>");
+        emit removeInterests(target);
+    }else{
+
+        QMessageBox info(QMessageBox::Warning,
+                         tr ("Rimozione non possibile"),
+                         tr ("L'iteresse inserito non è valido"));
 
         info.exec();
     }
