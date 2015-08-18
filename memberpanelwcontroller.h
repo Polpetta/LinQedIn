@@ -14,11 +14,19 @@ class MemberPanelWController : public QObject
 {
     Q_OBJECT
 
+signals:
+
+    void close()const;
+
 private slots:
 
     void UpdateProfile()const;
     void ManageFriends()const;
     void Search()const;
+
+    void saveBio(const Bio &)const;
+
+    void closeSession( QCloseEvent* )const;
 
 public slots:
 

@@ -16,10 +16,16 @@ signals:
     void execManageFriends();
     void execSearch();
 
+    void requestClose( QCloseEvent* )const;
+
 public:
     MemberPanelWView(QWidget* = nullptr);
 
     ~MemberPanelWView();
+
+protected:
+
+    void closeEvent( QCloseEvent * );
 };
 
 #endif // MEMBERPANELWVIEW_H

@@ -56,3 +56,8 @@ MemberPanelWView::~MemberPanelWView(){
 
 
 }
+
+void MemberPanelWView::closeEvent(QCloseEvent * event){
+
+    emit requestClose(event);
+}

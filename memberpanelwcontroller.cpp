@@ -5,6 +5,12 @@ MemberPanelWController::MemberPanelWController(const SmartMember & member)
       view(new MemberPanelWView)
 {
 
+    //ci andranno le varie connect
+    connect(view,
+            SIGNAL (requestClose( QCloseEvent* ) ),
+            this,
+            SLOT (closeSession( QCloseEvent* )) );
+
     connect(view,
             SIGNAL (execUpdateProfile()),
             this,
@@ -19,7 +25,17 @@ MemberPanelWController::MemberPanelWController(const SmartMember & member)
              SIGNAL (execSearch()),
              this,
              SLOT (Search()));
-    //ci andranno le varie connect
+
+    connect (model->getMemberUpdateCtl(),
+             SIGNAL (resumePanel()),
+             this,
+             SLOT (showUI()));
+
+    connect (model->getMemberUpdateCtl(),
+             SIGNAL (updateBioInfo(const Bio &)),
+             this,
+             SLOT (saveBio(const Bio &)));
+
 }
 
 MemberPanelWController::~MemberPanelWController(){
@@ -35,7 +51,7 @@ void MemberPanelWController::UpdateProfile()const{
 
     qDebug()<<"Sono in UpdateProfile";
 
-    //view->hide();
+    view->hide();
 
     model->getMemberUpdateCtl()->showUI();
 
@@ -54,4 +70,23 @@ void MemberPanelWController::Search()const{
 void MemberPanelWController::setMember(const SmartMember & newMember)const{
 
     model->setMember(newMember);
+}
+
+void MemberPanelWController::saveBio(const Bio & newBio) const{
+
+    model->getMember()->getProfile().getPersonal().setBio(newBio);
+
+    qDebug()<<"Aggiornamento nuove bio completato";
+}
+
+void MemberPanelWController::closeSession(QCloseEvent *event) const{
+
+    //prima di chiudere tutto, accetto l'evento, salvo il db ed esco
+    //per salvare il db devo andare in memberLogin
+
+    event->accept();
+
+    emit close();
+
+
 }
