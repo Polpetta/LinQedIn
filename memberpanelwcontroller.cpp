@@ -36,6 +36,16 @@ MemberPanelWController::MemberPanelWController(const SmartMember & member)
              this,
              SLOT (saveBio(const Bio &)));
 
+    connect (model->getMemberUpdateCtl(),
+             SIGNAL (insertHobby(const QString &)),
+             this,
+             SLOT (addHobby(const QString &)));
+
+    connect (model->getMemberUpdateCtl(),
+             SIGNAL (removeHobby(const QString &)),
+             this,
+             SLOT (rmHobby(const QString &)));
+
 }
 
 MemberPanelWController::~MemberPanelWController(){
@@ -89,4 +99,14 @@ void MemberPanelWController::closeSession(QCloseEvent *event) const{
     emit close();
 
 
+}
+
+void MemberPanelWController::addHobby(const QString & newHobby) const{
+
+    model->getMember()->getProfile().getPersonal().getHobby().add(newHobby);
+}
+
+void MemberPanelWController::rmHobby(const QString & target) const{
+
+    model->getMember()->getProfile().getPersonal().getHobby().rm(target);
 }

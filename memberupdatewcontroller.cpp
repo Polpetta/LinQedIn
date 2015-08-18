@@ -32,6 +32,16 @@ MemberUpdateWController::MemberUpdateWController(const SmartMember & member)
              this,
              SLOT (closeView( QCloseEvent* )));
 
+    connect (view,
+             SIGNAL (execAddHobby(const QString &)),
+             this,
+             SLOT (processAddHobby(const QString &)));
+
+    connect (view,
+             SIGNAL (execRmHobby(const QString &)),
+             this,
+             SLOT (processRmHobby(const QString &)));
+
 }
 
 MemberUpdateWController::~MemberUpdateWController(){
@@ -112,4 +122,34 @@ void MemberUpdateWController::closeView(QCloseEvent *event) const{
     event->accept(); //accetto chiusura finestra
 
     emit resumePanel();
+}
+
+void MemberUpdateWController::processAddHobby(const QString & newHobby)const{
+
+    if (newHobby.size() > 0){
+
+        emit insertHobby(newHobby);
+    }else{
+
+        QMessageBox info(QMessageBox::Warning,
+                         tr ("Hobby non valido"),
+                         tr ("È necessario inserire un hobby valido"));
+
+        info.exec();
+    }
+}
+
+void MemberUpdateWController::processRmHobby(const QString & target) const{
+
+    if (target.size() > 0){
+
+        emit removeHobby(target);
+    }else{
+
+        QMessageBox info(QMessageBox::Warning,
+                         tr ("Rimozione non possibile"),
+                         tr ("L'hobby inserito non è valido"));
+
+        info.exec();
+    }
 }

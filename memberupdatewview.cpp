@@ -152,7 +152,6 @@ MemberUpdateWView::MemberUpdateWView(QWidget* ptr)
     QGroupBox* experienceGroup = new QGroupBox ( tr ("Modifica le Esperienze") );
 
     experienceGroup->setLayout(expL);
-
     //...
 
     QVBoxLayout* optionButton = new QVBoxLayout;
@@ -182,6 +181,16 @@ MemberUpdateWView::MemberUpdateWView(QWidget* ptr)
              SIGNAL (clicked()),
              this,
              SLOT ( groupBio()) );
+
+    connect (addHobby,
+             SIGNAL (clicked()),
+             this,
+             SLOT ( emitAddHobby() ));
+
+    connect (rmHobby,
+             SIGNAL (clicked()),
+             this,
+             SLOT ( emitRmHobby() ));
 
     /*connect (addHobby,
              SIGNAL (clicked()),
@@ -282,4 +291,38 @@ void MemberUpdateWView::groupBio()const{
 void MemberUpdateWView::closeEvent(QCloseEvent * event){
 
     emit requestClose(event);
+}
+
+void MemberUpdateWView::emitAddHobby() const{
+
+    if (modifyHobby->isModified()){
+
+        emit execAddHobby(modifyHobby->text());
+        modifyHobby->clear();
+    }else{
+
+        QMessageBox info(QMessageBox::Information,
+                         tr ("Aggiunta Hobby"),
+                         tr ("È necessario completare il form per<br>"
+                             "inserire un nuovo hobby"));
+
+        info.exec();
+    }
+}
+
+void MemberUpdateWView::emitRmHobby()const{
+
+    if (modifyHobby->isModified()){
+
+        emit execRmHobby(modifyHobby->text());
+        modifyHobby->clear();
+    }else{
+
+        QMessageBox info(QMessageBox::Information,
+                         tr ("Rimozione Hobby"),
+                         tr ("È necessario completare il form per<br>"
+                             "rimuovere un hobby"));
+
+        info.exec();
+    }
 }

@@ -28,15 +28,21 @@ signals:
                  const QString &,
                  const QString &,
                  const QString &)const;
-    void execModHobby()const;
+
     void execModInterests()const;
     void execModExperiences()const;
 
     void requestClose ( QCloseEvent* );
 
+    void execAddHobby (const QString &)const;
+    void execRmHobby(const QString &)const;
+
 private slots:
 
     void groupBio()const;
+
+    void emitAddHobby()const;
+    void emitRmHobby()const;
 
 public:
     MemberUpdateWView(QWidget * = nullptr);

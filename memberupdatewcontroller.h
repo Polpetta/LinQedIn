@@ -24,7 +24,11 @@ class MemberUpdateWController : public QObject
 signals:
 
     void resumePanel()const;
+
     void updateBioInfo(const Bio &)const;
+
+    void insertHobby(const QString &)const;
+    void removeHobby(const QString &)const;
 
 private slots:
 
@@ -33,6 +37,9 @@ private slots:
                     const QString &,
                     const QString &,
                     const QString &)const;
+
+    void processAddHobby(const QString &)const;
+    void processRmHobby(const QString &)const;
 
 public slots:
 
