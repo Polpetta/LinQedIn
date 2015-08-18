@@ -14,7 +14,10 @@
 #include <QDebug>
 
 #include <QVector>
+
 #include "event.h"
+
+#include "listviewer.h"
 
 class AdminMWViewerView : public QWidget
 {
@@ -37,22 +40,6 @@ public slots:
                     const QVector<QString> &,
                     const QVector <QString> &);
 private:
-
-    class listViewer : public QWidget{
-
-    public:
-        listViewer(QWidget * = nullptr);
-        ~listViewer();
-
-        void addLabel(QLabel*);
-        void clear();
-
-    private:
-
-        QVector<QLabel*> obj; //da implmenetare distruttore
-        QVBoxLayout* layout;
-
-    };
 
     QLabel* nick;
     QLabel* name;
