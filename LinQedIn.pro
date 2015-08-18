@@ -73,7 +73,8 @@ SOURCES += main.cpp\
     memberpanelwcontroller.cpp \
     memberupdatewview.cpp \
     memberupdatewmodel.cpp \
-    memberupdatewcontroller.cpp
+    memberupdatewcontroller.cpp \
+    listviewer.cpp
 
 HEADERS  += \
     event.h \
@@ -136,6 +137,7 @@ HEADERS  += \
     memberpanelwcontroller.h \
     memberupdatewview.h \
     memberupdatewmodel.h \
-    memberupdatewcontroller.h
+    memberupdatewcontroller.h \
+    listviewer.h
 
 QMAKE_CXXFLAGS += -std=c++0x
