@@ -56,6 +56,16 @@ MemberPanelWController::MemberPanelWController(const SmartMember & member)
              this,
              SLOT (rmInterests(const QString &)));
 
+    connect (model->getMemberUpdateCtl(),
+             SIGNAL (insertExperience(const Event &)),
+             this,
+             SLOT (addExperience(const Event &)));
+
+    connect (model->getMemberUpdateCtl(),
+             SIGNAL (removeExperience(const Event &)),
+             this,
+             SLOT (rmExperience(const Event &)));
+
 }
 
 MemberPanelWController::~MemberPanelWController(){
@@ -129,4 +139,14 @@ void MemberPanelWController::addInterests(const QString &newInterest) const{
 void MemberPanelWController::rmInterests(const QString & target) const{
 
     model->getMember()->getProfile().getPersonal().getInterests().rm(target);
+}
+
+void MemberPanelWController::addExperience(const Event &newEvent) const{
+
+    model->getMember()->getProfile().getExperiences().add(newEvent);
+}
+
+void MemberPanelWController::rmExperience(const Event &target) const{
+
+    model->getMember()->getProfile().getExperiences().rm(target);
 }
