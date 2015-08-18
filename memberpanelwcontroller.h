@@ -27,6 +27,8 @@ private slots:
     void saveBio(const Bio &)const;
     void addHobby(const QString &)const;
     void rmHobby(const QString &)const;
+    void addInterests(const QString &)const;
+    void rmInterests(const QString &)const;
 
     void closeSession( QCloseEvent* )const;
 

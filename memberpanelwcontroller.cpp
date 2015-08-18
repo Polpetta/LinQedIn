@@ -46,6 +46,16 @@ MemberPanelWController::MemberPanelWController(const SmartMember & member)
              this,
              SLOT (rmHobby(const QString &)));
 
+    connect (model->getMemberUpdateCtl(),
+             SIGNAL (insertInterests(const QString &)),
+             this,
+             SLOT (addInterests(const QString &)));
+
+    connect (model->getMemberUpdateCtl(),
+             SIGNAL (removeInterests(const QString &)),
+             this,
+             SLOT (rmInterests(const QString &)));
+
 }
 
 MemberPanelWController::~MemberPanelWController(){
@@ -109,4 +119,14 @@ void MemberPanelWController::addHobby(const QString & newHobby) const{
 void MemberPanelWController::rmHobby(const QString & target) const{
 
     model->getMember()->getProfile().getPersonal().getHobby().rm(target);
+}
+
+void MemberPanelWController::addInterests(const QString &newInterest) const{
+
+    model->getMember()->getProfile().getPersonal().getInterests().add(newInterest);
+}
+
+void MemberPanelWController::rmInterests(const QString & target) const{
+
+    model->getMember()->getProfile().getPersonal().getInterests().rm(target);
 }
