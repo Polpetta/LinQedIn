@@ -10,8 +10,12 @@
 #include <QPushButton>
 #include <QGridLayout>
 #include <QVBoxLayout>
+#include <QHBoxLayout>
 #include <QGroupBox>
 #include <QMessageBox>
+#include <QScrollArea>
+
+#include "listviewer.h"
 
 class MemberUpdateWView : public QWidget
 {
@@ -58,6 +62,30 @@ private:
     QLineEdit* eMail;
 
     QPushButton* save;
+
+
+    QLineEdit* modifyHobby;
+    listViewer* hobby;
+
+    QPushButton* addHobby;
+    QPushButton* rmHobby;
+
+
+    QLineEdit* modifyInterests;
+    listViewer* interests;
+
+    QPushButton* addInterests;
+    QPushButton* rmInterests;
+
+
+    QLineEdit* modifyExpBegin;
+    QLineEdit* modifyExpFinish;
+    QLineEdit* modifyExpDesc;
+    QLineEdit* modifyExpWhere;
+    listViewer* experiences;
+
+    QPushButton* addExperiences;
+    QPushButton* rmExperiences;
 
 };
 

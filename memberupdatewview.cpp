@@ -7,7 +7,25 @@ MemberUpdateWView::MemberUpdateWView(QWidget* ptr)
       birth (new QLineEdit),
       phone (new QLineEdit),
       eMail (new QLineEdit),
-      save (new QPushButton ( tr( "Salva") ) )
+      save (new QPushButton ( tr( "Salva") ) ),
+
+      modifyHobby (new QLineEdit),
+      hobby (new listViewer),
+      addHobby( new QPushButton ( tr("Aggiungi") )),
+      rmHobby  (new QPushButton ( tr("Rimuovi") )),
+
+      modifyInterests (new QLineEdit),
+      interests (new listViewer),
+      addInterests (new QPushButton ( tr("Aggiungi") )),
+      rmInterests (new QPushButton ( tr("Rimuovi") )),
+
+      modifyExpBegin (new QLineEdit),
+      modifyExpFinish(new QLineEdit),
+      modifyExpDesc (new QLineEdit),
+      modifyExpWhere(new QLineEdit),
+      experiences (new listViewer),
+      addExperiences (new QPushButton ( tr ("Aggiungi") )),
+      rmExperiences (new QPushButton ( tr("Rimuovi") ))
 {
 
     name->setClearButtonEnabled( true );
@@ -15,6 +33,14 @@ MemberUpdateWView::MemberUpdateWView(QWidget* ptr)
     birth->setClearButtonEnabled( true );
     phone->setClearButtonEnabled( true );
     eMail->setClearButtonEnabled( true );
+
+    modifyHobby->setClearButtonEnabled( true );
+    modifyInterests->setClearButtonEnabled( true );
+
+    modifyExpBegin->setClearButtonEnabled( true );
+    modifyExpFinish->setClearButtonEnabled( true );
+    modifyExpDesc->setClearButtonEnabled( true );
+    modifyExpWhere->setClearButtonEnabled( true );
 
     QLabel* lName = new QLabel ( tr ( "Nome" ) );
     QLabel* lSurname = new QLabel ( tr("Cognome") );
@@ -45,21 +71,103 @@ MemberUpdateWView::MemberUpdateWView(QWidget* ptr)
 
     internalGroup->setLayout(internal);
 
+    //hobby
+    QScrollArea* scrollHobby = new QScrollArea;
 
-    QPushButton* modifyHobby = new QPushButton ( tr("Modifica Hobby") );
-    QPushButton* modifyInterests = new QPushButton ( tr ("Modifica Interessi") );
+    scrollHobby->setWidget(hobby);
+    scrollHobby->setWidgetResizable( true );
 
-    QPushButton* modifyExperiences = new QPushButton ( tr("Modifica Esperienze") );
+    QGridLayout* hobbyButton = new QGridLayout;
+
+    hobbyButton->addWidget(addHobby, 0, 0);
+    hobbyButton->addWidget(rmHobby, 0, 1);
+
+    QVBoxLayout* hobbyL = new QVBoxLayout;
+
+    hobbyL->addWidget(scrollHobby);
+    hobbyL->addWidget(modifyHobby);
+    hobbyL->addLayout(hobbyButton);
+
+    QGroupBox* hobbyGroup = new QGroupBox ( tr("Modifica hobby") );
+
+    hobbyGroup->setLayout(hobbyL);
+    //...
+
+    //interests
+    QScrollArea* scrollInterests = new QScrollArea;
+
+    scrollInterests->setWidget(interests);
+    scrollInterests->setWidgetResizable( true );
+
+    QGridLayout* interestsButton = new QGridLayout;
+
+    interestsButton->addWidget(addInterests, 0 , 0);
+    interestsButton->addWidget(rmInterests, 0, 1);
+
+    QVBoxLayout* interestsL = new QVBoxLayout;
+
+    interestsL->addWidget(scrollInterests);
+    interestsL->addWidget(modifyInterests);
+    interestsL->addLayout(interestsButton);
+
+    QGroupBox* interestsGroup = new QGroupBox ( tr("Modifica Interessi") );
+
+    interestsGroup->setLayout(interestsL);
+    //...
+
+
+    //Experiences
+    QScrollArea* scrollExp = new QScrollArea;
+
+    QLabel* lBegin = new QLabel (tr ("Inizio") );
+    QLabel* lFinish = new QLabel (tr("Fine") );
+    QLabel* lDesc = new QLabel ( tr ("Breve descrizione") );
+    QLabel* lWhere = new QLabel ( tr("Dove" ) );
+
+    QGridLayout* formGrid = new QGridLayout;
+
+    formGrid->addWidget(lBegin, 0, 0);
+    formGrid->addWidget(modifyExpBegin, 0, 1);
+    formGrid->addWidget(lFinish, 1, 0);
+    formGrid->addWidget(modifyExpFinish, 1, 1);
+    formGrid->addWidget(lDesc, 2, 0);
+    formGrid->addWidget(modifyExpDesc, 2, 1);
+    formGrid->addWidget(lWhere, 3, 0);
+    formGrid->addWidget(modifyExpWhere, 3, 1);
+
+    scrollExp->setWidget(experiences);
+    scrollExp->setWidgetResizable( true );
+
+    QGridLayout* expButton = new QGridLayout;
+
+    expButton->addWidget(addExperiences, 0, 0);
+    expButton->addWidget(rmExperiences, 0, 1);
+
+    QVBoxLayout* expL = new QVBoxLayout;
+
+    expL->addWidget(scrollExp);
+    expL->addLayout(formGrid);
+    expL->addLayout(expButton);
+
+    QGroupBox* experienceGroup = new QGroupBox ( tr ("Modifica le Esperienze") );
+
+    experienceGroup->setLayout(expL);
+
+    //...
 
     QVBoxLayout* optionButton = new QVBoxLayout;
 
-    optionButton->addWidget(modifyHobby);
-    optionButton->addWidget(modifyInterests);
-    optionButton->addWidget(modifyExperiences);
+    optionButton->addWidget(hobbyGroup);
+    optionButton->addWidget(interestsGroup);
+
+    QHBoxLayout* horizL = new QHBoxLayout;
+
+    horizL->addLayout(optionButton);
+    horizL->addWidget(experienceGroup);
 
     QGroupBox* buttonOpt = new QGroupBox ( tr ("Altre modifiche" ));
 
-    buttonOpt->setLayout(optionButton);
+    buttonOpt->setLayout(horizL);
 
     QVBoxLayout* layoutTot = new QVBoxLayout;
 
@@ -70,17 +178,12 @@ MemberUpdateWView::MemberUpdateWView(QWidget* ptr)
 
     setFixedSize( sizeHint() );
 
-    /*connect (save,
-             SIGNAL (clicked()),
-             this,
-             SIGNAL (saveBio()));*/
-
     connect (save,
              SIGNAL (clicked()),
              this,
              SLOT ( groupBio()) );
 
-    connect (modifyHobby,
+    /*connect (addHobby,
              SIGNAL (clicked()),
              this,
              SIGNAL (execModHobby()));
@@ -95,6 +198,9 @@ MemberUpdateWView::MemberUpdateWView(QWidget* ptr)
              this,
              SIGNAL (execModExperiences()));
 
+    * Da rifare le connect
+*/
+
 }
 
 MemberUpdateWView::~MemberUpdateWView(){
@@ -106,6 +212,31 @@ MemberUpdateWView::~MemberUpdateWView(){
     delete eMail;
 
     delete save;
+
+
+    delete modifyHobby;
+    delete hobby;
+
+    delete addHobby;
+    delete rmHobby;
+
+
+    delete modifyInterests;
+    delete interests;
+
+    delete addInterests;
+    delete rmInterests;
+
+
+    delete modifyExpBegin;
+    delete modifyExpFinish;
+    delete modifyExpDesc;
+    delete modifyExpWhere;
+    delete experiences;
+
+    delete addExperiences;
+    delete rmExperiences;
+
 }
 
 void MemberUpdateWView::setBio(const QString & sName,
