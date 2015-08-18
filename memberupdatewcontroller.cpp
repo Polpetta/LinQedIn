@@ -27,6 +27,11 @@ MemberUpdateWController::MemberUpdateWController(const SmartMember & member)
                               const QString &,
                               const QString &)));
 
+    connect (view,
+             SIGNAL (requestClose (QCloseEvent* ) ),
+             this,
+             SLOT (closeView( QCloseEvent* )));
+
 }
 
 MemberUpdateWController::~MemberUpdateWController(){
@@ -92,6 +97,19 @@ void MemberUpdateWController::processBio(const QString & name,
 
         info.exec();
 
+        emit updateBioInfo(Bio(name,
+                               surname,
+                               birth,
+                               phone,
+                               eMail));
+
 
     }
+}
+
+void MemberUpdateWController::closeView(QCloseEvent *event) const{
+
+    event->accept(); //accetto chiusura finestra
+
+    emit resumePanel();
 }

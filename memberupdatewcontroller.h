@@ -21,6 +21,11 @@ class MemberUpdateWController : public QObject
 {
     Q_OBJECT
 
+signals:
+
+    void resumePanel()const;
+    void updateBioInfo(const Bio &)const;
+
 private slots:
 
     void processBio(const QString &,
@@ -28,6 +33,10 @@ private slots:
                     const QString &,
                     const QString &,
                     const QString &)const;
+
+public slots:
+
+    void closeView( QCloseEvent *)const;
 
 public:
     MemberUpdateWController(const SmartMember &);

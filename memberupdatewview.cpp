@@ -41,7 +41,7 @@ MemberUpdateWView::MemberUpdateWView(QWidget* ptr)
 
     internal->addWidget(save, 5, 1);
 
-    QGroupBox* internalGroup = new QGroupBox ( tr ("Bio") );
+    QGroupBox* internalGroup = new QGroupBox ( tr ("Informazioni personali") );
 
     internalGroup->setLayout(internal);
 
@@ -123,9 +123,32 @@ void MemberUpdateWView::setBio(const QString & sName,
 
 void MemberUpdateWView::groupBio()const{
 
-    emit saveBio(name->text(),
-                 surname->text(),
-                 birth->text(),
-                 phone->text(),
-                 eMail->text());
+    if (name->isModified() ||
+            surname->isModified() ||
+            birth->isModified() ||
+            phone->isModified() ||
+            eMail->isModified()) {
+
+        emit saveBio(name->text(),
+                     surname->text(),
+                     birth->text(),
+                     phone->text(),
+                     eMail->text());
+
+    }else{
+
+        QMessageBox info (QMessageBox::Information,
+                          tr ("Modifica informazioni personali"),
+                          tr ("È nesessario eseguire delle modifiche per<br>"
+                              "poter salvare.") );
+
+        info.exec();
+    }
+
+
+}
+
+void MemberUpdateWView::closeEvent(QCloseEvent * event){
+
+    emit requestClose(event);
 }

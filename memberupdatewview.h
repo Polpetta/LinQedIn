@@ -3,12 +3,15 @@
 
 #include <QWidget>
 
+#include <QCloseEvent>
+
 #include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>
 #include <QGridLayout>
 #include <QVBoxLayout>
 #include <QGroupBox>
+#include <QMessageBox>
 
 class MemberUpdateWView : public QWidget
 {
@@ -25,6 +28,8 @@ signals:
     void execModInterests()const;
     void execModExperiences()const;
 
+    void requestClose ( QCloseEvent* );
+
 private slots:
 
     void groupBio()const;
@@ -39,6 +44,10 @@ public:
                 const QString &,
                 const QString &,
                 const QString &);
+
+protected:
+
+    void closeEvent(QCloseEvent *);
 
 private:
 
