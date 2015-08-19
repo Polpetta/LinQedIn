@@ -25,6 +25,7 @@ void DBonXml::save(){
     if (QFile::open(QFile::WriteOnly) != true){
         dbState dst = read_only;
         setState(dst);
+        QFile::close();
         return; //non posso scriverci, esco
     }
 
@@ -118,6 +119,7 @@ void DBonXml::load(){
 
     if (token != QXmlStreamReader::StartDocument){
         setState(dbState::bad_db);
+        QFile::close();
         return; //file danneggiato?
     }
 
@@ -185,6 +187,9 @@ void DBonXml::load(){
 
                  nMember->setAccountType( type );
                  //setto il suo tipo di user
+
+                 nMember->setDb(this);
+                 //setto il database a questo oggetto
 
                  qDebug()<<"Tipo account: "<<nMember->getType();
 
