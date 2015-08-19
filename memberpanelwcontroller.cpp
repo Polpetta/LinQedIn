@@ -66,6 +66,22 @@ MemberPanelWController::MemberPanelWController(const SmartMember & member)
              this,
              SLOT (rmExperience(const Event &)));
 
+
+    connect(model->getMemberFriendCtl(),
+            SIGNAL (resumePanel()),
+            this,
+            SLOT (showUI()));
+
+    connect (model->getMemberFriendCtl(),
+             SIGNAL (confirmAddFriend(const QString &)),
+             this,
+             SLOT (addFriend(const QString &)));
+
+    connect (model->getMemberFriendCtl(),
+             SIGNAL (confirmRmFriend(const QString &)),
+             this,
+             SLOT (rmFriend(const QString &)));
+
 }
 
 MemberPanelWController::~MemberPanelWController(){
@@ -90,6 +106,10 @@ void MemberPanelWController::UpdateProfile()const{
 void MemberPanelWController::ManageFriends()const{
 
     qDebug()<<"Sono in ManageFriends";
+
+    view->hide();
+
+    model->getMemberFriendCtl()->showUI();
 }
 
 void MemberPanelWController::Search()const{
@@ -149,4 +169,14 @@ void MemberPanelWController::addExperience(const Event &newEvent) const{
 void MemberPanelWController::rmExperience(const Event &target) const{
 
     model->getMember()->getProfile().getExperiences().rm(target);
+}
+
+void MemberPanelWController::addFriend(const QString &newFriend) const{
+
+    model->getMember()->getFriendships().add(newFriend);
+}
+
+void MemberPanelWController::rmFriend(const QString &target) const{
+
+    model->getMember()->getFriendships().rm(target);
 }

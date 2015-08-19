@@ -31,6 +31,8 @@ private slots:
     void rmInterests(const QString &)const;
     void addExperience(const Event &)const;
     void rmExperience(const Event &)const;
+    void addFriend(const QString &)const;
+    void rmFriend(const QString &)const;
 
     void closeSession( QCloseEvent* )const;
 
