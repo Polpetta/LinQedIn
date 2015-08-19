@@ -56,14 +56,16 @@ void Friendships::rm(const QString & target){
 
     vector<QString>::iterator it;
 
-    for (it = vector<QString>::begin(); it != vector<QString>::end(); ++it){
+    for (it = vector<QString>::begin(); it != vector<QString>::end() &&
+         vector<QString>::size() != 0; ++it){
 
         if (*it == target){
 
             QString last = vector<QString>::back();
-            vector<QString>::pop_back();
 
             *it = last;
+
+            vector<QString>::pop_back();
 
         }
 
