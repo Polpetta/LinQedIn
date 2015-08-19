@@ -77,7 +77,10 @@ SOURCES += main.cpp\
     listviewer.cpp \
     memberfriendwview.cpp \
     memberfriendwmodel.cpp \
-    memberfriendwcontroller.cpp
+    memberfriendwcontroller.cpp \
+    membersearchmwview.cpp \
+    membersearchmwmodel.cpp \
+    membersearchmwcontroller.cpp
 
 HEADERS  += \
     event.h \
@@ -144,6 +147,9 @@ HEADERS  += \
     listviewer.h \
     memberfriendwview.h \
     memberfriendwmodel.h \
-    memberfriendwcontroller.h
+    memberfriendwcontroller.h \
+    membersearchmwview.h \
+    membersearchmwmodel.h \
+    membersearchmwcontroller.h
 
 QMAKE_CXXFLAGS += -std=c++0x
