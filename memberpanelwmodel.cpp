@@ -1,8 +1,18 @@
 #include "memberpanelwmodel.h"
 
 MemberPanelWModel::MemberPanelWModel(const SmartMember & member)
-    : info (member), updateCtl(new MemberUpdateWController(member))
+    : info (member),
+      updateCtl(new MemberUpdateWController(member)),
+      friendCtl(new MemberFriendWController(member))
 {}
+
+MemberPanelWModel::~MemberPanelWModel(){
+
+    delete updateCtl;
+    delete friendCtl;
+
+    //delete implicita di info
+}
 
 const SmartMember & MemberPanelWModel::cgetMember() const{
 
@@ -22,4 +32,9 @@ void MemberPanelWModel::setMember(const SmartMember & newMember){
 MemberUpdateWController* MemberPanelWModel::getMemberUpdateCtl()const{
 
     return updateCtl;
+}
+
+MemberFriendWController* MemberPanelWModel::getMemberFriendCtl()const{
+
+    return friendCtl;
 }
