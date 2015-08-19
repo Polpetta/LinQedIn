@@ -3,7 +3,8 @@
 MemberPanelWModel::MemberPanelWModel(const SmartMember & member)
     : info (member),
       updateCtl(new MemberUpdateWController(member)),
-      friendCtl(new MemberFriendWController(member))
+      friendCtl(new MemberFriendWController(member)),
+      searchCtl(new MemberSearchMWController)
 {}
 
 MemberPanelWModel::~MemberPanelWModel(){
@@ -37,4 +38,9 @@ MemberUpdateWController* MemberPanelWModel::getMemberUpdateCtl()const{
 MemberFriendWController* MemberPanelWModel::getMemberFriendCtl()const{
 
     return friendCtl;
+}
+
+MemberSearchMWController* MemberPanelWModel::getMemberSearchCtl()const{
+
+    return searchCtl;
 }

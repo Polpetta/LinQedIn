@@ -3,6 +3,7 @@
 
 #include "memberupdatewcontroller.h"
 #include "memberfriendwcontroller.h"
+#include "membersearchmwcontroller.h"
 
 #include "smartmember.h"
 
@@ -20,6 +21,7 @@ public:
 
     MemberUpdateWController* getMemberUpdateCtl()const;
     MemberFriendWController* getMemberFriendCtl()const;
+    MemberSearchMWController* getMemberSearchCtl()const;
 
 
 private:
@@ -27,6 +29,7 @@ private:
     SmartMember info;
     MemberUpdateWController* updateCtl;
     MemberFriendWController* friendCtl;
+    MemberSearchMWController* searchCtl;
 };
 
 #endif // MEMBERPANELWMODEL_H
