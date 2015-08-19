@@ -226,8 +226,11 @@ void AdminWindowController::showUI()const {
 
 void AdminWindowController::addMember(const SmartMember & newMember)const{
 
-    if (newMember.cgetPunt() != nullptr)
+    if (newMember.cgetPunt() != nullptr){
+        newMember->setDb(model->getDb());
         model->getSmartAdmin()->addMember(newMember);
+
+    }
 
     showUI();
 }
