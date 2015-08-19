@@ -11,7 +11,8 @@ MemberSearchMWView::MemberSearchMWView(QWidget* ptr)
       interestsEdit(new QLineEdit),
       addInterests(new QPushButton ( tr("Filtra"))),
       result(new TableSearch),
-      scrollResults(new QScrollArea)
+      scrollResults(new QScrollArea),
+      layoutTot(new QVBoxLayout)
 {
 
     QLabel* note = new QLabel ( tr("<i>Nota:</i> le date vanno espresse nel"
@@ -69,7 +70,6 @@ MemberSearchMWView::MemberSearchMWView(QWidget* ptr)
     scrollResults->setWidgetResizable( true );
     scrollResults->setFixedHeight(200);
 
-    QVBoxLayout* layoutTot = new QVBoxLayout;
 
     layoutTot->addWidget(note);
     layoutTot->addWidget(generic);
@@ -104,6 +104,8 @@ MemberSearchMWView::~MemberSearchMWView(){
     delete result;
     delete scrollResults;
 
+    delete layoutTot;
+
 }
 
 TableSearch* MemberSearchMWView::getTable()const{
@@ -124,4 +126,30 @@ void MemberSearchMWView::addFilterH()const{
 void MemberSearchMWView::addFilterI()const{
 
     //idem
+}
+
+void MemberSearchMWView::blockBio()const{
+
+    birthDayEdit->setEnabled( false );
+}
+
+void MemberSearchMWView::blockHobby()const{
+
+    hobbyEdit->setEnabled( false );
+    addHobby->setEnabled( false );
+}
+
+void MemberSearchMWView::blockInterests()const{
+
+    interestsEdit->setEnabled( false );
+    addInterests->setEnabled( false );
+}
+
+void MemberSearchMWView::setNote(const QString & info){
+
+    QLabel* note = new QLabel (info);
+
+    layoutTot->addWidget(note);
+
+    setFixedSize( sizeHint() );
 }

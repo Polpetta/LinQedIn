@@ -1,9 +1,25 @@
 #include "membersearchmwcontroller.h"
 
-MemberSearchMWController::MemberSearchMWController()
+MemberSearchMWController::MemberSearchMWController(const QString & type)
     : model(new MemberSearchMWModel),
       view (new MemberSearchMWView)
 {
+
+    if ( type == "Basic"){
+        view->blockBio();
+        view->blockHobby();
+        view->blockInterests();
+
+        view->setNote(tr("I membri di tipo <i>Basic</i> e"
+                         " <i>Executive</i> possiedono<br> funzionalità"
+                         " aggiuntive"));
+    }else if ( type == "Business"){
+
+        view->blockInterests();
+
+        view->setNote(tr("I membri di tipo <i>Executive</i>"
+                         " possiedono <br> funzionalità aggiuntive"));
+    }
 
     connect (view,
              SIGNAL (requestClose( QCloseEvent *)),

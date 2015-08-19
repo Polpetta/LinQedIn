@@ -36,6 +36,12 @@ public:
 
     TableSearch* getTable()const;
 
+    void blockBio()const;
+    void blockHobby()const;
+    void blockInterests()const;
+
+    void setNote(const QString &);
+
 protected:
 
     void closeEvent( QCloseEvent* );
@@ -55,6 +61,8 @@ private:
 
     TableSearch* result;
     QScrollArea* scrollResults;
+
+    QVBoxLayout* layoutTot;
 
 };
 

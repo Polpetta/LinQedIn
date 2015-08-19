@@ -7,6 +7,9 @@
 #include "membersearchmwmodel.h"
 #include "membersearchmwview.h"
 
+#include "smartmember.h"
+#include "member.h"
+
 class MemberSearchMWController : public QObject
 {
     Q_OBJECT
@@ -20,7 +23,7 @@ private slots:
     void closeView( QCloseEvent *)const;
 
 public:
-    MemberSearchMWController();
+    MemberSearchMWController(const QString &);
 
     ~MemberSearchMWController();
 
