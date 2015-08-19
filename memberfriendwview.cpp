@@ -6,6 +6,8 @@ MemberFriendWView::MemberFriendWView(QWidget* ptr)
       friendships(new listViewer)
 {
 
+    modifyFriend->setClearButtonEnabled( true );
+
     QLabel* desc = new QLabel ( tr("In questa sezione è possibile modificare<br>"
                                    "le proprie amicizie. Nota che le amicizie<br>"
                                    "sono case sensitive.") );
