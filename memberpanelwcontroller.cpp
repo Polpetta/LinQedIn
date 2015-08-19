@@ -82,6 +82,12 @@ MemberPanelWController::MemberPanelWController(const SmartMember & member)
              this,
              SLOT (rmFriend(const QString &)));
 
+
+    connect(model->getMemberSearchCtl(),
+            SIGNAL (resumePanel()),
+            this,
+            SLOT (showUI()));
+
 }
 
 MemberPanelWController::~MemberPanelWController(){
@@ -115,6 +121,10 @@ void MemberPanelWController::ManageFriends()const{
 void MemberPanelWController::Search()const{
 
     qDebug()<<"Sono in Search";
+
+    view->hide();
+
+    model->getMemberSearchCtl()->showUI();
 }
 
 void MemberPanelWController::setMember(const SmartMember & newMember)const{
