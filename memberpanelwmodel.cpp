@@ -4,7 +4,7 @@ MemberPanelWModel::MemberPanelWModel(const SmartMember & member)
     : info (member),
       updateCtl(new MemberUpdateWController(member)),
       friendCtl(new MemberFriendWController(member)),
-      searchCtl(new MemberSearchMWController)
+      searchCtl(new MemberSearchMWController(member->cgetType()))
 {}
 
 MemberPanelWModel::~MemberPanelWModel(){

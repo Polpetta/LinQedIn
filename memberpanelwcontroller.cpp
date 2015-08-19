@@ -4,6 +4,7 @@ MemberPanelWController::MemberPanelWController(const SmartMember & member)
     : model(new MemberPanelWModel(member)),
       view(new MemberPanelWView)
 {
+    view->setAccountType(member->cgetType());
 
     //ci andranno le varie connect
     connect(view,
@@ -130,6 +131,7 @@ void MemberPanelWController::Search()const{
 void MemberPanelWController::setMember(const SmartMember & newMember)const{
 
     model->setMember(newMember);
+    view->setAccountType(newMember->cgetType());
 }
 
 void MemberPanelWController::saveBio(const Bio & newBio) const{

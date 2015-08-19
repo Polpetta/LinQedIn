@@ -1,7 +1,9 @@
 #include "memberpanelwview.h"
 
 MemberPanelWView::MemberPanelWView(QWidget * ptr)
-    : QWidget (ptr)
+    : QWidget (ptr),
+      typeAccount (new QLabel),
+      layoutTot(new QVBoxLayout)
 {
 
     /*
@@ -28,7 +30,6 @@ MemberPanelWView::MemberPanelWView(QWidget * ptr)
 
     group->setLayout(layoutGroup);
 
-    QVBoxLayout* layoutTot = new QVBoxLayout;
 
     layoutTot->addWidget(group);
 
@@ -54,10 +55,22 @@ MemberPanelWView::MemberPanelWView(QWidget * ptr)
 
 MemberPanelWView::~MemberPanelWView(){
 
-
+    delete typeAccount;
+    delete layoutTot;
 }
 
 void MemberPanelWView::closeEvent(QCloseEvent * event){
 
     emit requestClose(event);
+}
+
+void MemberPanelWView::setAccountType(const QString & account){
+
+    qDebug()<<"Nuovo tipo di account: "<<account;
+
+    QString phrase = tr ("Tipo di account: ") + "<i>"+account+"</i>";
+
+    typeAccount->setText(phrase);
+    layoutTot->addWidget(typeAccount);
+    setFixedSize( sizeHint() );
 }

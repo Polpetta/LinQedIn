@@ -5,6 +5,9 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QGroupBox>
+#include <QLabel>
+
+#include <QDebug>
 
 class MemberPanelWView : public QWidget
 {
@@ -23,9 +26,16 @@ public:
 
     ~MemberPanelWView();
 
+    void setAccountType(const QString &);
+
 protected:
 
     void closeEvent( QCloseEvent * );
+
+private:
+
+    QLabel* typeAccount;
+    QVBoxLayout* layoutTot;
 };
 
 #endif // MEMBERPANELWVIEW_H
