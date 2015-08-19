@@ -175,7 +175,7 @@ MemberUpdateWView::MemberUpdateWView(QWidget* ptr)
 
     setLayout(layoutTot);
 
-    setFixedSize( sizeHint() );
+    setBaseSize( sizeHint() );
 
     connect (save,
              SIGNAL (clicked()),
