@@ -38,6 +38,8 @@ private slots:
                 const QString &,
                 const QString &)const;
 
+    void showMemberProfile(const QString &)const;
+
 public:
     MemberSearchMWController(const QString &);
 

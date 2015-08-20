@@ -3,6 +3,8 @@
 
 #include <QVector>
 
+#include "membermwviewercontroller.h"
+
 #include "datamember.h"
 #include "smartmember.h"
 #include "memberexecutive.h"
@@ -25,12 +27,14 @@ public:
     void setSearchResults(const DataMember &);
     void wipeSearchResults();
 
-    const SmartMember & getMemberyNick(const QString &)const;
+    const SmartMember & getMemberByNick(const QString &)const;
 
     const DataMember* getSearchResults()const;
 
     const QString & cgetType()const;
     void setType(const QString &);
+
+    MemberMWViewerController* getProfileViewer()const;
 
 private:
 
@@ -40,6 +44,8 @@ private:
     const DataMember* lastResults;
 
     QString typeSearch;
+
+    MemberMWViewerController* profileViewer;
 
 };
 

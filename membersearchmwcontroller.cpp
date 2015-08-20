@@ -45,6 +45,11 @@ MemberSearchMWController::MemberSearchMWController(const QString & type)
              SLOT (search(const QString &,
                           const QString &,
                           const QString &)));
+
+    connect (memberDetails,
+             SIGNAL (mapped(QString)),
+             this,
+             SLOT (showMemberProfile(const QString &)));
 }
 
 MemberSearchMWController::~MemberSearchMWController(){
@@ -198,32 +203,101 @@ void MemberSearchMWController::search(const QString &sName,
 
     Personal tmpP;
 
-    if (model->cgetType() != "Basic"){
-        const QVector<QString> & sHobby= model->cgetHobby();
-        const QVector<QString> & sInterests = model->cgetInterests();
+    const QVector<QString> & sHobby= model->cgetHobby();
+    const QVector<QString> & sInterests = model->cgetInterests();
 
-        tmpP.setBio(Bio(sName,
-                       sSurname,
-                       data));
+    tmpP.setBio(Bio(sName,
+                    sSurname,
+                    data));
 
-        tmpP.setHobby(sHobby);
-        tmpP.setInterests(sInterests);
+    tmpP.setHobby(sHobby);
+    tmpP.setInterests(sInterests);
 
-        /*
-         * Solo membri business o executive o successivi possono
-         * vedere gli interessi/hobby
-         */
-
-    }else{
-
-        tmpP.setBio(Bio(sName,
-                         sSurname,
-                         data));
-    }
+    /*
+     * Solo membri business o executive o successivi possono
+     * vedere gli interessi/hobby, ogni classe gestisce i dati
+     * della ricerca per conto suo
+     */
 
     model->wipeBuffers();
 
     Profile toSearch (tmpP);
 
     emit querySearch(toSearch);
+}
+
+void MemberSearchMWController::showMemberProfile(const QString & nick) const{
+
+    const SmartMember & member = model->getMemberByNick(nick);
+
+    if (member.cgetPunt() == nullptr){
+
+        QMessageBox info (QMessageBox::Critical,
+                          tr ("Impossibile trovare dettagli utente"),
+                          tr ("Sembra non sia possibile trovare i"
+                              " dettagli per questo utente"));
+        info.exec();
+
+    }else{
+
+        //bisogna mandare alla view che costruisca una finestra con le info
+
+        const Bio & bio = member->cgetProfile().cgetPersonal().cgetBio();
+        const QVector<QString> & hobby = member->cgetProfile().cgetPersonal().cgetHobby().toVector();
+        const QVector<QString> & interests = member->cgetProfile().cgetPersonal().cgetInterests().toVector();
+
+        const QVector<Event> & experiences = member->cgetProfile().cgetExperiences().toVector();
+
+        QVector<QString>* stringExperiences = new QVector<QString>;
+        QVector<Event>::const_iterator it;
+
+        for (it = experiences.cbegin(); it != experiences.cend(); ++it){
+
+            stringExperiences->push_back((*it).toString());
+        }
+
+        const QVector<QString> & friendships = member->cgetFriendships().toVector();
+
+        MemberMWViewerController* pViewer = model->getProfileViewer();
+        pViewer->resetView(); //pulisco la vista se ce ne sono state di precedenti
+
+        const QString & accountType = model->cgetType();
+
+        if (accountType == "Basic"){
+
+            pViewer->setProfile(nick,
+                                bio.getName(),
+                                bio.getSurname(),
+                                bio.getBirthday().toString("dd-MM-yyyy"),
+                                bio.getPhone(),
+                                bio.getMail(),
+                                friendships);
+        }else if(accountType == "Business"){
+
+            pViewer->setProfile(nick,
+                                bio.getName(),
+                                bio.getSurname(),
+                                bio.getBirthday().toString("dd-MM-yyyy"),
+                                bio.getPhone(),
+                                bio.getMail(),
+                                hobby,
+                                interests,
+                                friendships);
+        }else if(accountType == "Executive"){
+
+            pViewer->setProfile(nick,
+                                bio.getName(),
+                                bio.getSurname(),
+                                bio.getBirthday().toString("dd-MM-yyyy"),
+                                bio.getPhone(),
+                                bio.getMail(),
+                                hobby,
+                                interests,
+                                *stringExperiences,
+                                friendships);
+        }else
+            return;
+
+        pViewer->showUI();
+}
 }

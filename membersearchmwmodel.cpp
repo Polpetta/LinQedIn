@@ -2,7 +2,8 @@
 
 MemberSearchMWModel::MemberSearchMWModel(const QString & type)
     : lastResults(nullptr),
-      typeSearch(type)
+      typeSearch(type),
+      profileViewer(new MemberMWViewerController)
 {
 
 }
@@ -34,7 +35,7 @@ void MemberSearchMWModel::wipeSearchResults(){
     lastResults = nullptr;
 }
 
-const SmartMember & MemberSearchMWModel::getMemberyNick(const QString & nick) const{
+const SmartMember & MemberSearchMWModel::getMemberByNick(const QString & nick) const{
 
     if (lastResults == nullptr ){
         SmartMember* null = new SmartMember(nullptr);
@@ -91,4 +92,9 @@ void MemberSearchMWModel::wipeBuffers(){
 
     hobbyBuffer.clear();
     interestsBuffer.clear();
+}
+
+MemberMWViewerController* MemberSearchMWModel::getProfileViewer()const{
+
+    return profileViewer;
 }
