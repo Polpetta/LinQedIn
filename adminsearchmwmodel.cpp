@@ -9,7 +9,9 @@ AdminSearchMWModel::AdminSearchMWModel(AdminMWViewerController * nVCtl)
 
 AdminSearchMWModel::~AdminSearchMWModel(){
 
-    delete searchResults;
+    if (searchResults != nullptr )
+        delete searchResults;
+
     delete profileViewer;
 }
 
@@ -53,6 +55,9 @@ void AdminSearchMWModel::wipeSearchResults(){
 }
 
 void AdminSearchMWModel::setSearchResults(const DataMember & newResults){
+
+    if (searchResults != nullptr )
+        delete searchResults;
 
     searchResults = &newResults;
 }
