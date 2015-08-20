@@ -15,7 +15,6 @@
 
 class AdminMWViewerView : public QWidget
 {
-    //Q_OBJECT
 
 public:
     AdminMWViewerView(QWidget* = nullptr);

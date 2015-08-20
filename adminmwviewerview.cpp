@@ -128,6 +128,11 @@ AdminMWViewerView::~AdminMWViewerView(){
     delete phone;
     delete eMail;
 
+    delete scrollHobby;
+    delete scrollInterests;
+    delete scrollExperience;
+    delete scrollFriendships;
+
     delete hobby;
     delete interests;
     delete friendships;
