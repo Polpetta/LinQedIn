@@ -34,6 +34,8 @@ private slots:
     void addFriend(const QString &)const;
     void rmFriend(const QString &)const;
 
+    void execSearch(const Profile&)const;
+
     void closeSession( QCloseEvent* )const;
 
 public slots:

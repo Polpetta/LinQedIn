@@ -89,6 +89,11 @@ MemberPanelWController::MemberPanelWController(const SmartMember & member)
             this,
             SLOT (showUI()));
 
+    connect(model->getMemberSearchCtl(),
+            SIGNAL (querySearch(const Profile &)),
+            this,
+            SLOT (execSearch(const Profile &)));
+
 }
 
 MemberPanelWController::~MemberPanelWController(){
@@ -191,4 +196,11 @@ void MemberPanelWController::addFriend(const QString &newFriend) const{
 void MemberPanelWController::rmFriend(const QString &target) const{
 
     model->getMember()->getFriendships().rm(target);
+}
+
+void MemberPanelWController::execSearch(const Profile &toSearch) const{
+
+    //eseguo la search con la chiamata polimorfa all'member
+
+    model->getMemberSearchCtl()->setSearchResults(model->cgetMember()->search(toSearch));
 }
