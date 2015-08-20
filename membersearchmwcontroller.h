@@ -3,12 +3,19 @@
 
 #include <QObject>
 #include <QCloseEvent>
+#include <QSignalMapper>
+#include <QMessageBox>
+#include <QRegularExpression>
+#include <QRegularExpressionMatch>
 
 #include "membersearchmwmodel.h"
 #include "membersearchmwview.h"
 
 #include "smartmember.h"
 #include "member.h"
+#include "profile.h"
+#include "personal.h"
+#include "datamember.h"
 
 class MemberSearchMWController : public QObject
 {
@@ -18,9 +25,18 @@ signals:
 
     void resumePanel()const;
 
+    void querySearch(const Profile &)const;
+
 private slots:
 
     void closeView( QCloseEvent *)const;
+
+    void newHobby(const QString &)const;
+    void newInterests(const QString &)const;
+
+    void search(const QString &,
+                const QString &,
+                const QString &)const;
 
 public:
     MemberSearchMWController(const QString &);
@@ -29,10 +45,22 @@ public:
 
     void showUI()const;
 
+    void setSearchResults(const DataMember &)const;
+
 private:
+
+    enum ParserError{
+        bad_date = 0,
+        bad_name = 1,
+        bad_surname = 2
+    };
+
+    void messageError (const ParserError &)const;
 
     MemberSearchMWModel* model;
     MemberSearchMWView* view;
+
+    QSignalMapper* memberDetails;
 };
 
 #endif // MEMBERSEARCHMWCONTROLLER_H

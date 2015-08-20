@@ -24,10 +24,19 @@ signals:
 
     void requestClose( QCloseEvent *)const;
 
+    void emitNewHobby(const QString &)const;
+    void emitNewInterests(const QString &)const;
+
+    void searchConfirm(const QString &,
+                       const QString &,
+                       const QString &)const;
+
 private slots:
 
     void addFilterH()const;
     void addFilterI()const;
+
+    void commitSearch()const;
 
 public:
     MemberSearchMWView(QWidget* = nullptr);
@@ -47,6 +56,14 @@ protected:
     void closeEvent( QCloseEvent* );
 
 private:
+
+    enum filterType{
+
+        hobby = 0,
+        interests = 1
+    };
+
+    void warnFilter(const filterType &)const;
 
     QLineEdit* nameEdit;
     QLineEdit* surnameEdit;

@@ -79,7 +79,7 @@ MemberSearchMWView::MemberSearchMWView(QWidget* ptr)
 
     setLayout(layoutTot);
 
-    setFixedSize( sizeHint() );
+    setMinimumSize( sizeHint() );
 
     connect (addHobby,
              SIGNAL (clicked()),
@@ -90,6 +90,11 @@ MemberSearchMWView::MemberSearchMWView(QWidget* ptr)
              SIGNAL (clicked()),
              this,
              SLOT (addFilterI()));
+
+    connect (search,
+             SIGNAL (clicked()),
+             this,
+             SLOT (commitSearch()));
 }
 
 MemberSearchMWView::~MemberSearchMWView(){
@@ -118,14 +123,50 @@ void MemberSearchMWView::closeEvent( QCloseEvent* event){
     emit requestClose(event);
 }
 
+void MemberSearchMWView::warnFilter(const filterType & filter) const{
+
+    QString type = tr("unknown");
+
+    if (filter == filterType::hobby)
+        type = tr ("hobby");
+    else if (filter == filterType::interests)
+        type = tr ("interesse");
+
+    QString phrase = tr ("Completare il form per aggiungere un nuovo ");
+
+    QMessageBox warn(QMessageBox::Warning,
+                     tr ("Errore aggiunta filtro"),
+                     phrase + type);
+
+    warn.exec();
+}
+
 void MemberSearchMWView::addFilterH()const{
 
+    if (hobbyEdit->isEnabled() && hobbyEdit->isModified()){
+
+        emit emitNewHobby(hobbyEdit->text());
+        hobbyEdit->clear();
+    }else
+        warnFilter(filterType::hobby);
     //bisognerà aggiungere il nuovo filtro SOLO se non è vuoto
 }
 
 void MemberSearchMWView::addFilterI()const{
 
-    //idem
+    if (interestsEdit->isEnabled() && interestsEdit->isModified()){
+
+        emit emitNewInterests(interestsEdit->text());
+        interestsEdit->clear();
+    }else
+        warnFilter(filterType::interests);
+}
+
+void MemberSearchMWView::commitSearch()const{
+
+    emit searchConfirm(nameEdit->text(),
+                       surnameEdit->text(),
+                       birthDayEdit->text());
 }
 
 void MemberSearchMWView::blockBio()const{
@@ -151,5 +192,5 @@ void MemberSearchMWView::setNote(const QString & info){
 
     layoutTot->addWidget(note);
 
-    setFixedSize( sizeHint() );
+    setMinimumSize( sizeHint() );
 }
