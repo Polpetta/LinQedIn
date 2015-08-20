@@ -18,8 +18,6 @@
 
 #include "profile.h"
 
-#include <QDialog>
-
 class AdminSearchMWController : public QObject
 {
     Q_OBJECT
@@ -39,7 +37,7 @@ signals:
     void resumeAdmin()const;
     void querySearch(const Profile &)const;
 
-public slots:
+private slots:
 
     void closeView( QCloseEvent* )const;
 
