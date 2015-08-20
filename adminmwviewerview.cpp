@@ -23,7 +23,7 @@ AdminMWViewerView::AdminMWViewerView(QWidget* ptr)
     QLabel* lSurname = new QLabel (tr ("Cognome: ") );
     QLabel* lBirth = new QLabel (tr ("Data di nascita: ") );
     QLabel* lPhone = new QLabel (tr ("Telefono: ") );
-    QLabel* leMail = new QLabel (tr ("eMail : ") );
+    QLabel* leMail = new QLabel (tr ("eMail: ") );
 
     QGroupBox* credentialBox = new QGroupBox ( tr ("Credenziali Membro") );
     QGridLayout* crdLayout = new QGridLayout;
@@ -53,7 +53,7 @@ AdminMWViewerView::AdminMWViewerView(QWidget* ptr)
 
     bioBox->setLayout(bioLayout);
 
-    //qui mancano tutti gli hobby, gli interessi le esperienze e le amicizie
+
     QGroupBox* hobbyBox = new QGroupBox ( tr("Hobby") );
     QGridLayout* hobbyLayout = new QGridLayout;
 
