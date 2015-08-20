@@ -61,12 +61,14 @@ void AdminSearchMWController::showUI()const{
 
 void AdminSearchMWController::newHobby(const QString & nHobby) const{
 
-    model->addH(nHobby);
+    if (nHobby.size() > 0)
+        model->addH(nHobby);
 }
 
 void AdminSearchMWController::newInterests(const QString & nInterests) const{
 
-    model->addI(nInterests);
+    if (nInterests.size() > 0)
+        model->addI(nInterests);
 }
 
 void AdminSearchMWController::messageError(const ParserError & err) const{
