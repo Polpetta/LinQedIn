@@ -115,7 +115,6 @@ AdminMWViewerView::AdminMWViewerView(QWidget* ptr)
      * voglio renderle pubbliche.
      */
 
-    //E LE AMICIZIE?
 
 }
 

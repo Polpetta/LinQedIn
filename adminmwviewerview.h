@@ -4,24 +4,18 @@
 
 #include <QWidget>
 #include <QLabel>
-#include <QLineEdit>
 #include <QGridLayout>
-#include <QPushButton>
 #include <QScrollArea>
 #include <QGroupBox>
 #include <QVBoxLayout>
 
 #include <QDebug>
 
-#include <QVector>
-
-#include "event.h"
-
 #include "listviewer.h"
 
 class AdminMWViewerView : public QWidget
 {
-    Q_OBJECT
+    //Q_OBJECT
 
 public:
     AdminMWViewerView(QWidget* = nullptr);
