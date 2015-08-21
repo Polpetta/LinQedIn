@@ -5,7 +5,8 @@
 La realizzazione di LinQedIn \`e avvenuta nel seguente ambiente:
 \begin{itemize}
 
-\item Sistema operativo di test e sviluppo: ArchLinux x86\_64 (rolling release)
+\item Sistema operativo di test e sviluppo: ArchLinux x86\_64
+  (rolling release)
 \item Compilatore: GCC versione 5.2.0
 \item Qt: versione 5.5.0
 \item QMake: versione 3.0
@@ -14,3 +15,68 @@ La realizzazione di LinQedIn \`e avvenuta nel seguente ambiente:
 \end{itemize}
 
  
+\subsection{Descrizione del progetto}
+
+Come da consegna, il progetto si prepone di ricreare le principali
+funzionalit\`a di LinkedIn. Sono presenti 3 tipi di iscrizione al servizio:
+iscrizione come membro Basic, Business o Executive. L'amministrazione del
+sistema \`e gestita da un Admin. Gli iscritti al servizio possono compiere
+le seguenti azioni:
+\begin{itemize}
+
+\item Modifica del proprio profilo, con possibilit\`a di aggiungere
+  i propri Hobby, i propri Interessi e le proprie Esperienze (lavorative)
+
+\item Possibilit\`a di ricercare altri iscritti al servizio in base alla
+  loro sottoscrizione:
+  \begin{itemize}
+    
+  \item Basic: possibilit\`a di ricerca solamente per Nome e Cognome
+  \item Business: tutte le funzionalit\`a di basic con l'aggiunta
+    della ricerca per una specifica data di nascita o per un particolare
+    Hobby
+  \item Executive: possiede tutte le funzionalit\`a di ricerca del
+    servizio. Rispetto agli iscritti Business, i membri Executive possono
+    ricercare anche tramite Interessi
+
+  \end{itemize}
+
+\item Visualizzare i profili degli altri membri dalla sezione di ricerca.
+  La visualizzazione dei profili cambia per tipologia di iscritto:
+  \begin{itemize}
+
+  \item Basic: visualizzazione delle informazioni generali (nickName,
+    nome, cognome, data di nascita) e delle amicizie
+  \item Business: stessa vista dei membri Basic con l'aggiunta
+    degli Hobby e degli Interessi
+  \item Executive: stessa vista dei membri Business con l'aggiunta
+    delle Esperienze lavorative
+
+  \end{itemize}
+
+\item Gestione delle proprie amicizie con possibilit\`a di aggiunta e
+  rimozione
+  
+\end{itemize}
+
+L'amministratore di LinQedIn ha a disposizione le seguenti funzionalit\`a:
+\begin{itemize}
+
+\item Creazione di un nuovo membro con la possibilit\`a di scelta di tipo
+  del nuovo utente e con una procedura guidata per l'aggiunta delle
+  informazioni principali.
+
+\item Ricerca degli iscritti al servizio con possibilit\`a di visualizzare
+  il loro profilo
+
+\item Rimozione di un membro iscritto
+
+\item Cambiamento di tipologia di un utente Iscritto
+
+\item Salvataggio del Database
+
+\end{itemize}
+
+LinQedIn si appoggia su un database scritto nel formato xml, dove vengono
+salvate le informazioni relative agli Iscritti e le loro amicizie.
+
