@@ -1,0 +1,44 @@
+\section{Descrizione delle classi}
+\subsection{Gerarchia degli utenti}
+
+\begin{figure}[h]
+  \caption{Struttura logica della gestione degli utenti}
+  \centering
+  \includegraphics[width=10cm,height=10cm,keepaspectratio]{res/userclass}
+\end{figure}
+
+Alla base di tutta la gerarchia degli utenti è presente la classe ``Users''.
+Questa \`e una classe virtuale, che contiene informazione di base,
+come il tipo di account in uso, il Database a cui appartiene e la sua
+validit\`a. Dato che logicamente non ha senso che esista un User, essa non è istanziabile. \newline
+Derivato a User c'\`e Admin, che è una classe istanziabile e concreta.
+Essa implementa le funzionalit\`a dell'amministratore, come il metodo
+di ricerca, il cambiamento di tipo di un Membro, la sua aggiunta e la sua
+cancellazione. \newline
+
+Derivata da User c'\`e anche la classe Member, virtuale pura. Essa pone le
+basi per tutti le tipologie di iscritti a LinQedIn. Qui è presente il metodo
+search da implementare per ogni classe. Member implementa già la scrittura
+e la lettura delle informazioni dal database xml per ogni tipologia di
+iscritto. Basic, Business, Executive sono classi derivate che implementano
+la ricerca sul Database.
+
+\subsubsection{Classi contenute in Member}
+
+Member contiene diverse classi, a loro volta formate da pi\`u classi o
+derivate. Member \`e formata da un \textit{Profile} e da
+\textit{Friendships}.
+
+\paragraph*{Profile} \`e una classe che contiene le informazioni
+personali e la carriera dell'iscritto. Essa ingloba tramite una relazione
+\textit{has-a} le classi \textit{Personal} ed \textit{Experiences}. \newline
+Personal contiene a sua volta, \textit{Bio, Hobby, Interests}. \`E da
+notare che \textit{Hobby, Interests} e \textit{Experiences} derivino da
+classi contenitori. Questa scelta di creare dei wrapper \`e dovuta alla
+maggiore estendibilit\`a del codice: se un domani si volesse cambiare
+contenitore, le modifiche andrebbero eseguite solo in quelle classi.
+
+\paragraph*{Friendships} deriva da un contanier \textit{vector} e si occupa
+di salvare le amicizie di ogni Membro. L'amicizia viene salvata tramite il
+nickName, che \`e univoco per tutto il Database.
+
