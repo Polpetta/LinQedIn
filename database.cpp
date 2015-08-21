@@ -79,16 +79,15 @@ DataMember& Database::select(const Profile & find)const{
 
         if (current->isValid() == true){ //solo se è valido
 
-        const Profile & pcurrent = current->cgetProfile();
+            const Profile & pcurrent = current->cgetProfile();
 
-        const Hobby & chbb = pcurrent.cgetPersonal().cgetHobby();
-        const Hobby & fhbb = find.cgetPersonal().cgetHobby();
+            const Hobby & chbb = pcurrent.cgetPersonal().cgetHobby();
+            const Hobby & fhbb = find.cgetPersonal().cgetHobby();
 
-        const Interests & cint = pcurrent.cgetPersonal().cgetInterests();
-        const Interests & fint = find.cgetPersonal().cgetInterests();
+            const Interests & cint = pcurrent.cgetPersonal().cgetInterests();
+            const Interests & fint = find.cgetPersonal().cgetInterests();
 
-        bool sameHI = true;
-        if (fhbb.size() > 0 && fint.size() > 0){
+            bool sameHI = true;
 
             Hobby::const_iterator ith;
             for (ith = fhbb.cbegin(); ith != fhbb.cend() &&
@@ -109,46 +108,44 @@ DataMember& Database::select(const Profile & find)const{
                     sameHI = false;
             }
 
-        }
+            if (sameHI == true){
 
-        if (sameHI == true){
+                const Bio & cbio = pcurrent.cgetPersonal().cgetBio();
 
-            const Bio & cbio = pcurrent.cgetPersonal().cgetBio();
+                const QString& cname = cbio.getName();
+                const QString& csurn = cbio.getSurname();
+                const QString& birth = cbio.getBirthday().toString("dd-MM-yyyy");
 
-            const QString& cname = cbio.getName();
-            const QString& csurn = cbio.getSurname();
-            const QString& birth = cbio.getBirthday().toString("dd-MM-yyyy");
+                bool ismname = true;
+                if (checkname == true){
+                    QRegularExpressionMatch mname = nameRe.match(cname);
 
-            bool ismname = true;
-            if (checkname == true){
-                QRegularExpressionMatch mname = nameRe.match(cname);
+                    if (mname.hasMatch() == false)
+                        ismname = false;
+                }
 
-                if (mname.hasMatch() == false)
-                    ismname = false;
+
+                bool ismsurn = true;
+                if (checksurn == true){
+                    QRegularExpressionMatch msurn = surnameRe.match(csurn);
+
+                    if (msurn.hasMatch() == false)
+                        ismsurn = false;
+                }
+
+
+                bool ismbirth = true;
+                if (checkbirt == true){
+                    QRegularExpressionMatch mbirth = birthRe.match(birth);
+
+                    if (mbirth.hasMatch() == false)
+                        ismbirth = false;
+                }
+
+
+                if (ismname == true && ismsurn == true && ismbirth == true)
+                    pres->add(current);
             }
-
-
-            bool ismsurn = true;
-            if (checksurn == true){
-                QRegularExpressionMatch msurn = surnameRe.match(csurn);
-
-                if (msurn.hasMatch() == false)
-                    ismsurn = false;
-            }
-
-
-            bool ismbirth = true;
-            if (checkbirt == true){
-                QRegularExpressionMatch mbirth = birthRe.match(birth);
-
-                if (mbirth.hasMatch() == false)
-                    ismbirth = false;
-            }
-
-
-            if (ismname == true && ismsurn == true && ismbirth == true)
-                pres->add(current);
-        }
 
         }
 
@@ -218,37 +215,6 @@ SmartMember& Database::select (const QString & find){
         SmartMember* ptr = new SmartMember();
         return *ptr;
     }
-}
-
-
-const SmartMember& Database::cselect(const SmartMember & check) const{
-
-    DataMember::const_iterator it;
-
-    bool match = false;
-
-    for (it = db.cbegin(); it != db.cend() && !match; ++it){
-
-        if (*it == check)
-            match = true;
-    }
-
-    return *it;
-}
-
-SmartMember& Database::select(const SmartMember & check){
-
-    DataMember::iterator it;
-
-    bool match = false;
-
-    for (it = db.begin(); it != db.end() && !match; ++it){
-
-        if (*it == check)
-            match = true;
-    }
-
-    return *it;
 }
 
 //ERRORI DB

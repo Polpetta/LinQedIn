@@ -1,7 +1,6 @@
 #ifndef DATABASE_H
 #define DATABASE_H
 
-#include <vector>
 #include <QRegularExpression>
 #include <QRegularExpressionMatch>
 
@@ -12,8 +11,6 @@
 #include "smartmember.h"
 #include "profile.h"
 #include "member.h"
-
-using std::vector;
 
 /*
  * Idea: seguo la gerarchia di classi di QT, ovvero:
@@ -55,9 +52,6 @@ public:
      */
     virtual const SmartMember& cselect (const QString &)const;
     virtual SmartMember& select (const QString &); //è giusto che non sia cost?
-
-    virtual const SmartMember& cselect (const SmartMember &)const; //dr
-    virtual SmartMember& select (const SmartMember &); //da rivedere
 
     //stati del db
     bool isOk() const;
