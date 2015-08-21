@@ -104,6 +104,7 @@ void AdminSearchMWController::execSearch(const QString & sName,
     //pulisco la ricerca precedente
     model->wipeSearchResults();
 
+
     QDate data (QDate::fromString(sDate, "dd-MM-yyyy"));
 
     if (sDate.size() >0 && data.isValid() == false){
@@ -141,7 +142,6 @@ void AdminSearchMWController::execSearch(const QString & sName,
     const QVector<QString> & sHobby= model->cgetHobby();
     const QVector<QString> & sInterests = model->cgetInterests();
 
-    model->wipeBuffers();
 
     Personal tmpP (Bio(sName,
                        sSurname,
@@ -152,6 +152,9 @@ void AdminSearchMWController::execSearch(const QString & sName,
     Profile toSearch (tmpP);
 
     emit querySearch(toSearch);
+
+    //pulisco il buffer
+    model->wipeBuffers();
 
 }
 
