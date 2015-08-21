@@ -12,6 +12,8 @@ MemberSearchMWModel::~MemberSearchMWModel(){
 
     if (lastResults != nullptr)
         delete lastResults;
+
+    delete profileViewer;
 }
 
 void MemberSearchMWModel::setSearchResults(const DataMember &result){
