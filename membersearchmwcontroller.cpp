@@ -219,11 +219,11 @@ void MemberSearchMWController::search(const QString &sName,
      * della ricerca per conto suo
      */
 
-    model->wipeBuffers();
-
     Profile toSearch (tmpP);
 
     emit querySearch(toSearch);
+
+    model->wipeBuffers(); //pulisco il buffer
 }
 
 void MemberSearchMWController::showMemberProfile(const QString & nick) const{
