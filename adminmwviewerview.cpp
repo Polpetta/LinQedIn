@@ -128,16 +128,15 @@ AdminMWViewerView::~AdminMWViewerView(){
     delete phone;
     delete eMail;
 
+    delete hobby;
+    delete interests;
+    delete experiences;
+    delete friendships;
+
     delete scrollHobby;
     delete scrollInterests;
     delete scrollExperience;
     delete scrollFriendships;
-
-    delete hobby;
-    delete interests;
-    delete friendships;
-
-    delete experiences;
 }
 
 void AdminMWViewerView::setProfile(const QString & pNick,
