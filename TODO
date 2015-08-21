@@ -1,4 +1,8 @@
 DA RIVEDERE
 [ok]in aggiunta nuovi iscritti su admin non bisogna accettare hobby o interersts vuoti
 
-[ ]rivedere la ricerca in quanto sembra non filtrare per hobby e interessi
+[ok]rivedere la ricerca in quanto sembra non filtrare per hobby e interessi
+
+[ ]nel main creare una classe che faccia da wrapper all'avvio dell'interfaccia grafica
+
+[ ]nella documentazione sullo schema degli utenti user non deve essere tratteggiato in quanto non è pura!
