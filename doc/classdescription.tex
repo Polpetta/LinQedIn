@@ -75,5 +75,21 @@ Membri, ma potrebbero esserci altre tipologie).
 La gerarchia ricalca la stessa struttura data per gli smart pointer e per
 gli user.
 
+\newpage %non ci sta in quella prima
+
 \subsection{Database e gerarchia}
 
+\begin{figure}[h]
+  \caption{Gerachia del Database}
+  \centering
+  \includegraphics[width=5cm,height=5cm,keepaspectratio]{res/dbclass}
+\end{figure}
+
+Il Database \`e stato strutturato in maniera tale da rendere possibile la
+scrittura della base di dati in diversi formati o in diversi device,
+questo grazie alla derivazione da Database, classe virtuale pura in cui
+vengono implementati solamente i metodi di ricerca (\textit{select})
+sull'oggetto \textit{DataMember}, che si occupa come descritto prima
+di mantenere in memoria gli iscritti al servizio. Per questo progetto \`e
+stato deciso di salvare il database nel formato xml, ma grazie a questa
+gerarchia \`e possibile implementare un diverso metodo di salvataggio.
