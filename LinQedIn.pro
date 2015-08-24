@@ -83,7 +83,8 @@ SOURCES += main.cpp\
     membersearchmwcontroller.cpp \
     membermwviewerview.cpp \
     membermwviewermodel.cpp \
-    membermwviewercontroller.cpp
+    membermwviewercontroller.cpp \
+    mainwindow.cpp
 
 HEADERS  += \
     event.h \
@@ -156,6 +157,7 @@ HEADERS  += \
     membersearchmwcontroller.h \
     membermwviewerview.h \
     membermwviewermodel.h \
-    membermwviewercontroller.h
+    membermwviewercontroller.h \
+    mainwindow.h
 
 QMAKE_CXXFLAGS += -std=c++0x
