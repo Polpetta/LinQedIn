@@ -19,16 +19,15 @@ cancellazione. \newline
 
 Derivata da User c'\`e anche la classe Member, virtuale pura. Essa pone le
 basi per tutti le tipologie di iscritti a LinQedIn. Qui è presente il metodo
-search da implementare per ogni classe. Member implementa già la scrittura
+search da implementare per ogni classe derivata. Member implementa già la scrittura
 e la lettura delle informazioni dal database xml per ogni tipologia di
 iscritto. Basic, Business, Executive sono classi derivate che implementano
 la ricerca sul Database.
 
 \subsubsection{Classi contenute in Member}
 
-Member contiene diverse classi, a loro volta formate da pi\`u classi o
-derivate, essa \`e formata da un \textit{Profile} e da
-\textit{Friendships}.
+Member contiene diverse classi, \textit{Profile} da \textit{Friendships} a
+loro volta formate da pi\`u classi o derivate da altre.
 
 \paragraph*{Profile} \`e una classe che contiene le informazioni
 personali e la carriera dell'iscritto, ingloba tramite una relazione
@@ -56,8 +55,11 @@ data la natura implementativa del progetto, \`e stato deciso comunque
 di utilizzare puntatori smart. SmartPtr \`e una classe base con il
 costruttore dichiarato protected, questo per impedirne una sua
 istanziazione tranne che per le classi derivate da essa: avere una classe
-base comune a tutti i smartPtr permette di aggiungere funzionalit\`a a tutte le classi derivate, e di introdurre metodi virtuali o puri. \textit{SmartAdmin} e \textit{SmartMember} gestiscono la condivisione in memoria
-rispettivamente di Admin e Member, utilizzando il reference counting.
+base comune a tutti i smartPtr permette di aggiungere funzionalit\`a a
+tutte le classi derivate, e di introdurre metodi virtuali o puri.
+\textit{SmartAdmin} e \textit{SmartMember} gestiscono la condivisione
+in memoria rispettivamente di Admin e Member, utilizzando il reference
+counting.
 
 \subsection{Gerarchia della gestione degli User}
 
@@ -77,7 +79,7 @@ gli user.
 
 \newpage %non ci sta in quella prima
 
-\subsection{Database e gerarchia}
+\subsection{Database}
 
 \begin{figure}[h]
   \caption{Gerachia del Database}
@@ -93,3 +95,51 @@ sull'oggetto \textit{DataMember}, che si occupa come descritto prima
 di mantenere in memoria gli iscritti al servizio. Per questo progetto \`e
 stato deciso di salvare il database nel formato xml, ma grazie a questa
 gerarchia \`e possibile implementare un diverso metodo di salvataggio.
+Si noti come in DatabaseOnFile (nel codice scritta come \textit{DBonFile})
+si ha una derivazione multipla: una dalla classe \textit{DBonIO}, l'altra
+da \textit{QFile}; questo in quanto le classi derivate necessiteranno
+delle funzioni di \textit{QFile} per riuscire a implementare le funzioni
+pure di \textit{Database}.
+
+\subsection{Interfaccia grafica}
+
+\subsubsection{Pattern MVC}
+
+Nella scrittura della GUI si \`e optato per l'uso del pattern MVC: si ha
+quindi il \textit{Controller} che fa da ponte tra la \textit{View} e
+il \textit{Model}, e si occupa di effettuare eventuali controlli di
+consistenza con i dati e di elaborare gli imput provenienti dalla
+\textit{View} stessa.
+
+\subsubsection{Idea e schema di funzionamento}
+
+\begin{figure}[h]
+  \caption{Schema di funzionamento della GUI}
+  \centering
+  \includegraphics[width=8cm,height=8cm,keepaspectratio]{res/GUIscheme}
+\end{figure}
+
+La gestione dell'interfaccia grafica, basata sul pattern MVC, si prepone
+di caricare in RAM solo la parte effettivamente utilizzata dal programma.
+Dato che non \`e possibile cambiare utente dopo la selezione del tipo,
+caricare in RAM anche l'altra parte di interfaccia grafica che non verr\`a
+certamente usata sarebbe un inutile spreco di risorse. Quindi, il
+\textit{MainWindowController} si occupa di far istanziare al
+\textit{MainWindowModel} solamente la parte effettivamente utilizzata.
+
+Per ogni funzionalit\`a \`e stato deciso di creare un proprio pattern MVC:
+questo permette di isolare ogni parte in una propria finestra e
+di rendere le modifiche a quella specifica sezione pi\`u semplici.
+
+\newpage
+\paragraph*{Gestione del Database} In base alla scelta del tipo di User,
+viene creato un oggetto \textit{DBonXml}:
+\begin{verbatim}
+Database* db = DBonXml(``database'');
+\end{verbatim}
+questo porta a una riduzione dell'estendibilit\`a del codice (se per esempio
+si decidesse di apportare una modifica comune all'istanziazione del
+database ci\`o dovrebbe essere ripetuto per tutti i controller che
+istanziano il database), ma permette di apportare modifiche singole per
+ogni controller che istanzia un Database: infatti un domani ci potrebbe
+essere un database per i Membri ma anche uno per gli Amministratori.
