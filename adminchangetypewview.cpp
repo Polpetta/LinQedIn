@@ -7,7 +7,7 @@ AdminChangeTypeWView::AdminChangeTypeWView(QWidget* ptr)
 {
 
     QLabel* note = new QLabel ( tr("I tipi possibili per il cambiamento sono:<br>"
-                                   "-<i>Busic</i><br>"
+                                   "-<i>Basic</i><br>"
                                    "-<i>Business</i><br>"
                                    "-<i>Executive</i><br>") );
 
