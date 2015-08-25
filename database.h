@@ -7,6 +7,7 @@
 //da rimuovere poi
 #include <QDebug>
 
+#include "viewerpair.h"
 #include "datamember.h"
 #include "smartmember.h"
 #include "profile.h"
@@ -38,6 +39,9 @@ public:
 
     DataMember& getDb();
     const DataMember& cgetDb() const; //per sola lettura
+
+    ViewerPair & getView();
+    const ViewerPair & cgetView()const;
     /*
      * Nota: DataMember è definito esterno perchè così la funzione
      * search può ritornare un DataMember (che sarà un sottoinsieme
@@ -64,6 +68,7 @@ private:
 
     DataMember db;
     dbState state;
+    ViewerPair usrView;
 
 
 

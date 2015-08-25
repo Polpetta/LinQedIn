@@ -16,6 +16,16 @@ const DataMember& Database::cgetDb() const{
     return db;
 }
 
+ViewerPair & Database::getView(){
+
+    return usrView;
+}
+
+const ViewerPair & Database::cgetView()const{
+
+    return usrView;
+}
+
 //FUNZIONI DI RICERCA
 
 DataMember& Database::select(const Profile & find)const{
