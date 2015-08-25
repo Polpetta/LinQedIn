@@ -84,7 +84,12 @@ SOURCES += main.cpp\
     membermwviewerview.cpp \
     membermwviewermodel.cpp \
     membermwviewercontroller.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    msearchview.cpp \
+    msearchviewbasic.cpp \
+    msearchviewbusiness.cpp \
+    msearchviewexecutive.cpp \
+    viewerpair.cpp
 
 HEADERS  += \
     event.h \
@@ -158,6 +163,11 @@ HEADERS  += \
     membermwviewerview.h \
     membermwviewermodel.h \
     membermwviewercontroller.h \
-    mainwindow.h
+    mainwindow.h \
+    msearchview.h \
+    msearchviewbasic.h \
+    msearchviewbusiness.h \
+    msearchviewexecutive.h \
+    viewerpair.h
 
 QMAKE_CXXFLAGS += -std=c++0x
