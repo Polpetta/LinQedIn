@@ -9,8 +9,9 @@
 #include <QRegularExpressionMatch>
 
 #include "membersearchmwmodel.h"
-#include "membersearchmwview.h"
+//#include "membersearchmwview.h"
 
+#include "viewerpair.h"
 #include "smartmember.h"
 #include "member.h"
 #include "profile.h"
@@ -41,7 +42,7 @@ private slots:
     void showMemberProfile(const QString &)const;
 
 public:
-    MemberSearchMWController(const QString &);
+    MemberSearchMWController(MSearchView* = nullptr);
 
     ~MemberSearchMWController();
 
@@ -60,7 +61,9 @@ private:
     void messageError (const ParserError &)const;
 
     MemberSearchMWModel* model;
-    MemberSearchMWView* view;
+    //MemberSearchMWView* view;
+
+    MSearchView* view;
 
     QSignalMapper* memberDetails;
 };

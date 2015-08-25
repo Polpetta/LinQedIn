@@ -1,12 +1,12 @@
 #include "membersearchmwcontroller.h"
 
-MemberSearchMWController::MemberSearchMWController(const QString & type)
-    : model(new MemberSearchMWModel(type)),
-      view (new MemberSearchMWView),
+MemberSearchMWController::MemberSearchMWController(MSearchView* nView)
+    : model(new MemberSearchMWModel),
+      view (nView),
       memberDetails(new QSignalMapper)
 {
 
-    if ( type == "Basic"){
+    /*if ( type == "Basic"){
         view->blockBio();
         view->blockHobby();
         view->blockInterests();
@@ -20,7 +20,7 @@ MemberSearchMWController::MemberSearchMWController(const QString & type)
 
         view->setNote(tr("I membri di tipo <i>Executive</i>"
                          " possiedono funzionalità aggiuntive"));
-    }
+    }*/
 
     connect (view,
              SIGNAL (requestClose( QCloseEvent *)),

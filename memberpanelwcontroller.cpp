@@ -1,7 +1,8 @@
 #include "memberpanelwcontroller.h"
 
-MemberPanelWController::MemberPanelWController(const SmartMember & member)
-    : model(new MemberPanelWModel(member)),
+MemberPanelWController::MemberPanelWController(const SmartMember & member,
+                                               const ViewerPair & vp)
+    : model(new MemberPanelWModel(member, vp)),
       view(new MemberPanelWView)
 {
     view->setAccountType(member->cgetType());

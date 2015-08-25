@@ -31,7 +31,7 @@ void MemberLoginWModel::setMember(const SmartMember & newMember){
     member = newMember;
 
     if (memberPanel == nullptr)
-        memberPanel = new MemberPanelWController(member);
+        memberPanel = new MemberPanelWController(member, db->cgetView());
     else
         memberPanel->setMember(member);
 }

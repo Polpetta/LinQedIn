@@ -43,7 +43,7 @@ public slots:
     void showUI()const;
 
 public:
-    MemberPanelWController(const SmartMember &);
+    MemberPanelWController(const SmartMember &, const ViewerPair &);
 
     ~MemberPanelWController();
 

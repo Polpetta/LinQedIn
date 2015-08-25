@@ -12,7 +12,7 @@
 class MemberSearchMWModel
 {
 public:
-    MemberSearchMWModel(const QString &);
+    MemberSearchMWModel();
 
     ~MemberSearchMWModel();
 

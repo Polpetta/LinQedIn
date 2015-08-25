@@ -1,8 +1,8 @@
 #include "membersearchmwmodel.h"
 
-MemberSearchMWModel::MemberSearchMWModel(const QString & type)
+MemberSearchMWModel::MemberSearchMWModel()
     : lastResults(nullptr),
-      typeSearch(type),
+      typeSearch(),
       profileViewer(new MemberMWViewerController)
 {
 

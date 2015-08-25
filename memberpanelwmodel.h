@@ -6,11 +6,13 @@
 #include "membersearchmwcontroller.h"
 
 #include "smartmember.h"
+#include "viewerpair.h"
 
 class MemberPanelWModel
 {
 public:
-    MemberPanelWModel(const SmartMember & = SmartMember(nullptr));
+    MemberPanelWModel(const SmartMember &,
+                      const ViewerPair &);
 
     ~MemberPanelWModel();
 
