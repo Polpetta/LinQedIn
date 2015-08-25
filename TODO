@@ -6,3 +6,5 @@ DA RIVEDERE
 [ok]nel main creare una classe che faccia da wrapper all'avvio dell'interfaccia grafica
 
 [ok]nella documentazione sullo schema degli utenti user non deve essere tratteggiato in quanto non è pura!
+
+[ ]rendere la viewer polimorfa. Usare una struct in viewerpair
