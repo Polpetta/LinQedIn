@@ -169,14 +169,20 @@ void DBonXml::load(){
                  if (type == "Basic"){
 
                    nMember = new MemberBasic(newCrd);
+
+                   getView().add(nick, new MSearchViewBasic);
                  }
                  else if (type == "Business"){
 
                    nMember = new MemberBusiness(newCrd);
+
+                   getView().add(nick, new MSearchViewBusiness);
                  }
                  else if (type == "Executive"){
 
                    nMember = new MemberExecutive(newCrd);
+
+                   getView().add(nick, new MSearchViewExecutive);
                  }
                  else{
                  //nel caso trovo una tipologia che non so cosa sia
