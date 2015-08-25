@@ -7,26 +7,26 @@
   \includegraphics[width=8cm,height=8cm,keepaspectratio]{res/userclass}
 \end{figure}
 
-Alla base di tutta la gerarchia degli utenti è presente la classe ``Users''.
+Alla base di tutta la gerarchia degli utenti è presente la classe \textit{Users}.
 Questa \`e una classe virtuale, che contiene informazione di base,
 come il tipo di account in uso, il Database a cui appartiene e la sua
-validit\`a. Dato che logicamente non ha senso che esista un User, essa non
+validit\`a. Dato che logicamente non ha senso che esista un User, esso non
 è istanziabile. \newline
-Derivato a User c'\`e Admin, che è una classe istanziabile e concreta.
+Derivato a User c'\`e \textit{Admin}, che è una classe istanziabile e concreta.
 Essa implementa le funzionalit\`a dell'amministratore, come il metodo
 di ricerca, il cambiamento di tipo di un Membro, la sua aggiunta e la sua
 cancellazione. \newline
 
-Derivata da User c'\`e anche la classe Member, virtuale pura. Essa pone le
-basi per tutti le tipologie di iscritti a LinQedIn. Qui è presente il metodo
-search da implementare per ogni classe derivata. Member implementa già la scrittura
-e la lettura delle informazioni dal database xml per ogni tipologia di
-iscritto. Basic, Business, Executive sono classi derivate che implementano
-la ricerca sul Database.
+Derivata da User c'\`e anche la classe \textit{Member}, virtuale pura.
+Essa pone le basi per tutte le tipologie di iscritti a LinQedIn. Qui è
+presente il metodo search da implementare per ogni classe derivata. Member
+implementa già la scrittura e la lettura delle informazioni dal database
+xml per ogni tipologia di iscritto. Basic, Business, Executive sono classi
+derivate che implementano la ricerca sul Database.
 
 \subsubsection{Classi contenute in Member}
 
-Member contiene diverse classi, \textit{Profile} da \textit{Friendships} a
+Member contiene diverse classi, \textit{Profile} e \textit{Friendships} a
 loro volta formate da pi\`u classi o derivate da altre.
 
 \paragraph*{Profile} \`e una classe che contiene le informazioni
@@ -95,7 +95,7 @@ sull'oggetto \textit{DataMember}, che si occupa come descritto prima
 di mantenere in memoria gli iscritti al servizio. Per questo progetto \`e
 stato deciso di salvare il database nel formato xml, ma grazie a questa
 gerarchia \`e possibile implementare un diverso metodo di salvataggio.
-Si noti come in DatabaseOnFile (nel codice scritta come \textit{DBonFile})
+Si noti come in DatabaseOnFile (nel codice viene chiamato \textit{DBonFile})
 si ha una derivazione multipla: una dalla classe \textit{DBonIO}, l'altra
 da \textit{QFile}; questo in quanto le classi derivate necessiteranno
 delle funzioni di \textit{QFile} per riuscire a implementare le funzioni
@@ -135,11 +135,10 @@ di rendere le modifiche a quella specifica sezione pi\`u semplici.
 \paragraph*{Gestione del Database} In base alla scelta del tipo di User,
 viene creato un oggetto \textit{DBonXml}:
 \begin{verbatim}
-Database* db = DBonXml(``database'');
+Database* db = new DBonXml(``database'');
 \end{verbatim}
 questo porta a una riduzione dell'estendibilit\`a del codice (se per esempio
 si decidesse di apportare una modifica comune all'istanziazione del
 database ci\`o dovrebbe essere ripetuto per tutti i controller che
 istanziano il database), ma permette di apportare modifiche singole per
-ogni controller che istanzia un Database: infatti un domani ci potrebbe
-essere un database per i Membri ma anche uno per gli Amministratori.
+ogni controller che istanzia un Database.
