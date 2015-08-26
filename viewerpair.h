@@ -3,38 +3,51 @@
 
 #include <QMap>
 #include "msearchviewexecutive.h"
+#include "mviewerviewexecutive.h"
 
-class ViewerPair : private QMap<QString,MSearchView*>
+//mi serve solo per tenere due puntatori nella QMap, nient'altro
+struct viewCollection{
+
+    MSearchView* sView;
+    MViewerView* pView;
+
+    viewCollection(MSearchView* search = nullptr,
+                   MViewerView* profile = nullptr)
+        : sView(search), pView(profile)
+    {}
+
+};
+
+class ViewerPair : private QMap<QString,viewCollection*>
 {
 public:
+
     ViewerPair();
 
-    void add(const QString &, MSearchView*);
+    void add(const QString &, viewCollection*);
     void rm (const QString &);
 
-    class iterator : public QMap<QString,MSearchView*>::iterator{
+    class iterator : public QMap<QString,viewCollection*>::iterator{
 
     public:
         iterator();
-        iterator(const QMap<QString,MSearchView*>::iterator &);
+        iterator(const QMap<QString,viewCollection*>::iterator &);
     };
 
     ViewerPair::iterator begin();
     ViewerPair::iterator end();
 
-    MSearchView* operator[] (const QString &)const;
+    viewCollection* operator[] (const QString &)const;
 
-    class const_iterator : public QMap<QString,MSearchView*>::const_iterator{
+    class const_iterator : public QMap<QString,viewCollection*>::const_iterator{
 
     public:
         const_iterator();
-        const_iterator (const QMap<QString,MSearchView*>::const_iterator &);
+        const_iterator (const QMap<QString,viewCollection*>::const_iterator &);
     };
 
     ViewerPair::const_iterator cbegin()const;
     ViewerPair::const_iterator cend()const;
-
-    //const MSearchView* operator[](const QString &)const;
 };
 
 #endif // VIEWERPAIR_H
