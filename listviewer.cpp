@@ -20,8 +20,6 @@ listViewer::~listViewer(){
 
 void listViewer::addLabel(QLabel* newLabel){
 
-    //qDebug()<<"Arrivo di una nuova label: "<<newLabel->text();
-
     obj.push_back(newLabel);
 
     layout->addWidget(obj.last());
