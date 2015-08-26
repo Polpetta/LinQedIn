@@ -21,8 +21,6 @@ private:
 
     AdminWindowController* admin;
     MemberLoginWController* memberLogin;
-    //qui ci andranno le finestre dell'admin e dell'user
-    //che verranno chiamate dal controller
 };
 
 #endif // MAINWINDOWMODEL_H

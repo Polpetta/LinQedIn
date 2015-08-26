@@ -13,6 +13,6 @@ MemberExecutive::~MemberExecutive(){}
 
 const DataMember& MemberExecutive::search(const Profile &target) const{
 
-    //Essendo un business, butto tutto nella ricerca!
+    //Essendo un executive, metto tutto nella ricerca!
     return getDb()->select(target);
 }

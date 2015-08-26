@@ -2,10 +2,7 @@
 
 AdminMWViewerController::AdminMWViewerController(AdminMWViewerModel* nModel)
     : model (nModel), view (nullptr)
-{
-
-    //ci andranno le varie connect
-}
+{}
 
 AdminMWViewerController::~AdminMWViewerController(){
 
@@ -26,9 +23,9 @@ void AdminMWViewerController::setProfile(const QString & pNick,
                                          const QVector<QString> & pFriendships)const{
 
     if (view == nullptr)
-        return; //evito segfault
+        return;
 
-    //semplicemente setto la view
+    //setto la view
     view->setProfile(pNick,
                      pName,
                      pSurname,

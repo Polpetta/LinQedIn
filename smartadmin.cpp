@@ -1,5 +1,5 @@
 #include "smartadmin.h"
-#include "admin.h" //evito loop
+#include "admin.h"
 
 SmartAdmin::SmartAdmin(Admin* p)
     : punt(p)

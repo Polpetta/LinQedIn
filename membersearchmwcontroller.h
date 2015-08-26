@@ -61,8 +61,6 @@ private:
     void messageError (const ParserError &)const;
 
     MemberSearchMWModel* model;
-    //MemberSearchMWView* view;
-
     MSearchView* view;
 
     QSignalMapper* memberDetails;

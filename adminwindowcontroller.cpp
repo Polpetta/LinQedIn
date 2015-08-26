@@ -141,8 +141,6 @@ AdminWindowController::AdminWindowController(AdminWindowModel* nModel,
     :  model(nModel), view(nView)
 {
 
-    //perchè gli slot non sono metodi costanti?
-
     connect (view,
              SIGNAL ( addMember() ),
              this,
@@ -202,8 +200,6 @@ AdminWindowController::AdminWindowController(AdminWindowModel* nModel,
              SIGNAL (confirmChange(const QString &,const QString &)),
              this,
              SLOT (changeMember(const QString &, const QString &)));
-
-    //creare le connect adatte
 }
 
 AdminWindowController::~AdminWindowController()

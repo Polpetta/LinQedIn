@@ -62,22 +62,5 @@ void Admin::changeMemberType(SmartMember & oldMember, const QString &newType)con
         oldMember->setAccountValid(false);
 
         oldMember = newMember;
-        /* Non mi devo preoccupare di che fine fa l'oggetto puntato da
-         * oldMember perchè esso viene eliminato dalla classe SmartUser.
-         * Inoltre oldMbr potrebbe costituire dangling pointer in caso
-         * l'oggetto a cui puntava oldMember venisse eliminato, ma alla
-         * fine della funzione esso verrà deallocato (il puntatore) e
-         * comunuque non viene più dereferenziato.
-         *
-         * Questo codice porta a dei problemi però: infatti tutti gli altri
-         * utenti che hanno lui come amico continueranno a vedere il
-         * profilo vecchio della persona (ovvero l'account primo del
-         * cambiamento di tipologia, in quanto puntano all'"account"
-         * vecchio). Bisognerebbe aggiornare tutta la rete di amicizie in
-         * cui è presente questo utente o ricaricare il db. <=da rivedere
-         * Oppure si potrebbe fare la liste di amicizie come una serie di
-         * nickname che mi vado a ricercare ogni volta (+ dispendioso ma
-         * si evita questo problema)
-         */
     }
 }

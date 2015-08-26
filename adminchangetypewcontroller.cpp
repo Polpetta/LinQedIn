@@ -9,8 +9,6 @@ AdminChangeTypeWController::AdminChangeTypeWController(AdminChangeTypeWModel* nM
                                                        AdminChangeTypeWView* nView)
     : model (nModel), view (nView)
 {
-    //ci andranno le varie connect
-
     connect (view,
              SIGNAL (requestClose ( QCloseEvent *) ),
              this,

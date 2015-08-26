@@ -9,8 +9,6 @@ MemberLoginWController::MemberLoginWController(MemberLoginWModel* nModel,
              SIGNAL (doLogin(const QString &)),
              this,
              SLOT (execLogin(const QString &)));
-
-    //qui ci andranno le connessioni
 }
 
 
@@ -48,9 +46,8 @@ void MemberLoginWController::execLogin(const QString & nickName) const{
 
         //qui devo costruire l'interfaccia per l'Iscritto
         model->setMember(userToLogin); //mi salvo l'utente loggato
-        //istanziazione MemberPanelWController
 
-        view->close(); //chiudo il form di login - non serve più -
+        view->close();
 
         model->getMemberPanelCtl()->showUI();
 

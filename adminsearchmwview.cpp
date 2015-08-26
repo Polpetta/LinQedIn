@@ -91,7 +91,6 @@ AdminSearchMWView::AdminSearchMWView(QWidget* parent)
     setFixedSize( sizeHint() );
 
 
-    //connessioni dei bottoni
     connect (addHobby,
              SIGNAL (clicked()),
              this,
@@ -142,19 +141,10 @@ void AdminSearchMWView::newFilterI(){
 
 void AdminSearchMWView::commitSearch(){
 
-    //result->clearUI(); //sta cosa fa crashare tutto
-
-
     emit searchConfirm (nameEdit->text(),
                         surnameEdit->text(),
                         birthDayEdit->text());
 
-
-    //senza pulire i risultati è possibile fare un nuova ricerca aggiungendo
-    //filtri
-    /*nameEdit->clear();
-    surnameEdit->clear();
-    birthDayEdit->clear();*/
 }
 
 TableSearch* AdminSearchMWView::getTable()const{

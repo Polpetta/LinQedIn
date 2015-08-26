@@ -32,7 +32,7 @@ public:
 
 private:
 
-    class info //: public QWidget
+    class info
     {
 
     public:

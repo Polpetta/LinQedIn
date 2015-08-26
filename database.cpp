@@ -170,7 +170,7 @@ const SmartMember& Database::cselect (const QString & find)const{
 
     bool match = false;
 
-    while (match == false && it != db.cend()){ //match == false andrebbe prima
+    while (match == false && it != db.cend()){
 
         qDebug()<<&(*it);
         const QString & check = (*it)->cgetCredential().getCredential();
@@ -202,7 +202,7 @@ SmartMember& Database::select (const QString & find){
 
     bool match = false;
 
-    while (it != db.end() && match == false){ //vedi nota sopra
+    while (match == false && it != db.end()){ //vedi nota sopra
 
         qDebug()<<&(*it);
         const QString & check = (*it)->cgetCredential().getCredential();

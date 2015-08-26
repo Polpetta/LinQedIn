@@ -65,7 +65,6 @@ listViewer* MemberFriendWView::getFriendshipsList()const{
 
 void MemberFriendWView::emitNewFriend()const{
 
-    //verranno eseguiti controlli se la stringa è stata modificata poi emit
     if (modifyFriend->isModified()){
 
         emit execAddFriend(modifyFriend->text());
@@ -82,7 +81,6 @@ void MemberFriendWView::emitNewFriend()const{
 
 void MemberFriendWView::emitRmFriend()const{
 
-    //come sopra
     if (modifyFriend->isModified()){
 
         emit execRmFriend(modifyFriend->text());

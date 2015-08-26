@@ -57,11 +57,6 @@ void AdminAddMemberWC::addMember(const QString & type,
     if (okName && okSurname && okPhone && okMail && birth.isValid()){
 
         qDebug()<<"Pattern valido costruisco nuovo Member";
-        /*
-         * Creo i vari sottoggetti
-         * --MANCA DA INTEGRARE HOBBY E INTERESTS--
-         * --DA AGGIUNGERE EXPERIENCES--
-         */
 
         Personal newPersonal (Bio(name,
                                   surname,
@@ -69,10 +64,7 @@ void AdminAddMemberWC::addMember(const QString & type,
                                   phone,
                                   eMail),
                               hobby,
-                              interests
-                              //mancano gli hobby
-                              //mancano gli interests
-                              );
+                              interests);
 
         Profile newProfile (newPersonal,
                             experiences);
@@ -81,19 +73,16 @@ void AdminAddMemberWC::addMember(const QString & type,
             newMember = new MemberBasic (Credentials(nick),
                                         type,
                                          newProfile
-                                         //mancano le Esp
                                          );
         else if (type == "Business")
             newMember = new MemberBusiness (Credentials(nick),
                                             type,
                                             newProfile
-                                            //mancano le Esp
                                             );
         else if (type == "Executive"){
             newMember = new MemberExecutive (Credentials(nick),
                                              type,
                                              newProfile
-                                              //mancano le Esp
                                               );
         }
     }
@@ -157,9 +146,6 @@ AdminAddMemberWC::AdminAddMemberWC(AdminAddMemberWM* nModel,
                              const QVector<QString> &,
                              const QVector<QString> &,
                              const QVector<Event> &)));
-
-
-    //verranno create le varie connessioni
 
 }
 

@@ -48,7 +48,6 @@ MemberUpdateWController::MemberUpdateWController(const SmartMember & member)
         experiences->addLabel((*ite).toString());
     }
 
-    //varie connect
     connect (view,
              SIGNAL (saveBio(const QString &,
                              const QString &,

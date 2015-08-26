@@ -1,5 +1,5 @@
 #include "datamember.h"
-#include "member.h" //evito loop
+#include "member.h"
 
 DataMember::DataMember()
 {}
@@ -87,11 +87,6 @@ void DataMember::rm (const SmartMember & target){
         if (*it == target){
 
             qDebug()<<"Ho avuto match, eseguo la rimozione";
-
-            /*SmartMember last = vector<SmartMember>::back();
-            vector<SmartMember>::pop_back();
-
-            *it == last;*/
 
             (*it)->setAccountValid( false ); //disattivo l'account
         }

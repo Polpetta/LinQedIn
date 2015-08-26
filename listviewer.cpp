@@ -8,7 +8,7 @@ listViewer::listViewer(QWidget * ptr)
 }
 
 listViewer::~listViewer(){
-    //fare obj.clear è uguale?
+
     QVector<QLabel*>::iterator it;
     for (it = obj.begin(); it != obj.end(); ++it){
 

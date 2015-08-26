@@ -21,8 +21,6 @@ AdminRmMemberWController::AdminRmMemberWController(AdminRmMemberWModel* nModel,
              SIGNAL (remove(const QString &) ),
              this,
              SLOT (rmMember(const QString &)));
-    //da creare le varie connessioni
-
 }
 
 AdminRmMemberWController::~AdminRmMemberWController(){

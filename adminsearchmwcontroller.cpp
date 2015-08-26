@@ -41,8 +41,6 @@ AdminSearchMWController::AdminSearchMWController(AdminSearchMWModel* nModel,
              SIGNAL (mapped(QString)),
              this,
              SLOT (showMemberProfile(const QString &)));
-
-    //ci andranno le varie connect
 }
 
 AdminSearchMWController::~AdminSearchMWController()

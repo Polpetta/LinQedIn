@@ -14,7 +14,6 @@ AdminWindowModel::AdminWindowModel(Database* dbptr,
       changeMember (nChangeMember)
 {
 
-    //db->load(); //carico il db <- va caricato quando viene selezionato "admin"
     admin = new Admin("Admin", db);
 }
 

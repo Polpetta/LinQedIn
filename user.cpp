@@ -1,5 +1,4 @@
 #include "user.h"
-//#include "database.h" per evitare loop compilativi
 
 User::User(const QString & typ,
            Database* ptrDb)

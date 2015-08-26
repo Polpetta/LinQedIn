@@ -362,12 +362,8 @@ void Member::loadBack(QXmlStreamReader & read){
 
         }
 
-        //read.skipCurrentElement();
         //END FRIENDSHIPS
 
     }
-
-
-    //
 
 }

@@ -4,7 +4,7 @@
 #include "database.h"
 #include <QIODevice>
 
-class DBonIO : public Database//, public QIODevice
+class DBonIO : public Database
 {
 public:
     DBonIO();

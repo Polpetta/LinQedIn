@@ -26,7 +26,7 @@ public:
                     const QVector<QString>&,
                     const QVector<QString>&,
                     const QVector<QString>&,
-                    const QVector<QString>&)const; //tutto
+                    const QVector<QString>&)const;
 
     void resetView();
 

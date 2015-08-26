@@ -7,7 +7,6 @@ MemberPanelWController::MemberPanelWController(const SmartMember & member,
 {
     view->setAccountType(member->cgetType());
 
-    //ci andranno le varie connect
     connect(view,
             SIGNAL (requestClose( QCloseEvent* ) ),
             this,
@@ -201,7 +200,7 @@ void MemberPanelWController::rmFriend(const QString &target) const{
 
 void MemberPanelWController::execSearch(const Profile &toSearch) const{
 
-    //eseguo la search con la chiamata polimorfa all'member
+    //eseguo la search con la chiamata polimorfa al member
 
     model->getMemberSearchCtl()->setSearchResults(model->cgetMember()->search(toSearch));
 }

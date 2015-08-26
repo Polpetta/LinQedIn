@@ -19,7 +19,6 @@ MemberFriendWController::MemberFriendWController(const SmartMember & member)
              SIGNAL ( execRmFriend(const QString &)),
              this,
              SLOT (rmFriend(const QString &)));
-    //caricare la grafica e creare le varie connect
 
     listViewer* friendships = view->getFriendshipsList();
 

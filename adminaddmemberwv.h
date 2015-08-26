@@ -9,7 +9,6 @@
 #include <QVBoxLayout>
 #include <QGridLayout>
 #include <QPushButton>
-//#include <QVector>
 
 #include <QDebug>
 

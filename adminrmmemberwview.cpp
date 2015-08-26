@@ -36,7 +36,6 @@ AdminRmMemberWView::AdminRmMemberWView(QWidget* ptr)
 
     setFixedSize( sizeHint() );
 
-    //da farci le varie connect
 
     connect (confirmButton,
              SIGNAL (clicked()),

@@ -1,5 +1,5 @@
 #include "smartmember.h"
-#include "member.h" //evito loop
+#include "member.h"
 
 SmartMember::SmartMember(Member* p)
     : punt(p)

@@ -34,7 +34,7 @@ public:
     virtual ~Database();
 
     //non vanno implementati qui, nella gerarchia più in basso
-    virtual void save() =0; //il vector viene scritto su file
+    virtual void save() =0; //il db viene scritto
     virtual void load() =0; //carica tutto il db
 
     DataMember& getDb();
@@ -51,11 +51,13 @@ public:
 
     virtual DataMember& select (const Profile &)const;
     /*
-     * È necessario sia virtual? Si potrebbe implementare a questo
-     * livello?
+     * È necessario sia virtual perchè se in un futuro una classe derivata
+     * volesse dare una implementazione migliore o fosse vantaggioso
+     * direttamente cercare sulla memoria di massa piuttosto che caricare in ram
+     * così avrei la possibiltà di farlo
      */
     virtual const SmartMember& cselect (const QString &)const;
-    virtual SmartMember& select (const QString &); //è giusto che non sia cost?
+    virtual SmartMember& select (const QString &);
 
     //stati del db
     bool isOk() const;
