@@ -67,8 +67,8 @@ void MemberFriendWController::addFriend(const QString & newFriend) const{
     QMessageBox info(QMessageBox::Information,
                      tr ("Informazione su aggiunta amici"),
                      tr ("Verrà effettuata l'aggiunta della amizizia come"
-                         "richiesto.<br><i>Nota</i> che se l'aggiunta non"
-                         "risulterà essere valida,<br>l'amicizia non verrà"
+                         " richiesto.<br><i>Nota</i> che se l'aggiunta non"
+                         " risulterà essere valida,<br>l'amicizia non verrà"
                          " salvata."));
 
     info.exec();
