@@ -78,10 +78,8 @@ SOURCES += main.cpp\
     memberfriendwview.cpp \
     memberfriendwmodel.cpp \
     memberfriendwcontroller.cpp \
-    membersearchmwview.cpp \
     membersearchmwmodel.cpp \
     membersearchmwcontroller.cpp \
-    membermwviewerview.cpp \
     membermwviewermodel.cpp \
     membermwviewercontroller.cpp \
     mainwindow.cpp \
@@ -161,10 +159,8 @@ HEADERS  += \
     memberfriendwview.h \
     memberfriendwmodel.h \
     memberfriendwcontroller.h \
-    membersearchmwview.h \
     membersearchmwmodel.h \
     membersearchmwcontroller.h \
-    membermwviewerview.h \
     membermwviewermodel.h \
     membermwviewercontroller.h \
     mainwindow.h \
