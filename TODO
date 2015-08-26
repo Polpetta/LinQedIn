@@ -7,4 +7,6 @@ DA RIVEDERE
 
 [ok]nella documentazione sullo schema degli utenti user non deve essere tratteggiato in quanto non è pura!
 
-[ ]rendere la viewer polimorfa. Usare una struct in viewerpair
+[ok]rendere la viewer polimorfa. Usare una struct in viewerpair
+
+[ ] pulire classi vecchie non più utilizzate
