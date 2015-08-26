@@ -89,7 +89,11 @@ SOURCES += main.cpp\
     msearchviewbasic.cpp \
     msearchviewbusiness.cpp \
     msearchviewexecutive.cpp \
-    viewerpair.cpp
+    viewerpair.cpp \
+    mviewerview.cpp \
+    mviewerviewbasic.cpp \
+    mviewerviewbusiness.cpp \
+    mviewerviewexecutive.cpp
 
 HEADERS  += \
     event.h \
@@ -168,6 +172,10 @@ HEADERS  += \
     msearchviewbasic.h \
     msearchviewbusiness.h \
     msearchviewexecutive.h \
-    viewerpair.h
+    viewerpair.h \
+    mviewerview.h \
+    mviewerviewbasic.h \
+    mviewerviewbusiness.h \
+    mviewerviewexecutive.h
 
 QMAKE_CXXFLAGS += -std=c++0x
