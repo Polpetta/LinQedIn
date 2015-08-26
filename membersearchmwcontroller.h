@@ -42,7 +42,7 @@ private slots:
     void showMemberProfile(const QString &)const;
 
 public:
-    MemberSearchMWController(MSearchView* = nullptr);
+    MemberSearchMWController(viewCollection *);
 
     ~MemberSearchMWController();
 

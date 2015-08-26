@@ -1,9 +1,9 @@
 #include "membersearchmwmodel.h"
 
-MemberSearchMWModel::MemberSearchMWModel()
+MemberSearchMWModel::MemberSearchMWModel(MViewerView* pViewer)
     : lastResults(nullptr),
       typeSearch(),
-      profileViewer(new MemberMWViewerController)
+      profileViewer(new MemberMWViewerController(pViewer))
 {
 
 }

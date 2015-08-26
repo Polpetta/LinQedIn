@@ -12,7 +12,7 @@
 class MemberSearchMWModel
 {
 public:
-    MemberSearchMWModel();
+    MemberSearchMWModel(MViewerView* = nullptr);
 
     ~MemberSearchMWModel();
 

@@ -6,34 +6,16 @@
 #include <QDebug>
 
 #include "membermwviewermodel.h"
-#include "membermwviewerview.h"
+#include "mviewerviewexecutive.h"
 
 class MemberMWViewerController : public QObject
 {
     Q_OBJECT
 
 public:
-    MemberMWViewerController(MemberMWViewerModel* = new MemberMWViewerModel);
+    MemberMWViewerController(MViewerView*);
 
     ~MemberMWViewerController();
-
-    void setProfile(const QString &,
-                    const QString &,
-                    const QString &,
-                    const QString &,
-                    const QString &,
-                    const QString &,
-                    const QVector<QString> &)const; //solo bio + amicizie
-
-    void setProfile(const QString &,
-                    const QString &,
-                    const QString &,
-                    const QString &,
-                    const QString &,
-                    const QString &,
-                    const QVector<QString>&,
-                    const QVector<QString>&,
-                    const QVector<QString>&)const; //hobby + interests
 
     void setProfile(const QString &,
                     const QString &,
@@ -55,7 +37,7 @@ public slots:
 private:
 
     MemberMWViewerModel* model;
-    MemberMWViewerView* view;
+    MViewerView* view;
 };
 
 #endif // MEMBERMWVIEWERCONTROLLER_H

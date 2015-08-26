@@ -1,26 +1,10 @@
 #include "membersearchmwcontroller.h"
 
-MemberSearchMWController::MemberSearchMWController(MSearchView* nView)
-    : model(new MemberSearchMWModel),
-      view (nView),
+MemberSearchMWController::MemberSearchMWController(viewCollection *nCollection)
+    : model(new MemberSearchMWModel(nCollection->pView)),
+      view (nCollection->sView),
       memberDetails(new QSignalMapper)
 {
-
-    /*if ( type == "Basic"){
-        view->blockBio();
-        view->blockHobby();
-        view->blockInterests();
-
-        view->setNote(tr("I membri di tipo <i>Basic</i> e"
-                         " <i>Executive</i> possiedono funzionalità"
-                         " aggiuntive"));
-    }else if ( type == "Business"){
-
-        view->blockInterests();
-
-        view->setNote(tr("I membri di tipo <i>Executive</i>"
-                         " possiedono funzionalità aggiuntive"));
-    }*/
 
     connect (view,
              SIGNAL (requestClose( QCloseEvent *)),
@@ -261,42 +245,16 @@ void MemberSearchMWController::showMemberProfile(const QString & nick) const{
         MemberMWViewerController* pViewer = model->getProfileViewer();
         pViewer->resetView(); //pulisco la vista se ce ne sono state di precedenti
 
-        const QString & accountType = model->cgetType();
-
-        if (accountType == "Basic"){
-
-            pViewer->setProfile(nick,
-                                bio.getName(),
-                                bio.getSurname(),
-                                bio.getBirthday().toString("dd-MM-yyyy"),
-                                bio.getPhone(),
-                                bio.getMail(),
-                                friendships);
-        }else if(accountType == "Business"){
-
-            pViewer->setProfile(nick,
-                                bio.getName(),
-                                bio.getSurname(),
-                                bio.getBirthday().toString("dd-MM-yyyy"),
-                                bio.getPhone(),
-                                bio.getMail(),
-                                hobby,
-                                interests,
-                                friendships);
-        }else if(accountType == "Executive"){
-
-            pViewer->setProfile(nick,
-                                bio.getName(),
-                                bio.getSurname(),
-                                bio.getBirthday().toString("dd-MM-yyyy"),
-                                bio.getPhone(),
-                                bio.getMail(),
-                                hobby,
-                                interests,
-                                *stringExperiences,
-                                friendships);
-        }else
-            return;
+        pViewer->setProfile(nick,
+                            bio.getName(),
+                            bio.getSurname(),
+                            bio.getBirthday().toString("dd-MM-yyyy"),
+                            bio.getPhone(),
+                            bio.getMail(),
+                            hobby,
+                            interests,
+                            *stringExperiences,
+                            friendships);
 
         pViewer->showUI();
 }
