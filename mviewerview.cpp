@@ -14,7 +14,7 @@ void MViewerView::initialize(){
     experiences = new listViewer;
     friendships = new listViewer;
     credentialBox = new QGroupBox( tr("Credenziali Membro") );
-    bioBox = new QGroupBox( tr("Amicizie") );
+    bioBox = new QGroupBox( tr("Informazioni personali") );
     friendshipsBox = new QGroupBox( tr("Amicizie") );
     hobbyBox = new QGroupBox( tr("Hobby") );
     interestsBox = new QGroupBox( tr("Interessi") );
