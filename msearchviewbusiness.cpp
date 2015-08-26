@@ -1,7 +1,8 @@
 #include "msearchviewbusiness.h"
 
-MSearchViewBusiness::MSearchViewBusiness()
-    : hobbyEdit(new QLineEdit),
+MSearchViewBusiness::MSearchViewBusiness(QWidget * ptr)
+    : MSearchViewBasic(ptr),
+      hobbyEdit(new QLineEdit),
       addHobby(new QPushButton( tr("Filtra") ))
 {
 

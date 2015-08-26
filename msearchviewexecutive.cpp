@@ -1,7 +1,8 @@
 #include "msearchviewexecutive.h"
 
-MSearchViewExecutive::MSearchViewExecutive()
-    : interestsEdit(new QLineEdit),
+MSearchViewExecutive::MSearchViewExecutive(QWidget* ptr)
+    : MSearchViewBusiness(ptr),
+      interestsEdit(new QLineEdit),
       addInterests(new QPushButton(tr ("Filtra") ))
 {
 

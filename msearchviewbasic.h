@@ -8,7 +8,7 @@ class MSearchViewBasic : public MSearchView
     Q_OBJECT
 
 public:
-    MSearchViewBasic();
+    MSearchViewBasic(QWidget* = nullptr);
 
     ~MSearchViewBasic();
 

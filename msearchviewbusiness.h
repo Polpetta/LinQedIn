@@ -8,7 +8,7 @@ class MSearchViewBusiness : public MSearchViewBasic
     Q_OBJECT
 
 public:
-    MSearchViewBusiness();
+    MSearchViewBusiness(QWidget* = nullptr);
 
     ~MSearchViewBusiness();
 

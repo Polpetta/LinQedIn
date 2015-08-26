@@ -8,7 +8,7 @@ class MSearchViewExecutive : public MSearchViewBusiness
     Q_OBJECT
 
 public:
-    MSearchViewExecutive();
+    MSearchViewExecutive(QWidget* = nullptr);
 
     ~MSearchViewExecutive();
 

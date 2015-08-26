@@ -1,6 +1,7 @@
 #include "msearchviewbasic.h"
 
-MSearchViewBasic::MSearchViewBasic()
+MSearchViewBasic::MSearchViewBasic(QWidget* ptr)
+    : MSearchView(ptr)
 {
 
     /* Per MSearchViewBusiness sta parte
