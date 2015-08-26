@@ -166,23 +166,28 @@ void DBonXml::load(){
 
                  Credentials newCrd(nick);
 
+                 viewCollection* collection = new viewCollection;
+
                  if (type == "Basic"){
 
                    nMember = new MemberBasic(newCrd);
 
-                   getView().add(nick, new MSearchViewBasic);
+                   collection->sView = new MSearchViewBasic;
+                   collection->pView = new MViewerViewBasic;
                  }
                  else if (type == "Business"){
 
                    nMember = new MemberBusiness(newCrd);
 
-                   getView().add(nick, new MSearchViewBusiness);
+                   collection->sView = new MSearchViewBusiness;
+                   collection->pView = new MViewerViewBusiness;
                  }
                  else if (type == "Executive"){
 
                    nMember = new MemberExecutive(newCrd);
 
-                   getView().add(nick, new MSearchViewExecutive);
+                   collection->sView = new MSearchViewExecutive;
+                   collection->pView = new MViewerViewExecutive;
                  }
                  else{
                  //nel caso trovo una tipologia che non so cosa sia
@@ -190,6 +195,8 @@ void DBonXml::load(){
                    setState(dbState::bad_db);
                    return;
                  }
+
+                 getView().add(nick, collection);
 
                  nMember->setAccountType( type );
                  //setto il suo tipo di user
