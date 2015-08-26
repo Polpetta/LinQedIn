@@ -8,8 +8,6 @@
 
 #include <QMessageBox>
 
-#include <QDebug>
-
 #include "memberupdatewmodel.h"
 #include "memberupdatewview.h"
 

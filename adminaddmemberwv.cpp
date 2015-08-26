@@ -11,32 +11,15 @@ void AdminAddMemberWV::processItems(){
     const QString & phone = bio->cgetField("phone");
     const QString & eMail = bio->cgetField("eMail");
 
-    qDebug()<<"Ottenuto da Intro:";
-    qDebug()<<"type: "<<type;
-
-    qDebug()<<"Ottenuto da Bio:";
-    qDebug()<<"nick: "<<nick;
-    qDebug()<<"name: "<<name;
-    qDebug()<<"surname: "<<surname;
-    qDebug()<<"birthDay: "<<birthDay;
-    qDebug()<<"phone: "<<phone;
-    qDebug()<<"eMail: "<<eMail;
 
     const QVector<QString> & hobbyList = hobby->cgetHobby();
     hobby->clear();
 
-    qDebug()<<"HobbyList: "<<hobbyList.size();
-
     const QVector<QString> & interestsList = interests->cgetInterests();
     interests->clear();
 
-    qDebug()<<"interestsList: "<<interestsList.size();
-
     const QVector<Event> & experiencesList = experiences->cgetExperiences();
     experiences->clear();
-
-    qDebug()<<"ExperienceList: "<<experiencesList.size();
-
 
     emit endAdd(type,
                 nick,
@@ -60,12 +43,6 @@ AdminAddMemberWV::AdminAddMemberWV(QWidget * parent)
       end (new AdminAMWEnd)
 {
 
-    /*AdminAMWIntro* intro = new AdminAMWIntro;
-    AdminAMWBio* bio = new AdminAMWBio;
-    AdminAMWHobby* hobby = new AdminAMWHobby;
-    AdminAMWInterests* interests = new AdminAMWInterests;
-    AdminAMWEnd* end = new AdminAMWEnd; */
-
     addPage(intro);
     addPage(bio);
     addPage(hobby);
@@ -74,21 +51,6 @@ AdminAddMemberWV::AdminAddMemberWV(QWidget * parent)
     addPage(end);
 
     setWindowTitle( tr("Wizard Aggiunta Iscritto") );
-
-    /*const QString & nick = bio->cgetField("nick");
-    const QString & name = bio->cgetField("name");
-    const QString & surname = bio->cgetField("surname");
-    const QString & birthDay = bio->cgetField("birthDay");
-    const QString & phone = bio->cgetField("phone");
-    const QString & eMail = bio->cgetField("eMail");
-
-    qDebug()<<"Ottenuto da Bio:";
-    qDebug()<<"nick: "<<nick;
-    qDebug()<<"name: "<<name;
-    qDebug()<<"surname: "<<surname;
-    qDebug()<<"birthDay: "<<birthDay;
-    qDebug()<<"phone: "<<phone;
-    qDebug()<<"eMail: "<<eMail;*/
 
     setFixedSize( sizeHint() );
 

@@ -61,10 +61,6 @@ void AdminAMWHobby::emitInsert(){
 
 void AdminAMWHobby::addHobby(const QString & newHobby){
 
-    qDebug()<<"Arrivo di un nuovo Hobby, size prima: "<<hobby.size();
-
     hobby.push_back(newHobby);
     hobbyEdit->clear();
-
-    qDebug()<<"Size ora: "<<hobby.size();
 }

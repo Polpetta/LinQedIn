@@ -150,8 +150,6 @@ void AdminMWViewerView::setProfile(const QString & pNick,
                                    const QVector<QString> & pExperience,
                                    const QVector<QString> & pFriendships){
 
-    qDebug()<<"Arrivata richiesta di visualizzaizone nuovo profilo";
-
     hobby->clear();
     interests->clear();
 
@@ -166,8 +164,6 @@ void AdminMWViewerView::setProfile(const QString & pNick,
     birth->setText(pBirth);
     phone->setText(pPhone);
     eMail->setText(pEMail);
-
-    qDebug()<<"pExperience size: "<<pExperience.size();
 
     QVector<QString>::const_iterator its;
     for (its = pHobby.cbegin(); its != pHobby.cend(); ++its){

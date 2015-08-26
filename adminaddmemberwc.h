@@ -6,8 +6,6 @@
 #include <QRegularExpressionMatch>
 #include <QMessageBox>
 
-#include <QDebug>
-
 #include "adminaddmemberwm.h"
 #include "adminaddmemberwv.h"
 

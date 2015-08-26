@@ -7,8 +7,6 @@
 #include <QGroupBox>
 #include <QLabel>
 
-#include <QDebug>
-
 class MemberPanelWView : public QWidget
 {
     Q_OBJECT

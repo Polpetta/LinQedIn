@@ -20,8 +20,6 @@ DBonXml::~DBonXml()
 
 void DBonXml::save(){
 
-    qDebug()<<"DBonXml: **** CHIAMATO SALAVATAGGIO DB";
-
     if (QFile::open(QFile::WriteOnly) != true){
         dbState dst = read_only;
         setState(dst);
@@ -91,8 +89,6 @@ void DBonXml::save(){
 
 
     QFile::close(); //chiudo il file
-
-    qDebug()<<"DBonXml: **** SALVATAGGIO DB CONCLUSO";
 }
 
 
@@ -114,9 +110,6 @@ void DBonXml::load(){
 
     token = read.readNext();
 
-    qDebug()<< "È elemento iniziale?";
-    qDebug()<< (token == QXmlStreamReader::StartDocument);
-
     if (token != QXmlStreamReader::StartDocument){
         setState(dbState::bad_db);
         QFile::close();
@@ -125,36 +118,28 @@ void DBonXml::load(){
 
     read.readNextStartElement();
 
-    qDebug()<< read.name();
     //USERS
     if (read.name() == "Users"){
-        qDebug()<<"Entro nell'if dell Users";
 
         while( !read.atEnd() && !read.hasError() ){
 
             read.readNextStartElement();
-            qDebug()<<"Nuova istruzione letta: "<<read.name();
 
             //USER
             if (read.name() == "User"){
-                 qDebug()<<"Entro in User";
 
                  SmartMember nMember;
 
                  read.readNextStartElement();
 
                  QString type = read.readElementText();
-                 qDebug()<<"Type"<<type;
 
 
                  //CREDENTIALS
                  read.readNextStartElement();
 
-                 qDebug()<<read.name();
-
                  QString nick;
                  if (read.name() == "Credentials"){
-                    qDebug()<<"Leggo le credenziali dell'utente";
 
                     read.readNextStartElement();
                     nick = read.readElementText();
@@ -204,13 +189,7 @@ void DBonXml::load(){
                  nMember->setDb(this);
                  //setto il database a questo oggetto
 
-                 qDebug()<<"Tipo account: "<<nMember->getType();
-
-                 qDebug()<<"-------------------------------------";
-                 qDebug()<<"Lascio che l'utente legga i suoi dati";
                  nMember->load( read ); //carica i suoi dati
-                 qDebug()<<"L'utente ha letto i suoi dati";
-                 qDebug()<<"-------------------------------------";
 
 
                  getDb().add( nMember ); //aggiungo il nuovo user
@@ -221,29 +200,18 @@ void DBonXml::load(){
 
             if (read.name() == "Back"){
 
-                qDebug()<<"Sono in back";
-
                 DataMember::iterator itm;
 
                 for (itm = getDb().begin();
                      itm != getDb().end();
                      ++itm) {
 
-                    qDebug()<<"Sono nel for";
-
-                    qDebug()<<"Utente: "<<(*itm)->cgetCredential().getCredential();
-
                     read.readNextStartElement();
-                    qDebug()<<read.name();
 
                     //OPT
                     if (read.name() == "Opt"){
 
-                        qDebug()<<"---------------------";
-                        qDebug()<<"L'utente legge le opt";
                         (*itm)->loadBack( read );
-                        qDebug()<<"L'utente ha letto le sue opt";
-                        qDebug()<<"---------------------";
                     }
 
                     read.skipCurrentElement();
@@ -254,7 +222,6 @@ void DBonXml::load(){
                 //END BACK
 
                 read.readNextStartElement();
-                qDebug()<<read.name();
             }
 
         }

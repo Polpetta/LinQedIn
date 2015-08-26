@@ -3,8 +3,6 @@
 
 #include <QObject>
 
-#include <QDebug>
-
 #include "memberpanelwmodel.h"
 #include "memberpanelwview.h"
 

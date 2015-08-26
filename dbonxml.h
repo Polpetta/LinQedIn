@@ -5,10 +5,6 @@
 #include <QXmlStreamWriter>
 #include <QXmlStreamAttributes>
 
-//mi serve per capire cosa legge
-#include <QDebug>
-//da rimuovere dopo sopra
-
 #include "dbonfile.h"
 #include "user.h"
 #include "memberexecutive.h"

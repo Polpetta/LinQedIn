@@ -164,8 +164,6 @@ void MemberUpdateWController::processBio(const QString & name,
 
     if (okName && okSurname && okPhone && okMail && birth.isValid()){
 
-        qDebug()<<"Pattern Valido";
-
         QMessageBox info(QMessageBox::Information,
                          tr ("Aggiornamento completato"),
                          tr ("L'aggiornamento delle Bio è<br>"

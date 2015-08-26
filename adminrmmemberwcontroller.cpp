@@ -48,7 +48,5 @@ void AdminRmMemberWController::rmMember(const QString & nick)const{
         return; //non cancello nientem, non ha inserito niente
     }
 
-    qDebug()<<"AdminRmController: ****CONFERMO RIMOZIONE UTENTE";
-
     emit rmMemberConfirm(nick);
 }

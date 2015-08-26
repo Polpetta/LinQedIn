@@ -18,8 +18,6 @@ void AdminAddMemberWC::addMember(const QString & type,
     Interests interests = nInterests;
     Experiences experiences = nExperiences;
 
-    qDebug()<<"Size Experience: "<<experiences.size();
-
     QDate birth (QDate::fromString(birthDay, "dd-MM-yyyy"));
 
     QRegularExpression nameRe;
@@ -55,8 +53,6 @@ void AdminAddMemberWC::addMember(const QString & type,
 
 
     if (okName && okSurname && okPhone && okMail && birth.isValid()){
-
-        qDebug()<<"Pattern valido costruisco nuovo Member";
 
         Personal newPersonal (Bio(name,
                                   surname,
@@ -96,25 +92,8 @@ void AdminAddMemberWC::addMember(const QString & type,
                               "spazi nella loro prima parte."),
                           QMessageBox::Ok);
 
-        qDebug()<<"Type: "<<type;
-        qDebug()<<"Nome: "<<okName;
-        qDebug()<<"Cognome: "<<okSurname;
-        qDebug()<<"Phone: "<<okPhone;
-        qDebug()<<"eMail: "<<okMail;
-        qDebug()<<"Data Nascita: "<<birth.isValid();
-
         info.exec();
     }
-
-   qDebug()<<"Signal di aggiunta utente arrivato";
-   qDebug()<<"Ottenuto da signal:";
-   qDebug()<<"type: "<<type;
-   qDebug()<<"nick: "<<nick;
-   qDebug()<<"name: "<<name;
-   qDebug()<<"surname: "<<surname;
-   qDebug()<<"birthDay: "<<birthDay;
-   qDebug()<<"phone: "<<phone;
-   qDebug()<<"eMail: "<<eMail;
 
    emit resumeAdmin(newMember);
 }

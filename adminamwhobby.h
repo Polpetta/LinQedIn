@@ -8,8 +8,6 @@
 #include <QGridLayout>
 #include <QVector>
 
-#include <QDebug>
-
 class AdminAMWHobby : public QWizardPage
 {
     Q_OBJECT

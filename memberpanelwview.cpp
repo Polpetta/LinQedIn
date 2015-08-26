@@ -66,8 +66,6 @@ void MemberPanelWView::closeEvent(QCloseEvent * event){
 
 void MemberPanelWView::setAccountType(const QString & account){
 
-    qDebug()<<"Nuovo tipo di account: "<<account;
-
     QString phrase = tr ("Tipo di account: ") + "<i>"+account+"</i>";
 
     typeAccount->setText(phrase);

@@ -172,24 +172,17 @@ const SmartMember& Database::cselect (const QString & find)const{
 
     while (match == false && it != db.cend()){
 
-        qDebug()<<&(*it);
         const QString & check = (*it)->cgetCredential().getCredential();
 
         if (check == find){
-            qDebug()<<"Ho avuto match";
-            qDebug()<<check<<"=="<<find;
             match = true;
         }else
             ++it;
     }
 
-    qDebug()<<&(*it);
-
     if (match == true){
-        qDebug()<<"Ritorno true";
         return *it;
     }else{
-        qDebug()<<"Ritorno false";
         SmartMember* ptr = new SmartMember();
         return *ptr;
     }
@@ -204,24 +197,17 @@ SmartMember& Database::select (const QString & find){
 
     while (match == false && it != db.end()){ //vedi nota sopra
 
-        qDebug()<<&(*it);
         const QString & check = (*it)->cgetCredential().getCredential();
 
         if (check == find){
-            qDebug()<<"Ho avuto match";
-            qDebug()<<check<<"=="<<find;
             match = true;
         }else
             ++it;
     }
 
-    qDebug()<<&(*it);
-
     if (match == true){
-        qDebug()<<"Ritorno true";
         return *it;
     }else{
-        qDebug()<<"Ritorno false";
         SmartMember* ptr = new SmartMember();
         return *ptr;
     }

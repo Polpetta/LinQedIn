@@ -8,8 +8,6 @@
 #include <QLineEdit>
 #include <QVector>
 
-#include <QDebug>
-
 class AdminAMWInterests : public QWizardPage
 {
     Q_OBJECT

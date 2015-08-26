@@ -60,10 +60,6 @@ void AdminAMWInterests::emitInsert(){
 
 void AdminAMWInterests::addInterests(const QString & newInterest){
 
-    qDebug()<<"Arrivo di un nuovo Interest, size prima: "<<interests.size();
-
     interests.push_back(newInterest);
     interestsEdit->clear();
-
-    qDebug()<<"Size ora: "<<interests.size();
 }

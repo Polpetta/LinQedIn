@@ -5,8 +5,6 @@
 #include <QCloseEvent>
 #include <QMessageBox>
 
-#include <QDebug>
-
 #include "adminchangetypewmodel.h"
 #include "adminchangetypewview.h"
 

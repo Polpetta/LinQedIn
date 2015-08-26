@@ -51,8 +51,6 @@ const SmartMember & DataMember::operator[] (const DataMember::const_iterator & i
 
 void DataMember::add(const SmartMember & newSM){
 
-    qDebug()<<"DataMember: **** AGGIUNTA NUOVO UTENTE";
-
     const QString & newNick = newSM->cgetCredential().getCredential();
 
     vector<SmartMember>::const_iterator it;
@@ -63,14 +61,11 @@ void DataMember::add(const SmartMember & newSM){
 
         if (newNick == (*it)->cgetCredential().getCredential()){
 
-            qDebug() <<"Match: "<<newNick<<" == "<<(*it)->cgetCredential().getCredential();
-
             match = true;
         }
     }
 
     if (match == false){
-        qDebug()<<"Ho aggiunto "<<newNick;
 
         vector<SmartMember>::push_back(newSM);
     }
@@ -78,15 +73,11 @@ void DataMember::add(const SmartMember & newSM){
 
 void DataMember::rm (const SmartMember & target){
 
-    qDebug()<<"Chiamata Rimozione utente";
-
     vector<SmartMember>::iterator it;
 
     for (it = vector<SmartMember>::begin(); it != vector<SmartMember>::end(); ++it){
 
         if (*it == target){
-
-            qDebug()<<"Ho avuto match, eseguo la rimozione";
 
             (*it)->setAccountValid( false ); //disattivo l'account
         }

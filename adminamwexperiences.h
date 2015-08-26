@@ -10,8 +10,6 @@
 #include <QVector>
 #include <QMessageBox>
 
-#include <QDebug>
-
 #include "event.h"
 
 class AdminAMWExperiences : public QWizardPage

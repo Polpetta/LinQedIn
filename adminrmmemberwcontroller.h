@@ -6,8 +6,6 @@
 #include <QCloseEvent>
 #include <QMessageBox>
 
-#include <QDebug>
-
 #include "adminrmmemberwmodel.h"
 #include "adminrmmemberwview.h"
 

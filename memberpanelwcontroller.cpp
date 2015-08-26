@@ -107,8 +107,6 @@ void MemberPanelWController::showUI()const{
 
 void MemberPanelWController::UpdateProfile()const{
 
-    qDebug()<<"Sono in UpdateProfile";
-
     view->hide();
 
     model->getMemberUpdateCtl()->showUI();
@@ -117,16 +115,12 @@ void MemberPanelWController::UpdateProfile()const{
 
 void MemberPanelWController::ManageFriends()const{
 
-    qDebug()<<"Sono in ManageFriends";
-
     view->hide();
 
     model->getMemberFriendCtl()->showUI();
 }
 
 void MemberPanelWController::Search()const{
-
-    qDebug()<<"Sono in Search";
 
     view->hide();
 
@@ -142,8 +136,6 @@ void MemberPanelWController::setMember(const SmartMember & newMember)const{
 void MemberPanelWController::saveBio(const Bio & newBio) const{
 
     model->getMember()->getProfile().getPersonal().setBio(newBio);
-
-    qDebug()<<"Aggiornamento nuove bio completato";
 }
 
 void MemberPanelWController::closeSession(QCloseEvent *event) const{

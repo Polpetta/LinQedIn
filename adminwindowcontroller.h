@@ -4,8 +4,6 @@
 #include <QObject>
 #include <QMessageBox>
 
-#include <QDebug>
-
 #include "admin.h"
 #include "smartadmin.h"
 #include "memberexecutive.h"

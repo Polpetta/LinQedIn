@@ -10,8 +10,6 @@
 #include <QGridLayout>
 #include <QPushButton>
 
-#include <QDebug>
-
 #include "adminamwintro.h"
 #include "adminamwbio.h"
 #include "adminamwhobby.h"

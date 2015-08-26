@@ -36,8 +36,6 @@ void AdminChangeTypeWController::closeView(QCloseEvent * event) const{
 void AdminChangeTypeWController::change(const QString &nick,
                                         const QString &type) const{
 
-    qDebug()<<"Sono in change per cambiare tipo a Iscritto";
-
     if (nick.size() == 0){
 
         QMessageBox info(QMessageBox::Warning,

@@ -3,8 +3,6 @@
 
 #include <vector>
 #include <QString>
-//da rimuovere poi
-#include <QDebug>
 
 #include "smartmember.h"
 #include "data.h"

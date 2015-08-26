@@ -47,8 +47,6 @@ void AdminWindowController::execRmMember(){
 
 void AdminWindowController::rmMember(const QString &target) const{
 
-
-    qDebug()<<"Chiamata rimozione per utente: "<<target;
     /*
      * ora che ho il database controllo prima l'esistenza, in caso il membro
      * che si vuole rimuovere non esista lancio un messaggio avvisando

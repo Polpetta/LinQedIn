@@ -4,9 +4,6 @@
 #include <QRegularExpression>
 #include <QRegularExpressionMatch>
 
-//da rimuovere poi
-#include <QDebug>
-
 #include "viewerpair.h"
 #include "datamember.h"
 #include "smartmember.h"

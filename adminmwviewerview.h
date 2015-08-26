@@ -9,8 +9,6 @@
 #include <QGroupBox>
 #include <QVBoxLayout>
 
-#include <QDebug>
-
 #include "listviewer.h"
 
 class AdminMWViewerView : public QWidget

@@ -99,16 +99,12 @@ void AdminAMWExperiences::addExperiences(const Event & newEvent){
         info.exec();
     }else{
 
-    qDebug()<<"Arrivo di un nuovo Event, size prima: "<<experiences.size();
+        experiences.push_back(newEvent);
 
-    experiences.push_back(newEvent);
-
-    qDebug()<<"Size ora: "<<experiences.size();
-
-    beginEdit->clear();
-    finishEdit->clear();
-    descEdit->clear();
-    whereEdit->clear();
+        beginEdit->clear();
+        finishEdit->clear();
+        descEdit->clear();
+        whereEdit->clear();
 
     }
 }

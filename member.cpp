@@ -172,12 +172,7 @@ void Member::saveBack(QXmlStreamWriter & write) const{
 
     for (itf = tfrn.cbegin(); itf != tfrn.cend(); ++itf){
 
-        qDebug()<<"Nome amicizia: "<<(*itf);
-
         const SmartMember & friendof = getDb()->cselect((*itf));
-
-        qDebug()<<friendof.cgetPunt();
-        qDebug()<<"È un ptr null?"<< (friendof.cgetPunt() == nullptr);
 
         if (friendof.cgetPunt() != nullptr && friendof->isValid() == true)
             write.writeTextElement("FriendOf",friendof->cgetCredential().getCredential());
@@ -192,18 +187,15 @@ void Member::saveBack(QXmlStreamWriter & write) const{
 void Member::load(QXmlStreamReader & read){
 
     read.readNextStartElement();
-    qDebug()<<read.name();
 
     //PROFILE
     if (read.name() == "Profile"){
 
         read.readNextStartElement();
-        qDebug()<<read.name();
         //PERSONAL
         if (read.name() == "Personal"){
 
             read.readNextStartElement();
-            qDebug()<<read.name();
             //BIO
             if (read.name() == "Bio"){
 
@@ -213,25 +205,20 @@ void Member::load(QXmlStreamReader & read){
                 QDate birth(
                             QDate::fromString(
                                 read.readElementText(), "dd-MM-yyyy"));
-                qDebug()<<"Data: "<<birth;
 
                 newBio.setBirthday(birth);
 
                 read.readNextStartElement();
                 newBio.setName(read.readElementText());
-                qDebug()<<"Nome: "<<newBio.getName();
 
                 read.readNextStartElement();
                 newBio.setSurname(read.readElementText());
-                qDebug()<<"Surname: "<<newBio.getSurname();
 
                 read.readNextStartElement();
                 newBio.setPhone(read.readElementText());
-                qDebug()<<"Phone: "<<newBio.getPhone();
 
                 read.readNextStartElement();
                 newBio.setMail(read.readElementText());
-                qDebug()<<"eMail: "<<newBio.getMail();
 
                 getProfile().getPersonal().setBio(newBio);
             }
@@ -240,16 +227,13 @@ void Member::load(QXmlStreamReader & read){
             //END BIO
 
             read.readNextStartElement();
-            qDebug()<<read.name();
             //HOBBY
             if(read.name() == "Hobby"){
 
                 read.readNextStartElement();
-                qDebug()<<read.name();
                 while (read.name() == "Info"){
 
                     const QString & newHbb = read.readElementText();
-                    qDebug()<<"Tipo di Hobby: "<<newHbb;
 
                     getProfile().getPersonal().getHobby().add(newHbb);
 
@@ -260,16 +244,13 @@ void Member::load(QXmlStreamReader & read){
             //END HOBBY
 
             read.readNextStartElement();
-            qDebug()<<read.name();
             //INTERESTS
             if(read.name() == "Interests"){
 
                 read.readNextStartElement();
-                qDebug()<<read.name();
                 while (read.name() == "Info"){
 
                     const QString & newHbb = read.readElementText();
-                    qDebug()<<"Tipo di Interests: "<<newHbb;
 
                     getProfile().getPersonal().getInterests().add(newHbb);
 
@@ -279,17 +260,13 @@ void Member::load(QXmlStreamReader & read){
             }
             //END INTERESTS
 
-            qDebug()<<"Alla fine di interests: "<<read.name();
             read.readNextStartElement();
-            qDebug()<<read.name();
             read.readNextStartElement();
-            qDebug()<<"Altra lettura :"<<read.name();
 
             //EXPERIENCES
             if (read.name() == "Experiences"){
 
                 read.readNextStartElement();
-                qDebug()<<read.name();
                 while (read.name() == "Event"){
 
                     read.readNextStartElement();
@@ -297,7 +274,6 @@ void Member::load(QXmlStreamReader & read){
                     QDate begin(QDate::fromString(
                                     read.readElementText(),
                                     "dd-MM-yyyy"));
-                    qDebug()<<read.name()<<": "<<begin;
 
 
                     read.readNextStartElement();
@@ -305,19 +281,15 @@ void Member::load(QXmlStreamReader & read){
                     QDate finish(QDate::fromString(
                                      read.readElementText(),
                                      "dd-MM-yyyy"));
-                    qDebug()<<read.name()<<": "<<finish;
 
 
                     read.readNextStartElement();
 
                     QString desc = read.readElementText();
-                    qDebug()<<read.name()<<": "<<desc;
-
 
                     read.readNextStartElement();
 
                     QString where = read.readElementText();
-                    qDebug()<<read.name()<<": "<<where;
 
                     Event newEv (begin,
                                  finish,
@@ -344,17 +316,14 @@ void Member::load(QXmlStreamReader & read){
 void Member::loadBack(QXmlStreamReader & read){
 
     read.readNextStartElement();
-    qDebug()<<read.name();
 
     if (read.name() == "Friendships"){
 
         read.readNextStartElement();
-        qDebug()<<read.name();
 
         while (read.name() == "FriendOf"){
 
             const QString & friendNick = read.readElementText();
-            qDebug()<<"Tipo di amico: "<<friendNick;
 
             getFriendships().add(friendNick);
 
