@@ -1,13 +1,7 @@
 #ifndef MEMBERBASIC_H
 #define MEMBERBASIC_H
 
-#include <QString>
-
 #include "member.h"
-#include "credentials.h"
-#include "profile.h"
-#include "friendships.h"
-
 
 class MemberBasic : public Member
 {
