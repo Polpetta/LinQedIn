@@ -10,7 +10,6 @@
 #include "credentials.h"
 
 #include "database.h"
-//includo ora il db così evito problemi di compilazione
 
 class DataMember;
 
