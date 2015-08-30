@@ -28,7 +28,7 @@ public slots:
 
 signals:
 
-    void resumeAdmin(const SmartMember & = nullptr);
+    void resumeAdmin(const SmartMember &);
 
 public:
     AdminAddMemberWC(AdminAddMemberWM* = new AdminAddMemberWM,
