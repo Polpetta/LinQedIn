@@ -212,24 +212,6 @@ MemberUpdateWView::MemberUpdateWView(QWidget* ptr)
              this,
              SLOT (emitRmExperiences()));
 
-    /*connect (addHobby,
-             SIGNAL (clicked()),
-             this,
-             SIGNAL (execModHobby()));
-
-    connect (modifyInterests,
-             SIGNAL (clicked()),
-             this,
-             SIGNAL (execModInterests()));
-
-    connect (modifyExperiences,
-             SIGNAL (clicked()),
-             this,
-             SIGNAL (execModExperiences()));
-
-    * Da rifare le connect
-*/
-
 }
 
 MemberUpdateWView::~MemberUpdateWView(){
@@ -315,7 +297,8 @@ void MemberUpdateWView::closeEvent(QCloseEvent * event){
 
 void MemberUpdateWView::info(const QString &type, const typeAction &act) const{
 
-    QString action = tr ("unknown"); //in caso capiti qualcosa di strano
+    QString action = tr ("unknown");
+
     if (act == typeAction::insert){
 
         action = tr ("inserire");
