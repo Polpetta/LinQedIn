@@ -17,7 +17,7 @@ signals:
 
     void newInsert(const QString &);
 
-public slots:
+private slots:
 
     void emitInsert();
 
