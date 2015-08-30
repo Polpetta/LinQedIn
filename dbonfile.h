@@ -8,7 +8,7 @@
 class DBonFile : public DBonIO, public QFile
 {
 public:
-    DBonFile(const QString & = QString());
+    DBonFile(const QString &);
     virtual ~DBonFile();
 
 };

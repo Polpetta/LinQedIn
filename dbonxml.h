@@ -13,7 +13,7 @@
 class DBonXml : public DBonFile
 {
 public:
-    DBonXml(const QString & = QString());
+    DBonXml(const QString &);
     virtual ~DBonXml();
 
     //ora posso definire come scriverò e come caricherò il db
