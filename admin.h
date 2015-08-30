@@ -8,12 +8,10 @@
 #include "memberexecutive.h"
 
 /*
- * Richieste per il progetto:
  * -Inserimento nel DB di un nuovo utente
  * -Ricerca nel DB di un utente mediante nome/cognome o codice
  * -Rimozione del DB di un utente Linkedin
  * -Cambio tipologia di account per un utente Linkedin
- * -Salvataggio/lettura sul file del DB degli utenti
  */
 
 class Admin : public User
