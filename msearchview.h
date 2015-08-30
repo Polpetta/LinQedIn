@@ -11,7 +11,6 @@
 #include <QGridLayout>
 #include <QPushButton>
 #include <QScrollArea>
-#include <QMessageBox>
 
 #include "tablesearch.h"
 #include "event.h"

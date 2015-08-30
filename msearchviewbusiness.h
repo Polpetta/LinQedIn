@@ -1,6 +1,8 @@
 #ifndef MSEARCHVIEWBUSINESS_H
 #define MSEARCHVIEWBUSINESS_H
 
+#include <QMessageBox>
+
 #include "msearchviewbasic.h"
 
 class MSearchViewBusiness : public MSearchViewBasic
