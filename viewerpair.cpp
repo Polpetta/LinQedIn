@@ -3,6 +3,18 @@
 ViewerPair::ViewerPair()
 {}
 
+ViewerPair::~ViewerPair(){
+
+    QMap<QString,viewCollection*>::iterator it;
+
+    for (it = QMap<QString,viewCollection*>::begin();
+         it != QMap<QString,viewCollection*>::end();
+         ++it){
+
+        delete *it;
+    }
+}
+
 void ViewerPair::add(const QString &key, viewCollection* view){
 
     QMap<QString,viewCollection*>::insert(key, view);

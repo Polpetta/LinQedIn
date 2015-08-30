@@ -24,6 +24,8 @@ public:
 
     ViewerPair();
 
+    ~ViewerPair();
+
     void add(const QString &, viewCollection*);
     void rm (const QString &);
 
