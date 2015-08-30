@@ -2,7 +2,6 @@
 #define DBONIO_H
 
 #include "database.h"
-#include <QIODevice>
 
 class DBonIO : public Database
 {
