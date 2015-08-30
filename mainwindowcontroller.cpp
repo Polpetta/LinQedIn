@@ -49,9 +49,4 @@ MainWindowController::MainWindowController(MainWindowModel* nModel,
             this,
             SLOT ( showLoginMember() ));
 
-
-    /*
-     * Vengono create le varie connessioni
-     */
-
 }
