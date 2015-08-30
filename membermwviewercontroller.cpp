@@ -9,8 +9,7 @@ MemberMWViewerController::~MemberMWViewerController(){
 
     delete model;
 
-    if (view != nullptr)
-        delete view;
+    delete view;
 }
 
 void MemberMWViewerController::resetView(){

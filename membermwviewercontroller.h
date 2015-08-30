@@ -3,8 +3,6 @@
 
 #include <QObject>
 
-#include <QDebug>
-
 #include "membermwviewermodel.h"
 #include "mviewerviewexecutive.h"
 
