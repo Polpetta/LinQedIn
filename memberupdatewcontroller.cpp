@@ -264,9 +264,9 @@ void MemberUpdateWController::processAddExperience(const QString &start,
                                 "dd-MM-yyyy");
 
     if (newEvent->isValid()){
+
         view->getExperiencesList()->addLabel(newEvent->toString());
         emit insertExperience(*newEvent);
-        //da controllare e emettere per aggiunta
     }else{
 
         QMessageBox info(QMessageBox::Warning,
@@ -290,9 +290,9 @@ void MemberUpdateWController::processRmExperience(const QString &start,
                                 "dd-MM-yyyy");
 
     if (newEvent->isValid()){
+
         view->getExperiencesList()->changeLabel(newEvent->toString(), "<s>"+newEvent->toString()+"</s>");
         emit removeExperience(*newEvent);
-        //da controllare e emettere per rimozione
     }else{
 
         QMessageBox info(QMessageBox::Warning,
