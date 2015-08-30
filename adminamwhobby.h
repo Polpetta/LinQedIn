@@ -7,6 +7,7 @@
 #include <QPushButton>
 #include <QGridLayout>
 #include <QVector>
+#include <QMessageBox>
 
 class AdminAMWHobby : public QWizardPage
 {
@@ -16,7 +17,7 @@ signals:
 
     void newInsert (const QString &);
 
-public slots:
+private slots:
 
     void emitInsert();
 

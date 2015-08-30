@@ -56,7 +56,16 @@ void AdminAMWHobby::clear(){
 
 void AdminAMWHobby::emitInsert(){
 
-    emit newInsert(hobbyEdit->text());
+    if (hobbyEdit->isModified() && hobbyEdit->text() != "")
+        emit newInsert(hobbyEdit->text());
+    else{
+
+        QMessageBox info(QMessageBox::Warning,
+                         tr("Inserimento vuoto"),
+                         tr ("Non è possibile inserire un hobby vuoto"));
+
+        info.exec();
+    }
 }
 
 void AdminAMWHobby::addHobby(const QString & newHobby){
