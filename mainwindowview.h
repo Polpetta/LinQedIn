@@ -1,8 +1,6 @@
 #ifndef MAINWINDOWVIEW_H
 #define MAINWINDOWVIEW_H
 
-
-#include <QApplication>
 #include <QWidget>
 #include <QLabel>
 #include <QGroupBox>
