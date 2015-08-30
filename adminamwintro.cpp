@@ -11,7 +11,9 @@ AdminAMWIntro::AdminAMWIntro(QWidget * ptr)
 
     QLineEdit* userType = new QLineEdit;
 
-    QLabel* note = new QLabel( tr ("I member per il momento possono essere: <i>Basic</i>, <i>Business</i>, <i>Executive</i>"));
+    QLabel* note = new QLabel( tr ("I member per il momento possono essere:"
+                                   " <i>Basic</i>, <i>Business</i>, "
+                                   "<i>Executive</i>"));
 
     QVBoxLayout* layout = new QVBoxLayout;
     layout->addWidget(intro);
