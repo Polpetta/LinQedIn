@@ -1,13 +1,11 @@
 #ifndef MEMBERLOGINWVIEW_H
 #define MEMBERLOGINWVIEW_H
 
-
 #include <QWidget>
 #include <QLineEdit>
 #include <QPushButton>
 #include <QLabel>
 #include <QVBoxLayout>
-#include <QMessageBox>
 
 class MemberLoginWView : public QWidget
 {
