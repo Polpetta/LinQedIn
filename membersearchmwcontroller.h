@@ -9,7 +9,6 @@
 #include <QRegularExpressionMatch>
 
 #include "membersearchmwmodel.h"
-//#include "membersearchmwview.h"
 
 #include "viewerpair.h"
 #include "smartmember.h"

@@ -257,5 +257,5 @@ void MemberSearchMWController::showMemberProfile(const QString & nick) const{
                             friendships);
 
         pViewer->showUI();
-}
+    }
 }
