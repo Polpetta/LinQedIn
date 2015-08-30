@@ -12,7 +12,6 @@
 #include "database.h"
 //includo ora il db così evito problemi di compilazione
 
-//#include "datamember.h"
 class DataMember;
 
 class Member : public User

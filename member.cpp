@@ -155,10 +155,6 @@ void Member::save(QXmlStreamWriter & write) const{
     write.writeEndElement();
     //END PROFILE
 
-    /*
-     * Le amicizie conviene scriverle alla fine di tutto in quanto
-     * così poi si possono ricreare i puntatori molto più facilmente
-     */
 }
 
 void Member::saveBack(QXmlStreamWriter & write) const{
@@ -317,6 +313,7 @@ void Member::loadBack(QXmlStreamReader & read){
 
     read.readNextStartElement();
 
+    //FRIENDSHIPS
     if (read.name() == "Friendships"){
 
         read.readNextStartElement();
