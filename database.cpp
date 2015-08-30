@@ -195,7 +195,7 @@ SmartMember& Database::select (const QString & find){
 
     bool match = false;
 
-    while (match == false && it != db.end()){ //vedi nota sopra
+    while (match == false && it != db.end()){
 
         const QString & check = (*it)->cgetCredential().getCredential();
 
