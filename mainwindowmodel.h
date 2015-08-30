@@ -3,9 +3,6 @@
 
 #include "adminwindowcontroller.h"
 #include "memberloginwcontroller.h"
-/*
- * Bisognerà includere i controller delle altre finestre
- */
 
 class MainWindowModel
 {
