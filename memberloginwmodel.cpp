@@ -9,6 +9,9 @@ MemberLoginWModel::MemberLoginWModel(Database* dbptr)
 MemberLoginWModel::~MemberLoginWModel(){
 
     delete db;
+
+    if (memberPanel != nullptr)
+        delete memberPanel;
 }
 
 Database* MemberLoginWModel::getDb()const{
