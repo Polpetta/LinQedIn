@@ -20,7 +20,7 @@ signals:
 
     void newEvent(const Event &);
 
-public slots:
+private slots:
 
     void emitEvent();
 

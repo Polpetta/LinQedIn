@@ -74,11 +74,6 @@ void AdminAMWExperiences::clear(){
 
 void AdminAMWExperiences::emitEvent(){
 
-    /*emit newEvent (Event(beginEdit->text(),
-                         mfinishEdit->text(),
-                         descEdit->text(),
-                         whereEdit->text())); */
-
     emit newEvent (Event(beginEdit->text(),
                          finishEdit->text(),
                          descEdit->text(),
