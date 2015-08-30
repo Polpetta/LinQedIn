@@ -1,10 +1,8 @@
 #ifndef ADMINWINDOWVIEW_H
 #define ADMINWINDOWVIEW_H
 
-#include <QApplication>
 #include <QWidget>
 #include <QPushButton>
-#include <QRadioButton>
 #include <QGroupBox>
 #include <QVBoxLayout>
 
