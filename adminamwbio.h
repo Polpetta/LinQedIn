@@ -6,7 +6,6 @@
 #include <QLineEdit>
 #include <QGridLayout>
 #include <QString>
-#include <QVariant>
 
 class AdminAMWBio : public QWizardPage
 {
