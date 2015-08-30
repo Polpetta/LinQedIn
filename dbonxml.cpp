@@ -7,8 +7,8 @@ DBonXml::DBonXml(const QString & nameFile)
     /*
      * Come costruttori di read e write ho messo this
      * in quanto i loro costruttori accettano un QIODevice*,
-     * ma essendo che io derivo da QIODevice (perchè DBonIO
-     * deriva da QIODevice) allora posso inizializzarli su me
+     * ma essendo che io derivo da QIODevice (perchè DBonFile
+     * deriva da QFile) allora posso inizializzarli su me
      * stesso (ovvero sul file in cui scriverò) perchè punto a
      * una sottoclasse della classe base, usando il polimorfismo.
      */
@@ -33,11 +33,6 @@ void DBonXml::save(){
 
     //USERS
     write.writeStartElement("Users");
-
-    /*
-     * va scritta la funzione save di user (dei suoi sottooggetti)
-     * poi qui viene invocata solo se ovviamente l'user è valido!
-     */
 
     DataMember::const_iterator it;
 
@@ -93,12 +88,6 @@ void DBonXml::save(){
 
 
 void DBonXml::load(){
-
-    /*
-     * -Leggo che cosa sto "tirando su", in base a quello dichiaro
-     * il tipo adatto (tipo "Basic"-> new MemberBasic) e gli sbatto
-     * dentro i dati
-     */
 
     if (QFile::open(QFile::ReadOnly) != true){
         setState(dbState::generic_error);
