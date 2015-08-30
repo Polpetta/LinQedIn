@@ -12,6 +12,7 @@ MemberPanelWModel::~MemberPanelWModel(){
 
     delete updateCtl;
     delete friendCtl;
+    delete searchCtl;
 
     //delete implicita di info
 }
