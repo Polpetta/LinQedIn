@@ -7,6 +7,7 @@
 #include <QGridLayout>
 #include <QLineEdit>
 #include <QVector>
+#include <QMessageBox>
 
 class AdminAMWInterests : public QWizardPage
 {

@@ -55,7 +55,16 @@ void AdminAMWInterests::clear(){
 
 void AdminAMWInterests::emitInsert(){
 
-    emit newInsert(interestsEdit->text());
+    if (interestsEdit->isModified() && interestsEdit->text() != "")
+        emit newInsert(interestsEdit->text());
+    else{
+
+        QMessageBox info(QMessageBox::Warning,
+                         tr("Inserimento vuoto"),
+                         tr ("Non è possibile inserire un interesse vuoto"));
+
+        info.exec();
+    }
 }
 
 void AdminAMWInterests::addInterests(const QString & newInterest){
