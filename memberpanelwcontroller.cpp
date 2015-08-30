@@ -140,9 +140,6 @@ void MemberPanelWController::saveBio(const Bio & newBio) const{
 
 void MemberPanelWController::closeSession(QCloseEvent *event) const{
 
-    //prima di chiudere tutto, accetto l'evento, salvo il db ed esco
-    //per salvare il db devo andare in memberLogin
-
     event->accept();
 
     emit close();
