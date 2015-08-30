@@ -65,6 +65,11 @@ MSearchView::~MSearchView(){
     delete surnameEdit;
     delete birthDayEdit;
 
+    delete search;
+
+    delete result;
+    delete scrollResults;
+
     delete layoutTot;
 }
 
