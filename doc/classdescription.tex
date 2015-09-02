@@ -10,14 +10,25 @@
 Alla base di tutta la gerarchia degli utenti è presente la classe \textit{Users}.
 Questa \`e una classe che contiene informazione di base,
 come il tipo di account in uso, il Database a cui appartiene e la sua
-validit\`a. Dato che logicamente non ha senso che esista un User, esso non
+validit\`a. Nei suoi campi dati \`e stato incluso il puntatore
+\begin{verbatim}
+  Database*
+\end{verbatim}
+in quanto esso serve per eseguire operazioni sul database (ad esempio
+le ricerche). Questa strutturazione potrebbe rivelarsi utile non avendo
+solamente un database, ma usandone pi\`u di uno. In questa maniera sarebbe
+possibile ``cambiare'' database di riferimento per eseguire determinate
+azioni utilizando lo stesso oggetto.
+
+Dato che logicamente non ha senso che esista un User, esso non
 è istanziabile. \newline
+
 Derivato a User c'\`e \textit{Admin}, che è una classe istanziabile e concreta.
 Essa implementa le funzionalit\`a dell'amministratore, come il metodo
 di ricerca, il cambiamento di tipo di un Membro, la sua aggiunta e la sua
 cancellazione. \newline
 
-Derivata da User c'\`e anche la classe \textit{Member}, virtuale pura.
+Derivata da User si ha la classe \textit{Member}, virtuale pura.
 Essa pone le basi per tutte le tipologie di iscritti a LinQedIn. Qui è
 presente il metodo search da implementare per ogni classe derivata. Member
 implementa già la scrittura e la lettura delle informazioni dal database
